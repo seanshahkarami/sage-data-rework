@@ -3,7 +3,7 @@ from datetime import datetime
 from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as parquet
-from dataclasses import dataclass
+
 
 # We have some weird data like this, where the newline is in the value... which means we can't really do line by line...
 # invalid right part: b'mobotix.move.status,host=0000e45f0198f3d7.ws-rpi,job=mobotix-scan-direction-2380,node=000048b02d3ae27a,plugin=registry.sagecontinuum.org/bhupendraraut/mobotix-scan:0.24.8.20,task=mobotix-scan-direction,vsn=W020,zone=shield value="OK\n'
@@ -22,11 +22,11 @@ start_timestamp = datetime.now()
 chunk_id = 0
 
 with GzipFile("export-lp/2025/01/01/data.lp.gz", "r") as f:
-    measurement_tags = {}
+    measurement_meta = {}
 
     for linenum, line in enumerate(f):
         line = line.decode()
-        measurement_tags.clear()
+        measurement_meta.clear()
 
         left, sep, right = line.partition(" value=")
         if not sep:
@@ -34,14 +34,14 @@ with GzipFile("export-lp/2025/01/01/data.lp.gz", "r") as f:
             continue
 
         left = left.replace("\\ ", " ")
-        measurement_name, *tagstr = left.split(",")
+        measurement, *tagstr = left.split(",")
         try:
             valuestr, timestampstr = right.rsplit(maxsplit=1)
             if "." in valuestr:
                 measurement_value = float(valuestr)
             else:
                 measurement_value = int(valuestr)
-            measurement_timestamp = datetime.fromtimestamp(int(timestampstr) / 10**9)
+            measurement_timestamp = int(timestampstr)
         except ValueError:
             print(f"invalid right part: {line}")
             continue
@@ -50,7 +50,7 @@ with GzipFile("export-lp/2025/01/01/data.lp.gz", "r") as f:
             key, sep, value = s.partition("=")
             if not sep:
                 continue
-            measurement_tags[key] = value
+            measurement_meta[key] = value
 
         if linenum > 0 and linenum % 1000000 == 0:
             print("elapsed", datetime.now() - start_timestamp)
@@ -62,40 +62,49 @@ with GzipFile("export-lp/2025/01/01/data.lp.gz", "r") as f:
             )
             print()
 
-        bucket_key = (measurement_tags["vsn"], measurement_tags["host"])
+        plugin = measurement_meta.get("plugin", "system")
+        plugin = plugin.replace("/", "__")
+        plugin = plugin.replace(":", "__")
+
+        bucket_key = (plugin, measurement)
 
         if bucket_key not in buckets:
             buckets[bucket_key] = []
 
         buckets[bucket_key].append(
             (
-                measurement_name,
+                measurement_meta["vsn"],
+                measurement_meta["host"],
                 measurement_timestamp,
                 measurement_value,
-                measurement_tags,
+                measurement_meta,
             )
         )
 
-        if linenum == 5000000:
+        if linenum >= 10000000:
             break
 
 ### write dataset
 
 # we should just build this ahead of time instead of reshaping here...?
 
-for (vsn, host), bucket in buckets.items():
+for (plugin, measurement), bucket in buckets.items():
+    timestamp_col = pa.array([r[2] for r in bucket], type=pa.int64())
+
     table = pa.table(
         {
-            "name": [name for name, _, _, _ in bucket],
-            "timestamp": [ts for _, ts, _, _ in bucket],
-            "value": [val for _, _, val, _ in bucket],
-            "tags": [tags for _, _, _, tags in bucket],
+            "timestamp": timestamp_col,
+            "vsn": [r[0] for r in bucket],
+            "host": [r[1] for r in bucket],
+            "value": [r[3] for r in bucket],
+            "meta": [r[4] for r in bucket],
         }
     )
 
     table = table.sort_by(
         [
-            ("name", "ascending"),
+            ("vsn", "ascending"),
+            ("host", "ascending"),
             ("timestamp", "ascending"),
         ]
     )
@@ -103,11 +112,8 @@ for (vsn, host), bucket in buckets.items():
     print(table)
     print(table.schema)
 
-    # writer_path = Path(
-    #     f"data/year={year}/month={month}/day={day}/vsn={vsn}/host={host}/plugin={plugin}/name={name}/{chunk_id}.parquet"
-    # )
     writer_path = Path(
-        f"data/year={year}/month={month}/day={day}/vsn={vsn}/host={host}/{chunk_id}.parquet"
+        f"data/plugin={plugin}/measurement={measurement}/year={year}/month={month}/day={day}/{chunk_id}.parquet"
     )
     writer_path.parent.mkdir(parents=True, exist_ok=True)
     chunk_id += 1
@@ -118,6 +124,7 @@ for (vsn, host), bucket in buckets.items():
         schema=table.schema,
         version="2.6",
         write_statistics=True,
+        data_page_version="2.0",
         compression="snappy",
         use_dictionary=["vsn", "host"],
     )
@@ -127,3 +134,5 @@ for (vsn, host), bucket in buckets.items():
 # hmm... another interesting idea is... we can run a generally grouper
 # on the data... i wonder host much memory this would take to actually load almost everything???
 # we can be smart about it too.
+
+# TODO(sean) fix timestamp to ensure in utc... seems to be messed up

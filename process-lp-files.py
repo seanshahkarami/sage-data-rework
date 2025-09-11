@@ -15,10 +15,7 @@ import sys
 
 
 def groupby_plugin_and_measurement(point):
-    plugin = point["plugin"] or "system"
-    plugin = plugin.replace("/", "__")
-    plugin = plugin.replace(":", "__")
-    return (plugin, point["measurement"])
+    return (point["plugin"] or "system", point["measurement"])
 
 
 def main():
@@ -91,8 +88,13 @@ def main():
                 ]
             )
 
+            print("---")
+            print(table.schema)
+            print()
+
+            urlencoded_plugin = plugin.replace("/", "%2F")
             writer_path = Path(
-                f"data/plugin={plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{chunk_id}.parquet"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{chunk_id}.parquet"
             )
             writer_path.parent.mkdir(parents=True, exist_ok=True)
             chunk_id += 1

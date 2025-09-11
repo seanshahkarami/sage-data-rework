@@ -1,4 +1,3 @@
-import pyarrow as pa
 import pyarrow.parquet as parquet
 
 table = parquet.read_table("sample.parquet")
@@ -15,4 +14,5 @@ writer = parquet.ParquetWriter(
     use_dictionary=False,
     sorting_columns=["timestamp"],
 )
+
 writer.write_table(table)

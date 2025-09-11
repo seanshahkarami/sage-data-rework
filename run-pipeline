@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gzip -dc export-lp/2025/01/01/data.lp.gz | convert-lp-to-json | ./process-lp-files.py

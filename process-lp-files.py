@@ -19,8 +19,6 @@ def groupby_plugin_and_measurement(point):
 
 
 def main():
-    chunk_id = 0
-
     points = map(json.loads, sys.stdin)
 
     year = 2025
@@ -94,10 +92,9 @@ def main():
 
             urlencoded_plugin = plugin.replace("/", "%2F")
             writer_path = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{chunk_id}.parquet"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{batch_num}.parquet"
             )
             writer_path.parent.mkdir(parents=True, exist_ok=True)
-            chunk_id += 1
 
             print(f"started writing {writer_path} with {len(table)} measurements")
             writer = parquet.ParquetWriter(
@@ -106,7 +103,7 @@ def main():
                 version="2.6",
                 write_statistics=True,
                 data_page_version="2.0",
-                compression="snappy",
+                compression="zstd",
                 use_dictionary=["vsn", "host"],
             )
             writer.write_table(table)

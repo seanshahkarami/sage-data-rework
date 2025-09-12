@@ -18,7 +18,7 @@ def main():
     month = 1
     day = 1
 
-    file_id = 0
+    id_for_group = {}
 
     for group, grouped_points in groupby(points, key=groupby_plugin_and_measurement):
         for batch_num, batched_points in enumerate(batched(grouped_points, 500_000)):
@@ -78,9 +78,14 @@ def main():
             print(table.schema)
             print()
 
+            if group not in id_for_group:
+                id_for_group[group] = 0
+            else:
+                id_for_group[group] += 1
+
             urlencoded_plugin = plugin.replace("/", "%2F")
             writer_path = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{file_id}.parquet"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{id_for_group[group]}.parquet"
             )
             writer_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -96,8 +101,6 @@ def main():
             )
             writer.write_table(table)
             print(f"finished writing {writer_path}")
-
-            file_id += 1
 
 
 if __name__ == "__main__":

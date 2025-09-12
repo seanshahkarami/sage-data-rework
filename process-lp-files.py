@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
-from datetime import datetime
 from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as parquet
 from itertools import groupby, batched
 import json
 import sys
-
-# One really useful assumption we can make... the LP *might* already be grouped
-# by similar tags so we can just groupby a batch so long at the meta we care about
-# matches.
-#
-# This also allows nice things like possibly allocating a single max size buffer
 
 
 def groupby_plugin_and_measurement(point):
@@ -25,24 +18,19 @@ def main():
     month = 1
     day = 1
 
+    file_id = 0
+
     for group, grouped_points in groupby(points, key=groupby_plugin_and_measurement):
         for batch_num, batched_points in enumerate(batched(grouped_points, 500_000)):
             (plugin, measurement) = group
 
             print(f"processing group {plugin}, {measurement} batch {batch_num}")
 
-            timestamp_col = []
-            vsn_col = []
-            host_col = []
-            value_col = []
-            meta_col = []
-
-            for point in batched_points:
-                timestamp_col.append(point["ts"])
-                vsn_col.append(point["vsn"])
-                host_col.append(point["host"])
-                value_col.append(point["value"])
-                meta_col.append(point["meta"])
+            timestamp_col = [point["ts"] for point in batched_points]
+            vsn_col = [point["vsn"] for point in batched_points]
+            host_col = [point["host"] for point in batched_points]
+            value_col = [point["value"] for point in batched_points]
+            meta_col = [point["meta"] for point in batched_points]
 
             print(f"writing group {plugin}, {measurement} batch {batch_num}")
 
@@ -92,7 +80,7 @@ def main():
 
             urlencoded_plugin = plugin.replace("/", "%2F")
             writer_path = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{batch_num}.parquet"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{file_id}.parquet"
             )
             writer_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -108,6 +96,8 @@ def main():
             )
             writer.write_table(table)
             print(f"finished writing {writer_path}")
+
+            file_id += 1
 
 
 if __name__ == "__main__":

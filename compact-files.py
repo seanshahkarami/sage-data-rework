@@ -5,6 +5,18 @@ from pathlib import Path
 for base_dir in Path("data").glob("*/*/*"):
     parquet_files = sorted(base_dir.glob("*.parquet"))
 
+    write_file = Path(base_dir, "0000.parquet.write")
+    done_file = Path(base_dir, "0000.parquet.done")
+    final_file = Path(base_dir, "0000.parquet")
+
+    # if done file exists, then we finished writing data and just need to finish the clean up step.
+    if done_file.exists():
+        for parquet_file in parquet_files:
+            parquet_file.unlink()
+        done_file.rename(final_file)
+        continue
+
+    # if there's only a single (or no files), then no need to compact.
     if len(parquet_files) <= 1:
         continue
 
@@ -36,12 +48,8 @@ for base_dir in Path("data").glob("*/*/*"):
         print(f"failed to concat tables for {base_dir} with error: {err}")
         continue
 
-    write_path = Path(base_dir, "0000.parquet.write")
-    done_path = Path(base_dir, "0000.parquet.done")
-    final_path = Path(base_dir, "0000.parquet")
-
     writer = parquet.ParquetWriter(
-        write_path,
+        write_file,
         schema=combined.schema,
         version="2.6",
         write_statistics=True,
@@ -51,11 +59,11 @@ for base_dir in Path("data").glob("*/*/*"):
     )
     writer.write_table(combined)
 
-    write_path.rename(done_path)
+    write_file.rename(done_file)
 
     for parquet_file in parquet_files:
         parquet_file.unlink()
 
-    done_path.rename(final_path)
+    done_file.rename(final_file)
 
     print(f"compacted {base_dir} from {len(parquet_files)} files to 1")

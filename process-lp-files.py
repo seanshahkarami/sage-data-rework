@@ -35,8 +35,6 @@ def main():
     month = 1
     day = 1
 
-    id_for_group = {}
-
     for group, grouped_points in groupby(points, key=groupby_plugin_and_measurement):
         for batch_num, batched_points in enumerate(batched(grouped_points, 500_000)):
             (plugin, measurement) = group

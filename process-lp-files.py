@@ -78,20 +78,19 @@ def main():
             print(table.schema)
             print()
 
-            if group not in id_for_group:
-                id_for_group[group] = 0
-            else:
-                id_for_group[group] += 1
-
             urlencoded_plugin = plugin.replace("/", "%2F")
-            writer_path = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{id_for_group[group]:04d}.parquet"
+            base_dir = Path(
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}"
             )
+            file_id = len(list(base_dir.glob("*.parquet")))
+            writer_path = Path(base_dir, f"{file_id:04d}.parquet")
+            temp_path = writer_path.with_name(writer_path.name + ".tmp")
+
             writer_path.parent.mkdir(parents=True, exist_ok=True)
 
             print(f"started writing {writer_path} with {len(table)} measurements")
             writer = parquet.ParquetWriter(
-                writer_path,
+                temp_path,
                 schema=table.schema,
                 version="2.6",
                 write_statistics=True,
@@ -100,6 +99,7 @@ def main():
                 use_dictionary=["vsn", "host"],
             )
             writer.write_table(table)
+            temp_path.rename(writer_path)
             print(f"finished writing {writer_path}")
 
 

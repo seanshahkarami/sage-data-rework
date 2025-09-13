@@ -5,10 +5,27 @@ import pyarrow.parquet as parquet
 from itertools import groupby, batched
 import json
 import sys
+import os
 
 
 def groupby_plugin_and_measurement(point):
     return (point["plugin"] or "system", point["measurement"])
+
+
+def write_table_to_parquet_file(table: pa.Table, path: os.PathLike):
+    temp_path = path.with_name(path.name + ".tmp")
+    temp_path.parent.mkdir(parents=True, exist_ok=True)
+    writer = parquet.ParquetWriter(
+        temp_path,
+        schema=table.schema,
+        version="2.6",
+        write_statistics=True,
+        data_page_version="2.0",
+        compression="zstd",
+        use_dictionary=["vsn", "host"],
+    )
+    writer.write_table(table)
+    temp_path.rename(path)
 
 
 def main():
@@ -84,22 +101,8 @@ def main():
             )
             file_id = len(list(base_dir.glob("*.parquet")))
             writer_path = Path(base_dir, f"{file_id:04d}.parquet")
-            temp_path = writer_path.with_name(writer_path.name + ".tmp")
-
-            writer_path.parent.mkdir(parents=True, exist_ok=True)
-
             print(f"started writing {writer_path} with {len(table)} measurements")
-            writer = parquet.ParquetWriter(
-                temp_path,
-                schema=table.schema,
-                version="2.6",
-                write_statistics=True,
-                data_page_version="2.0",
-                compression="zstd",
-                use_dictionary=["vsn", "host"],
-            )
-            writer.write_table(table)
-            temp_path.rename(writer_path)
+            write_table_to_parquet_file(table, writer_path)
             print(f"finished writing {writer_path}")
 
 

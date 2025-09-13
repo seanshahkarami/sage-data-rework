@@ -14,7 +14,6 @@ def groupby_plugin_and_measurement(point):
 
 def write_table_to_parquet_file(table: pa.Table, path: os.PathLike):
     temp_path = path.with_name(path.name + ".tmp")
-    temp_path.parent.mkdir(parents=True, exist_ok=True)
     writer = parquet.ParquetWriter(
         temp_path,
         schema=table.schema,
@@ -94,10 +93,15 @@ def main():
             print()
 
             urlencoded_plugin = plugin.replace("/", "%2F")
+
             base_dir = Path(
                 f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}"
             )
+            base_dir.mkdir(parents=True, exist_ok=True)
+
+            # file id is just the number of current files in the base dir.
             file_id = len(list(base_dir.glob("*.parquet")))
+
             writer_path = Path(base_dir, f"{file_id:04d}.parquet")
             print(f"started writing {writer_path} with {len(table)} measurements")
             write_table_to_parquet_file(table, writer_path)

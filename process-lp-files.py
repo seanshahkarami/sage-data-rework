@@ -85,7 +85,7 @@ def main():
 
             urlencoded_plugin = plugin.replace("/", "%2F")
             writer_path = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{id_for_group[group]}.parquet"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}/{id_for_group[group]:04d}.parquet"
             )
             writer_path.parent.mkdir(parents=True, exist_ok=True)
 

@@ -2,44 +2,60 @@ import pyarrow as pa
 import pyarrow.parquet as parquet
 from pathlib import Path
 
-# compact_files = []
-# total_num_rows = []
+for base_dir in Path("data").glob("*/*/*"):
+    parquet_files = sorted(base_dir.glob("*.parquet"))
 
-tables = []
+    if len(parquet_files) <= 1:
+        continue
 
-# want to do compacting at the leaves if needed...
-for path in Path(
-    "data/plugin=registry.sagecontinuum.org%2Fbhupendraraut%2Ffile-forager:0.25.5.13"
-).glob("**/*.parquet"):
-    metadata = parquet.read_metadata(path)
-    table = parquet.read_table(path, partitioning=None)
-    tables.append(table)
+    total_rows = 0
 
-combined = pa.concat_tables(tables).sort_by(
-    [
-        ("vsn", "ascending"),
-        ("host", "ascending"),
-        ("timestamp", "ascending"),
+    for parquet_file in parquet_files:
+        metadata = parquet.read_metadata(parquet_file)
+        total_rows += metadata.num_rows
+
+    if total_rows >= 500_000:
+        continue
+
+    print(base_dir, len(parquet_files), total_rows)
+
+    tables = [
+        parquet.read_table(parquet_file, partitioning=None)
+        for parquet_file in parquet_files
     ]
-)
 
-print(combined)
+    try:
+        combined = pa.concat_tables(tables).sort_by(
+            [
+                ("vsn", "ascending"),
+                ("host", "ascending"),
+                ("timestamp", "ascending"),
+            ]
+        )
+    except pa.ArrowException as err:
+        print(f"failed to concat tables for {base_dir} with error: {err}")
+        continue
 
-# parquet.write_table(combined, "compacted.parquet")
+    write_path = Path(base_dir, "0000.parquet.write")
+    done_path = Path(base_dir, "0000.parquet.done")
+    final_path = Path(base_dir, "0000.parquet")
 
-# table = parquet.read_table("sample.parquet")
-# # do we actually need to sort to be safe or can we assume sorted chunks?
-# table = table.sort_by("timestamp")
-# print(table)
+    writer = parquet.ParquetWriter(
+        write_path,
+        schema=combined.schema,
+        version="2.6",
+        write_statistics=True,
+        data_page_version="2.0",
+        compression="zstd",
+        use_dictionary=["vsn", "host"],
+    )
+    writer.write_table(combined)
 
-# writer = parquet.ParquetWriter(
-#     "sample-compact.parquet",
-#     schema=table.schema,
-#     version="2.6",
-#     write_statistics=True,
-#     compression="snappy",
-#     use_dictionary=False,
-#     sorting_columns=["timestamp"],
-# )
+    write_path.rename(done_path)
 
-# writer.write_table(table)
+    for parquet_file in parquet_files:
+        parquet_file.unlink()
+
+    done_path.rename(final_path)
+
+    print(f"compacted {base_dir} from {len(parquet_files)} files to 1")

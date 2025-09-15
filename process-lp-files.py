@@ -6,10 +6,12 @@ from itertools import groupby, batched
 import json
 import sys
 import os
+from datetime import datetime, timezone
 
 
 def groupby_plugin_and_measurement(point):
-    return (point["plugin"] or "system", point["measurement"])
+    ts = datetime.fromtimestamp(point["ts"] / 1000000000, tz=timezone.utc)
+    return (point["plugin"] or "system", point["measurement"], ts.date())
 
 
 def write_table_to_parquet_file(table: pa.Table, path: os.PathLike):
@@ -30,15 +32,11 @@ def write_table_to_parquet_file(table: pa.Table, path: os.PathLike):
 def main():
     points = map(json.loads, sys.stdin)
 
-    year = 2025
-    month = 1
-    day = 1
-
     for group, grouped_points in groupby(points, key=groupby_plugin_and_measurement):
         for batch_num, batched_points in enumerate(batched(grouped_points, 500_000)):
-            (plugin, measurement) = group
+            (plugin, measurement, date) = group
 
-            print(f"processing group {plugin}, {measurement} batch {batch_num}")
+            print(f"processing group {plugin}, {measurement}, {date} batch {batch_num}")
 
             timestamp_col = [point["ts"] for point in batched_points]
             vsn_col = [point["vsn"] for point in batched_points]
@@ -95,7 +93,7 @@ def main():
             urlencoded_plugin = plugin.replace("/", "%2F")
 
             base_dir = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={year:04d}-{month:02d}-{day:02d}"
+                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={date}"
             )
             base_dir.mkdir(parents=True, exist_ok=True)
 

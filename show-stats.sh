@@ -10,7 +10,8 @@ time duckdb <<'SQL'
 select vsn, host, date, min(value) as min_temperature, max(value) as max_temperature, avg(value) avg_temperature
 from 'data/*/measurement=env.temperature/*/*.parquet'
 where measurement = 'env.temperature'
-group by vsn, host, date;
+group by vsn, host, date
+order by vsn, host, date;
 SQL
 
 echo

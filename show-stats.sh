@@ -7,7 +7,7 @@ echo "======== Example of computing stats on measurement ========"
 echo
 
 time duckdb <<'SQL'
-select vsn, host, date, min(value) as min_temperature, max(value) as max_temperature, avg(value) avg_temperature
+select vsn, host, date, count(value), min(value) as min_temperature, max(value) as max_temperature, avg(value) avg_temperature
 from 'data/*/measurement=env.temperature/*/*.parquet'
 where measurement = 'env.temperature'
 group by vsn, host, date

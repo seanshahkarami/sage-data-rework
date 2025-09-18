@@ -58,3 +58,12 @@ select meta['sensor'] as sensor, count(measurement)
 from 'data/*/measurement=env.temperature/*/*.parquet'
 group by sensor;
 SQL
+
+echo
+echo "======== Total measurements ========"
+echo
+
+time duckdb <<'SQL'
+select count(measurement) as measurements
+from 'data/*/*/*/*.parquet';
+SQL

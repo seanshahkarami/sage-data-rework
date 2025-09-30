@@ -7,7 +7,7 @@ ENGINE_PATH = "/media/local/pvc-6da578ef-e9bc-47fc-9f64-cfe30a24ff5e_shared_infl
 
 
 start = date(2025, 1, 1)
-end = date(2025, 2, 1)
+end = date.today()
 
 d = start
 

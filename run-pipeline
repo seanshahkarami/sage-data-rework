@@ -1,3 +1,12 @@
 #!/bin/bash
 
-gzip -dc export-lp/2025/01/01/data.lp.gz | convert-lp-to-json | ./process-lp-files.py
+gzip -dc export-lp/2025-01-23.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-24.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-25.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-26.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-27.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-28.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-29.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-30.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+gzip -dc export-lp/2025-01-31.lp.gz | convert-lp-to-json | ./process-lp-files.py &
+wait

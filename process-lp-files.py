@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as parquet
@@ -29,7 +30,7 @@ def write_table_to_parquet_file(table: pa.Table, path: os.PathLike):
     temp_path.rename(path)
 
 
-def main():
+def main(output_dir: Path):
     points = map(json.loads, sys.stdin)
 
     for group, grouped_points in groupby(points, key=groupby_plugin_and_measurement):
@@ -93,7 +94,10 @@ def main():
             urlencoded_plugin = plugin.replace("/", "%2F")
 
             base_dir = Path(
-                f"data/plugin={urlencoded_plugin}/measurement={measurement}/date={date}"
+                output_dir,
+                f"plugin={urlencoded_plugin}",
+                f"measurement={measurement}",
+                f"date={date}",
             )
             base_dir.mkdir(parents=True, exist_ok=True)
 
@@ -107,4 +111,15 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        default="data",
+        type=Path,
+        help="output directory for parquet files",
+    )
+    args = parser.parse_args()
+
+    main(
+        output_dir=args.output_dir,
+    )

@@ -104,7 +104,7 @@ def main(output_dir: Path):
             # file id is just the number of current files in the base dir.
             file_id = len(list(base_dir.glob("*.parquet")))
 
-            writer_path = Path(base_dir, f"{file_id:04d}.parquet")
+            writer_path = Path(base_dir, f"{file_id}.parquet")
             print(f"started writing {writer_path} with {len(table)} measurements")
             write_table_to_parquet_file(table, writer_path)
             print(f"finished writing {writer_path}")

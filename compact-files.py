@@ -1,13 +1,15 @@
+#!/usr/bin/env python3
 import pyarrow as pa
 import pyarrow.parquet as parquet
 from pathlib import Path
 
-for base_dir in Path("data").glob("*/*/*"):
-    parquet_files = sorted(base_dir.glob("*.parquet"))
 
-    write_file = Path(base_dir, "0000.parquet.write")
-    done_file = Path(base_dir, "0000.parquet.done")
-    final_file = Path(base_dir, "0000.parquet")
+for base_dir in Path("data").glob("*/*/*"):
+    parquet_files = sorted(base_dir.glob("*.parquet"), key=lambda p: int(p.stem))
+
+    write_file = Path(base_dir, "0.parquet.write")
+    done_file = Path(base_dir, "0.parquet.done")
+    final_file = Path(base_dir, "0.parquet")
 
     # if done file exists, then we finished writing data and just need to finish the clean up step.
     if done_file.exists():

@@ -32,14 +32,14 @@ var queryMeasurements = []string{
 	"wxt.env.humidity",
 	"wxt.env.pressure",
 	"wxt.env.temp",
-	"wxt.hail.accumulation",
-	"wxt.heater.status",
-	"wxt.heater.temp",
-	"wxt.heater.volt",
-	"wxt.rain.accumulation",
-	"wxt.voltage.supply",
-	"wxt.wind.direction",
-	"wxt.wind.speed",
+	// "wxt.hail.accumulation",
+	// "wxt.heater.status",
+	// "wxt.heater.temp",
+	// "wxt.heater.volt",
+	// "wxt.rain.accumulation",
+	// "wxt.voltage.supply",
+	// "wxt.wind.direction",
+	// "wxt.wind.speed",
 }
 
 func main() {

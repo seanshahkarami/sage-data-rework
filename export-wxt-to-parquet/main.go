@@ -74,13 +74,14 @@ func main() {
 	)
 
 	batch := make([]Measurement, 0, 1_000_000)
-	var measurement Measurement
 
 	for {
 		point, err := parser.Next()
 		if err != nil {
 			break
 		}
+
+		var measurement Measurement
 
 		measurement.Time = point.Time().UnixMicro()
 		measurement.Measurement = point.Name()

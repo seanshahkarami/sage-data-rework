@@ -127,7 +127,17 @@ func main() {
 		}
 	}
 
-	w.Write(batch)
-	w.Close()
-	log.Printf("done")
+	if err := cmd.Wait(); err != nil {
+		log.Fatalf("influxd export-lp failed: %s", err)
+	}
+
+	if err := w.Close(); err != nil {
+		log.Fatalf("close parquet writer: %s", err)
+	}
+
+	if err := f.Close(); err != nil {
+		log.Fatalf("close file: %s", err)
+	}
+
+	log.Printf("finishing export")
 }

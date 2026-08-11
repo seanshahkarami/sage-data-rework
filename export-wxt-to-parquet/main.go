@@ -73,6 +73,7 @@ func main() {
 		parquet.Compression(&parquet.Zstd),
 	)
 
+	lastMeasurement := ""
 	batch := make([]Measurement, 0, 10_000_000)
 
 	for {
@@ -118,7 +119,7 @@ func main() {
 
 		batch = append(batch, measurement)
 
-		if len(batch) == cap(batch) {
+		if measurement.Measurement != "" && measurement.Measurement != lastMeasurement {
 			if _, err := w.Write(batch); err != nil {
 				log.Fatalf("error: %s", err)
 			}
@@ -128,6 +129,8 @@ func main() {
 			batch = batch[:0]
 			log.Printf("wrote batch")
 		}
+
+		lastMeasurement = measurement.Measurement
 	}
 
 	if _, err := w.Write(batch); err != nil {

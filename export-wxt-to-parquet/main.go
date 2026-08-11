@@ -122,9 +122,16 @@ func main() {
 			if _, err := w.Write(batch); err != nil {
 				log.Fatalf("error: %s", err)
 			}
+			if err := w.Flush(); err != nil {
+				log.Fatalf("flush: %s", err)
+			}
 			batch = batch[:0]
 			log.Printf("wrote batch")
 		}
+	}
+
+	if _, err := w.Write(batch); err != nil {
+		log.Fatalf("write final batch: %s", err)
 	}
 
 	if err := cmd.Wait(); err != nil {

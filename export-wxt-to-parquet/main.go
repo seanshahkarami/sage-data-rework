@@ -73,7 +73,7 @@ func main() {
 		parquet.Compression(&parquet.Zstd),
 	)
 
-	batch := make([]Measurement, 0, 1_000_000)
+	batch := make([]Measurement, 0, 10_000_000)
 
 	for {
 		point, err := parser.Next()

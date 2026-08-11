@@ -68,7 +68,7 @@ func main() {
 
 	parser := lineprotocol.NewStreamParser(r)
 
-	f, _ := os.Create("wxt_2025-01-01.parquet")
+	f, _ := os.Create("wxt_2025-01-01.parquet.tmp")
 	w := parquet.NewGenericWriter[Measurement](f,
 		parquet.Compression(&parquet.Zstd),
 	)
@@ -137,6 +137,10 @@ func main() {
 
 	if err := f.Close(); err != nil {
 		log.Fatalf("close file: %s", err)
+	}
+
+	if err := os.Rename("wxt_2025-01-01.parquet.tmp", "wxt_2025-01-01.parquet"); err != nil {
+		log.Fatalf("rename file: %s", err)
 	}
 
 	log.Printf("finishing export")

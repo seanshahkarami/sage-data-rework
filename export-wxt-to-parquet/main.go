@@ -117,8 +117,7 @@ func main() {
 
 		measurement.Value = point.FieldList()[0].Value.(float64)
 
-		batch = append(batch, measurement)
-
+		// flush current batch if we now have a new measurement type
 		if measurement.Measurement != "" && measurement.Measurement != lastMeasurement {
 			if _, err := w.Write(batch); err != nil {
 				log.Fatalf("error: %s", err)
@@ -129,6 +128,8 @@ func main() {
 			batch = batch[:0]
 			log.Printf("wrote batch")
 		}
+
+		batch = append(batch, measurement)
 
 		lastMeasurement = measurement.Measurement
 	}

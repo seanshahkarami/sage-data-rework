@@ -7,3 +7,10 @@ select * from 'outputs/*.parquet';
 select vsn, time::DATE as date, count(t), min(t), max(t), mean(t)
 from 'outputs/*.parquet'
 group by vsn, date;
+
+create or replace macro dewpoint(t, rh) as (
+  243.04 * (ln(nullif(rh, 0) / 100.0) + 17.625 * t / (243.04 + t))
+        / (17.625 - ln(nullif(rh, 0) / 100.0) - 17.625 * t / (243.04 + t))
+);
+
+select *, dewpoint(t, rh) as dp from 'outputs/*.parquet'

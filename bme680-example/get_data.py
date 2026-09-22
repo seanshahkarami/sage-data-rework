@@ -35,6 +35,7 @@ for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
         print("time", "vsn", "t", "p", "rh", sep=",", file=f)
 
         for _, rows in df.groupby("batch"):
+            # TODO Handle cases where data is more frequent and look into cases where you get data from multiple zones.
             if len(rows) != 3:
                 continue
 

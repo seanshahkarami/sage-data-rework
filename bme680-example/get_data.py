@@ -1,5 +1,6 @@
 import sage_data_client
-import sys
+import os
+import os.path
 import datetime
 import pandas as pd
 
@@ -11,9 +12,15 @@ def date_range(start, end):
         d += datetime.timedelta(days=1)
 
 for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
-    print(f"working on {d}")
+    os.makedirs("inputs", exist_ok=True)
+    filename = f"inputs/{d}.csv"
+    tempname = f"{filename}.tmp"
 
-    print("querying data...") 
+    if os.path.exists(filename):
+        print(f"csv already exists for {d}. skipping!")
+        continue
+
+    print(f"querying data for {d}...") 
     df = sage_data_client.query(
         start=d,
         end=d+datetime.timedelta(days=1),
@@ -23,15 +30,14 @@ for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
         }
     )
 
-    print("grouping measurements...")
+    print(f"grouping measurements for {d}...")
     df.sort_values(["meta.vsn", "timestamp"], inplace=True)
-
     vsn_changed = df["meta.vsn"].ne(df["meta.vsn"].shift())
     time_has_gap = df["timestamp"].diff() > pd.Timedelta(seconds=3)
     df["batch"] = (vsn_changed | time_has_gap).cumsum()
 
-    print("writing output...")
-    with open(f"inputs/{d}.csv", "w") as f:
+    print(f"writing output for {d}...")
+    with open(tempname, "w") as f:
         print("time", "vsn", "t", "p", "rh", sep=",", file=f)
 
         for _, rows in df.groupby("batch"):
@@ -57,3 +63,5 @@ for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
             time = rows["timestamp"].mean()
 
             print(time.isoformat(), vsn, T, P, RH, sep=",", file=f)
+
+    os.rename(tempname, filename)

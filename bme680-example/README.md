@@ -61,3 +61,30 @@ In addition to compressing much, much better (~800KB vs 7MB):
 ```
 
 This gives a good feel how data is actually organized, typed, and how much space each field typically takes.
+
+This is small enough that the layout isn't that important but later, we might want to do a Hive structured tree like:
+
+```
+ouputs/vsn=/year=/month=/day=/...parquet files...
+```
+
+That being said... Parquet packs this data efficiently enough where we might even rollup to just vsn/year/month level. I believe the entire month for all VSNs is only ~3.3M records... which for Parquet is considered pretty small. In any case, we can explore various groupings which might be standard across all data types. I'm hoping we come up with something generically tabular like:
+
+```
+vsn | time | field1 | field2 | field3 | ...
+```
+
+As a side note, this will depend on the specific data, but I'd really like to explicitly pivot data which was previously split into multiple columns.
+
+So, for example, BME680 data should literally have t, p, rh columns together so you can compute directly on the whole record. For example, I can compute a dewpoint column like:
+
+```sql
+-- standard dewpoint approximation formula
+create or replace macro dewpoint(t, rh) as (
+  243.04 * (ln(nullif(rh, 0) / 100.0) + 17.625 * t / (243.04 + t))
+        / (17.625 - ln(nullif(rh, 0) / 100.0) - 17.625 * t / (243.04 + t))
+);
+
+--- now we can directly select on t and rh instead of having to group ourselves
+select *, dewpoint(t, rh) as dp from 'outputs/*.parquet'
+```

@@ -4,6 +4,8 @@
 
 This is an example of how we might archive BME680 data as Parquet files.
 
+You will need to pip install sage-data-client and download duckdb to run these.
+
 In order to run the example, you do:
 
 ```

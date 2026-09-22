@@ -1,0 +1,21 @@
+#!/bin/bash
+
+for input in inputs/*.csv; do
+    output="outputs/$(basename $input .csv).parquet"
+    duckdb -c "
+COPY (
+    SELECT time, vsn, round(t, 2) as t, round(p, 1) as p, round(rh, 1) as rh
+    FROM '$input'
+    ORDER BY time
+) TO '$output' (
+    FORMAT parquet,
+    COMPRESSION zstd,
+    COMPRESSION_LEVEL 9,
+    PARQUET_VERSION V2,
+    KV_METADATA {
+        units:  '{"time":"UTC","t":"degC","p":"hPa","rh":"percent"}',
+        sensor: 'BME680'
+    }
+);
+"
+done

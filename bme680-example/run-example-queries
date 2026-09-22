@@ -2,8 +2,6 @@
 
 .timer on
 
-select * from 'outputs/*.parquet';
-
 select vsn, time::DATE as date, count(t), min(t), max(t), mean(t)
 from 'outputs/*.parquet'
 group by vsn, date;

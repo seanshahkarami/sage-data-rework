@@ -11,9 +11,15 @@ for input in inputs/*.csv; do
 COPY (
     SELECT time, vsn, round(t, 2) as t, round(p, 1) as p, round(rh, 1) as rh
     FROM read_csv('$input',
+        auto_detect = false,
         header=true,
-        columns = {'time': 'TIMESTAMPTZ', 'vsn': 'VARCHAR', 't': 'DOUBLE', 'p': 'DOUBLE', 'rh': 'DOUBLE'}
-        )
+        columns = {
+            'time': 'TIMESTAMPTZ',
+            'vsn': 'VARCHAR',
+            't': 'DOUBLE',
+            'p': 'DOUBLE',
+            'rh': 'DOUBLE'
+        })
     ORDER BY time
 ) TO '$output' (
     FORMAT parquet,

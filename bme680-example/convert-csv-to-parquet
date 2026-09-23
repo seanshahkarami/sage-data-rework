@@ -2,7 +2,12 @@
 
 for input in inputs/*.csv; do
     output="outputs/$(basename $input .csv).parquet"
-    duckdb -c "
+    if test -f "${output}"; then
+        echo "${output} already exists! skipping!"
+        continue
+    fi
+    echo "creating ${output}..."
+    time duckdb -c "
 COPY (
     SELECT time, vsn, round(t, 2) as t, round(p, 1) as p, round(rh, 1) as rh
     FROM '$input'
@@ -18,4 +23,5 @@ COPY (
     }
 );
 "
+    echo "done creating ${output}..."
 done

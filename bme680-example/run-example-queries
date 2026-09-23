@@ -1,15 +1,15 @@
 #!/usr/bin/env duckdb -f
 
+create or replace macro dewpoint(t, rh) as (
+  243.04 * (ln(nullif(rh, 0) / 100.0) + 17.625 * t / (243.04 + t))
+        / (17.625 - ln(nullif(rh, 0) / 100.0) - 17.625 * t / (243.04 + t))
+);
+
 .timer on
 
 select vsn, year(time) as year, month(time) as month, count(t), min(t), max(t), mean(t)
 from 'outputs/*.parquet'
 group by vsn, year, month
 order by vsn, year, month;
-
-create or replace macro dewpoint(t, rh) as (
-  243.04 * (ln(nullif(rh, 0) / 100.0) + 17.625 * t / (243.04 + t))
-        / (17.625 - ln(nullif(rh, 0) / 100.0) - 17.625 * t / (243.04 + t))
-);
 
 select *, dewpoint(t, rh) as dp from 'outputs/*.parquet'

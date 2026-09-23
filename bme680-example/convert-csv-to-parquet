@@ -10,7 +10,10 @@ for input in inputs/*.csv; do
     time duckdb -c "
 COPY (
     SELECT time, vsn, round(t, 2) as t, round(p, 1) as p, round(rh, 1) as rh
-    FROM '$input'
+    FROM read_csv('$input',
+        header=true,
+        columns = {'time': 'TIMESTAMPTZ', 'vsn': 'VARCHAR', 't': 'DOUBLE', 'p': 'DOUBLE', 'rh': 'DOUBLE'}
+        )
     ORDER BY time
 ) TO '$output' (
     FORMAT parquet,

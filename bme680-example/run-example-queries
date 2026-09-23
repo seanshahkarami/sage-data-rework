@@ -12,4 +12,4 @@ from 'outputs/*.parquet'
 group by vsn, year, month
 order by vsn, year, month;
 
-select *, dewpoint(t, rh) as dp from 'outputs/*.parquet'
+select *, dewpoint(t, rh) as dp, t - dp as dp_gap from 'outputs/*.parquet'

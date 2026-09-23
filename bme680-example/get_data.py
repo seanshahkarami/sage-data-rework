@@ -11,7 +11,9 @@ def date_range(start, end):
         yield d
         d += datetime.timedelta(days=1)
 
-for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
+dates = list(date_range(datetime.date(2025, 1, 1), datetime.date(2026, 1, 1)))
+
+for d in reversed(dates):
     os.makedirs("inputs", exist_ok=True)
     filename = f"inputs/{d}.csv"
     tempname = f"{filename}.tmp"
@@ -29,6 +31,13 @@ for d in date_range(datetime.date(2026, 1, 1), datetime.date(2026, 2, 1)):
             "sensor": "bme680",
         }
     )
+
+    if len(df) == 0:
+        print(f"no data date {d}!")
+        with open(tempname, "w") as f:
+            print("time", "vsn", "t", "p", "rh", sep=",", file=f)
+        os.rename(tempname, filename)
+        continue
 
     print(f"grouping measurements for {d}...")
     df.sort_values(["meta.vsn", "timestamp"], inplace=True)

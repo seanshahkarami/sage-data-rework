@@ -11,7 +11,7 @@ def date_range(start, end):
         yield d
         d += datetime.timedelta(days=1)
 
-dates = list(date_range(datetime.date(2025, 1, 1), datetime.date(2026, 1, 1)))
+dates = list(date_range(datetime.date(2025, 1, 1), datetime.date.today()))
 
 for d in reversed(dates):
     os.makedirs("inputs", exist_ok=True)

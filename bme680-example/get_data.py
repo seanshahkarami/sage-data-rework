@@ -28,6 +28,7 @@ for d in reversed(dates):
         end=d+datetime.timedelta(days=1),
         filter={
             "name": "env.*",
+            "plugin": "waggle/plugin-iio:.*",
             "sensor": "bme680",
             "zone": "shield",
         }

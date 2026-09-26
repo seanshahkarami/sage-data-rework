@@ -55,9 +55,8 @@ for d in reversed(dates):
             # TODO Handle case where data sits a little before or after date. Consider padding and filtering
             # based on min / max batch timestamp.
             if len(rows) < 3:
-                print("too few rows")
+                print("warning: too few rows! will using null for missing!")
                 print(rows)
-                continue
             if len(rows) > 3:
                 print("too many rows")
                 print(rows)
@@ -65,11 +64,11 @@ for d in reversed(dates):
 
             vsn = rows.iloc[0]["meta.vsn"]
 
-            T = 0
-            RH = 0
-            P = 0
+            T = ""
+            RH = ""
+            P = ""
 
-            for i in range(3):
+            for i in range(len(rows)):
                 r = rows.iloc[i]
                 if r["name"] == "env.temperature":
                     T = r["value"]

@@ -11,7 +11,7 @@ def date_range(start, end):
         yield d
         d += datetime.timedelta(days=1)
 
-dates = list(date_range(datetime.date(2025, 1, 1), datetime.date.today()))
+dates = list(date_range(datetime.date(2020, 1, 1), datetime.date.today()))
 
 for d in reversed(dates):
     os.makedirs("inputs", exist_ok=True)
@@ -29,6 +29,7 @@ for d in reversed(dates):
         filter={
             "name": "env.*",
             "sensor": "bme680",
+            "zone": "shield",
         }
     )
 
@@ -51,7 +52,15 @@ for d in reversed(dates):
 
         for _, rows in df.groupby("batch"):
             # TODO Handle cases where data is more frequent and look into cases where you get data from multiple zones.
-            if len(rows) != 3:
+            # TODO Handle case where data sits a little before or after date. Consider padding and filtering
+            # based on min / max batch timestamp.
+            if len(rows) < 3:
+                print("too few rows")
+                print(rows)
+                continue
+            if len(rows) > 3:
+                print("too many rows")
+                print(rows)
                 continue
 
             vsn = rows.iloc[0]["meta.vsn"]

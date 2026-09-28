@@ -1,4 +1,4 @@
-# SAGE Hierarchical time-series storage
+# SAGE Time-Series Storage Design Plan —  InfluxDB 2.0 and and Custom Cold Storage
 
 ## 1. Design goal
 

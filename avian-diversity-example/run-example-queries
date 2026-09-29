@@ -1,0 +1,24 @@
+#!/usr/bin/env duckdb -f
+
+.timer on
+
+-- show number of detections per node
+select vsn, count(1) as count
+from 'avian-detections.parquet'
+where confidence > 0.5
+group by vsn
+order by count;
+
+-- show top results by species
+select scientific_name, count(1) as count
+from 'avian-detections.parquet'
+where confidence > 0.5
+group by scientific_name
+order by count;
+
+-- show top results by vsn + species
+select vsn, scientific_name, count(1) as count
+from 'avian-detections.parquet'
+where confidence > 0.5
+group by vsn, scientific_name
+order by count;

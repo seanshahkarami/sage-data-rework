@@ -15,15 +15,13 @@ group by vsn
 order by count;
 
 -- show top results by species
-select scientific_name, count(*) as count
-from 'avian-detections.parquet'
-where confidence > 0.5
-group by scientific_name
-order by count;
-
--- show top results by vsn + species
-select vsn, scientific_name, count(*) as count
-from 'avian-detections.parquet'
-where confidence > 0.5
-group by vsn, scientific_name
-order by count;
+with counts as (
+    select vsn, scientific_name, count(*) as count
+    from 'avian-detections.parquet'
+    where confidence > 0.5
+    group by vsn, scientific_name
+)
+select c.vsn, c.scientific_name, l.common_name, c.count
+from counts c
+left join 'labels.csv' l using (scientific_name)
+order by count, common_name;

@@ -1,0 +1,4 @@
+sage-data-client
+pandas
+pyarrow
+duckdb

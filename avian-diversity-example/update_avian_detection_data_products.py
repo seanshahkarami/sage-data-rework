@@ -37,7 +37,7 @@ for d in reversed(dates):
     df["app"] = df["meta.plugin"]
     df.sort_values("time", inplace=True)
 
-    os.makedirs(os.path.pardir(filename), exist_ok=True)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
     df[["time", "vsn", "scientific_name", "confidence", "app"]].to_parquet(
         tempname,
         engine="pyarrow",

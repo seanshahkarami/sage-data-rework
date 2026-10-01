@@ -6,7 +6,7 @@ import pandas as pd
 import duckdb
 
 
-dates = pd.date_range("2023-02-15", "today").date
+dates = pd.date_range("2023-02-15", "today", tz="utc").date
 
 for d in reversed(dates):
     filename = f"daily-exports/{d}.parquet"

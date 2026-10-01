@@ -5,15 +5,14 @@ import datetime
 import pandas as pd
 
 
-def date_range(start, end):
-    d = start
-    while d < end:
-        yield d
-        d += datetime.timedelta(days=1)
-
-dates = list(date_range(datetime.date(2020, 1, 1), datetime.date.today()))
+dates = pd.date_range("2020-01-01", "today", tz="utc")
 
 for d in reversed(dates):
+    # we pad query start and end time in case there are any values right on the date boundary
+    start_time = d - pd.Timedelta(minutes=5)
+    end_time = d + pd.Timedelta(days=1, minutes=5)
+    d = d.date()
+
     os.makedirs("inputs", exist_ok=True)
     filename = f"inputs/{d}.csv"
     tempname = f"{filename}.tmp"
@@ -24,8 +23,8 @@ for d in reversed(dates):
 
     print(f"querying data for {d}...") 
     df = sage_data_client.query(
-        start=d,
-        end=d+datetime.timedelta(days=1),
+        start=start_time,
+        end=end_time,
         filter={
             "name": "env.*",
             "plugin": "waggle/plugin-iio:.*",
@@ -63,6 +62,12 @@ for d in reversed(dates):
                 print(rows)
                 continue
 
+            time = rows["timestamp"].mean()
+
+            # ignore bounary values which would fall on a different date
+            if time < start_time or time >= end_time:
+                continue
+
             vsn = rows.iloc[0]["meta.vsn"]
 
             T = ""
@@ -77,8 +82,6 @@ for d in reversed(dates):
                     RH = r["value"]
                 elif r["name"] == "env.pressure":
                     P = r["value"]
-
-            time = rows["timestamp"].mean()
 
             print(time.isoformat(), vsn, T, P, RH, sep=",", file=f)
 

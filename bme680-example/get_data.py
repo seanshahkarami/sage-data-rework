@@ -41,13 +41,14 @@ for d in reversed(dates):
 
     print(f"grouping measurements for {d}...")
     df.sort_values(["meta.vsn", "timestamp"], inplace=True)
+    app_changed = df["meta.plugin"].ne(df["meta.plugin"].shift())
     vsn_changed = df["meta.vsn"].ne(df["meta.vsn"].shift())
     time_has_gap = df["timestamp"].diff() > pd.Timedelta(seconds=3)
-    df["batch"] = (vsn_changed | time_has_gap).cumsum()
+    df["batch"] = (app_changed | vsn_changed | time_has_gap).cumsum()
 
     print(f"writing output for {d}...")
     with open(tempname, "w") as f:
-        print("time", "vsn", "t", "p", "rh", sep=",", file=f)
+        print("time", "vsn", "t", "p", "rh", "app", sep=",", file=f)
 
         for _, rows in df.groupby("batch"):
             # TODO Handle cases where data is more frequent and look into cases where you get data from multiple zones.
@@ -68,6 +69,7 @@ for d in reversed(dates):
                 continue
 
             vsn = rows.iloc[0]["meta.vsn"]
+            app = rows.iloc[0]["meta.plugin"]
 
             T = ""
             RH = ""
@@ -82,6 +84,6 @@ for d in reversed(dates):
                 elif r["name"] == "env.pressure":
                     P = r["value"]
 
-            print(time.isoformat(), vsn, T, P, RH, sep=",", file=f)
+            print(time.isoformat(), vsn, T, P, RH, app, sep=",", file=f)
 
     os.rename(tempname, filename)

@@ -38,12 +38,12 @@ for d in reversed(dates):
     df.sort_values("time", inplace=True)
 
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    df[["time", "vsn", "scientific_name", "confidence", "app"]].to_parquet(
+    df[["time", "vsn", "app", "scientific_name", "confidence"]].to_parquet(
         tempname,
         engine="pyarrow",
         compression="zstd",
         index=False,
-        use_dictionary=["scientific_name"],
+        use_dictionary=["vsn", "app", "scientific_name"],
         column_encoding={
             "time": "DELTA_BINARY_PACKED",
         },

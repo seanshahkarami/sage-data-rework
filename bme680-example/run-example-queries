@@ -6,6 +6,7 @@ create or replace macro dewpoint(t, rh) as (
 );
 
 .timer on
+.echo on
 
 select vsn, year(time) as year, month(time) as month, count(t), min(t), max(t), mean(t)
 from 'outputs/*.parquet'
@@ -13,4 +14,3 @@ group by vsn, year, month
 order by vsn, year, month;
 
 select *, dewpoint(t, rh) as dp, t - dp as dp_gap from 'outputs/*.parquet';
-

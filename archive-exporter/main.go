@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"time"
 
 	lineprotocol "github.com/influxdata/line-protocol"
 	parquet "github.com/parquet-go/parquet-go"
@@ -33,9 +35,12 @@ type Observation struct {
 	ValueString *string  `parquet:"value_str,optional"`
 }
 
-func writeBatch(batch []Observation, batchNum int) error {
-	filename := fmt.Sprintf("archive/part-%d.parquet", batchNum)
+func writeBatch(date string, batch []Observation, batchNum int) error {
+	filename := fmt.Sprintf("work/date=%s/data_%d.parquet", date, batchNum)
 	tempname := filename + ".tmp"
+	if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
+		return fmt.Errorf("failed to create parquet data directory: %w", err)
+	}
 	f, _ := os.Create(tempname)
 	w := parquet.NewGenericWriter[Observation](f,
 		parquet.Compression(&parquet.Zstd),
@@ -56,8 +61,18 @@ func writeBatch(batch []Observation, batchNum int) error {
 	return nil
 }
 
-func main() {
-	log.Printf("starting export...")
+func exportDate(date string) error {
+	log.Printf("starting export for %s...", date)
+
+	parsedDate, err := time.Parse("2006-01-02", date)
+	if err != nil {
+		return fmt.Errorf("failed to parse export date: %w", err)
+	}
+
+	startTime := parsedDate.Format("2006-01-02") + "T00:00:00Z"
+	endTime := parsedDate.AddDate(0, 0, 1).Format("2006-01-02") + "T00:00:00Z"
+
+	log.Printf("exporting lp data for %s - %s", startTime, endTime)
 
 	cmd := exec.Command(
 		"influxd",
@@ -65,8 +80,8 @@ func main() {
 		"export-lp",
 		"--bucket-id", "b3a4e89ad74c5acc",
 		"--engine-path", "/media/local/pvc-6da578ef-e9bc-47fc-9f64-cfe30a24ff5e_shared_influxdb-data-beehive-influxdb-0/engine",
-		"--start", "2025-01-01T00:00:00Z",
-		"--end", "2025-01-02T00:00:00Z",
+		"--start", startTime,
+		"--end", endTime,
 		"--output-path", "-",
 	)
 
@@ -139,7 +154,7 @@ func main() {
 
 		if len(batch) >= 10_000_000 {
 			log.Printf("flushing batch %d...", batchNum)
-			writeBatch(batch, batchNum)
+			writeBatch(date, batch, batchNum)
 			log.Printf("done flushing batch %d...", batchNum)
 			batch = batch[:0]
 			batchNum++
@@ -150,8 +165,21 @@ func main() {
 
 	// flush final batch
 	log.Printf("flushing final batch %d...", batchNum)
-	writeBatch(batch, batchNum)
+	writeBatch(date, batch, batchNum)
 	log.Printf("done flushing final batch %d...", batchNum)
 
+	// atomic replace directory
+	os.Rename(fmt.Sprintf("work/date=%s/", date), fmt.Sprintf("archive/date=%s/", date))
+
 	log.Printf("finished export!")
+	return nil
+}
+
+func main() {
+	dates := os.Args[1:]
+	for _, date := range dates {
+		if err := exportDate(date); err != nil {
+			log.Fatalf("error during export %s: %s", date, err)
+		}
+	}
 }

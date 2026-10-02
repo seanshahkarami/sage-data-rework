@@ -208,7 +208,7 @@ func exportDate(date string) error {
 	}
 
 	taskDuration := time.Since(taskStartTime)
-	log.Printf("finished export in %s", taskDuration)
+	log.Printf("finished export for %s in %s", date, taskDuration)
 	return nil
 }
 

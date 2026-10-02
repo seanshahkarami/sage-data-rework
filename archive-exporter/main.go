@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -99,7 +100,10 @@ func exportDate(date string) error {
 
 	log.Printf("exporting lp data for %s - %s", startTime, endTime)
 
-	cmd := exec.Command(
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	cmd := exec.CommandContext(
+		ctx,
 		"influxd",
 		"inspect",
 		"export-lp",
@@ -130,9 +134,6 @@ func exportDate(date string) error {
 			break
 		}
 		if err != nil {
-			log.Printf("influxd export-lp failed. killing process. %s", err)
-			cmd.Process.Kill() // unblock influxd so Wait can return
-			cmd.Wait()
 			return fmt.Errorf("influxd export-lp failed: %w", err)
 		}
 

@@ -101,6 +101,66 @@ Run Time (s): real 0.084 user 1.484563 sys 0.126594
 
 Side note.. the single parquet file is only about ~15MB... I suspect a lot of our data falls into this bucket so we can have quite a few data products which are just a single file that can be downloaded in seconds.
 
+This would make it trivial for users to fetch that data and run analysis code like:
+
+```sql
+select scientific_name, count(*) as count from detections
+where confidence > 0.5
+group by scientific_name
+order by count;
+
+┌─────────────────────────────┬───────┐
+│       scientific_name       │ count │
+│           varchar           │ int64 │
+├─────────────────────────────┼───────┤
+│ myadestes_melanops          │     1 │
+│ glaucidium_passerinum       │     1 │
+│ actenoides_lindsayi         │     1 │
+│ bycanistes_albotibialis     │     1 │
+│ procnias_nudicollis         │     1 │
+│ upupa_epops                 │     1 │
+│ poecilostreptus_cabanisi    │     1 │
+│ gorsachius_melanolophus     │     1 │
+│ aulacorhynchus_haematopygus │     1 │
+│ tragopan_blythii            │     1 │
+│ abroscopus_albogularis      │     1 │
+│ lalage_leucomela            │     1 │
+│ larus_smithsonianus         │     1 │
+│ crypturellus_obsoletus      │     1 │
+│ asio_flammeus               │     1 │
+│ caprimulgus_clarus          │     1 │
+│ creagrus_furcatus           │     1 │
+│ clibanornis_rectirostris    │     1 │
+│ quiscalus_mexicanus         │     1 │
+│ haliaeetus_leucogaster      │     1 │
+│       ·                     │     · │
+│       ·                     │     · │
+│       ·                     │     · │
+│ rhea_americana              │    29 │
+│ ortalis_vetula              │    30 │
+│ rupicola_peruvianus         │    36 │
+│ otus_scops                  │    37 │
+│ otidiphaps_nobilis          │    38 │
+│ cathartes_aura              │    38 │
+│ pica_hudsonia               │    40 │
+│ cygnus_buccinator           │    44 │
+│ megascops_asio              │    46 │
+│ megapodius_cumingii         │    49 │
+│ napothera_danjoui           │    50 │
+│ gavia_stellata              │    52 │
+│ geronticus_eremita          │    57 │
+│ aegolius_acadicus           │    59 │
+│ turdus_migratorius          │    68 │
+│ eurystomus_orientalis       │    97 │
+│ grallaria_rufocinerea       │   165 │
+│ bucorvus_leadbeateri        │   302 │
+│ podargus_strigoides         │   518 │
+│ tympanuchus_cupido          │  1653 │
+└─────────────────────────────┴───────┘
+  326 rows (40 shown)       2 columns
+Run Time (s): real 0.004 user 0.010851 sys 0.000000
+```
+
 ## Air Quality Plugin Data Product
 
 Here, we export a wide table from the `registry.sagecontinuum.org/seanshahkarami/air-quality:0.3.0` plugin.

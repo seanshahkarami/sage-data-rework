@@ -81,6 +81,11 @@ func exportDate(date string) error {
 
 	log.Printf("starting export for %s...", date)
 
+	workDir := fmt.Sprintf("work/date=%s", date)
+	if err := os.RemoveAll(workDir); err != nil {
+		return fmt.Errorf("failed to remove existing work dir %s", workDir)
+	}
+
 	ok, err := dirExists(fmt.Sprintf("archive/date=%s", date))
 	if ok {
 		log.Printf("export for %s already exists. skipping!", date)
@@ -100,7 +105,8 @@ func exportDate(date string) error {
 
 	log.Printf("exporting lp data for %s - %s", startTime, endTime)
 
-	ctx, cancel := context.WithCancel(context.Background())
+	// NOTE Based on my observation, exports shouldn't take longer than 15-30 minutes. We just put an hour upper bound to be safe.
+	ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 	defer cancel()
 	cmd := exec.CommandContext(
 		ctx,
@@ -186,7 +192,9 @@ func exportDate(date string) error {
 
 		if len(batch) >= 10_000_000 {
 			log.Printf("flushing batch %d...", batchNum)
-			writeBatch(date, batch, batchNum)
+			if err := writeBatch(date, batch, batchNum); err != nil {
+				return fmt.Errorf("failed to flush batch %d: %w", batchNum, err)
+			}
 			log.Printf("done flushing batch %d...", batchNum)
 			batch = batch[:0]
 			batchNum++
@@ -197,7 +205,9 @@ func exportDate(date string) error {
 
 	// flush final batch
 	log.Printf("flushing final batch %d...", batchNum)
-	writeBatch(date, batch, batchNum)
+	if err := writeBatch(date, batch, batchNum); err != nil {
+		return fmt.Errorf("failed to flush final batch %d: %w", batchNum, err)
+	}
 	log.Printf("done flushing final batch %d...", batchNum)
 
 	// atomic replace directory

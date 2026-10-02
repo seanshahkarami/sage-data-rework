@@ -1,7 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"io/fs"
 	"log"
 	"os"
 	"os/exec"
@@ -61,8 +63,28 @@ func writeBatch(date string, batch []Observation, batchNum int) error {
 	return nil
 }
 
+func dirExists(path string) (bool, error) {
+	info, err := os.Stat(path)
+	if err == nil {
+		return info.IsDir(), nil
+	}
+	if errors.Is(err, fs.ErrNotExist) {
+		return false, nil
+	}
+	return false, err // some other problem, e.g. permission denied
+}
+
 func exportDate(date string) error {
 	log.Printf("starting export for %s...", date)
+
+	ok, err := dirExists(fmt.Sprintf("work/date=%s", date))
+	if ok {
+		log.Printf("export for %s already exists. skipping!", date)
+		return nil
+	}
+	if err != nil {
+		return fmt.Errorf("archive directory check failed: %w", err)
+	}
 
 	parsedDate, err := time.Parse("2006-01-02", date)
 	if err != nil {

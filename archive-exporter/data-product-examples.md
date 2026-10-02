@@ -204,4 +204,4 @@ archive/
 
 So, for each data product, we can take various approaches like rollup and cache day wise / week wise / month wise itermediate products and then build the final archive as a rollup.
 
-Another thing nice observation is, many of these queries are sub 100ms, even when dealing with a month of data as in the examples above... This means it's feasible to update this daily and likely much more often than that to produce a kind of "latest" view of various data products.
+Another thing nice observation is, many of these queries are ~100s of ms, even when dealing with a month of data as in the examples above... This means it's feasible to update this daily and likely much more often than that to produce a kind of "latest" view of various data products.

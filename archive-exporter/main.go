@@ -36,7 +36,7 @@ type Observation struct {
 	Meta map[string]string `parquet:"meta,optional"`
 
 	// exactly one is non-nil
-	ValueFloat  *float64 `parquet:"value_float,optional"`
+	ValueFloat  *float64 `parquet:"value_float,optional,split"`
 	ValueInt    *int64   `parquet:"value_int,optional"`
 	ValueString *string  `parquet:"value_str,optional"`
 }
@@ -61,6 +61,14 @@ func writeBatch(date string, batch []Observation, batchNum int) error {
 	f, _ := os.Create(tempname)
 	w := parquet.NewGenericWriter[Observation](f,
 		parquet.Compression(&parquet.Zstd),
+		parquet.SortingWriterConfig(
+			parquet.SortingColumns(
+				parquet.Ascending("plugin"),
+				parquet.Ascending("vsn"),
+				parquet.Ascending("time"),
+			),
+		),
+		parquet.KeyValueMetadata("export_date", time.Now().UTC().Format(time.RFC3339)),
 	)
 	if _, err := w.Write(batch); err != nil {
 		return fmt.Errorf("failed to write parquet data: %w", err)

@@ -169,7 +169,12 @@ func exportDate(date string) error {
 	log.Printf("done flushing final batch %d...", batchNum)
 
 	// atomic replace directory
-	os.Rename(fmt.Sprintf("work/date=%s/", date), fmt.Sprintf("archive/date=%s/", date))
+	if err := os.MkdirAll("archive", 0o755); err != nil {
+		return fmt.Errorf("failed to create archive dir: %w", err)
+	}
+	if err := os.Rename(fmt.Sprintf("work/date=%s/", date), fmt.Sprintf("archive/date=%s/", date)); err != nil {
+		return fmt.Errorf("failed to move work dir to archive: %w", err)
+	}
 
 	log.Printf("finished export!")
 	return nil

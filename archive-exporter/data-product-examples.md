@@ -5,7 +5,7 @@ potentially becomes much simpler. Here are a few examples:
 
 ## Avian Diversity Data Product
 
-This creates a single table with all the avian diversity data in it.
+This creates a single table with __all the avian diversity data we've ever collected__ in it.
 
 ```sql
 select time, vsn, string_split(name, '.')[-1] as scientific_name, value_str::DOUBLE as confidence
@@ -65,7 +65,7 @@ order by vsn, time;
 Run Time (s): real 0.084 user 1.484563 sys 0.126594
 ```
 
-Side note.. if you write this entire thing to a single Parquet file with __all the avian detection we've ever collected__, it's only about ~15MB. I suspect a lot of our data falls into this bucket so we can have quite a few data products which are just a single file that can be downloaded in seconds.
+Side note.. the single parquet file is only about ~15MB... I suspect a lot of our data falls into this bucket so we can have quite a few data products which are just a single file that can be downloaded in seconds.
 
 ## Air Quality Plugin Data Product
 

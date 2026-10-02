@@ -1,7 +1,38 @@
 # Data Product Examples
 
-One really interesting thing is, creating derived data products we might be able to archive and DOI
-potentially becomes much simpler. Here are a few examples:
+We're getting closer to a Parquet archive format that we're happy with for preserving data. That being said, it's probably the wrong format once a user narrows in on a specific application. Just like our InfluxDB, it's a bit of a mess if you "query everything" and basically not possible to use:
+
+```sql
+select * from 'archive/**/*.parquet';
+
+┌──────────────────────────────┬──────────────────────┬──────────────────────┬─────────┬───┬─────────────┬───────────┬──────────────────────┬────────────┐
+│             time             │         name         │        plugin        │   vsn   │ … │ value_float │ value_int │      value_str       │    date    │
+│   timestamp with time zone   │       varchar        │       varchar        │ varchar │ … │   double    │   int64   │       varchar        │    date    │
+├──────────────────────────────┼──────────────────────┼──────────────────────┼─────────┼───┼─────────────┼───────────┼──────────────────────┼────────────┤
+│ 2026-01-01 00:55:15.338592+… │ status               │ registry.sagecontin… │ W08B    │ … │        NULL │      NULL │ Found 288 recent fi… │ 2026-01-01 │
+│ 2026-01-01 06:03:16.348756+… │ status               │ registry.sagecontin… │ W08B    │ … │        NULL │      NULL │ Found 73 recent fil… │ 2026-01-01 │
+│ 2026-01-01 06:03:45.527823+… │ upload               │ registry.sagecontin… │ W08B    │ … │        NULL │      NULL │ https://storage.sag… │ 2026-01-01 │
+│ 2026-01-01 12:03:16.014792+… │ status               │ registry.sagecontin… │ W08B    │ … │        NULL │      NULL │ Found 145 recent fi… │ 2026-01-01 │
+│ 2026-01-01 18:03:25.55669+00 │ status               │ registry.sagecontin… │ W08B    │ … │        NULL │      NULL │ Found 217 recent fi… │ 2026-01-01 │
+│ 2026-01-01 00:37:16.055243+… │ error                │ registry.sagecontin… │ W08D    │ … │        NULL │      NULL │ No recent files fou… │ 2026-01-01 │
+│ 2026-01-01 06:03:16.228316+… │ error                │ registry.sagecontin… │ W08D    │ … │        NULL │      NULL │ No recent files fou… │ 2026-01-01 │
+│              ·               │          ·           │          ·           │  ·      │ … │           · │        ·  │  ·                   │     ·      │
+│              ·               │          ·           │          ·           │  ·      │ … │           · │        ·  │  ·                   │     ·      │
+│              ·               │          ·           │          ·           │  ·      │ … │           · │        ·  │  ·                   │     ·      │
+│ 2026-02-01 23:58:35.498497+… │ env.raingauge.total… │ waggle/plugin-raing… │ W0AA    │ … │      643.97 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:05.538568+… │ env.raingauge.rint   │ waggle/plugin-raing… │ W0AA    │ … │         0.0 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:05.538568+… │ env.raingauge.event… │ waggle/plugin-raing… │ W0AA    │ … │         0.0 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:05.538568+… │ env.raingauge.total… │ waggle/plugin-raing… │ W0AA    │ … │      643.97 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:35.563388+… │ env.raingauge.rint   │ waggle/plugin-raing… │ W0AA    │ … │         0.0 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:35.563388+… │ env.raingauge.event… │ waggle/plugin-raing… │ W0AA    │ … │         0.0 │      NULL │ NULL                 │ 2026-02-01 │
+│ 2026-02-01 23:59:35.563388+… │ env.raingauge.total… │ waggle/plugin-raing… │ W0AA    │ … │      643.97 │      NULL │ NULL                 │ 2026-02-01 │
+└──────────────────────────────┴──────────────────────┴──────────────────────┴─────────┴───┴─────────────┴───────────┴──────────────────────┴────────────┘
+  177.42 million rows (40 shown, 177415919 total)                          use .last to show entire result                          14 columns (8 shown)
+```
+
+That being said, this format is very amenable to creating derived data products, since it's all just Parquet files. These dervied data products
+are probably where a lot of value lives and are things we can maintain and DOI easily. Even better, using tools like duckdb, some of these can be
+created using a single SQL query. Here are a few examples:
 
 ## Avian Diversity Data Product
 

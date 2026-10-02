@@ -16,6 +16,7 @@ import (
 
 	lineprotocol "github.com/influxdata/line-protocol"
 	parquet "github.com/parquet-go/parquet-go"
+	"github.com/parquet-go/parquet-go/compress/zstd"
 )
 
 type Observation struct {
@@ -58,9 +59,12 @@ func writeBatch(date string, batch []Observation, batchNum int) error {
 	if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
 		return fmt.Errorf("failed to create parquet data directory: %w", err)
 	}
-	f, _ := os.Create(tempname)
+	f, err := os.Create(tempname)
+	if err != nil {
+		return fmt.Errorf("failed to create tempfile for batch write: %w", err)
+	}
 	w := parquet.NewGenericWriter[Observation](f,
-		parquet.Compression(&parquet.Zstd),
+		parquet.Compression(&zstd.Codec{Level: zstd.SpeedBetterCompression}),
 		parquet.SortingWriterConfig(
 			parquet.SortingColumns(
 				parquet.Ascending("plugin"),
@@ -68,7 +72,7 @@ func writeBatch(date string, batch []Observation, batchNum int) error {
 				parquet.Ascending("time"),
 			),
 		),
-		parquet.KeyValueMetadata("export_date", time.Now().UTC().Format(time.RFC3339)),
+		parquet.KeyValueMetadata("exported_at", time.Now().UTC().Format(time.RFC3339)),
 	)
 	if _, err := w.Write(batch); err != nil {
 		return fmt.Errorf("failed to write parquet data: %w", err)
@@ -82,7 +86,9 @@ func writeBatch(date string, batch []Observation, batchNum int) error {
 	if err := f.Close(); err != nil {
 		return fmt.Errorf("failed to close file: %w", err)
 	}
-	os.Rename(tempname, filename)
+	if err := os.Rename(tempname, filename); err != nil {
+		return fmt.Errorf("failed to rename %s to %s: %w", tempname, filename, err)
+	}
 	return nil
 }
 
@@ -104,7 +110,7 @@ func exportDate(date string) error {
 
 	workDir := fmt.Sprintf("work/date=%s", date)
 	if err := os.RemoveAll(workDir); err != nil {
-		return fmt.Errorf("failed to remove existing work dir %s", workDir)
+		return fmt.Errorf("failed to remove existing work dir %s: %w", workDir, err)
 	}
 
 	ok, err := dirExists(fmt.Sprintf("archive/date=%s", date))
@@ -157,7 +163,8 @@ func exportDate(date string) error {
 
 	for {
 		point, err := parser.Next()
-		if errors.Is(err, io.EOF) {
+		// NOTE lineprotocol seems to return its own EOF error.
+		if errors.Is(err, io.EOF) || errors.Is(err, lineprotocol.EOF) {
 			break
 		}
 		if err != nil {
@@ -222,6 +229,10 @@ func exportDate(date string) error {
 		}
 
 		batch = append(batch, obs)
+	}
+
+	if err := cmd.Wait(); err != nil {
+		return fmt.Errorf("influxd export-lp failed: %w", err)
 	}
 
 	// flush final batch

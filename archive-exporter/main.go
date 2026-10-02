@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cmp"
 	"context"
 	"errors"
 	"fmt"
@@ -10,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"time"
 
 	lineprotocol "github.com/influxdata/line-protocol"
@@ -39,7 +41,18 @@ type Observation struct {
 	ValueString *string  `parquet:"value_str,optional"`
 }
 
+func sortBatch(batch []Observation) {
+	slices.SortFunc(batch, func(a, b Observation) int {
+		return cmp.Or(
+			cmp.Compare(a.Plugin, b.Plugin),
+			cmp.Compare(a.VSN, b.VSN),
+			cmp.Compare(a.Time, b.Time),
+		)
+	})
+}
+
 func writeBatch(date string, batch []Observation, batchNum int) error {
+	sortBatch(batch)
 	filename := fmt.Sprintf("work/date=%s/data_%d.parquet", date, batchNum)
 	tempname := filename + ".tmp"
 	if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {

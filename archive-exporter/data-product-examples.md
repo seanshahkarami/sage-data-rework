@@ -99,9 +99,7 @@ order by vsn, time;
 Run Time (s): real 0.084 user 1.484563 sys 0.126594
 ```
 
-Side note.. the single parquet file is only about ~15MB... I suspect a lot of our data falls into this bucket so we can have quite a few data products which are just a single file that can be downloaded in seconds.
-
-This would make it trivial for users to fetch that data and run analysis code like:
+Side note.. the single parquet file is only about ~15MB... I suspect a lot of our data falls into this bucket so we can have quite a few data products which are just a single file that can be downloaded in seconds... This would make it trivial for users to fetch that data and run analysis code like:
 
 ```sql
 select scientific_name, count(*) as count from detections

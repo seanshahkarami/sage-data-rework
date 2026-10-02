@@ -150,3 +150,24 @@ create or replace macro dewpoint(t, rh) as (
 
 select *, dewpoint(t, rh) as dp, t - dp as dp_gap from 'aqt_data.parquet';
 ```
+
+## Other Notes
+
+Obviously with enough data, these will become slower. But, our archive structure chunks by date:
+
+```
+archive/
+    date=2026-01-01
+        data_0.parquet
+    date=2026-01-02
+        data_0.parquet
+    date=2026-01-03
+        data_0.parquet
+    date=2026-01-04
+        data_0.parquet
+...
+```
+
+So, for each data product, we can take various approaches like rollup and cache day wise / week wise / month wise itermediate products and then build the final archive as a rollup.
+
+Another thing nice observation is, many of these queries are sub 100ms, even when dealing with a month of data as in the examples above... This means it's feasible to update this daily and likely much more often than that to produce a kind of "latest" view of various data products.

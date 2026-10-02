@@ -77,7 +77,7 @@ func dirExists(path string) (bool, error) {
 func exportDate(date string) error {
 	log.Printf("starting export for %s...", date)
 
-	ok, err := dirExists(fmt.Sprintf("work/date=%s", date))
+	ok, err := dirExists(fmt.Sprintf("archive/date=%s", date))
 	if ok {
 		log.Printf("export for %s already exists. skipping!", date)
 		return nil

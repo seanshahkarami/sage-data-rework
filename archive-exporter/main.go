@@ -76,6 +76,8 @@ func dirExists(path string) (bool, error) {
 }
 
 func exportDate(date string) error {
+	taskStartTime := time.Now()
+
 	log.Printf("starting export for %s...", date)
 
 	ok, err := dirExists(fmt.Sprintf("archive/date=%s", date))
@@ -192,10 +194,6 @@ func exportDate(date string) error {
 		batch = append(batch, obs)
 	}
 
-	if err := cmd.Wait(); err != nil {
-		return fmt.Errorf("influxd export-lp failed: %w", err)
-	}
-
 	// flush final batch
 	log.Printf("flushing final batch %d...", batchNum)
 	writeBatch(date, batch, batchNum)
@@ -209,7 +207,8 @@ func exportDate(date string) error {
 		return fmt.Errorf("failed to move work dir to archive: %w", err)
 	}
 
-	log.Printf("finished export!")
+	taskDuration := time.Since(taskStartTime)
+	log.Printf("finished export in %s", taskDuration)
 	return nil
 }
 

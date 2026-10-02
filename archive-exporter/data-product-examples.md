@@ -1,6 +1,9 @@
 # Data Product Examples
 
-We're getting closer to a Parquet archive format that we're happy with for preserving data. That being said, it's probably the wrong format once a user narrows in on a specific application. Since it's just an export of our InfluxDB data, it's still a mess if you "query everything" and is basically impossible to use in this form:
+We're getting closer to a Parquet archive format that we're happy with for preserving data and Francisco has some really interesting work of potentially
+building a hybrid query layer on top of InfluxDB and this for longer term historial data.
+
+That being said, it's probably the wrong format once a user narrows in on a specific application. Since it's just an export of our InfluxDB data, it's still a mess if you "query everything" and is basically impossible to use in this form:
 
 ```sql
 select * from 'archive/**/*.parquet';

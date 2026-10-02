@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io"
 	"io/fs"
 	"log"
 	"os"
@@ -15,7 +16,7 @@ import (
 )
 
 type Observation struct {
-	Time int64  `parquet:"time,timestamp(nanosecond)"`
+	Time int64  `parquet:"time,timestamp(nanosecond),delta"`
 	Name string `parquet:"name,dict"`
 
 	// promoted tags; optional so a missing tag is NULL rather than ""
@@ -123,13 +124,19 @@ func exportDate(date string) error {
 
 	for {
 		point, err := parser.Next()
-		if err != nil {
+		if errors.Is(err, io.EOF) {
 			break
+		}
+		if err != nil {
+			log.Printf("influxd export-lp failed. killing process. %s", err)
+			cmd.Process.Kill() // unblock influxd so Wait can return
+			cmd.Wait()
+			return fmt.Errorf("influxd export-lp failed: %w", err)
 		}
 
 		var obs Observation
 
-		obs.Time = point.Time().UnixMicro()
+		obs.Time = point.Time().UnixNano()
 		obs.Name = point.Name()
 		obs.Meta = map[string]string{}
 
@@ -183,6 +190,10 @@ func exportDate(date string) error {
 		}
 
 		batch = append(batch, obs)
+	}
+
+	if err := cmd.Wait(); err != nil {
+		return fmt.Errorf("influxd export-lp failed: %w", err)
 	}
 
 	// flush final batch

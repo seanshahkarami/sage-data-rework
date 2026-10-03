@@ -1,0 +1,48 @@
+#!/usr/bin/env -S duckdb -f
+
+.timer on
+.echo on
+
+copy (
+    select
+        time,
+        vsn,
+        -- ambient
+        any_value(value_float) filter (where name = 'temperature')               as temperature,
+        any_value(value_float) filter (where name = 'pressure')                  as pressure,
+        any_value(value_float) filter (where name = 'dew_point')                 as dew_point,
+        -- sonic anemometer
+        any_value(value_float) filter (where name = 'sonic.u')                   as sonic_u,
+        any_value(value_float) filter (where name = 'sonic.v')                   as sonic_v,
+        any_value(value_float) filter (where name = 'sonic.w')                   as sonic_w,
+        any_value(value_float) filter (where name = 'sonic.temperature')         as sonic_temperature,
+        any_value(value_float) filter (where name = 'sonic.speed_of_sound')      as sonic_speed_of_sound,
+        -- co2
+        any_value(value_float) filter (where name = 'co2.mole_fraction')         as co2_mole_fraction,
+        any_value(value_float) filter (where name = 'co2.density')               as co2_density,
+        any_value(value_float) filter (where name = 'co2.mg_per_m3')             as co2_mg_per_m3,
+        any_value(value_float) filter (where name = 'co2.raw')                   as co2_raw,
+        any_value(value_float) filter (where name = 'co2.absolute_water')        as co2_absolute_water,
+        any_value(value_float) filter (where name = 'co2.absolute_water_offset') as co2_absolute_water_offset,
+        any_value(value_float) filter (where name = 'co2.signal_strength')       as co2_signal_strength,
+        -- h2o
+        any_value(value_float) filter (where name = 'h2o.mole_fraction')         as h2o_mole_fraction,
+        any_value(value_float) filter (where name = 'h2o.density')               as h2o_density,
+        any_value(value_float) filter (where name = 'h2o.g_per_m3')              as h2o_g_per_m3,
+        any_value(value_float) filter (where name = 'h2o.raw')                   as h2o_raw,
+        any_value(value_float) filter (where name = 'h2o.absolute_water')        as h2o_absolute_water,
+        any_value(value_float) filter (where name = 'h2o.absolute_water_offset') as h2o_absolute_water_offset,
+        -- instrument
+        any_value(value_float) filter (where name = 'cooler')                    as cooler,
+        any_value(value_float) filter (where name = 'index')::bigint             as record_index
+    from 'archive/**/*.parquet'
+    where plugin = 'registry.sagecontinuum.org/bhupendraraut/licor-smartflux:0.25.5.7'
+      and name not in ('time', 'date', 'time.seconds', 'time.nanoseconds')
+    group by time, vsn
+    order by vsn, time
+) to 'licor.parquet' (
+    format parquet,
+    compression zstd,
+    compression_level 9,
+    parquet_version v2
+);

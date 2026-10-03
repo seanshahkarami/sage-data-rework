@@ -1,0 +1,15 @@
+#!/usr/bin/env -S duckdb -f
+
+.timer on
+.echo on
+
+copy (
+	select time, plugin, vsn, string_split(name, '.')[-1] as scientific_name, value_str::DOUBLE as confidence from 'archive/**/*.parquet'
+	where name like 'env.detection.avian.%'
+	order by plugin, vsn, time
+) to 'avian.parquet' (
+	format parquet,
+	compression zstd,
+	compression_level 9,
+	PARQUET_VERSION V2
+);

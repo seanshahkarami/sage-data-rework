@@ -7,10 +7,10 @@ copy (
     select
         time,
         vsn,
-        any_value(value_float) filter (where name = 'env.temperature')       as t,
-        any_value(value_float) filter (where name = 'env.pressure')          as p,
-        any_value(value_float) filter (where name = 'env.relative_humidity') as rh,
-        any_value(value_float) filter (where name = 'env.air_quality.conc')  as conc,
+        any_value(value_float) filter (where name = 'env.temperature')       as temperature,
+        any_value(value_float) filter (where name = 'env.pressure')          as pressure,
+        any_value(value_float) filter (where name = 'env.relative_humidity') as relative_humidity,
+        any_value(value_float) filter (where name = 'env.air_quality.conc')  as concentration,
         any_value(value_float) filter (where name = 'env.air_quality.flow')  as flow
     from 'archive/**/*.parquet'
     where plugin = 'registry.sagecontinuum.org/seanshahkarami/air-quality:0.3.0' and name in (

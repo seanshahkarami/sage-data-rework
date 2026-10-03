@@ -4,9 +4,14 @@
 .echo on
 
 copy (
-	select time, plugin, vsn, string_split(name, '.')[-1] as scientific_name, value_str::DOUBLE as confidence from 'archive/**/*.parquet'
-	where name like 'env.detection.avian.%'
-	order by plugin, vsn, time
+	select
+		time,
+		vsn,
+		string_split(name, '.')[-1] as scientific_name,
+		value_str::DOUBLE as confidence
+	from 'archive/**/*.parquet'
+	where plugin like 'registry.sagecontinuum.org/dariodematties/avian-diversity-monitoring:%' and name like 'env.detection.avian.%'
+	order by vsn, time
 ) to 'avian.parquet' (
 	format parquet,
 	compression zstd,

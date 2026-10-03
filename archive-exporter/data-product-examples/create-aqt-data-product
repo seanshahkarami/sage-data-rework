@@ -19,7 +19,7 @@ copy (
     )
     group by time, vsn
     order by vsn, time
-) to 'licor.parquet' (
+) to 'aqt.parquet' (
     format parquet,
     compression zstd,
     compression_level 9,

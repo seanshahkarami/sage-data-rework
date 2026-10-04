@@ -3,9 +3,21 @@
 .timer on
 .echo on
 
-select plugin, count(*) as count from 'archive/**/*.parquet' group by plugin order by count;
+select
+	plugin,
+	count(*) as count,
+	round(100.0 * count(*) / sum(count(*)) over (), 2) as pct
+from 'archive/**/*.parquet'
+group by plugin
+order by count desc;
 
-select string_split(plugin, '/')[-2] as creator, count(*) as count from 'archive/**/*.parquet' group by creator order by count;
+select
+	string_split(plugin, '/')[-2] as creator,
+	count(*) as count,
+        round(100.0 * count(*) / sum(count(*)) over (), 2) as pct
+from 'archive/**/*.parquet'
+group by creator
+order by count desc;
 
 select date, count(*) as count from 'archive/**/*.parquet' group by date order by date;
 

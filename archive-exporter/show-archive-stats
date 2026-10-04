@@ -19,6 +19,8 @@ from 'archive/**/*.parquet'
 group by creator
 order by count desc;
 
-select date, count(*) as count from 'archive/**/*.parquet' group by date order by date;
+select year(date) as year, month(date) as month, count(*) as count from 'archive/**/*.parquet' group by year, month order by year, month;
+
+select year(date) as year, count(*) as count from 'archive/**/*.parquet' group by year order by year;
 
 select count(*) as count from 'archive/**/*.parquet';

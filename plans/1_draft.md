@@ -81,7 +81,50 @@ If someone requests three days of temperature readings from 2022, Beehive should
 
 Parquet statistics and DuckDB’s partition-filter support make that approach practical.
 
-## 5. Compression and storage cost
+## 5. Folder partitioning vs a Parquet column
+
+A field can limit what a query reads in two places. As a directory, it decides which files get opened. As a column, it stays inside the file and the reader uses Parquet statistics to skip pages that cannot match.
+
+The export on sage03 at `/media/local/archive-export-test/archive` is the daily form of this archive: one `date=YYYY-MM-DD` directory per day, one or more `data_N.parquet` files inside it, native ZSTD. It covers 608 continuous days, from 2025-01-01 through 2026-08-31, in 4,564 files and about 194 GiB. Each file is one batch of up to 10 million rows, sorted by `plugin`, `vsn`, then `time`.
+
+`date` earns a folder. Queries carry a time range, each day is large, and each directory has one value. A three-day query opens those three directories and leaves the rest of the archive untouched.
+
+`plugin` is the column worth testing as a second folder:
+
+```
+archive/
+  date=2025-07-21/
+    plugin=waggle%2Fplugin-iio%3A0.6.0/
+      data_0.parquet
+    plugin=registry.sagecontinuum.org%2Fjrobrien%2Fwaggle-wxt536%3A0.24.11.14/
+      data_0.parquet
+```
+
+A query that names one plugin would never open the other plugins’ files. With today’s layout it still opens every file in the requested days, reads a few kilobytes of footer from each, and then reads the matching slice. The sort order makes that slice contiguous, so page statistics can skip the other plugins’ pages. Row-group statistics cannot: each file is a single row group, and its min/max cover every plugin in the batch.
+
+On this dataset a plugin directory buys less than it costs.
+
+- One plugin, `waggle-wxt536`, is about 90% of the rows. Its directory would be almost as large as the whole day, so queries for that plugin would read about the same amount of data.
+- A full scan of the archive lists 251 plugins, and some contribute only a handful of rows in the entire dataset. Each of those becomes its own Parquet file: a footer and a dictionary around a few records, with little for ZSTD to compress.
+- The plugin string includes the image version, so `waggle/plugin-iio:0.6.0` and `0.7.0` are different directories, and slashes in the name have to be encoded.
+- A query that does not filter on plugin — a measurement name across plugins, or everything recorded on one node — would open every plugin directory for those days instead of the 1–18 files a day has now.
+
+A measurement that is 1% of the rows takes about the same scan time as a large measurement over the same dates, and it returns fewer rows. The time follows the days requested. Names are interleaved in time inside a plugin, so a filter on `name` still walks that plugin’s rows. A filter on `plugin` can skip, because plugin is the leading sort key.
+
+Leaving `plugin` inside the file costs almost no space. It is dictionary-encoded. Moving it into the path so the file can omit it is not a storage win.
+
+First layout:
+
+| Field | Place | Why |
+|-------|-------|-----|
+| `date` | Folder | Present on every query, one value per partition, partitions stay large |
+| `plugin` | Column, leading sort key | Hundreds of values, extreme skew, version embedded in the value. Page statistics already isolate one plugin |
+| `name` | Column | More distinct values than plugin, interleaved in time within a plugin |
+| `vsn`, `node`, `host`, `task`, `job`, `zone` | Columns, after `plugin` in the sort | Useful filters, too many distinct values for a directory per day |
+
+If Phase 2 shows that small-plugin queries spend their time opening the shared daily files, the next step is a coarse split rather than one directory per plugin version: keep the rare plugins together, and give a directory only to plugins that fill a file on their own. Measure bytes read and files opened for a short query and a year-long query, with and without a plugin filter, before adding that level.
+
+## 6. Compression and storage cost
 
 Our default should be native Parquet with ZSTD compression across all queryable archive tiers.
 
@@ -98,7 +141,7 @@ External ZIP/GZIP wrapping may save some additional space, but it interferes wit
 
 I would not add a deep, restore-required tier in the first implementation. Our current requirement is that historical observations remain queryable. We can revisit deep archival if usage data shows that some very old periods are rarely accessed and the team accepts delayed retrieval.
 
-## 6. Archive catalog
+## 7. Archive catalog
 
 The catalog is the component that makes the lifecycle safe and the routing predictable.
 
@@ -108,18 +151,32 @@ Each published archive entry should identify:
 |------------------------------|------------------------------------------------------------|
 | Time interval                | Exact coverage, using `[start, end)` boundaries            |
 | Measurement or partition key | Limit the search space                                     |
-| File manifest                | Immutable Parquet objects belonging to the archive         |
+| File manifest                | Immutable Parquet objects, plus footer statistics used to choose them |
 | Catalog version              | Give queries a consistent view during compaction           |
 | Verification status          | Prevent unverified files from becoming authoritative       |
 | Superseded files             | Track what can be safely deleted later                     |
 
 A query should pin a catalog version for its duration. A compaction worker can then publish a replacement version without disrupting queries that began before the switch.
 
-This is where Apache Iceberg deserves a focused evaluation. It already provides table snapshots, metadata-based planning, and file-rewrite maintenance. Building our own catalog would mean taking responsibility for those consistency and cleanup behaviors.
+This is where Apache Iceberg deserves a focused evaluation. It already provides table snapshots, 
+metadata-based planning, and file-rewrite maintenance. Building our own catalog would mean 
+taking responsibility for those consistency and cleanup behaviors.
 
-For the prototype, we can compare a small custom manifest against an Iceberg-backed dataset before committing to either.
+### Collected Parquet footers
 
-## 7. Beehive query routing
+Finding candidate files is a separate step from reading matching rows. Each Parquet file stores its footer at the end: schema, row count, and column statistics. A query that considers a file reads that tail first. This archive has 4,564 files, a few kilobytes of footer each, on the order of 10–20 MB altogether.
+
+The catalog manifest should carry a copy of those footers, or the same facts taken from them: path, size, row count, and the column statistics that can reject a file. A query reads one manifest and decides which data files can contain matches. Matching rows still come from those data files.
+
+`date=` directories already keep a three-day query from opening the other days. The manifest helps inside the days that remain. A year of this archive is a couple of thousand files. On local disk, opening each footer is a small part of reading the data. Once the same files are served through Pelican, each footer is an HTTP range request, and one manifest read replaces that fan-out.
+
+The manifest does not shrink the data read inside a chosen file. Each `data_N.parquet` is one row group, so the footer min/max for `plugin` spans every plugin in the batch. Skipping to one plugin still uses the page indexes stored in that data file.
+
+Iceberg manifests are this mechanism: a snapshot points at manifest files that list data files and their statistics, so planning does not open every Parquet footer. Iceberg also supplies the snapshot and file-rewrite behavior the catalog needs. A small custom manifest can carry the same footer facts for the prototype. Either way, compaction publishes a new manifest with the new catalog version.
+
+For the prototype, compare that custom manifest with an Iceberg-backed dataset before committing to either.
+
+## 8. Beehive query routing
 
 Beehive remains the public interface. The new planner resolves where each portion of a query lives.
 
@@ -160,7 +217,7 @@ The planner also needs to preserve existing Beehive semantics:
 
 A first version can support bounded raw queries, then expand to aggregations and the rest of the current query behavior.
 
-## 8. Continuous archival and late data
+## 9. Continuous archival and late data
 
 I would distinguish backfilling existing InfluxDB history from archiving newly arriving observations.
 
@@ -170,11 +227,11 @@ The writer must account for late observations. If a record arrives for a month t
 
 InfluxDB retention should only remove an interval after we have confirmed that its observations are durably available through the archive catalog.
 
-## 9. Implementation roadmap
+## 10. Implementation roadmap
 
 Phase 1, Baseline and data fidelity: Capture representative Beehive queries and export a representative InfluxDB sample. Define a canonical Parquet schema that preserves timestamps, values, and metadata without silently dropping unsupported field types.
 
-Phase 2, Parquet layout and compression benchmarks: Compare native compression codecs, file sizes, partitioning, and sort orders. Measure compressed size, bytes read, query latency, and memory for short and long historical queries.
+Phase 2, Parquet layout and compression benchmarks: Compare native compression codecs, file sizes, partitioning, and sort orders. Measure compressed size, bytes read, query latency, and memory for short and long historical queries. Include time spent opening Parquet footers against time spent reading one manifest.
 
 Phase 3, Historical Beehive backend: Implement bounded raw queries against catalog-selected Parquet files. Compare the returned records with equivalent InfluxDB results.
 

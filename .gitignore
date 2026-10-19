@@ -11,3 +11,4 @@ tiered_system/experiments/results/manifest*.json
 tiered_system/experiments/icebergo/icebergo_v3probe
 
 .DS_Store
+logs/

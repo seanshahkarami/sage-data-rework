@@ -42,6 +42,7 @@ import argparse
 import glob
 import json
 import os
+import shutil
 import sys
 import tempfile
 import time
@@ -74,6 +75,9 @@ CATALOG_NAME = "sage"
 NAMESPACE = "sage"
 TABLE = "obs"
 FILEIO = "pelican_fileio.PelicanFileIO"
+# One group is about ten minutes of a node-day once the file is sorted by
+# time. DuckDB rounds this to a multiple of its 2048-row vector.
+ROW_GROUP_ROWS = 1_048_576
 
 
 def us_schema(arrow_schema):
@@ -166,14 +170,48 @@ def clip_to_day(table, day):
     return out, table.num_rows - out.num_rows
 
 
+def sort_by_time(path):
+    """Rewrite a day file so each row group covers one stretch of time.
+
+    Archive shards each span the day, so a group written from one chunk
+    overlaps any minute and a one-minute query has to decode most of the
+    file. Sorting makes the group statistics tight: a minute then touches
+    one or two groups instead of nearly all of them.
+
+    DuckDB sorts and spills. The day is not loaded into Arrow.
+    """
+    import duckdb
+    out = path + ".sorted"
+    tmpdir = tempfile.mkdtemp(prefix="seedcold-sort-")
+    try:
+        con = duckdb.connect()
+        try:
+            con.execute("SET TimeZone='UTC'")
+            con.execute("SET memory_limit='4GB'")
+            con.execute(f"SET temp_directory='{tmpdir}'")
+            con.execute(
+                f"COPY (SELECT * FROM read_parquet('{path}') ORDER BY time) "
+                f"TO '{out}' (FORMAT PARQUET, COMPRESSION SNAPPY, "
+                f"ROW_GROUP_SIZE {ROW_GROUP_ROWS})"
+            )
+        finally:
+            con.close()
+        os.replace(out, path)
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+        if os.path.exists(out):
+            os.remove(out)
+
+
 def stage_day(day, files, target, batch_rows, prefix, verbose=True):
     """Write one day as a single microsecond Parquet file on Pelican.
 
     Streams: a ParquetWriter takes chunk after chunk, so peak memory stays
     at one chunk rather than the 49 GB a whole day occupies in Arrow.
     Measured on 2025-03-01: 9.00 GB RSS at 10M rows, 4.64 GB at 2M, and the
-    2M batch was also faster (53s vs 74s). The local temp file is deleted
-    once PUT.
+    2M batch was also faster (53s vs 74s). The file is then sorted by time
+    before the PUT, so row groups are time-local. The local temp file is
+    deleted once PUT.
 
     Returns (url, rows, dropped).
     """
@@ -194,6 +232,7 @@ def stage_day(day, files, target, batch_rows, prefix, verbose=True):
                     del chunk
         finally:
             w.close()
+        sort_by_time(tmp)
 
         size = os.path.getsize(tmp)
         path = f"{prefix}/staged/{day}.parquet"

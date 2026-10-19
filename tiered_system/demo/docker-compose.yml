@@ -1,0 +1,149 @@
+# The demo topology: hot (InfluxDB) + cold (Iceberg on Pelican) behind the
+# real beehive-data-api wire protocol.
+#
+#   docker compose up -d                      # InfluxDB only
+#   ./tools/seed_hot.sh                       # restore data/influx-may2025
+#   ./tools/seed_hot.sh parquet --start ...   # rebuild May from the archive
+#   docker compose --profile cold up -d       # + data-api, which reads cold
+#
+# The cold profile is separate on purpose: seeding only needs influxdb, and
+# the data-api's cold path needs a version-hint that seed_cold.py has
+# published. The default hot load is the backup
+# restore. Parquet ingest is the fallback, and it takes hours.
+#
+# COLD_WAREHOUSE must be set for the cold profile -- seed_cold.py prints it
+# (a /cold-storage-demo-<nanos> prefix). COLD_HINT_PATH is the Pelican path
+# of version-hint.text, which seed_cold.py also prints. COLD_WATERMARK is
+# the hot/cold cut; migrate.py advances it. The watermark is compared in
+# NANOSECONDS by the tiered backend, because hot keeps ns and cold is us.
+#
+# None of the three use a `:?` required-variable guard. Compose interpolates
+# EVERY service regardless of the active profile, so a guard here would make
+# the plain `docker compose up -d` used for seeding fail on variables that
+# seeding does not need. Each consumer fails fast with its own message
+# instead.
+#
+# The directory is tiered_system/demo. The Compose project name stays `demo`
+# so the existing Influx volume (demo_demo-influx-data) stays attached.
+name: demo
+services:
+  influxdb:
+    image: influxdb:2.7.7
+    container_name: demo-influxdb
+    ports:
+      # Same port the bench stack used, so seed_hot.py's default INFLUX_URL
+      # keeps working. The bench stack is torn down.
+      - "18086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: demopassword
+      DOCKER_INFLUXDB_INIT_ORG: waggle
+      DOCKER_INFLUXDB_INIT_BUCKET: waggle
+      # Retention off: migrate.py evicts explicitly, after verifying the
+      # interval is durable in cold storage. A retention policy would delete
+      # on its own schedule and break that ordering.
+      DOCKER_INFLUXDB_INIT_RETENTION: 0
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: demo-token-not-a-secret
+    volumes:
+      - demo-influx-data:/var/lib/influxdb2
+    # An unbounded InfluxDB took the whole VM down during Phase 0 -- the
+    # docker daemon became unreachable, which is not an OOM-kill and leaves
+    # no trace in the container logs. The cap stays short of the VM so a
+    # runaway degrades the container instead of the daemon.
+    #
+    # The May seed stalled on the old 6 CPU / 8 GB VM: the container sat on
+    # its 4 CPU cap while series-index compaction ran, and writes returned
+    # 500 timeout. The VM is now 12 CPUs and 16 GB. 10 CPUs and 14 GB leave
+    # 2 CPUs and 2 GB for the daemon, the same margin that kept it alive.
+    deploy:
+      resources:
+        limits:
+          memory: 14g
+          cpus: "10.0"
+    healthcheck:
+      test: ["CMD", "influx", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+  # The single writer of version-hint.text. Many committers, one publisher:
+  # that is what lets database-less consumers resolve the head without a
+  # catalog. The data-api reads that hint with DuckDB. Correctness never
+  # depends on the reconciler having run -- the sqlite catalog remains the
+  # real head; the hint only republishes it. So a crashed reconciler delays
+  # visibility of the newest snapshot, it does not corrupt anything.
+  #
+  # `replicas: 1` is load bearing. `docker compose up --scale` on this
+  # service would create a second publisher and the single-writer property
+  # is the whole design.
+  reconciler:
+    profiles: ["cold"]
+    build:
+      context: ../..
+      dockerfile: tiered_system/demo/reconciler_service/Dockerfile
+    container_name: demo-reconciler
+    command:
+      - "--db"
+      - "/catalog/${COLD_CATALOG:-cold_catalog.db}"
+      - "--hint"
+      - "${COLD_HINT_PATH:-}"
+      - "--interval"
+      - "${RECONCILE_INTERVAL:-30}"
+    environment:
+      PELICAN_KEY_PATH: /secrets/issuer-key.pem
+    volumes:
+      # The catalog sqlite file seed_cold.py wrote, read-only: the
+      # reconciler never writes the catalog, and db_head() opens it
+      # `mode=ro` so that is enforced at the handle too. Bind the
+      # DIRECTORY, not the file -- docker creates a missing bind source as
+      # an empty directory, and a directory where sqlite expects a file
+      # produces a far worse error than a missing one.
+      - ./:/catalog:ro
+      - ../../../honeyhouse-config/applications/waggle-access/pelican/issuer-key.pem:/secrets/issuer-key.pem:ro
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.5"
+    restart: unless-stopped
+
+  data-api:
+    profiles: ["cold"]
+    build:
+      context: ../../../beehive-data-api
+    container_name: demo-data-api
+    ports:
+      - "10000:10000"
+    environment:
+      INFLUXDB_URL: http://influxdb:8086
+      INFLUXDB_TOKEN: demo-token-not-a-secret
+      INFLUXDB_BUCKET: waggle
+      # Setting COLD_WAREHOUSE switches on the tiered backend. DuckDB inside
+      # this process scans the Iceberg metadata URL; there is no cold
+      # service. Unset, the service behaves as it does in production today.
+      COLD_WAREHOUSE: "${COLD_WAREHOUSE:-}"
+      # See the note on COLD_WAREHOUSE: profiles do not gate interpolation.
+      # main.go fails fast with "cold.warehouse requires cold.watermark".
+      COLD_WATERMARK: "${COLD_WATERMARK:-}"
+      PELICAN_KEY_PATH: /secrets/issuer-key.pem
+    volumes:
+      # Read-only, and never baked into the image: this key signs for the
+      # entire /sage namespace. The process scopes each token to the demo
+      # prefix.
+      - ../../../honeyhouse-config/applications/waggle-access/pelican/issuer-key.pem:/secrets/issuer-key.pem:ro
+    # DuckDB streams the scan. 4 GB is the backstop for a query wide enough
+    # that the result itself, not the day file, is the large object.
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+          cpus: "2.0"
+    depends_on:
+      influxdb:
+        condition: service_healthy
+
+volumes:
+  demo-influx-data:

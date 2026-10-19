@@ -1,0 +1,38 @@
+# Phase 0 benchmark only. Throwaway InfluxDB to measure ingest rate and
+# cardinality growth for one real day (2025-05-01). Not the demo topology.
+services:
+  influxdb:
+    image: influxdb:2.7.7
+    container_name: bench-influxdb
+    ports:
+      - "18086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: benchpassword
+      DOCKER_INFLUXDB_INIT_ORG: waggle
+      DOCKER_INFLUXDB_INIT_BUCKET: waggle
+      DOCKER_INFLUXDB_INIT_RETENTION: 0
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: bench-token-not-a-secret
+    volumes:
+      - bench-influx-data:/var/lib/influxdb2
+    # The Rancher Desktop VM has 6 CPUs and 8 GB total. An unbounded
+    # InfluxDB took the whole VM down mid-benchmark (daemon unreachable,
+    # not an OOM-kill of the container). Capping it below the VM's size
+    # means a runaway seed now degrades the container instead of the host,
+    # and keeps the measurement attributable to InfluxDB rather than to
+    # whatever else the VM was doing.
+    deploy:
+      resources:
+        limits:
+          memory: 5g
+          cpus: "4.0"
+    healthcheck:
+      test: ["CMD", "influx", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+volumes:
+  bench-influx-data:

@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "check": "row count survives the round trip",
+      "status": "PASS",
+      "detail": "2,000,000 -> 2,000,000"
+    },
+    {
+      "check": "content identical (rows, plugins, names, value sum)",
+      "status": "PASS",
+      "detail": "(2000000, 4, 35, 154981253899717.25) == (2000000, 4, 35, 154981253899717.25)"
+    },
+    {
+      "check": "the meta map survives",
+      "status": "PASS",
+      "detail": "2,000,000 == 2,000,000"
+    },
+    {
+      "check": "catalog database deleted (simulating handoff to a third party)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "DuckDB reads the table with NO catalog, after it moved",
+      "status": "PASS",
+      "detail": "2,000,000 rows from a bare metadata path"
+    },
+    {
+      "check": "underlying Parquet files remain plain and readable",
+      "status": "PASS",
+      "detail": "2 file(s), 2,000,000 rows"
+    }
+  ],
+  "metadata_files": 4,
+  "metadata_bytes": 11554,
+  "rows": 2000000
+}

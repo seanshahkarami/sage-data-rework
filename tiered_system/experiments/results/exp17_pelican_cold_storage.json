@@ -1,0 +1,87 @@
+{
+  "capabilities": {
+    "accept_ranges": "bytes",
+    "suffix_range": true,
+    "suffix_is_par1": true,
+    "head_is_par1": true,
+    "multi_range": true
+  },
+  "/cold-storage-test/bench/today_data_0.parquet": {
+    "size": 78018117,
+    "row_groups": 1,
+    "rows": 10000000,
+    "footer_requests": 1,
+    "footer_bytes": 65536,
+    "plugin_col_requests": 1,
+    "plugin_col_bytes": 100830,
+    "plugin_col_seconds": 0.63
+  },
+  "/cold-storage-test/bench/fixed_compacted_0.parquet": {
+    "size": 313624903,
+    "row_groups": 119,
+    "rows": 59496597,
+    "footer_requests": 2,
+    "footer_bytes": 292247,
+    "plugin_col_requests": 119,
+    "plugin_col_bytes": 133364,
+    "plugin_col_seconds": 24.61,
+    "one_rowgroup_bytes": 1118,
+    "one_rowgroup_rows": 500000
+  },
+  "swap": {
+    "writer_swaps": 20,
+    "reads": 318,
+    "distinct": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "errors": [],
+    "monotonic": true
+  },
+  "latency": {
+    "tiny_range_median_ms": 149.7,
+    "tiny_range_min_ms": 139.8,
+    "tiny_range_max_ms": 182.6,
+    "throughput_MBps": {
+      "1MB": 0.8,
+      "8MB": 13.1,
+      "32MB": 30.3
+    },
+    "parallel_119_ranges_seconds": {
+      "1": 18.06,
+      "8": 2.29,
+      "16": 1.21,
+      "32": 0.65
+    },
+    "note": "latency is round-trip, not server contention: 32-way parallelism gives 28x"
+  },
+  "verbs": {
+    "GET": 200,
+    "PUT": 201,
+    "DELETE": 200,
+    "MOVE": 201,
+    "PROPFIND": 207,
+    "COPY": 404,
+    "If-None-Match:*": "201 (ignored, no conditional write)",
+    "MOVE Overwrite:F": "201 (ignored, overwrote anyway)"
+  }
+}

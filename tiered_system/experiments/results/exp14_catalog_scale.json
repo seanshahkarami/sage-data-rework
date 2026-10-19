@@ -1,0 +1,47 @@
+[
+  {
+    "files": 4564,
+    "bytes": 39307223,
+    "gz_bytes": 236667,
+    "parse_ms": 156.9,
+    "plan_ms": 0.25,
+    "commit_ms": 129.4,
+    "note": "today"
+  },
+  {
+    "files": 7500,
+    "bytes": 64593361,
+    "gz_bytes": 388644,
+    "parse_ms": 282.2,
+    "plan_ms": 1.57,
+    "commit_ms": 217.1,
+    "note": "~1 year of daily exports"
+  },
+  {
+    "files": 15000,
+    "bytes": 129186695,
+    "gz_bytes": 776937,
+    "parse_ms": 584.1,
+    "plan_ms": 2.06,
+    "commit_ms": 404.3,
+    "note": "~4 years"
+  },
+  {
+    "files": 30000,
+    "bytes": 258373361,
+    "gz_bytes": 1553522,
+    "parse_ms": 1287.4,
+    "plan_ms": 3.25,
+    "commit_ms": 846.6,
+    "note": "~10 years"
+  },
+  {
+    "files": 100000,
+    "bytes": 861244471,
+    "gz_bytes": 5177570,
+    "parse_ms": 5822.2,
+    "plan_ms": 12.42,
+    "commit_ms": 3101.8,
+    "note": "10 years, no compaction, 8x more files/day"
+  }
+]

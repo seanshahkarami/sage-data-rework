@@ -1,0 +1,74 @@
+{
+  "root": "/Users/franciscolozano/Git/sage-data-rework/scratch/baseline1day",
+  "days": [
+    "date=2025-01-01"
+  ],
+  "num_files": 6,
+  "slice_bytes": 302970347,
+  "big_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "rare_plugin": "registry.sagecontinuum.org/seonghapark/surface-water-detection:0.0.4",
+  "results": [
+    {
+      "case": "count_star",
+      "rows": 59496597,
+      "error": null,
+      "seconds": 0.01,
+      "http_requests": 12,
+      "http_bytes": 458752,
+      "files_touched": 6,
+      "pct_of_archive_slice": 0.15
+    },
+    {
+      "case": "big_plugin_cnt",
+      "rows": 1,
+      "error": null,
+      "seconds": 0.02,
+      "http_requests": 18,
+      "http_bytes": 1083243,
+      "files_touched": 6,
+      "pct_of_archive_slice": 0.36
+    },
+    {
+      "case": "big_plugin",
+      "rows": 53597535,
+      "error": null,
+      "seconds": 97.35,
+      "http_requests": 36,
+      "http_bytes": 196004282,
+      "files_touched": 6,
+      "pct_of_archive_slice": 64.69
+    },
+    {
+      "case": "rare_plugin",
+      "rows": 1,
+      "error": null,
+      "seconds": 11.65,
+      "http_requests": 16,
+      "http_bytes": 48977747,
+      "files_touched": 6,
+      "pct_of_archive_slice": 16.17
+    },
+    {
+      "case": "name_filter",
+      "rows": 281235,
+      "error": null,
+      "seconds": 0.62,
+      "http_requests": 16,
+      "http_bytes": 48977747,
+      "files_touched": 6,
+      "pct_of_archive_slice": 16.17
+    },
+    {
+      "case": "one_hour",
+      "rows": 2330550,
+      "error": null,
+      "seconds": 4.66,
+      "http_requests": 30,
+      "http_bytes": 196004282,
+      "files_touched": 6,
+      "pct_of_archive_slice": 64.69
+    }
+  ],
+  "footer_requests": 12,
+  "footer_bytes": 458752
+}

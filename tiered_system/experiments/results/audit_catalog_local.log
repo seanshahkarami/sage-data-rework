@@ -1,0 +1,41 @@
+=== RUN   TestAuditVersionHintIsNotCommitPoint
+    audit_hint_test.go:58: hint=1: fresh catalog still loads v2
+    audit_hint_test.go:58: hint=garbage: fresh catalog still loads v2
+    audit_hint_test.go:58: hint=missing: fresh catalog still loads v2
+--- PASS: TestAuditVersionHintIsNotCommitPoint (0.01s)
+=== RUN   TestReaderWithoutCatalog
+    reader_test.go:128: [PASS] a reader can open the table with NO catalog (nil), just a URL
+               <nil>
+    reader_test.go:140: [PASS] reader sees the full schema with types, without opening any Parquet
+               time:timestamptz_ns, name:string, plugin:string, value:double
+    reader_test.go:151: [PASS] per-column documentation survives to the reader
+               4 of 4 fields carry a doc string; time -> "observation time, nanosecond precision"
+    reader_test.go:156: [PASS] table properties carry dataset-level metadata (licence, contact)
+               license="CC-BY-4.0" description="SAGE sensor observations, archive export"
+    reader_test.go:170: [PASS] row count, file count and size available from metadata alone
+               rows=200 files=2 bytes=4530
+    reader_test.go:176: [PASS] reader can enumerate the table's history
+               2 snapshots
+    reader_test.go:186: [PASS] reader can SCAN the data with no catalog
+               got 200 rows
+    reader_test.go:197: [PASS] a read-only consumer gets predicate pushdown
+               100 of 200 rows match plugin-A
+    reader_test.go:212: [PASS] CATCH: a URL-pinned reader does NOT see later commits (still 200, not 300)
+               reader sees 200 rows; writer has since committed more
+    reader_test.go:227: [PASS] CATCH: Refresh without a catalog fails (so freshness needs a pointer)
+               panic: runtime error: invalid memory address or nil pointer dereference
+--- PASS: TestReaderWithoutCatalog (0.02s)
+=== RUN   TestVersionHintPointer
+    reader_test.go:255: [PASS] a catalog with NO database can create the table (filesystem catalog)
+               <nil>
+    reader_test.go:274: [PASS] iceberg-go WRITES a version-hint.text pointer on storage
+               /var/folders/yb/h919ssn55fl4fzpq2rsm_w0c0000gn/T/TestVersionHintPointer3962759459/001/sage/obs/metadata/version-hint.text
+    reader_test.go:281: [PASS] the pointer is tiny: one extra GET, not a database connection
+               version-hint.text = "2" (1 bytes)
+    reader_test.go:302: [PASS] a reader resolves the CURRENT table from storage alone (hint -> metadata)
+               resolved v2.metadata.json: <nil>
+    reader_test.go:312: [PASS] and reads the data the pointer names, with no catalog anywhere
+               2 rows
+--- PASS: TestVersionHintPointer (0.00s)
+PASS
+ok  	icebergo_v3probe	0.565s

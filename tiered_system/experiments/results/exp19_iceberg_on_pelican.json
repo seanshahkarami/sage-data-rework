@@ -1,0 +1,162 @@
+{
+  "checks": [
+    {
+      "check": "an Iceberg table can be created and written on Pelican",
+      "status": "PASS",
+      "detail": "metadata at /obs/metadata/00001-26dde815-ca9c-47f8-be69-764d86efbc80.metadata.json"
+    },
+    {
+      "check": "data round-trips unchanged over Pelican",
+      "status": "PASS",
+      "detail": "300,000 -> 300,000"
+    },
+    {
+      "check": "content identical (rows, plugins, names, value sum)",
+      "status": "PASS",
+      "detail": "(300000, 1, 8, 26046395.0) == (300000, 1, 8, 26046395.0)"
+    },
+    {
+      "check": "CONFIRMED: the commit pointer lives OFF Pelican, in a database",
+      "status": "PASS",
+      "detail": "a row in iceberg_tables; Pelican holds only immutable files"
+    },
+    {
+      "check": "CONFIRMED: no storage-only catalog exists in pyiceberg",
+      "status": "PASS",
+      "detail": "every option (REST, Hive, Glue, DynamoDB, SQL, BigQuery) needs a service or a database; there is no filesystem/hadoop catalog"
+    },
+    {
+      "check": "CONCURRENT writers: no rows lost (both appends land)",
+      "status": "PASS",
+      "detail": "300,000 + 6,000 = 306,000, got 306,000"
+    },
+    {
+      "check": "the losing writer's conflict is DETECTED, not silently dropped",
+      "status": "PASS",
+      "detail": "3/3 trials raised CommitFailedException internally and rebased"
+    },
+    {
+      "check": "every snapshot after the first records its parent",
+      "status": "PASS",
+      "detail": "7 snapshots, chain intact"
+    },
+    {
+      "check": "catalog database deleted (simulating handoff / service loss)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "pyiceberg reads the table from Pelican with NO catalog",
+      "status": "PASS",
+      "detail": "306,000 rows from a bare metadata URL"
+    },
+    {
+      "check": "the newest metadata file is identifiable from storage alone",
+      "status": "FAIL",
+      "detail": "11 *.metadata.json present, no version-hint.text -- the reader must be TOLD which one is current"
+    },
+    {
+      "check": "DuckDB reads the Parquet directly (?authz= URL param)",
+      "status": "PASS",
+      "detail": "1,000 rows, no catalog involved"
+    },
+    {
+      "check": "DuckDB reads the Parquet directly (Authorization header)",
+      "status": "PASS",
+      "detail": "1,000 rows via CREATE SECRET"
+    },
+    {
+      "check": "DuckDB iceberg_scan() on a bare metadata URL, no catalog",
+      "status": "PASS",
+      "detail": "306,000 rows, manifests resolved over HTTPS"
+    },
+    {
+      "check": "CONFIRMED: Pelican cannot host the catalog database",
+      "status": "PASS",
+      "detail": "no in-place writes, no PATCH, no DAV class 2 locking"
+    }
+  ],
+  "notes": {
+    "create": {
+      "seconds": 0.5,
+      "requests": {
+        "GET": 1,
+        "PUT": 1,
+        "HEAD": 2,
+        "DELETE": 0,
+        "MOVE": 0
+      }
+    },
+    "append": {
+      "seconds": 1.3,
+      "requests": {
+        "GET": 1,
+        "PUT": 4,
+        "HEAD": 2,
+        "DELETE": 0,
+        "MOVE": 0
+      },
+      "rows": 300000
+    },
+    "scan": {
+      "seconds": 1.2,
+      "requests": {
+        "GET": 4,
+        "PUT": 0,
+        "HEAD": 3,
+        "DELETE": 0,
+        "MOVE": 0
+      }
+    },
+    "catalogs": [
+      "InMemoryCatalog",
+      "NoopCatalog",
+      "RestCatalog",
+      "SqlCatalog",
+      "bigquery_metastore(uninstallable deps)",
+      "dynamodb(uninstallable deps)",
+      "glue(uninstallable deps)",
+      "hive(uninstallable deps)"
+    ],
+    "concurrency": {
+      "trials": 3,
+      "conflicts_detected": 3,
+      "rows_before": 300000,
+      "rows_after": 306000,
+      "expected": 306000
+    },
+    "cas_is_sql": "pyiceberg/catalog/sql.py:520-536 -- UPDATE iceberg_tables SET metadata_location=:new WHERE metadata_location=:old; rowcount<1 -> CommitFailedException. The CAS is a SQL row, not storage.",
+    "static_rows": 306000,
+    "metadata_files": 11,
+    "version_hint": false,
+    "reader_paths": {
+      "read_parquet_urlparam": 1000,
+      "read_parquet_header": 1000,
+      "iceberg_scan": 306000
+    },
+    "db_on_pelican": {
+      "content_range_honored": false,
+      "patch": 501,
+      "dav": "1",
+      "allow": "HEAD,GET,PUT,PROPFIND,DELETE,OPTIONS,COPY"
+    },
+    "one_commit": {
+      "seconds": 1.0,
+      "requests": {
+        "GET": 2,
+        "PUT": 4,
+        "HEAD": 3,
+        "DELETE": 0,
+        "MOVE": 0,
+        "PROPFIND": 0,
+        "PATCH": 0,
+        "OPTIONS": 0
+      },
+      "total": 9
+    },
+    "objects": {
+      "metadata": 28,
+      "data": 8
+    }
+  }
+}

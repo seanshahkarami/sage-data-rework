@@ -1,0 +1,53 @@
+{
+  "file": "/tmp/speedtest2.parquet",
+  "file_size": 100728595,
+  "total_rows": 10000000,
+  "distinct_plugins": 49,
+  "big_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "rare_plugin": "10.31.81.1:5000/local/soiltest2",
+  "cache_purge_available": false,
+  "results": [
+    {
+      "case": "count_star",
+      "rows": 10000000,
+      "seconds": 0.0003,
+      "bytes_read": null
+    },
+    {
+      "case": "full_scan",
+      "rows": 10000000,
+      "seconds": 16.6154,
+      "bytes_read": null
+    },
+    {
+      "case": "big_plugin",
+      "rows": 3166381,
+      "seconds": 5.1172,
+      "bytes_read": null
+    },
+    {
+      "case": "rare_plugin",
+      "rows": 3,
+      "seconds": 0.0199,
+      "bytes_read": null
+    },
+    {
+      "case": "name_filter",
+      "rows": 488454,
+      "seconds": 0.8886,
+      "bytes_read": null
+    },
+    {
+      "case": "time_slice",
+      "rows": 36498,
+      "seconds": 0.1712,
+      "bytes_read": null
+    },
+    {
+      "case": "plugin_and_time",
+      "rows": 3,
+      "seconds": 0.0222,
+      "bytes_read": null
+    }
+  ]
+}

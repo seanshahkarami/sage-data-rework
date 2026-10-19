@@ -1,0 +1,50 @@
+{
+  "source": "/tmp/speedtest2.parquet",
+  "source_size": 100728595,
+  "source_row_groups": 1,
+  "source_footer": 3598,
+  "source_sorted_by_plugin": true,
+  "num_rows": 10000000,
+  "variants": [
+    {
+      "row_group_size": 10000000,
+      "path": "/Users/franciscolozano/Git/sage-data-rework/scratch/rgvariants/rg_10000000.parquet",
+      "file_size": 67883056,
+      "num_row_groups": 1,
+      "footer_size": 5044,
+      "write_seconds": 5.24
+    },
+    {
+      "row_group_size": 2000000,
+      "path": "/Users/franciscolozano/Git/sage-data-rework/scratch/rgvariants/rg_2000000.parquet",
+      "file_size": 69738725,
+      "num_row_groups": 5,
+      "footer_size": 13119,
+      "write_seconds": 4.69
+    },
+    {
+      "row_group_size": 1000000,
+      "path": "/Users/franciscolozano/Git/sage-data-rework/scratch/rgvariants/rg_1000000.parquet",
+      "file_size": 71603557,
+      "num_row_groups": 10,
+      "footer_size": 22534,
+      "write_seconds": 4.39
+    },
+    {
+      "row_group_size": 250000,
+      "path": "/Users/franciscolozano/Git/sage-data-rework/scratch/rgvariants/rg_250000.parquet",
+      "file_size": 78637731,
+      "num_row_groups": 40,
+      "footer_size": 78150,
+      "write_seconds": 4.39
+    },
+    {
+      "row_group_size": 100000,
+      "path": "/Users/franciscolozano/Git/sage-data-rework/scratch/rgvariants/rg_100000.parquet",
+      "file_size": 84978977,
+      "num_row_groups": 100,
+      "footer_size": 191323,
+      "write_seconds": 4.36
+    }
+  ]
+}

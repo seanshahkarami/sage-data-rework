@@ -1,0 +1,67 @@
+{
+  "archive": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive",
+  "day": "2025-01-01",
+  "measurement": "wxt.wind.direction",
+  "checks": [
+    {
+      "check": "split range has no gap and no duplicate",
+      "status": "PASS",
+      "detail": "123699+128735 vs 252434"
+    },
+    {
+      "check": "split range is exactly the union",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "boundary instant belongs to the later half only",
+      "status": "PASS",
+      "detail": "at 2025-01-01T00:30:00Z: 0 in first half, 67 in second"
+    },
+    {
+      "check": "tail=1 returns one record per series, not one overall",
+      "status": "PASS",
+      "detail": "7 records for 7 distinct series"
+    },
+    {
+      "check": "exact match treats '.' literally",
+      "status": "PASS",
+      "detail": "wxt.wind.direction=18461, wxtxwind.direction=0"
+    },
+    {
+      "check": "regex branch matches a prefix wildcard",
+      "status": "PASS",
+      "detail": "wxt.wind.* = 36922 >= 18461"
+    },
+    {
+      "check": "meta includes promoted tags (plugin/vsn)",
+      "status": "PASS",
+      "detail": "keys: ['host', 'job', 'missing', 'node', 'plugin', 'sensor', 'task', 'units']"
+    },
+    {
+      "check": "record has exactly the API's four fields",
+      "status": "PASS",
+      "detail": "['meta', 'name', 'timestamp', 'value']"
+    },
+    {
+      "check": "rejects: missing start field",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "rejects: head and tail",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "rejects: window without func",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "rejects: invalid filter key",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

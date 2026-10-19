@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "check": "planning rejects files from statistics alone",
+      "status": "PASS",
+      "detail": "2/12 files survive, planned in 0.01 ms with 0 file opens"
+    },
+    {
+      "check": "planning does not lose rows",
+      "status": "PASS",
+      "detail": "5 == 5"
+    },
+    {
+      "check": "pinned reader is unaffected by a compaction published mid-query",
+      "status": "PASS",
+      "detail": "5 == 5 (reader still on 1791579063123-b1ab72fa)"
+    },
+    {
+      "check": "a new reader sees identical results after compaction",
+      "status": "PASS",
+      "detail": "5 == 5 (now on 1791579083904-3fa9a3f4)"
+    },
+    {
+      "check": "compaction swapped the files atomically",
+      "status": "PASS",
+      "detail": "6 superseded, 7 live"
+    },
+    {
+      "check": "a snapshot written but never committed is invisible",
+      "status": "PASS",
+      "detail": "pointer still 1791579083904-3fa9a3f4"
+    },
+    {
+      "check": "archive frontier unchanged after the simulated crash",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "superseded files are identifiable for later deletion",
+      "status": "PASS",
+      "detail": "6 files"
+    },
+    {
+      "check": "superseded files still exist on disk (readers may hold them)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "a commit against a stale parent is rejected",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "snapshot_bytes": 44284,
+  "files": 12
+}

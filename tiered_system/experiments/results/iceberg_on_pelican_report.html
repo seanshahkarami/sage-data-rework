@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iceberg on Pelican</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+/* Standalone wrapper. This file is meant to be opened directly in a browser
+   or published as an artifact; the reset below is what the artifact publish
+   skeleton would otherwise supply. */
+html { color-scheme: light; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+
+/* Layout: a measurement memo. Narrow prose column; tables, metric rows and
+   the throughput chart break out to a wider measure. Every figure carries an
+   evidence tag naming the experiment that produced it. */
+:root {
+  --bg:        #F4F6F7;
+  --surface:   #FFFFFF;
+  --surface-2: #EAEEEF;
+  --fg:        #14191C;
+  --muted:     #596469;
+  --rule:      #D7DDDF;
+  --accent:    #0B6356;
+  --accent-bg: #E0EDEA;
+  --ok:        #2D6B45;
+  --warn:      #8A5600;
+  --risk:      #A23626;
+  --bar-a:     #0B6356;
+  --bar-b:     #8FB5AE;
+
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0D1214;
+    --surface:   #141B1E;
+    --surface-2: #1B2428;
+    --fg:        #E4EAEB;
+    --muted:     #929EA3;
+    --rule:      #263237;
+    --accent:    #57C1AC;
+    --accent-bg: #16302C;
+    --ok:        #6CBE86;
+    --warn:      #D7A446;
+    --risk:      #E2836F;
+    --bar-a:     #57C1AC;
+    --bar-b:     #35675F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0D1214;
+  --surface:   #141B1E;
+  --surface-2: #1B2428;
+  --fg:        #E4EAEB;
+  --muted:     #929EA3;
+  --rule:      #263237;
+  --accent:    #57C1AC;
+  --accent-bg: #16302C;
+  --ok:        #6CBE86;
+  --warn:      #D7A446;
+  --risk:      #E2836F;
+  --bar-a:     #57C1AC;
+  --bar-b:     #35675F;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+p, li { max-width: 40rem; }
+p { margin: 0; }
+
+h1, h2, h3 { text-wrap: balance; margin: 0; font-family: var(--display); }
+h1 {
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+h3 {
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---- header ---- */
+.masthead { display: flex; flex-direction: column; gap: 1rem; }
+.lede {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--fg);
+  max-width: 36rem;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  padding-top: 0.8rem;
+}
+
+/* ---- evidence tags ---- */
+.tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.14em 0.5em;
+  border-radius: 2px;
+  white-space: nowrap;
+  display: inline-block;
+}
+.tag-m { background: var(--accent-bg); color: var(--accent); }
+.tag-x { background: var(--surface-2); color: var(--muted); border: 1px dashed var(--rule); }
+
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  align-items: baseline;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+}
+.key span { max-width: 22rem; }
+
+/* ---- sections ---- */
+section { display: flex; flex-direction: column; gap: 1.1rem; }
+.sec-head { display: flex; flex-direction: column; gap: 0.35rem; }
+
+/* ---- verdict panel ---- */
+.verdict {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.verdict-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.vcell {
+  background: var(--surface);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.vcell .label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.vcell .val {
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.vcell .note { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+.v-ok   .val { color: var(--ok); }
+.v-warn .val { color: var(--warn); }
+.v-risk .val { color: var(--risk); }
+
+/* ---- tables ---- */
+.tscroll { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; min-width: 30rem; }
+caption {
+  caption-side: bottom;
+  text-align: left;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+th, td {
+  text-align: left;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+thead th {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  background: var(--surface-2);
+}
+tbody tr:last-child td { border-bottom: none; }
+/* The row that is the design point, when a table's other rows are context. */
+tbody tr.row-hi td { background: var(--accent-bg); }
+tbody tr.row-hi td:first-child { box-shadow: inset 2px 0 0 var(--accent); }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td strong { font-weight: 600; }
+.good { color: var(--ok); }
+.bad  { color: var(--risk); }
+
+/* ---- chart ---- */
+.chart {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 1.3rem 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.chart-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+.crow { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.7rem; align-items: center; }
+.crow .wlabel {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  border-left: 1px solid var(--rule);
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+}
+.grid i { flex: 1; border-right: 1px dashed var(--rule); }
+.bar {
+  position: relative;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.bar .fill { height: 100%; border-radius: 0 1px 1px 0; }
+.bar.a .fill { background: var(--bar-a); }
+.bar.b .fill { background: var(--bar-b); }
+.bar .bv {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  padding-left: 0.4rem;
+  white-space: nowrap;
+  color: var(--fg);
+}
+.axis {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.axis-ticks { display: flex; justify-content: space-between; padding-left: 0; }
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+.swatch { display: inline-block; width: 0.7rem; height: 0.7rem; margin-right: 0.35rem; vertical-align: baseline; }
+.sw-a { background: var(--bar-a); }
+.sw-b { background: var(--bar-b); }
+
+/* ---- callouts ---- */
+.callout {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.callout.warn { border-left-color: var(--warn); }
+.callout.risk { border-left-color: var(--risk); }
+.callout h3 { font-size: 0.92rem; }
+.callout p { font-size: 0.92rem; max-width: 42rem; }
+
+/* ---- risks ---- */
+.risks { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.risk-item {
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.9rem;
+  align-items: baseline;
+  min-width: 0;
+}
+.sev {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.5em;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.sev-1 { background: var(--risk); color: var(--surface); }
+.sev-2 { background: var(--warn); color: var(--surface); }
+.sev-3 { background: var(--surface-2); color: var(--muted); }
+.risk-item h3 { grid-column: 2; }
+.risk-item p { grid-column: 2; font-size: 0.9rem; color: var(--muted); }
+.risk-item .sev { grid-row: 1; grid-column: 1; }
+
+/* ---- actions ---- */
+ol.actions { list-style: none; counter-reset: a; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+ol.actions li {
+  counter-increment: a;
+  background: var(--surface);
+  padding: 0.85rem 1.1rem;
+  display: grid;
+  grid-template-columns: 1.7rem 1fr;
+  gap: 0.2rem 0.8rem;
+  align-items: baseline;
+  max-width: none;
+  min-width: 0;
+}
+ol.actions li::before {
+  content: counter(a);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+ol.actions .act { font-weight: 600; font-size: 0.95rem; }
+ol.actions .why { grid-column: 2; font-size: 0.88rem; color: var(--muted); }
+
+ul.plain { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.45rem; }
+ul.plain li { font-size: 0.95rem; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--surface-2);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 420px) {
+  .crow, .axis { grid-template-columns: 3.4rem 1fr; }
+  .risk-item { grid-template-columns: 1fr; }
+  .risk-item h3, .risk-item p { grid-column: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Sage data pipeline &middot; storage architecture</div>
+    <h1>Iceberg on Pelican</h1>
+    <p class="lede">We can run Apache Iceberg over Pelican and NRDStor. The catalog cannot live on object storage, concurrency is mandatory on the read side, and latency is not what separates Iceberg from a custom catalog.</p>
+    <div class="meta-row">
+      <span>15 Oct 2026</span>
+      <span>41 experiments</span>
+      <span>Real NRDStor origin, real SciTokens</span>
+      <span>Archive: 4,564 files / 608 days / 209 GB</span>
+      <span>Target cadence: monthly commits</span>
+    </div>
+  </header>
+
+  <div class="key">
+    <span><span class="tag tag-m">measured</span> &nbsp;observed against the live origin, with a passing check behind it.</span>
+    <span><span class="tag tag-x">extrapolated</span> &nbsp;projected from a measurement. Treat the shape as real and the absolute number as an estimate.</span>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">The verdict</div>
+      <h2>Pelican is good storage and a bad catalog</h2>
+    </div>
+    <p>Every data file and every metadata file sits on Pelican without trouble. The one thing that does not work there is the commit: a filesystem catalog needs an atomic pointer swap, and the origin does not provide one. Tested directly, three of four concurrent writers were told they had won and two acknowledged commits were lost with nothing on storage recording that they should exist.</p>
+    <p>The design in <code>plans/6</code> moves only that one responsibility off storage. Writers commit through an Iceberg SQL catalog, which arbitrates them; a single reconciler publishes <code>metadata/version-hint.text</code> to Pelican from the committed head; consumers read the hint and never open the database. A lost race under that design makes readers <em>stale</em>, not lossy, and the database still holds the true head, so it is repairable. It ran end to end on NRDStor with two concurrent committers, one reconciler and one database-less reader.</p>
+    <p><strong>The planned cadence is monthly</strong> &mdash; data accumulates in InfluxDB, a month is committed to cold storage as one batch, then dropped from hot. That is twelve commits a year, and it makes most of the write-side costs below vanish: ~0.3 minutes of commit traffic per year, and 6.4&nbsp;MB of accumulated metadata per decade. Several numbers in this report were projected against faster cadences before that was settled; they are kept where they show how a cost behaves, and labelled where they are not what we will pay.</p>
+
+    <div class="verdict-grid">
+      <div class="vcell v-ok">
+        <span class="label">Commit cost</span>
+        <span class="val">9 requests</span>
+        <span class="note">Flat from the second commit on, at any table size.</span>
+      </div>
+      <div class="vcell v-warn">
+        <span class="label">Read cost</span>
+        <span class="val">5.1 req / file</span>
+        <span class="note">Grows linearly. 40% of it is a defect in our own FileIO.</span>
+      </div>
+      <div class="vcell v-risk">
+        <span class="label">Sequential scan</span>
+        <span class="val">~5 MB/s</span>
+        <span class="note">Unusable. Concurrent readers reach 30&ndash;39 MB/s.</span>
+      </div>
+      <div class="vcell v-ok">
+        <span class="label">Iceberg vs custom</span>
+        <span class="val">0.95&times; write</span>
+        <span class="note">Iceberg is not slower. That argument is withdrawn.</span>
+      </div>
+      <div class="vcell v-ok">
+        <span class="label">Storage overhead</span>
+        <span class="val">&minus;35 GB</span>
+        <span class="note">Metadata costs 2.5 MB; the rewrite saves 35 GB. Net saving.</span>
+      </div>
+      <div class="vcell v-ok">
+        <span class="label">Ongoing commit cost</span>
+        <span class="val">~0.3 min/yr</span>
+        <span class="note">12 monthly commits. The write path is not a constraint.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Writing &middot; exp37, 12/12</div>
+      <h2>The write path is flat, and batching is the whole lever</h2>
+    </div>
+    <p>Per-commit request count does not move as files accumulate. The bill is set by the number of commits, not by the size of the table.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Commits against the live origin. Each commit is <code>GET</code>&times;2, <code>PUT</code>&times;4, <code>HEAD</code>&times;3 from the second one on.</caption>
+        <thead><tr><th>Commit</th><th class="num">Files in table</th><th class="num">Requests</th><th class="num">Wall</th></tr></thead>
+        <tbody>
+          <tr><td>1st</td><td class="num">1</td><td class="num">7</td><td class="num">0.9 s</td></tr>
+          <tr><td>2nd</td><td class="num">2</td><td class="num"><strong>9</strong></td><td class="num">0.9 s</td></tr>
+          <tr><td>16th</td><td class="num">16</td><td class="num"><strong>9</strong></td><td class="num">0.9 s</td></tr>
+          <tr><td>40th</td><td class="num">40</td><td class="num"><strong>9</strong></td><td class="num">1.0 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Because the cost is per commit, how we group files decides the bill. The first two rows are the one-time backfill of the existing archive; the third is what we pay from then on. <span class="tag tag-x">extrapolated</span></p>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Ingest strategy</th><th class="num">Commits</th><th class="num">Requests</th><th class="num">Wall</th></tr></thead>
+        <tbody>
+          <tr><td>Backfill, one commit per file</td><td class="num">4,564</td><td class="num">~40,800</td><td class="num bad">~1.2 h</td></tr>
+          <tr><td>Backfill, one commit per day</td><td class="num">608</td><td class="num">~5,400</td><td class="num good">~10 min</td></tr>
+          <tr class="row-hi"><td><strong>Steady state: monthly commits</strong></td><td class="num"><strong>12/yr</strong></td><td class="num">~108/yr</td><td class="num good"><strong>~0.3 min/yr</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>At the monthly cadence we plan, the commit path effectively disappears: a third of a minute a year. The monthly job&rsquo;s wall time is all data movement &mdash; roughly 10&nbsp;GB a month, 4&ndash;6 minutes at the throughput measured below, plus the timestamp rewrite &mdash; and none of it is Iceberg.</p>
+    <p>The reconciler costs 2 requests to publish a hint and 1 to confirm it unchanged, regardless of table size. It stays negligible at any scale, so the reconciler period is bounded by how often we commit, not by what a pass costs.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Reading &middot; exp37, 12/12</div>
+      <h2>The read path is the expensive side, and one third of it is ours</h2>
+    </div>
+    <p>A cold reader with no database spent 205 requests on 40 data files. The Iceberg metadata layer is not the problem: four requests total, independent of table size. The cost is per data file.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Attribution of 205 requests across 40 data files.</caption>
+        <thead><tr><th>Component</th><th class="num">Requests</th><th>Scaling</th></tr></thead>
+        <tbody>
+          <tr><td><code>metadata.json</code></td><td class="num">2</td><td>O(1)</td></tr>
+          <tr><td>Manifest list (<code>snap-*.avro</code>)</td><td class="num">2</td><td>O(1)</td></tr>
+          <tr><td>Manifests (<code>*.avro</code>)</td><td class="num">80</td><td>O(files)</td></tr>
+          <tr><td>Data files (<code>*.parquet</code>)</td><td class="num"><strong>120</strong> &mdash; 40 HEAD + 80 GET</td><td>O(files)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <h3>The HEAD before every file is our bug, not Iceberg's</h3>
+      <p>Our <code>PelicanInputFile</code> issues a HEAD to ask the origin for a size the manifest already records in <code>file_size_in_bytes</code>. It caches that size per instance, but pyiceberg builds a fresh instance for every file in every scan, so the cache never survives. A process-wide cache took the same read from 205 requests to 122 &mdash; 40% fewer, every HEAD gone. The two remaining GETs per file are the parquet footer and then the row group, which is Iceberg's correct access pattern.</p>
+    </div>
+    <div class="tscroll">
+      <table>
+        <caption>Projected to the archive's 4,564 files at the measured ~190 ms per request. <span class="tag tag-x">extrapolated</span></caption>
+        <thead><tr><th>Read</th><th class="num">Requests</th><th class="num">Wall</th></tr></thead>
+        <tbody>
+          <tr><td>Full scan, as the code stands</td><td class="num">~23,400</td><td class="num bad">~74 min</td></tr>
+          <tr><td>Full scan, sizes cached</td><td class="num">~13,900</td><td class="num">~44 min</td></tr>
+          <tr><td>One-week partition filter</td><td class="num">~2,900</td><td class="num good">~9 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Partition pruning was re-checked in requests against the origin rather than in files: a 60-partition table went from 302 requests and 2.1 s for a full scan to 37 requests and 0.8 s for a one-week filter, 88% fewer. Pruning, not a faster origin, is what makes the read path work. An unpruned full scan should be treated as a misuse of this deployment and documented as one.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Querying &middot; exp38, 7/7</div>
+      <h2>A sequential reader runs at 5 MB/s. This is the number to act on.</h2>
+    </div>
+    <p>Everything above measures query <em>planning</em> &mdash; which files a query must open. It says nothing about moving the bytes. So we uploaded real archive parquet and timed the scans. The result is the one finding here that would have sunk the design if it had gone unmeasured, and the fix is a configuration setting.</p>
+
+    <div class="chart">
+      <div class="chart-rows">
+        <div class="crow">
+          <span class="wlabel">1 worker</span>
+          <div class="track">
+            <div class="grid"><i></i><i></i><i></i><i></i></div>
+            <div class="bar a"><span class="fill" style="width:11.0%"></span><span class="bv">4.4</span></div>
+            <div class="bar b"><span class="fill" style="width:13.0%"></span><span class="bv">5.2</span></div>
+          </div>
+        </div>
+        <div class="crow">
+          <span class="wlabel">4</span>
+          <div class="track">
+            <div class="grid"><i></i><i></i><i></i><i></i></div>
+            <div class="bar a"><span class="fill" style="width:52.3%"></span><span class="bv">20.9</span></div>
+            <div class="bar b"><span class="fill" style="width:45.8%"></span><span class="bv">18.3</span></div>
+          </div>
+        </div>
+        <div class="crow">
+          <span class="wlabel">8</span>
+          <div class="track">
+            <div class="grid"><i></i><i></i><i></i><i></i></div>
+            <div class="bar a"><span class="fill" style="width:79.5%"></span><span class="bv">31.8</span></div>
+            <div class="bar b"><span class="fill" style="width:74.3%"></span><span class="bv">29.7</span></div>
+          </div>
+        </div>
+        <div class="crow">
+          <span class="wlabel">16</span>
+          <div class="track">
+            <div class="grid"><i></i><i></i><i></i><i></i></div>
+            <div class="bar a"><span class="fill" style="width:96.8%"></span><span class="bv">38.7</span></div>
+            <div class="bar b"><span class="fill" style="width:84.8%"></span><span class="bv">33.9</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="axis">
+        <span></span>
+        <span class="axis-ticks"><span>0</span><span>10</span><span>20</span><span>30</span><span>40 MB/s</span></span>
+      </div>
+      <div class="legend">
+        <span><span class="swatch sw-a"></span>run A &middot; 24 data files</span>
+        <span><span class="swatch sw-b"></span>run B &middot; 26 data files</span>
+      </div>
+    </div>
+
+    <p>A sequential Iceberg scan over Pelican runs at roughly 5 MB/s. At that rate a one-week query takes <strong>9 minutes</strong>. With 8 to 16 workers it takes about <strong>one minute</strong>. Nothing in the default configuration hints at this.</p>
+    <p>pyiceberg already parallelises &mdash; it maps scan tasks onto a thread pool &mdash; so the 6.5&ndash;8.7&times; speedup needs no code, only <code>PYICEBERG_MAX_WORKERS</code>. Two details matter. The pool is over <em>files</em>, so a query touching one file gets nothing from it, which is a second independent reason to batch commits by day: it sets how many files a day-range query can spread across. And the executor is cached per process, so the variable has to be set before the first scan.</p>
+    <p>Treat 30 MB/s as the dependable figure. Run A was still gaining at 16 workers, run B had saturated, so anything above 30 is headroom rather than budget.</p>
+
+    <div class="callout">
+      <h3>Column projection saves bytes but not time</h3>
+      <p>Reading one column instead of all thirteen moved 94% fewer bytes and took only 43% less time &mdash; while issuing 20 <em>more</em> requests. A projected scan stops streaming bulk bytes and starts scattering small column reads, so it becomes latency-bound. Size a query by round trips, not by bytes.</p>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Scan</th><th class="num">Bytes</th><th class="num">Requests</th><th class="num">Wall</th></tr></thead>
+          <tbody>
+            <tr><td>All 13 columns</td><td class="num">141.7 MB</td><td class="num">84</td><td class="num">32.0 s</td></tr>
+            <tr><td>1 column</td><td class="num good">8.6 MB</td><td class="num bad">104</td><td class="num">18.2 s</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p>Two smaller results from the same run. Ingest through <code>append()</code> ran at 3.9&ndash;5.2 MB/s, which puts the full 209 GB at roughly <strong>12 hours of one-time ingest</strong> <span class="tag tag-x">extrapolated</span>, and stored size came to 83% of on-disk size. And although archive files are a single row group of 10M rows &mdash; the shape that stops Iceberg pruning below whole 42&ndash;78 MB files &mdash; the mandatory rewrite on ingest produced two row groups per file unasked. The exporter's <code>MaxRowsPerRowGroup</code> change is therefore additive rather than a prerequisite.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Storage &middot; exp40, 5/5</div>
+      <h2>Iceberg's metadata costs 2.5 MB. The migration saves 35 GB.</h2>
+    </div>
+    <p>The overhead has two shapes and conflating them gives a wrong answer. Manifest entries scale with <em>data files</em>; <code>metadata.json</code> scales with <em>commits</em> and embeds the entire snapshot history each time.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Measured on files holding real archive rows, because manifest entries store per-column bounds and the archive's string columns set their width.</caption>
+        <thead><tr><th>Component</th><th>Scales with</th><th class="num">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Manifests (<code>*-m0.avro</code>)</td><td>Data files</td><td class="num">~545 B per file</td></tr>
+          <tr><td>Manifest list (<code>snap-*.avro</code>)</td><td>Commits</td><td class="num">~220 B per commit</td></tr>
+          <tr><td><code>metadata.json</code></td><td>Commits, retained forever</td><td class="num">~880 B per snapshot</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The part people picture when they ask this question is the first one, and it is negligible: 4,564 files at 545 B is <strong>2.5 MB of manifests for a 209 GB archive, or 0.0012%</strong>. Per-file metadata overhead is effectively zero.</p>
+    <div class="callout">
+      <h3>The honest headline is a saving, not a cost</h3>
+      <p>Ingest cannot register the archive in place, so every file is rewritten &mdash; and the rewrite stores 83% of on-disk size. The re-encode recovers four orders of magnitude more space than the metadata consumes. The caveat worth stating plainly: this is a property of re-encoding with current parquet defaults, not of Iceberg. Writing the same files with the same encoder and no catalog would save the same 35 GB.</p>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>On the real archive</th><th class="num">Bytes</th></tr></thead>
+          <tbody>
+            <tr><td>As it sits today</td><td class="num">209 GB</td></tr>
+            <tr><td>Rewritten through Iceberg</td><td class="num">~173.5 GB</td></tr>
+            <tr><td>Metadata on top, 608 day-commits</td><td class="num">+0.5 MB</td></tr>
+            <tr><td><strong>Net</strong></td><td class="num good"><strong>~35 GB smaller</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p>Where storage <em>can</em> run away is retention, not file count. Keeping every <code>metadata.json</code> is quadratic, because each new version embeds the whole snapshot history. At 40 commits the retained versions were already 71% of all metadata bytes.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Retained metadata if snapshot expiry is never turned on. <span class="tag tag-x">extrapolated</span></caption>
+        <thead><tr><th>Commit cadence</th><th class="num">Commits</th><th class="num">Current file</th><th class="num">Retained</th></tr></thead>
+        <tbody>
+          <tr class="row-hi"><td><strong>Monthly, over 10 years</strong> &mdash; our plan</td><td class="num"><strong>120</strong></td><td class="num">0.1 MB</td><td class="num good"><strong>6.4 MB</strong></td></tr>
+          <tr><td>608 day-commits (one archive pass)</td><td class="num">608</td><td class="num">0.5 MB</td><td class="num">163 MB</td></tr>
+          <tr><td>1/day for a year</td><td class="num">365</td><td class="num">0.3 MB</td><td class="num">59 MB</td></tr>
+          <tr><td>24/day for a year</td><td class="num">8,760</td><td class="num">7.7 MB</td><td class="num bad">34 GB</td></tr>
+          <tr><td>96/day for a year</td><td class="num">35,040</td><td class="num">30.9 MB</td><td class="num bad">541 GB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Cadence decides whether any of this matters, and ours is <strong>monthly</strong> &mdash; a month accumulates in InfluxDB, is committed to cold storage as one batch, then dropped from hot. At twelve commits a year the quadratic never gets going: <strong>6.4&nbsp;MB of retained metadata after a decade</strong>, against roughly a terabyte of data. The faster cadences are shown because they are what the mechanism costs if the design ever moves &mdash; at hourly commits it reaches 16% of the data archive just to describe it.</p>
+    <div class="callout warn">
+      <h3>Snapshot expiry does not reclaim this, and we had assumed it did</h3>
+      <p>Our design notes recorded "set a snapshot-retention policy" as the answer to unbounded metadata. Measured, it is not. <code>expire_snapshots()</code> rewrites history into a <em>new</em> metadata file and leaves every old one on disk: the current file shrank 72%, which is a real saving on every <em>read</em>, while stored bytes went <em>up</em> 1%.</p>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Action</th><th class="num">Current file (per read)</th><th class="num">All retained (storage)</th></tr></thead>
+          <tbody>
+            <tr><td><code>expire_snapshots()</code></td><td class="num good">34,318 &rarr; 9,531 B (&minus;72%)</td><td class="num bad">717,930 &rarr; 727,461 B (+1%)</td></tr>
+            <tr><td><code>delete-after-commit</code>, keep 5</td><td class="num">&mdash;</td><td class="num good">718,068 &rarr; 154,986 B (&minus;78%)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The only knob that reclaims stored metadata is <code>write.metadata.delete-after-commit.enabled</code>, which the design deliberately keeps off so a published hint can never name a deleted file. Expiry is still worth turning on &mdash; but for the <em>read</em> cost, not for storage.</p>
+    </div>
+    <h3>The retention window, and why we are not using it</h3>
+    <p>Retention itself is <strong>built into Iceberg</strong> &mdash; two stock table properties, 41 files and 716 KB down to 6 files and 155 KB. There is nothing for us to build. Two measured details decide whether we should.</p>
+    <p>First, the window counts <strong>versions, not time</strong>: twenty commits inside one second left six metadata files, and pyiceberg 0.12 has no age-based option for them. So the safe setting tracks the commit rate &mdash; &ldquo;keep 5&rdquo; is five hours at hourly commits, five days at daily ones, five months at monthly.</p>
+    <p>Second, the hint failure is real and exact. With <code>previous-versions-max=5</code>, a published hint&rsquo;s target was deleted after commit&nbsp;#7 and a consumer following it got <code>FileNotFoundError</code> &mdash; a hard break, not the recoverable staleness this design accepts. The break point was <code>previous-versions-max&nbsp;+&nbsp;2</code> at every window tested (2&rarr;#4, 5&rarr;#7, 10&rarr;#12), which turns the sizing question into arithmetic: <code>previous-versions-max &gt; commits per reconciler period + margin</code>.</p>
+    <div class="callout">
+      <h3>At monthly commits, leave retention off</h3>
+      <p>Not provisionally, and not pending a decision. The growth it would bound is <strong>6.4&nbsp;MB per decade</strong> &mdash; less than one month&rsquo;s manifests &mdash; while turning it on introduces the failure mode above. The default <code>previous-versions-max=100</code> already carries about <strong>8.4 years</strong> of margin at this cadence, against a reconciler that republishes in minutes. Pin both properties explicitly rather than inheriting them, so a library upgrade cannot change the behaviour quietly. <span class="tag tag-m">measured</span></p>
+      <p>What would reopen this: a cadence change. The window is count-based, so the conclusion follows from twelve commits a year, not from the design. At daily commits the margin is still months; at hourly, both the growth and the hint risk become real.</p>
+    </div>
+    <p>One related finding, harmless today. Expiry does not delete data files either: on an append-only table, expiring 7 of 8 snapshots removed no data files and no manifests. But after a delete or a compaction pass, superseded files stay on storage unreferenced &mdash; measured, 4 of 8 orphaned &mdash; and pyiceberg 0.12 ships no orphan cleanup. Sage's pipeline is append-only, so this costs nothing now. It becomes a prerequisite before compaction.</p>
+    <p>Batching pays here too. The same 32 files committed one at a time produced 765,779 B of metadata; committed together, 23,746 B &mdash; <strong>32&times; less for identical data</strong>. Day-batching was already justified on request count and on read parallelism. This is a third, independent reason, and it is what keeps the quadratic above harmless.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">The comparison &middot; exp39, 5/5</div>
+      <h2>Latency does not choose between Iceberg and the custom catalog</h2>
+    </div>
+    <p>Iceberg's metadata layer sits between a consumer and the bytes, and its write path re-encodes every file. The obvious question is what that costs. We ported the custom catalog's store to Pelican and ran both designs over the same files, the same origin, the same FileIO, in the same process, interleaved.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Both readers pinned to 8 workers. Lower is better; a ratio under 1.0 favours Iceberg.</caption>
+        <thead><tr><th>Operation</th><th class="num">Iceberg</th><th class="num">Custom</th><th class="num">Ratio</th></tr></thead>
+        <tbody>
+          <tr><td>Write 4 files (169 MB)</td><td class="num">23.9 s</td><td class="num">25.2 s</td><td class="num">0.95&times;</td></tr>
+          <tr><td>Read all, 8 workers</td><td class="num">4.6 s</td><td class="num">7.1 s</td><td class="num good">0.6&times;</td></tr>
+          <tr><td>Read one day</td><td class="num">2.9 s</td><td class="num">3.6 s</td><td class="num good">0.8&times;</td></tr>
+          <tr><td>Metadata requests</td><td class="num">12</td><td class="num">2</td><td class="num">0.50 per data file, both</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The prediction going in was that Iceberg's mandatory nanosecond-to-microsecond rewrite would make its write visibly slower. <strong>That hypothesis was refuted.</strong> Both paths are network-bound at about 6 MB/s, and the rewrite shrinks the payload 17%, so Iceberg's extra CPU hides behind an upload with less to send. Across runs the wall ratio ranged 0.86&ndash;1.05: the run-to-run spread on this link is larger than the difference between the designs.</p>
+    <p>Iceberg's 12 metadata requests against the custom catalog's 2 sounds like a 6&times; penalty and is not, because neither grows with file count. At 24 data files Iceberg is already down to 0.50 metadata requests per data file and still falling. Any query big enough to care about latency amortises it away.</p>
+    <div class="callout risk">
+      <h3>One place the custom catalog scales worse</h3>
+      <p>Its snapshot JSON embeds every live file at 167 bytes each, so at the archive's 4,564 files it reaches about <strong>0.8 MB, downloaded in full by every reader on every read, and unprunable</strong>. That is smaller per file than Iceberg's 545 B of manifest, and the size was never the problem: Iceberg splits the same information across <code>metadata.json</code> and per-partition manifests, so a pruned reader fetches a fraction of its 2.5 MB while a custom-catalog reader fetches all 0.8 MB every time. Smaller total, worse access pattern. Both designs have an O(files) metadata structure; the difference is that Iceberg's is partitioned. Solvable on the custom side with per-day snapshot shards, but that is work which does not exist today.</p>
+    </div>
+    <div class="callout">
+      <h3>A method note worth keeping</h3>
+      <p>The first run showed Iceberg reading 3&times; faster. That was not a finding. pyiceberg's scan is parallel and our custom reader was a sequential <code>for</code> loop, so we were timing a loop against a thread pool. The throughput work above had just established that this difference alone is worth 6&ndash;8&times;, which is what made the result recognisable as an artefact. Both readers are now pinned to the same width and the gap disappeared.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Where the decision actually sits</div>
+      <h2>A genuine trade, not a landslide</h2>
+    </div>
+    <p>Our recommendation document still recommends building the custom catalog, and nothing measured here disturbs the reasoning behind it. What the measurements do is change the list of arguments. <strong>"Iceberg is slower" comes off the list as unsupported.</strong> A new liability goes on the custom side: the unprunable snapshot JSON. Everything else stands where it was.</p>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Argues for Iceberg</th><th>Argues for the custom catalog</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Concurrency safety &mdash; the custom catalog lost an acknowledged update silently, 3 of 3 attempts</td>
+            <td>Smaller operational surface &mdash; no database, no reconciler to keep alive</td>
+          </tr>
+          <tr>
+            <td>Row-level deletes</td>
+            <td>No nanosecond constraint &mdash; it indexes files as written and never reinterprets types</td>
+          </tr>
+          <tr>
+            <td>Ecosystem and external readers</td>
+            <td>No mandatory rewrite on ingest</td>
+          </tr>
+          <tr>
+            <td>Partitioned metadata that a pruned reader can skip</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The decision rests on safety and operations, which are judgement calls about how Sage runs, not measurements. Whichever way it goes, the exporter fix comes first: a catalog over unprunable files just plans faster toward reading 49 MB to return one row.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Open risks, ranked</div>
+      <h2>What could still bite us</h2>
+    </div>
+    <div class="risks">
+      <div class="risk-item">
+        <span class="sev sev-1">1</span>
+        <h3>Reconciler failure is silent</h3>
+        <p>A consumer pointed at a stale hint returns an older snapshot with no warning, while a newer metadata file sits beside it in the same directory. The data is never lost and the database still holds the true head, but detection has to be active: the reconciler comparing the published hint against <code>metadata_location</code>. Nothing notices on its own.</p>
+      </div>
+      <div class="risk-item">
+        <span class="sev sev-1">2</span>
+        <h3>We have not decided whether committers run on separate hosts</h3>
+        <p>This is the only question that forces Postgres over SQLite, and it is unanswered. SQLite is sufficient for everything we measured; the constraint is connectivity, not concurrency. Default to SQLite until someone says yes.</p>
+      </div>
+      <div class="risk-item">
+        <span class="sev sev-2">3</span>
+        <h3>A monthly job is the kind that gets re-run by hand</h3>
+        <p>Committing once a month makes almost every cost here disappear, but it concentrates the whole year&rsquo;s ingest into twelve long-running jobs &mdash; and infrequent jobs are the ones an operator re-runs manually after a failure. The SQL catalog arbitrates concurrent committers correctly, so this is survivable where a filesystem catalog would lose commits silently. It still deserves a real guard: a lock or a single-replica deployment, not a convention that the job only runs once.</p>
+      </div>
+      <div class="risk-item">
+        <span class="sev sev-2">4</span>
+        <h3>A consumer on default settings is 6&ndash;8&times; slow</h3>
+        <p>Nothing surfaces this. It looks like Pelican being slow rather than a thread pool sized to one.</p>
+      </div>
+      <div class="risk-item">
+        <span class="sev sev-3">5</span>
+        <h3>Every number here came from one process on a laptop link</h3>
+        <p>Concurrent readers, NRDStor under load, and whether 30&ndash;39 MB/s holds from a well-connected host are all unmeasured. The shape of the findings transfers; the absolute rates do not.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Next</div>
+      <h2>Actions, in order of value per hour spent</h2>
+    </div>
+    <ol class="actions">
+      <li><span class="act">Set <code>PYICEBERG_MAX_WORKERS</code> to 8&ndash;16 wherever a consumer reads, and document it.</span><span class="why">One environment variable, worth 6&ndash;8&times;. Must be set before the first scan, because the executor is cached per process.</span></li>
+      <li><span class="act">Stop HEADing every data file in <code>pelican_fileio.py</code>.</span><span class="why">Plumb <code>file_size_in_bytes</code> from the manifest into <code>PelicanInputFile</code>, or cache sizes process-wide. 40% of reader requests, measured. The single largest cheap win in the design.</span></li>
+      <li><span class="act">Batch the backfill by day, and keep day partitions when we move to monthly commits.</span><span class="why">10 minutes versus 1.2 hours for the same 4,564 files. Commit cadence and partition granularity are separate choices: one monthly commit carrying 30 day-partitions is right, monthly <em>partitions</em> would break pruning and shrink the file pool a query parallelises over.</span></li>
+      <li><span class="act">Land the exporter fix.</span><span class="why">Nothing else matters if files cannot be pruned. Partly relieved by the rewrite already emitting two row groups, so this is now additive rather than blocking.</span></li>
+      <li><span class="act">Document that queries are sized by round trips, not bytes.</span><span class="why">A narrow column projection is not proportionally faster and can be slower per byte than reading everything. Document unpruned full scans as a misuse of this deployment in the same place.</span></li>
+      <li><span class="act">Promote the reconciler from a test function to a service.</span><span class="why">About 20 lines, already carrying the no-trailing-newline assertion and the read-from-the-database-not-the-listing rule. Pick its period from the commit cadence; a pass costs 2&ndash;3 requests at any table size.</span></li>
+      <li><span class="act">Pin the two metadata-retention properties explicitly, with deletion off.</span><span class="why">At monthly commits the growth this accepts is 6.4&nbsp;MB per decade, and the default window already clears the safety requirement by ~8.4 years &mdash; so this is a decision to record, not one to make. Pin rather than inherit, so a library upgrade cannot change it quietly. Turn snapshot expiry on separately, for the read cost: 72% off the file every consumer downloads, nothing off storage.</span></li>
+      <li><span class="act">Guard the monthly ingest job against overlapping itself.</span><span class="why">A lock or a single-replica deployment. The SQL catalog makes a concurrent commit safe rather than silently lossy, but a job that runs twelve times a year is one an operator will eventually re-run by hand.</span></li>
+      <li><span class="act">Publish a table index.</span><span class="why">The hint answers "where is the current metadata for this table"; it does not answer "what tables exist".</span></li>
+      <li><span class="act">Answer the multi-host committer question.</span><span class="why">It is the only thing that picks the database, and it is a product question rather than an engineering one.</span></li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>Sources: <code>experiments/results/SUMMARY.md</code> sections 17&ndash;41, <code>plans/3_findings.md</code>, <code>plans/4_catalog_recommendation.md</code>, <code>plans/6_db_catalog_with_version_hint.md</code>. Every experiment writes to a nanosecond-stamped prefix and verifies it is empty before and after; no test touched the production archive or the loader's directories.</p>
+    <p>Environment: pyiceberg 0.12.0, Python 3.12, live NRDStor origin via Pelican with SciTokens. Measured request latency ~150&ndash;190 ms.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

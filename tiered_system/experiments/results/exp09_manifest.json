@@ -1,0 +1,12 @@
+{
+  "days": 30,
+  "files": 242,
+  "rows": 2243828776,
+  "bytes": 10744761588,
+  "row_groups": 242,
+  "footer_bytes": 534085,
+  "footer_read_seconds": 0.331802916014567,
+  "manifest_full_bytes": 238766,
+  "manifest_slim_bytes": 80434,
+  "manifest_slim_read_seconds": 0.00019741698633879423
+}

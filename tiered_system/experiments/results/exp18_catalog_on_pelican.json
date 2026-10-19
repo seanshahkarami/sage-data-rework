@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "check": "planning rejects files from statistics alone",
+      "status": "PASS",
+      "detail": "2/12 files survive; pin (network) 273 ms, plan (local) 0.04 ms"
+    },
+    {
+      "check": "planning does not lose rows",
+      "status": "PASS",
+      "detail": "5 rows"
+    },
+    {
+      "check": "pinned reader is unaffected by a compaction published mid-query",
+      "status": "PASS",
+      "detail": "5 rows, reader still on 1791840447151-50cc824c"
+    },
+    {
+      "check": "a new reader sees identical results after compaction",
+      "status": "PASS",
+      "detail": "5 rows, now on 1791840469473-d5c59225"
+    },
+    {
+      "check": "compaction swapped the files atomically",
+      "status": "PASS",
+      "detail": "6 superseded, 7 live, commit took 1.21s over Pelican"
+    },
+    {
+      "check": "a snapshot written but never committed is invisible",
+      "status": "PASS",
+      "detail": "pointer still 1791840469473-d5c59225"
+    },
+    {
+      "check": "archive frontier unchanged after the simulated crash",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "superseded files are identifiable for later deletion",
+      "status": "PASS",
+      "detail": "6 files"
+    },
+    {
+      "check": "superseded files still exist (readers may hold them)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "a commit against a stale parent is rejected (sequential)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "CONCURRENT writers: at most one commit succeeds",
+      "status": "FAIL",
+      "detail": "3/3 trials lost an update (both writers committed; the later silently clobbered the earlier)"
+    },
+    {
+      "check": "a pinned snapshot is still readable after the pointer moved 3x",
+      "status": "PASS",
+      "detail": "5 rows (non-vacuous), still on 1791840477774-b58295cd; CURRENT is now an empty snapshot"
+    }
+  ],
+  "snapshot_bytes": 5789,
+  "race_trials": 3,
+  "race_lost_updates": 3,
+  "files": 12,
+  "publish_seconds": 1.04,
+  "replace_seconds": 1.21,
+  "pin_ms": 273,
+  "race": {
+    "outcomes": {
+      "committed": 6,
+      "rejected": 0
+    },
+    "check_ms": 145,
+    "swap_ms": 561
+  },
+  "verbs": {
+    "GET": 52,
+    "PUT": 29,
+    "MOVE": 29,
+    "DELETE": 0,
+    "HEAD": 0
+  }
+}

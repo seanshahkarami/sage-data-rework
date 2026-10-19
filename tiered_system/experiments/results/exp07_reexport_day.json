@@ -1,0 +1,14 @@
+{
+  "source_dir": "/Users/franciscolozano/Git/sage-data-rework/data/archive/date=2025-01-01",
+  "out_dir": "/Users/franciscolozano/Git/sage-data-rework/scratch/reexport/date=2025-01-01",
+  "row_group_size": 1000000,
+  "num_rows": 59496597,
+  "src_files": 6,
+  "src_bytes": 302970347,
+  "out_bytes": 224674223,
+  "src_row_groups": 6,
+  "out_row_groups": 60,
+  "src_footer_bytes": 13195,
+  "out_footer_bytes": 122544,
+  "rewrite_seconds": 27.3
+}

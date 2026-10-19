@@ -1,0 +1,58 @@
+{
+  "days": [
+    {
+      "day": "date=2025-01-01",
+      "rows": 59496597,
+      "nonzero_ns": 57191263,
+      "pct": 96.13
+    },
+    {
+      "day": "date=2025-03-18",
+      "rows": 142378324,
+      "nonzero_ns": 142233335,
+      "pct": 99.9
+    },
+    {
+      "day": "date=2025-06-02",
+      "rows": 140434356,
+      "nonzero_ns": 138012612,
+      "pct": 98.28
+    },
+    {
+      "day": "date=2025-08-17",
+      "rows": 129051481,
+      "nonzero_ns": 128921628,
+      "pct": 99.9
+    },
+    {
+      "day": "date=2025-11-01",
+      "rows": 105705538,
+      "nonzero_ns": 103303787,
+      "pct": 97.73
+    },
+    {
+      "day": "date=2026-01-16",
+      "rows": 5594979,
+      "nonzero_ns": 3370792,
+      "pct": 60.25
+    },
+    {
+      "day": "date=2026-04-02",
+      "rows": 5287345,
+      "nonzero_ns": 2988311,
+      "pct": 56.52
+    },
+    {
+      "day": "date=2026-06-17",
+      "rows": 5439694,
+      "nonzero_ns": 3149947,
+      "pct": 57.91
+    }
+  ],
+  "total_rows": 593388314,
+  "total_nonzero_ns": 579171675,
+  "aggregate_pct": 97.6,
+  "per_day_min": 56.52,
+  "per_day_median": 97.73,
+  "per_day_max": 99.9
+}

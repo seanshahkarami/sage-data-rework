@@ -1,0 +1,30 @@
+{
+  "days": 60,
+  "files": 558,
+  "levels": [
+    {
+      "level": "full",
+      "bytes": 353412,
+      "gz": 15538,
+      "per_file": 633,
+      "projected_4564": 2890631,
+      "projected_4564_gz": 127089
+    },
+    {
+      "level": "pruning",
+      "bytes": 185309,
+      "gz": 10988,
+      "per_file": 332,
+      "projected_4564": 1515681,
+      "projected_4564_gz": 89873
+    },
+    {
+      "level": "file",
+      "bytes": 177571,
+      "gz": 10514,
+      "per_file": 318,
+      "projected_4564": 1452391,
+      "projected_4564_gz": 85996
+    }
+  ]
+}

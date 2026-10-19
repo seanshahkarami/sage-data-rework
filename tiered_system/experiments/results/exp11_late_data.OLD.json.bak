@@ -1,0 +1,1047 @@
+{
+  "lag_rows": [
+    {
+      "date": "date=2025-01-01",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T14:16:56+00:00",
+      "lag_days": 640.6
+    },
+    {
+      "date": "date=2025-01-01",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T14:18:20+00:00",
+      "lag_days": 640.6
+    },
+    {
+      "date": "date=2025-01-01",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T14:19:52+00:00",
+      "lag_days": 640.6
+    },
+    {
+      "date": "date=2025-01-01",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T14:21:18+00:00",
+      "lag_days": 640.6
+    },
+    {
+      "date": "date=2025-01-01",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T14:22:43+00:00",
+      "lag_days": 640.6
+    },
+    {
+      "date": "date=2025-01-01",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T14:31:23+00:00",
+      "lag_days": 640.61
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T15:23:48+00:00",
+      "lag_days": 625.64
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T15:25:09+00:00",
+      "lag_days": 625.64
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T15:26:39+00:00",
+      "lag_days": 625.64
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T15:28:11+00:00",
+      "lag_days": 625.64
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T15:29:35+00:00",
+      "lag_days": 625.65
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T15:31:02+00:00",
+      "lag_days": 625.65
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-03T15:32:23+00:00",
+      "lag_days": 625.65
+    },
+    {
+      "date": "date=2025-01-16",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-03T15:41:09+00:00",
+      "lag_days": 625.65
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T17:11:19+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T17:12:38+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T17:15:48+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T17:18:11+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T17:19:43+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T17:21:08+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-03T17:22:27+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-03T17:23:45+00:00",
+      "lag_days": 610.72
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-03T17:25:04+00:00",
+      "lag_days": 610.73
+    },
+    {
+      "date": "date=2025-01-31",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-03T17:35:34+00:00",
+      "lag_days": 610.73
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T18:54:04+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T18:55:25+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T18:56:43+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T18:58:09+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T18:59:35+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T19:00:55+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-03T19:02:16+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-03T19:03:36+00:00",
+      "lag_days": 595.79
+    },
+    {
+      "date": "date=2025-02-15",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-03T19:15:40+00:00",
+      "lag_days": 595.8
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T20:54:39+00:00",
+      "lag_days": 580.87
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T20:55:58+00:00",
+      "lag_days": 580.87
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-03T21:08:19+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-03T21:09:34+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-03T21:10:59+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-03T21:21:44+00:00",
+      "lag_days": 580.89
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T20:57:16+00:00",
+      "lag_days": 580.87
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T20:58:38+00:00",
+      "lag_days": 580.87
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T20:59:57+00:00",
+      "lag_days": 580.87
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T21:01:27+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-03T21:02:58+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-03T21:04:20+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-03T21:05:40+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-02",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-03T21:06:59+00:00",
+      "lag_days": 580.88
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-03T22:44:28+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-03T22:46:10+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-03T22:59:39+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-03T23:01:01+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-03T23:02:22+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-03T23:09:22+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-03T22:47:47+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-03T22:49:30+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-03T22:50:59+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-03T22:52:33+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-03T22:54:06+00:00",
+      "lag_days": 565.95
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-03T22:55:29+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-03T22:56:55+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-03-17",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-03T22:58:16+00:00",
+      "lag_days": 565.96
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T01:13:05+00:00",
+      "lag_days": 551.05
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T01:14:24+00:00",
+      "lag_days": 551.05
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T01:26:51+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T01:28:10+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T01:29:33+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T01:46:46+00:00",
+      "lag_days": 551.07
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T01:15:42+00:00",
+      "lag_days": 551.05
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T01:17:00+00:00",
+      "lag_days": 551.05
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T01:18:22+00:00",
+      "lag_days": 551.05
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T01:19:54+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T01:21:32+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T01:22:55+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T01:24:14+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-01",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T01:25:32+00:00",
+      "lag_days": 551.06
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T03:34:53+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T03:36:14+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T03:48:43+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T03:50:03+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T03:51:26+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T04:00:56+00:00",
+      "lag_days": 536.17
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T03:37:31+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T03:38:50+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T03:40:16+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T03:41:48+00:00",
+      "lag_days": 536.15
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T03:43:19+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T03:44:43+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T03:46:04+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-04-16",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T03:47:25+00:00",
+      "lag_days": 536.16
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T05:36:28+00:00",
+      "lag_days": 521.23
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T05:37:47+00:00",
+      "lag_days": 521.23
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T05:49:59+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T05:51:17+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T05:52:34+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T05:53:56+00:00",
+      "lag_days": 521.25
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_14.parquet",
+      "exported_at": "2026-10-04T06:02:16+00:00",
+      "lag_days": 521.25
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T05:39:04+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T05:40:20+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T05:41:40+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T05:43:02+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T05:44:35+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T05:46:03+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T05:47:22+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-01",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T05:48:41+00:00",
+      "lag_days": 521.24
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T07:13:59+00:00",
+      "lag_days": 506.3
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T07:15:21+00:00",
+      "lag_days": 506.3
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T07:27:59+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T07:29:17+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T07:30:42+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T07:32:10+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_14.parquet",
+      "exported_at": "2026-10-04T07:37:15+00:00",
+      "lag_days": 506.32
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T07:16:42+00:00",
+      "lag_days": 506.3
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T07:18:00+00:00",
+      "lag_days": 506.3
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T07:19:22+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T07:20:47+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T07:22:19+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T07:23:44+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T07:25:15+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-16",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T07:26:39+00:00",
+      "lag_days": 506.31
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T09:22:00+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T09:23:18+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T09:35:37+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T09:37:02+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T09:38:20+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T09:39:41+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_14.parquet",
+      "exported_at": "2026-10-04T09:51:23+00:00",
+      "lag_days": 491.41
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T09:24:39+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T09:25:55+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T09:27:20+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T09:28:43+00:00",
+      "lag_days": 491.39
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T09:30:14+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T09:31:36+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T09:32:56+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-05-31",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T09:34:15+00:00",
+      "lag_days": 491.4
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T11:34:11+00:00",
+      "lag_days": 476.48
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T11:35:42+00:00",
+      "lag_days": 476.48
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T11:48:12+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T11:49:31+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T11:50:52+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T11:52:17+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_14.parquet",
+      "exported_at": "2026-10-04T12:02:44+00:00",
+      "lag_days": 476.5
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T11:36:59+00:00",
+      "lag_days": 476.48
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T11:38:17+00:00",
+      "lag_days": 476.48
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T11:39:38+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T11:41:03+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T11:42:37+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T11:44:04+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T11:45:26+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-15",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T11:46:52+00:00",
+      "lag_days": 476.49
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T13:30:07+00:00",
+      "lag_days": 461.56
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T13:31:29+00:00",
+      "lag_days": 461.56
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T13:43:56+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T13:45:15+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T13:46:34+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T13:52:45+00:00",
+      "lag_days": 461.58
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T13:32:47+00:00",
+      "lag_days": 461.56
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T13:34:07+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_4.parquet",
+      "exported_at": "2026-10-04T13:35:29+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_5.parquet",
+      "exported_at": "2026-10-04T13:36:56+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_6.parquet",
+      "exported_at": "2026-10-04T13:38:27+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_7.parquet",
+      "exported_at": "2026-10-04T13:39:49+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_8.parquet",
+      "exported_at": "2026-10-04T13:41:15+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-06-30",
+      "file": "data_9.parquet",
+      "exported_at": "2026-10-04T13:42:35+00:00",
+      "lag_days": 461.57
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_0.parquet",
+      "exported_at": "2026-10-04T15:11:55+00:00",
+      "lag_days": 446.63
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_1.parquet",
+      "exported_at": "2026-10-04T15:13:26+00:00",
+      "lag_days": 446.63
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_10.parquet",
+      "exported_at": "2026-10-04T15:27:17+00:00",
+      "lag_days": 446.64
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_11.parquet",
+      "exported_at": "2026-10-04T15:28:44+00:00",
+      "lag_days": 446.64
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_12.parquet",
+      "exported_at": "2026-10-04T15:30:12+00:00",
+      "lag_days": 446.65
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_13.parquet",
+      "exported_at": "2026-10-04T15:31:47+00:00",
+      "lag_days": 446.65
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_14.parquet",
+      "exported_at": "2026-10-04T15:36:00+00:00",
+      "lag_days": 446.65
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_2.parquet",
+      "exported_at": "2026-10-04T15:14:53+00:00",
+      "lag_days": 446.64
+    },
+    {
+      "date": "date=2025-07-15",
+      "file": "data_3.parquet",
+      "exported_at": "2026-10-04T15:16:19+00:00",
+      "lag_days": 446.64
+    }
+  ],
+  "correction": {
+    "day": "date=2025-01-01",
+    "measurement": "wxt.wind.direction",
+    "records_before": 37037,
+    "records_after": 37038,
+    "delta": 1,
+    "stable_on_reread": true,
+    "files_read_after": 7,
+    "correction_bytes": 5196,
+    "correction_naming_works": true
+  }
+}

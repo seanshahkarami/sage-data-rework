@@ -1,0 +1,73 @@
+{
+  "days": [
+    "date=2025-01-01",
+    "date=2025-01-02",
+    "date=2025-01-03"
+  ],
+  "before": {
+    "files": 18,
+    "bytes": 910099136,
+    "rows": 178902746,
+    "row_groups": 18
+  },
+  "after": {
+    "files": 9,
+    "bytes": 755691541,
+    "rows": 178902746,
+    "row_groups": 359
+  },
+  "compaction_seconds": 81.1,
+  "pre": {
+    "one_hour_measurement": {
+      "n": 252434,
+      "fp": "bbd02a1d9eb261ed9aea762c814020960f3ab5e4cd49bc21b294a612dd310e66",
+      "seconds": 4.49,
+      "files": 6
+    },
+    "rare_plugin_whole_range": {
+      "n": 12,
+      "fp": "f85578edd188c19a8a88d5caa1808215be81e9194fe492a4afdeeedd10179dae",
+      "seconds": 0.67,
+      "files": 18
+    },
+    "tail_per_series": {
+      "n": 14,
+      "fp": "a50cfdffd263d07b5e1d356bd1675677110ffb43e09cb1e90c6140c4ac357a7c",
+      "seconds": 4.83,
+      "files": 6
+    },
+    "regex_measurement": {
+      "n": 247398,
+      "fp": "f03565b6bcde6ab95ea64d3a84a6d27b19569fd3da0e1dd05459044c10ff2055",
+      "seconds": 4.92,
+      "files": 6
+    }
+  },
+  "post": {
+    "one_hour_measurement": {
+      "n": 252434,
+      "fp": "bbd02a1d9eb261ed9aea762c814020960f3ab5e4cd49bc21b294a612dd310e66",
+      "seconds": 4.41,
+      "files": 3
+    },
+    "rare_plugin_whole_range": {
+      "n": 12,
+      "fp": "f85578edd188c19a8a88d5caa1808215be81e9194fe492a4afdeeedd10179dae",
+      "seconds": 0.07,
+      "files": 9
+    },
+    "tail_per_series": {
+      "n": 14,
+      "fp": "a50cfdffd263d07b5e1d356bd1675677110ffb43e09cb1e90c6140c4ac357a7c",
+      "seconds": 3.32,
+      "files": 3
+    },
+    "regex_measurement": {
+      "n": 247398,
+      "fp": "f03565b6bcde6ab95ea64d3a84a6d27b19569fd3da0e1dd05459044c10ff2055",
+      "seconds": 4.08,
+      "files": 3
+    }
+  },
+  "identical": true
+}

@@ -1,0 +1,76 @@
+{
+  "root": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive",
+  "days": [
+    "date=2025-01-01",
+    "date=2025-01-02",
+    "date=2025-01-03"
+  ],
+  "num_files": 18,
+  "slice_bytes": 910099136,
+  "big_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "rare_plugin": "registry.sagecontinuum.org/seonghapark/surface-water-detection:0.0.4",
+  "results": [
+    {
+      "case": "count_star",
+      "rows": 178902746,
+      "error": null,
+      "seconds": 0.01,
+      "http_requests": 36,
+      "http_bytes": 1376256,
+      "files_touched": 18,
+      "pct_of_archive_slice": 0.15
+    },
+    {
+      "case": "big_plugin_cnt",
+      "rows": 1,
+      "error": null,
+      "seconds": 0.06,
+      "http_requests": 54,
+      "http_bytes": 3254514,
+      "files_touched": 18,
+      "pct_of_archive_slice": 0.36
+    },
+    {
+      "case": "big_plugin",
+      "rows": 160789210,
+      "error": null,
+      "seconds": 308.32,
+      "http_requests": 108,
+      "http_bytes": 588425990,
+      "files_touched": 18,
+      "pct_of_archive_slice": 64.66
+    },
+    {
+      "case": "rare_plugin",
+      "rows": 12,
+      "error": null,
+      "seconds": 71.69,
+      "http_requests": 48,
+      "http_bytes": 146645682,
+      "files_touched": 18,
+      "pct_of_archive_slice": 16.11
+    },
+    {
+      "case": "name_filter",
+      "rows": 843678,
+      "error": null,
+      "seconds": 1.56,
+      "http_requests": 48,
+      "http_bytes": 146645682,
+      "files_touched": 18,
+      "pct_of_archive_slice": 16.11
+    },
+    {
+      "case": "one_hour",
+      "rows": 2330550,
+      "error": null,
+      "seconds": 4.4,
+      "http_requests": 54,
+      "http_bytes": 196921786,
+      "files_touched": 18,
+      "pct_of_archive_slice": 21.64
+    }
+  ],
+  "footer_requests": 36,
+  "footer_bytes": 1376256
+}

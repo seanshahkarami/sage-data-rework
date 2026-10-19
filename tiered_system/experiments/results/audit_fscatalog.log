@@ -1,0 +1,7 @@
+=== RUN   TestAuditFilesystemCatalog
+    audit_fscatalog_test.go:36: isolated storage: https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-audit-1792019924049617000
+    audit_fscatalog_test.go:40: fresh prefix: status=0 err=Propfind "https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-audit-1792019924049617000": dial tcp: lookup nrdstor.nationalresearchplatform.org: no such host
+--- FAIL: TestAuditFilesystemCatalog (0.00s)
+FAIL
+FAIL	icebergo_v3probe	0.572s
+FAIL

@@ -1,0 +1,86 @@
+{
+  "duckdb": "1.5.6",
+  "pyarrow": "25.0.1",
+  "tail_same_tags_different_order": {
+    "records": [
+      {
+        "timestamp": "2025-01-01T00:00:00Z",
+        "name": "env.temperature",
+        "value": 1,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      },
+      {
+        "timestamp": "2025-01-01T00:00:01Z",
+        "name": "env.temperature",
+        "value": 2,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      }
+    ],
+    "row_count": 2
+  },
+  "count_request": {
+    "records": [
+      {
+        "timestamp": "2025-01-01T00:00:00Z",
+        "name": "env.temperature",
+        "value": 1,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      },
+      {
+        "timestamp": "2025-01-01T00:00:01Z",
+        "name": "env.temperature",
+        "value": 2,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      }
+    ],
+    "row_count": 2
+  },
+  "private_bucket_request": {
+    "records": [
+      {
+        "timestamp": "2025-01-01T00:00:00Z",
+        "name": "env.temperature",
+        "value": 1,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      },
+      {
+        "timestamp": "2025-01-01T00:00:01Z",
+        "name": "env.temperature",
+        "value": 2,
+        "meta": {
+          "a": "1",
+          "b": "2"
+        }
+      }
+    ],
+    "row_count": 2
+  },
+  "submicrosecond_parse": "2025-01-01T00:00:00+00:00",
+  "parquet_timestamp_None": [
+    [
+      "TIMESTAMP_NS",
+      1735689606915629791
+    ]
+  ],
+  "parquet_timestamp_UTC": [
+    [
+      "TIMESTAMP WITH TIME ZONE",
+      1735689606915629000
+    ]
+  ]
+}

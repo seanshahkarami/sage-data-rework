@@ -1,0 +1,23 @@
+{
+  "days": [
+    {
+      "day": "date=2025-01-01",
+      "before": 18330199,
+      "after": 12846087,
+      "ratio": 70.1,
+      "rows": 2397883,
+      "seconds": 0.9
+    },
+    {
+      "day": "date=2025-01-02",
+      "before": 18330199,
+      "after": 12846087,
+      "ratio": 70.1,
+      "rows": 2397883,
+      "seconds": 0.9
+    }
+  ],
+  "total_before": 36660398,
+  "total_after": 25692174,
+  "ratio_pct": 70.1
+}

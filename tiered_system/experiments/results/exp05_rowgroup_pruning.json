@@ -1,0 +1,204 @@
+{
+  "big_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "rare_plugin": "10.31.81.1:5000/local/soiltest2",
+  "variants": {
+    "go_exporter(1rg)": {
+      "file_size": 100728595,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 16.929,
+          "http_requests": 4,
+          "http_bytes": 53972680
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.244,
+          "http_requests": 6,
+          "http_bytes": 53972680
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.031,
+          "http_requests": 6,
+          "http_bytes": 53972680
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.908,
+          "http_requests": 6,
+          "http_bytes": 53972680
+        }
+      ]
+    },
+    "pyarrow_rg=100,000": {
+      "file_size": 84978977,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 17.113,
+          "http_requests": 139,
+          "http_bytes": 58677378
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.43,
+          "http_requests": 37,
+          "http_bytes": 21720846
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.004,
+          "http_requests": 5,
+          "http_bytes": 449275
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.919,
+          "http_requests": 84,
+          "http_bytes": 25084944
+        }
+      ]
+    },
+    "pyarrow_rg=1,000,000": {
+      "file_size": 71603557,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 16.939,
+          "http_requests": 17,
+          "http_bytes": 46536559
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.302,
+          "http_requests": 10,
+          "http_bytes": 16872794
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.006,
+          "http_requests": 4,
+          "http_bytes": 2247868
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.894,
+          "http_requests": 22,
+          "http_bytes": 24343676
+        }
+      ]
+    },
+    "pyarrow_rg=10,000,000": {
+      "file_size": 67883056,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 17.091,
+          "http_requests": 4,
+          "http_bytes": 43619445
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.452,
+          "http_requests": 6,
+          "http_bytes": 43619445
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.036,
+          "http_requests": 6,
+          "http_bytes": 43619445
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.964,
+          "http_requests": 6,
+          "http_bytes": 43619445
+        }
+      ]
+    },
+    "pyarrow_rg=2,000,000": {
+      "file_size": 69738725,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 17.082,
+          "http_requests": 10,
+          "http_bytes": 45027694
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.551,
+          "http_requests": 8,
+          "http_bytes": 26167940
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.011,
+          "http_requests": 4,
+          "http_bytes": 6741076
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.94,
+          "http_requests": 12,
+          "http_bytes": 23413792
+        }
+      ]
+    },
+    "pyarrow_rg=250,000": {
+      "file_size": 78637731,
+      "results": [
+        {
+          "case": "full_scan",
+          "rows": 10000000,
+          "seconds": 17.366,
+          "http_requests": 57,
+          "http_bytes": 52101772
+        },
+        {
+          "case": "big_plugin",
+          "rows": 3166381,
+          "seconds": 5.278,
+          "http_requests": 18,
+          "http_bytes": 18666977
+        },
+        {
+          "case": "rare_plugin",
+          "rows": 3,
+          "seconds": 0.004,
+          "http_requests": 4,
+          "http_bytes": 459646
+        },
+        {
+          "case": "name_filter",
+          "rows": 488454,
+          "seconds": 0.887,
+          "http_requests": 39,
+          "http_bytes": 23794086
+        }
+      ]
+    }
+  }
+}

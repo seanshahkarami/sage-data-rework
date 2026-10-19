@@ -1,0 +1,91 @@
+{
+ "engine": "duckdb",
+ "days": [
+  {
+   "day": "date=2025-01-01",
+   "rows": 59496597,
+   "keys_before": 58687252,
+   "keys_after": 58687252,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2025-03-18",
+   "rows": 142378324,
+   "keys_before": 141657374,
+   "keys_after": 141657374,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2025-06-02",
+   "rows": 140434356,
+   "keys_before": 139698155,
+   "keys_after": 139698155,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2025-08-17",
+   "rows": 129051481,
+   "keys_before": 128746249,
+   "keys_after": 128746249,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2025-11-01",
+   "rows": 105705538,
+   "keys_before": 105622792,
+   "keys_after": 105622792,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2026-01-16",
+   "rows": 5594979,
+   "keys_before": 5526742,
+   "keys_after": 5526742,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2026-04-02",
+   "rows": 5287345,
+   "keys_before": 5239176,
+   "keys_after": 5239176,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  },
+  {
+   "day": "date=2026-06-17",
+   "rows": 5439694,
+   "keys_before": 5386674,
+   "keys_after": 5386674,
+   "lost": 0,
+   "pct": 0.0,
+   "collided_keys": 0,
+   "conflicting_keys": 0
+  }
+ ],
+ "total_rows": 593388314,
+ "keys_before": 590564414,
+ "keys_after": 590564414,
+ "lost": 0,
+ "aggregate_pct": 0.0,
+ "conflicting_keys": 0
+}

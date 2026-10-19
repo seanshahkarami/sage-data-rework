@@ -1,0 +1,13 @@
+# Local research data pulled from sage03 — never commit
+data/
+scratch/
+*.parquet
+!avian-diversity-example/labels.csv
+__pycache__/
+*.pyc
+tiered_system/experiments/results/manifest*.json
+
+# Go build output from experiments/icebergo
+tiered_system/experiments/icebergo/icebergo_v3probe
+
+.DS_Store

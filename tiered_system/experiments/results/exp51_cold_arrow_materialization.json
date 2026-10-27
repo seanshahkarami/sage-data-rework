@@ -1,0 +1,42 @@
+{
+  "memory_limit": "256MB",
+  "threads": 2,
+  "results": [
+    {
+      "mode": "driver",
+      "rows": 1000000,
+      "peak_rss_mb": 644.4,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=0.710993\nPROBE rows=1000000 total_seconds=0.749161\n--- PASS: TestColdArrowMemoryProbe (0.75s)\nPASS\n",
+      "ready_seconds": 0.710993,
+      "total_seconds": 0.749161
+    },
+    {
+      "mode": "stream",
+      "rows": 1000000,
+      "peak_rss_mb": 323.1,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=0.677071\nPROBE rows=1000000 total_seconds=0.774592\n--- PASS: TestColdArrowMemoryProbe (0.78s)\nPASS\n",
+      "ready_seconds": 0.677071,
+      "total_seconds": 0.774592
+    },
+    {
+      "mode": "driver",
+      "rows": 4000000,
+      "peak_rss_mb": 1672.1,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=3.100286\nPROBE rows=4000000 total_seconds=3.365002\n--- PASS: TestColdArrowMemoryProbe (3.38s)\nPASS\n",
+      "ready_seconds": 3.100286,
+      "total_seconds": 3.365002
+    },
+    {
+      "mode": "stream",
+      "rows": 4000000,
+      "peak_rss_mb": 369.7,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=2.765475\nPROBE rows=4000000 total_seconds=3.401596\n--- PASS: TestColdArrowMemoryProbe (3.40s)\nPASS\n",
+      "ready_seconds": 2.765475,
+      "total_seconds": 3.401596
+    }
+  ]
+}

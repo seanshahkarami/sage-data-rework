@@ -1,0 +1,58 @@
+{
+  "when": "2026-10-20",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "sage-data-client load / _load_arrow",
+  "client": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-client/src/sage_data_client/query.py",
+  "reps": 1,
+  "results": [
+    {
+      "query": "hot May temp+vsn",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "fmt": "ndjson",
+      "rows": 18705434,
+      "bytes": 6459489657,
+      "ttfb_s": 0.029,
+      "total_s": 1474.1,
+      "server_s": 965.602,
+      "rss_gb": 5.75,
+      "sample": {
+        "value": 11.1,
+        "value_type": "float64",
+        "meta.vsn": "W0A0"
+      }
+    },
+    {
+      "query": "hot May temp+vsn",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "fmt": "arrow",
+      "error": "I/O operation on closed file"
+    },
+    {
+      "query": "cold March temp+vsn",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "fmt": "ndjson",
+      "rows": 25940207,
+      "bytes": 8871926444,
+      "ttfb_s": 660.887,
+      "total_s": 4077.293,
+      "server_s": 2409.483,
+      "rss_gb": 5.75,
+      "sample": {
+        "value": 11.7,
+        "value_type": "float64",
+        "meta.vsn": "W0A0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "when": "2026-10-21",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "curl + duckdb read_arrow / read_ndjson_auto",
+  "duckdb": "1.5.6",
+  "short_reps": 2,
+  "month_reps": 1,
+  "warmup_excluded_from_short_median": true,
+  "peak_memory": "max sampled API container usage during the download",
+  "gzip": "level 6 of the last body, not sent by the server, not included in latency",
+  "results": [
+    {
+      "query": "hot 1 min, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 686,
+      "arrow_rows": 686,
+      "ndjson": {
+        "rows": 686,
+        "bytes": 237287.0,
+        "gzip": 6002,
+        "ttfb": 0.013306499999999999,
+        "download": 0.017148999999999998,
+        "decode": 0.014948728996387217,
+        "total": 0.032097728996387215,
+        "server": 0.015245396000000001,
+        "peak": 40747663.36,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 686,
+        "bytes": 200952.0,
+        "gzip": 9001,
+        "ttfb": 0.013016,
+        "download": 0.014739,
+        "decode": 0.0008821460069157183,
+        "total": 0.015621146006915719,
+        "server": 0.011246104,
+        "peak": 41093693.44,
+        "reps": 2
+      },
+      "speedup": 2.054761474105489
+    },
+    {
+      "query": "hot 1 hour, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43525,
+      "arrow_rows": 43525,
+      "ndjson": {
+        "rows": 43525,
+        "bytes": 15048949.0,
+        "gzip": 359999,
+        "ttfb": 0.0088265,
+        "download": 0.2449655,
+        "decode": 0.09908879150316352,
+        "total": 0.3440542915031635,
+        "server": 0.2436528125,
+        "peak": 42362470.4,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43525,
+        "bytes": 12704128.0,
+        "gzip": 422130,
+        "ttfb": 0.2049555,
+        "download": 0.2311265,
+        "decode": 0.00665360399580095,
+        "total": 0.23778010399580096,
+        "server": 0.208873312,
+        "peak": 92390031.36,
+        "reps": 2
+      },
+      "speedup": 1.4469431450380696
+    },
+    {
+      "query": "hot 6 hours, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T06:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 261034,
+      "arrow_rows": 261034,
+      "ndjson": {
+        "rows": 261034,
+        "bytes": 90239188.0,
+        "gzip": 2153382,
+        "ttfb": 0.009232,
+        "download": 1.38737,
+        "decode": 0.11778191700432217,
+        "total": 1.5051519170043222,
+        "server": 1.3862660635,
+        "peak": 50908364.8,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 261034,
+        "bytes": 76174280.0,
+        "gzip": 2533010,
+        "ttfb": 0.252572,
+        "download": 0.989514,
+        "decode": 0.024382229501497932,
+        "total": 1.013896229501498,
+        "server": 0.9595660420000001,
+        "peak": 89579847.68,
+        "reps": 2
+      },
+      "speedup": 1.4845226495657842
+    },
+    {
+      "query": "hot 1 min, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6243,
+      "arrow_rows": 6243,
+      "ndjson": {
+        "rows": 6243,
+        "bytes": 2219426.0,
+        "gzip": 57484,
+        "ttfb": 0.048695,
+        "download": 0.0817295,
+        "decode": 0.05387068800337147,
+        "total": 0.13560018800337148,
+        "server": 0.079568958,
+        "peak": 48664412.16,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6243,
+        "bytes": 1883560.0,
+        "gzip": 50583,
+        "ttfb": 0.077292,
+        "download": 0.0813905,
+        "decode": 0.0019518750050337985,
+        "total": 0.0833423750050338,
+        "server": 0.07554650000000002,
+        "peak": 51390709.76,
+        "reps": 2
+      },
+      "speedup": 1.62702572365116
+    },
+    {
+      "query": "hot 1 hour, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 396225,
+      "arrow_rows": 396225,
+      "ndjson": {
+        "rows": 396225,
+        "bytes": 140866993.0,
+        "gzip": 3452949,
+        "ttfb": 0.036780499999999994,
+        "download": 2.2389555000000003,
+        "decode": 0.13427485400461592,
+        "total": 2.3732303540046162,
+        "server": 2.237628334,
+        "peak": 49954160.64,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 396225,
+        "bytes": 119518336.0,
+        "gzip": 4507296,
+        "ttfb": 0.279541,
+        "download": 1.5387815,
+        "decode": 0.040103082996211015,
+        "total": 1.578884582996211,
+        "server": 1.520461605,
+        "peak": 49052385.28,
+        "reps": 2
+      },
+      "speedup": 1.5031056605169926
+    },
+    {
+      "query": "cold 1 min, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 698,
+      "arrow_rows": 698,
+      "ndjson": {
+        "rows": 698,
+        "bytes": 239337.0,
+        "gzip": 4961,
+        "ttfb": 0.38178599999999996,
+        "download": 0.3861405,
+        "decode": 0.014652354002464563,
+        "total": 0.40079285400246456,
+        "server": 0.384483458,
+        "peak": 114504499.2,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 698,
+        "bytes": 204456.0,
+        "gzip": 9130,
+        "ttfb": 0.3837835,
+        "download": 0.38439650000000003,
+        "decode": 0.001277208502870053,
+        "total": 0.3856737085028701,
+        "server": 0.382145042,
+        "peak": 200592588.8,
+        "reps": 2
+      },
+      "speedup": 1.0392019086763389
+    },
+    {
+      "query": "cold 1 hour, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43509,
+      "arrow_rows": 43509,
+      "ndjson": {
+        "rows": 43509,
+        "bytes": 14891210.0,
+        "gzip": 284146,
+        "ttfb": 0.5876825,
+        "download": 0.8360895,
+        "decode": 0.10525602100824472,
+        "total": 0.9413455210082448,
+        "server": 0.834532751,
+        "peak": 297271296.0,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43509,
+        "bytes": 12699872.0,
+        "gzip": 519057,
+        "ttfb": 0.5656965,
+        "download": 0.5915714999999999,
+        "decode": 0.004463333505555056,
+        "total": 0.596034833505555,
+        "server": 0.570844813,
+        "peak": 336488038.4,
+        "reps": 2
+      },
+      "speedup": 1.5793464879758097
+    },
+    {
+      "query": "cold 1 min, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6352,
+      "arrow_rows": 6352,
+      "ndjson": {
+        "rows": 6352,
+        "bytes": 2244631.0,
+        "gzip": 38286,
+        "ttfb": 0.507369,
+        "download": 0.5430919999999999,
+        "decode": 0.05347175000497373,
+        "total": 0.5965637500049736,
+        "server": 0.5418952505000001,
+        "peak": 556374425.6,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6352,
+        "bytes": 1926256.0,
+        "gzip": 60359,
+        "ttfb": 0.5090745,
+        "download": 0.512697,
+        "decode": 0.0017598749982425943,
+        "total": 0.5144568749982426,
+        "server": 0.507981354,
+        "peak": 797651763.2,
+        "reps": 2
+      },
+      "speedup": 1.1595991403691739
+    },
+    {
+      "query": "cold 1 hour, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 395989,
+      "arrow_rows": 395989,
+      "ndjson": {
+        "rows": 395989,
+        "bytes": 139636489.0,
+        "gzip": 2251086,
+        "ttfb": 1.705848,
+        "download": 4.0466295,
+        "decode": 0.1258770420026849,
+        "total": 4.172506542002685,
+        "server": 4.044925772499999,
+        "peak": 1371168309.248,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 395989,
+        "bytes": 119791440.0,
+        "gzip": 3823465,
+        "ttfb": 1.665299,
+        "download": 1.9513894999999999,
+        "decode": 0.03017412500048522,
+        "total": 1.981563625000485,
+        "server": 1.897002397,
+        "peak": 1487132426.24,
+        "reps": 2
+      },
+      "speedup": 2.1056636735556062
+    },
+    {
+      "query": "hot May, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 30388936,
+      "arrow_rows": 30388936,
+      "ndjson": {
+        "rows": 30388936,
+        "bytes": 10496865583,
+        "gzip": 250645185,
+        "ttfb": 0.129245,
+        "download": 171.417047,
+        "decode": 1.4948471250099828,
+        "total": 172.91189412500998,
+        "server": 171.414919123,
+        "peak": 1465657589.76,
+        "reps": 1
+      },
+      "arrow": {
+        "rows": 30388936,
+        "bytes": 8859410040,
+        "gzip": 296905173,
+        "ttfb": 0.424457,
+        "download": 112.855856,
+        "decode": 2.6774293340131408,
+        "total": 115.53328533401314,
+        "server": 112.821706304,
+        "peak": 1530082099.2,
+        "reps": 1
+      },
+      "speedup": 1.4966413672485128
+    },
+    {
+      "query": "cold March, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 25940207,
+      "arrow_rows": 25940207,
+      "ndjson": {
+        "rows": 25940207,
+        "bytes": 8871926444,
+        "gzip": 168444966,
+        "ttfb": 117.896218,
+        "download": 279.067538,
+        "decode": 1.4893488329980755,
+        "total": 280.5568868329981,
+        "server": 279.06125125799997,
+        "peak": 11886321991.68,
+        "reps": 1
+      },
+      "arrow": {
+        "rows": 25940207,
+        "bytes": 7561888648,
+        "gzip": 312163648,
+        "ttfb": 101.360031,
+        "download": 120.774774,
+        "decode": 1.7360650830087252,
+        "total": 122.51083908300872,
+        "server": 120.765281974,
+        "peak": 7217692540.928,
+        "reps": 1
+      },
+      "speedup": 2.2900576710841345
+    }
+  ]
+}

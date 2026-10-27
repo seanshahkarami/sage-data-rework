@@ -1,0 +1,34 @@
+{
+  "when": "2026-10-21",
+  "api_memory_limit": "14g",
+  "rancher_vm_memory": "16g",
+  "peak_mem_gib_sampled_15s": 9.608,
+  "end_mem": "2.415GiB / 14GiB",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "curl + duckdb read_arrow / read_ndjson_auto",
+  "duckdb": "1.5.6",
+  "reps": 0,
+  "warmup_excluded_from_median": false,
+  "gzip": "one streaming gzip level 6 of the last body of each format; not included in total_s; the server did not compress",
+  "scope": "cold March 2025, wxt.env.temp on vsn W0A0, live Iceberg table. Not the whole fleet.",
+  "medians": [
+    {
+      "query": "cold March temp+vsn",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "fmt": "ndjson",
+      "rows": 25940207,
+      "raw_gb": 8.872,
+      "gzip_mb": 168.44,
+      "ttfb_s": 96.802,
+      "download_s": 230.474,
+      "decode_s": 1.439,
+      "total_s": 231.913,
+      "server_s": 230.471
+    }
+  ]
+}

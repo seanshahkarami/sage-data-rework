@@ -1,0 +1,761 @@
+{
+  "layout": "time",
+  "table_uuid": "50627796-6974-42d0-a8fa-e5da2940e4c4",
+  "snapshot_id": 8224181995245028531,
+  "snapshots": 61,
+  "value_field_id": 11,
+  "value_type": "variant",
+  "files": 122,
+  "rows": 8457186954,
+  "bytes": 44678623625,
+  "row_groups": 32062,
+  "mixed_plugin_groups": 32062,
+  "ordering_checked": false,
+  "physical_typed_value_types": {
+    "double": 122
+  },
+  "min_timestamp_ns": 1740787200000000000,
+  "max_timestamp_ns": 1746057599994422512,
+  "file_row_limit": null,
+  "one_group_per_plugin": false,
+  "plugin_pure_groups": false,
+  "row_group_row_limit": null,
+  "bounded_plugin_groups": false,
+  "max_row_group_rows": 284407,
+  "batch_order": null,
+  "file_time_ranges": [
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20148/01a165b3-d280-7875-ad68-768be130edb7.parquet",
+      "rows": 109451661,
+      "min_timestamp_ns": 1740787200000000000,
+      "max_timestamp_ns": 1740854536003517125
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20148/01a165b5-2ac1-704f-874d-3f2f52b97aa1.parquet",
+      "rows": 31127013,
+      "min_timestamp_ns": 1740853401409895116,
+      "max_timestamp_ns": 1740873599998558748
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20149/01a1691e-8eb5-7c69-bb95-3dfbaf293845.parquet",
+      "rows": 109390639,
+      "min_timestamp_ns": 1740873600000000000,
+      "max_timestamp_ns": 1740941577627948910
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20149/01a1691f-dcd3-7b20-ab7d-9d95dfa4b94c.parquet",
+      "rows": 30091372,
+      "min_timestamp_ns": 1740940415222801841,
+      "max_timestamp_ns": 1740959999998295948
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20150/01a16920-c954-7b8a-8acd-348f703ef3f4.parquet",
+      "rows": 109336768,
+      "min_timestamp_ns": 1740960000000000000,
+      "max_timestamp_ns": 1741027942695666560
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20150/01a16922-1a88-7cf6-af3f-c6c63c902b25.parquet",
+      "rows": 29391817,
+      "min_timestamp_ns": 1741027219790926177,
+      "max_timestamp_ns": 1741046399999551471
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20151/01a16922-f47a-77d8-8c42-780dbb45f169.parquet",
+      "rows": 108196078,
+      "min_timestamp_ns": 1741046400000000000,
+      "max_timestamp_ns": 1741115825342166595
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20151/01a16924-3b0a-7cec-b105-e22e736640bd.parquet",
+      "rows": 26500698,
+      "min_timestamp_ns": 1741114460029007570,
+      "max_timestamp_ns": 1741132799998784081
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20152/01a16925-1251-725b-b9d2-ace446f0e87f.parquet",
+      "rows": 108422699,
+      "min_timestamp_ns": 1741132800012852514,
+      "max_timestamp_ns": 1741202437001772256
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20152/01a16926-5928-7e72-9719-85119e1bc694.parquet",
+      "rows": 27699310,
+      "min_timestamp_ns": 1741201885758787841,
+      "max_timestamp_ns": 1741219199987195554
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20153/01a16927-41ac-71e9-a7c4-32c51f51651d.parquet",
+      "rows": 109124268,
+      "min_timestamp_ns": 1741219200000000000,
+      "max_timestamp_ns": 1741285540906265033
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20153/01a16928-7489-7179-b3ba-b7d906814ef8.parquet",
+      "rows": 33884952,
+      "min_timestamp_ns": 1741284216337933076,
+      "max_timestamp_ns": 1741305599999345825
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20154/01a16929-5f64-7b46-b18e-9c188a3078fe.parquet",
+      "rows": 109250414,
+      "min_timestamp_ns": 1741305600000000000,
+      "max_timestamp_ns": 1741372420264353250
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20154/01a1692a-c269-7cac-886d-672a4e162e71.parquet",
+      "rows": 32607004,
+      "min_timestamp_ns": 1741371191935679634,
+      "max_timestamp_ns": 1741391999994996463
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20155/01a1692b-b8ab-72dd-bbbd-775a49f417fe.parquet",
+      "rows": 109024540,
+      "min_timestamp_ns": 1741392000001666724,
+      "max_timestamp_ns": 1741458849796644565
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20155/01a1692c-e52f-7ea5-991e-85c714a94610.parquet",
+      "rows": 32413531,
+      "min_timestamp_ns": 1741457537817720357,
+      "max_timestamp_ns": 1741478399988479036
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20156/01a1692d-c819-7f5b-ae9a-f2569be5ec7e.parquet",
+      "rows": 108769620,
+      "min_timestamp_ns": 1741478400000000000,
+      "max_timestamp_ns": 1741545564541023022
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20156/01a1692f-29c7-782e-8d94-7b6ea2dad2eb.parquet",
+      "rows": 31473119,
+      "min_timestamp_ns": 1741544440054679120,
+      "max_timestamp_ns": 1741564799990746808
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20157/01a16930-1729-75f7-8028-c1eafd59fcfb.parquet",
+      "rows": 108849152,
+      "min_timestamp_ns": 1741564800000000000,
+      "max_timestamp_ns": 1741631805361668795
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20157/01a16931-6ee7-7a59-b4ac-48bccf93a5a2.parquet",
+      "rows": 30161085,
+      "min_timestamp_ns": 1741631805361668795,
+      "max_timestamp_ns": 1741651199997718670
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20158/01a16932-516c-71af-8743-aba3341c0f2f.parquet",
+      "rows": 108201260,
+      "min_timestamp_ns": 1741651200000000000,
+      "max_timestamp_ns": 1741718284029508281
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20158/01a16933-aaf8-7681-9ed4-046fcdb06344.parquet",
+      "rows": 31110180,
+      "min_timestamp_ns": 1741717027907611139,
+      "max_timestamp_ns": 1741737599996264840
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20159/01a16934-8bb4-700e-afa6-8bb807a69442.parquet",
+      "rows": 108189583,
+      "min_timestamp_ns": 1741737600000000000,
+      "max_timestamp_ns": 1741805726839884364
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20159/01a16935-e806-754d-84db-647d70a6a1ce.parquet",
+      "rows": 26989284,
+      "min_timestamp_ns": 1741805087785276214,
+      "max_timestamp_ns": 1741823999992836689
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20160/01a16936-b9a6-79b2-9904-b055fc75da83.parquet",
+      "rows": 107534554,
+      "min_timestamp_ns": 1741824000000000000,
+      "max_timestamp_ns": 1741895530321584305
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20160/01a16938-0876-7d55-bfc4-c1bc195c59eb.parquet",
+      "rows": 22660650,
+      "min_timestamp_ns": 1741894239883480979,
+      "max_timestamp_ns": 1741910399976191010
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20161/01a16938-e940-7055-8b00-c0b8b90929e1.parquet",
+      "rows": 107349922,
+      "min_timestamp_ns": 1741910400005589459,
+      "max_timestamp_ns": 1741981003294283867
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20161/01a1693a-685d-7d37-9409-c839073cb45a.parquet",
+      "rows": 25574582,
+      "min_timestamp_ns": 1741979798811263336,
+      "max_timestamp_ns": 1741996799994881635
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20162/01a1693b-48f7-72df-ad3f-e2f12eca8676.parquet",
+      "rows": 108007317,
+      "min_timestamp_ns": 1741996800000000000,
+      "max_timestamp_ns": 1742064210569647647
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20162/01a1693c-b04c-7b3e-8e37-23bc20bdeb7d.parquet",
+      "rows": 29163563,
+      "min_timestamp_ns": 1742063674468297308,
+      "max_timestamp_ns": 1742083199994823562
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20163/01a1693d-afd0-7c51-b250-ea42c85ea362.parquet",
+      "rows": 107314508,
+      "min_timestamp_ns": 1742083200000000000,
+      "max_timestamp_ns": 1742152437588400910
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20163/01a1693f-1056-7155-ba8c-76e68be5d0ba.parquet",
+      "rows": 26573649,
+      "min_timestamp_ns": 1742151379606447493,
+      "max_timestamp_ns": 1742169599999057945
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20164/01a1693f-f88f-7a13-b54e-13ed3ceab49c.parquet",
+      "rows": 107872692,
+      "min_timestamp_ns": 1742169600002302417,
+      "max_timestamp_ns": 1742238529036885223
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20164/01a16941-70b6-72a1-9051-2a6a8817c167.parquet",
+      "rows": 28816803,
+      "min_timestamp_ns": 1742237413897699821,
+      "max_timestamp_ns": 1742255999995276993
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20165/01a16942-58d4-7a2d-8e13-0a47d491f0b3.parquet",
+      "rows": 110672002,
+      "min_timestamp_ns": 1742256000000000000,
+      "max_timestamp_ns": 1742324723087268672
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20165/01a16943-ef34-777d-b01f-1a08d058a398.parquet",
+      "rows": 31706319,
+      "min_timestamp_ns": 1742323464275900818,
+      "max_timestamp_ns": 1742342399999718489
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20166/01a16944-f92a-7390-a62e-11ccd486e799.parquet",
+      "rows": 109546135,
+      "min_timestamp_ns": 1742342400000000000,
+      "max_timestamp_ns": 1742404797339800659
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20166/01a16946-8d94-73ad-bc45-9a01cd3c07a6.parquet",
+      "rows": 43458491,
+      "min_timestamp_ns": 1742404194305828399,
+      "max_timestamp_ns": 1742428799992113376
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20167/01a16947-d1ba-7fcb-be78-49255b0c8c68.parquet",
+      "rows": 109280668,
+      "min_timestamp_ns": 1742428800000000000,
+      "max_timestamp_ns": 1742487070847720103
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20167/01a16949-4e29-7570-af0a-56804584727c.parquet",
+      "rows": 50761320,
+      "min_timestamp_ns": 1742485925995664170,
+      "max_timestamp_ns": 1742515199994538971
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20168/01a1694a-96e2-7a1d-a771-45ecf9a80690.parquet",
+      "rows": 108753534,
+      "min_timestamp_ns": 1742515200006182262,
+      "max_timestamp_ns": 1742574738270229997
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20168/01a1694b-f36b-77fb-a684-229c55cab689.parquet",
+      "rows": 47765671,
+      "min_timestamp_ns": 1742573606285248089,
+      "max_timestamp_ns": 1742601599995412051
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20169/01a1694d-2f7a-7be5-88f3-9369f132f330.parquet",
+      "rows": 108356576,
+      "min_timestamp_ns": 1742601600002882882,
+      "max_timestamp_ns": 1742662784745407035
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20169/01a1694e-889c-7190-97fd-02531d7a926e.parquet",
+      "rows": 40028222,
+      "min_timestamp_ns": 1742662429651890759,
+      "max_timestamp_ns": 1742687999993328593
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20170/01a1694f-9472-7f57-a963-58d3c451e398.parquet",
+      "rows": 108727467,
+      "min_timestamp_ns": 1742688000000000000,
+      "max_timestamp_ns": 1742752564443719900
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20170/01a16951-15ee-714e-9fd6-a4d10dc3e33a.parquet",
+      "rows": 35590453,
+      "min_timestamp_ns": 1742751941857228081,
+      "max_timestamp_ns": 1742774399995084252
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20171/01a16952-13c8-79a4-a485-9871962e7f49.parquet",
+      "rows": 109034982,
+      "min_timestamp_ns": 1742774400001304055,
+      "max_timestamp_ns": 1742838327506978623
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20171/01a16953-423f-70fb-9439-a3aab7b38d07.parquet",
+      "rows": 36773679,
+      "min_timestamp_ns": 1742837131602758645,
+      "max_timestamp_ns": 1742860799998761918
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20172/01a16954-39ac-707c-9a0f-91684a200cf1.parquet",
+      "rows": 108126865,
+      "min_timestamp_ns": 1742860800000000000,
+      "max_timestamp_ns": 1742924017440865419
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20172/01a16955-6560-7eca-9cfa-0a5a67b04981.parquet",
+      "rows": 38417202,
+      "min_timestamp_ns": 1742922798649589571,
+      "max_timestamp_ns": 1742947199985541312
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20173/01a16956-5f0a-76d7-bc97-484e163e7f38.parquet",
+      "rows": 108402642,
+      "min_timestamp_ns": 1742947200000000000,
+      "max_timestamp_ns": 1743010708176086677
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20173/01a16957-bb67-748c-9f16-bb3d55d26ebf.parquet",
+      "rows": 38076383,
+      "min_timestamp_ns": 1743010086926662132,
+      "max_timestamp_ns": 1743033599981281628
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20174/01a16958-c70f-7ac7-a344-d27dfc16a37f.parquet",
+      "rows": 108154660,
+      "min_timestamp_ns": 1743033600000000000,
+      "max_timestamp_ns": 1743097063464483752
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20174/01a1695a-194e-778e-8331-94cabe3ec963.parquet",
+      "rows": 35020121,
+      "min_timestamp_ns": 1743096443977400165,
+      "max_timestamp_ns": 1743119999990839860
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20175/01a1695b-0d41-7d23-8a29-36a4fac1dd49.parquet",
+      "rows": 107447901,
+      "min_timestamp_ns": 1743120000000000000,
+      "max_timestamp_ns": 1743190958000000000
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20175/01a1695c-627c-7e9a-9835-6f47779bbe82.parquet",
+      "rows": 23751549,
+      "min_timestamp_ns": 1743189650750237613,
+      "max_timestamp_ns": 1743206399994780735
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20176/01a1695d-4fae-781a-9eb0-29ab33226cd7.parquet",
+      "rows": 108945376,
+      "min_timestamp_ns": 1743206400000000000,
+      "max_timestamp_ns": 1743278549409159781
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20176/01a1695e-a793-735c-9359-af0c158d5ce0.parquet",
+      "rows": 22133984,
+      "min_timestamp_ns": 1743277099101060874,
+      "max_timestamp_ns": 1743292799997080681
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20177/01a1695f-81ed-7f3c-a1ff-20fee3d54800.parquet",
+      "rows": 109089538,
+      "min_timestamp_ns": 1743292800000000000,
+      "max_timestamp_ns": 1743359413146230441
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20177/01a16960-dec3-7051-84d9-45e227dd6e2d.parquet",
+      "rows": 31385938,
+      "min_timestamp_ns": 1743359333802929369,
+      "max_timestamp_ns": 1743379199985671086
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20178/01a16961-d957-7874-89c8-3819e9aae04d.parquet",
+      "rows": 114065408,
+      "min_timestamp_ns": 1743379200000000000,
+      "max_timestamp_ns": 1743447324639135101
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20178/01a16963-6ca6-7252-b4b5-beeeb4955f52.parquet",
+      "rows": 28277389,
+      "min_timestamp_ns": 1743447238199544983,
+      "max_timestamp_ns": 1743465599993305452
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20179/01a16964-41a6-7de3-9d07-5324594aebdc.parquet",
+      "rows": 108653676,
+      "min_timestamp_ns": 1743465600000000000,
+      "max_timestamp_ns": 1743533593276164824
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20179/01a16965-8fc9-7b70-b227-d04f447e24a3.parquet",
+      "rows": 29467089,
+      "min_timestamp_ns": 1743532275260024641,
+      "max_timestamp_ns": 1743551999994209963
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20180/01a16966-7599-7580-a904-48e007cb2994.parquet",
+      "rows": 108080301,
+      "min_timestamp_ns": 1743552000000000000,
+      "max_timestamp_ns": 1743620105591724199
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20180/01a16967-cad5-7a53-bccf-264ef56cf6ce.parquet",
+      "rows": 28526295,
+      "min_timestamp_ns": 1743619481386760421,
+      "max_timestamp_ns": 1743638399987606265
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20181/01a16968-a652-7c1e-afce-9415fa2264af.parquet",
+      "rows": 108548037,
+      "min_timestamp_ns": 1743638400000000000,
+      "max_timestamp_ns": 1743706389367339116
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20181/01a1696a-0432-7d95-ad96-3bf09c318830.parquet",
+      "rows": 28845605,
+      "min_timestamp_ns": 1743705701105897703,
+      "max_timestamp_ns": 1743724799987548415
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20182/01a1696a-e608-7c97-a7dc-75e00597aa27.parquet",
+      "rows": 109044581,
+      "min_timestamp_ns": 1743724800000000000,
+      "max_timestamp_ns": 1743796396627892233
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20182/01a1696c-2d99-7466-9641-ae7c1c3eccec.parquet",
+      "rows": 24602931,
+      "min_timestamp_ns": 1743795073745410289,
+      "max_timestamp_ns": 1743811199997853379
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20183/01a1696d-0c97-74b8-adcc-d083a05dd097.parquet",
+      "rows": 108879872,
+      "min_timestamp_ns": 1743811200000000000,
+      "max_timestamp_ns": 1743875199558616748
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20183/01a1696e-751d-75fe-87f6-9d46280e8c28.parquet",
+      "rows": 38216998,
+      "min_timestamp_ns": 1743875199558616748,
+      "max_timestamp_ns": 1743897599999138465
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20184/01a1696f-881c-7d7b-b9ac-8a5f2dac7f20.parquet",
+      "rows": 108574656,
+      "min_timestamp_ns": 1743897600000000000,
+      "max_timestamp_ns": 1743962286669297531
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20184/01a16971-0119-7bb4-b3c5-ffdb863d0545.parquet",
+      "rows": 38451441,
+      "min_timestamp_ns": 1743961109467512608,
+      "max_timestamp_ns": 1743983999998374396
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20185/01a16972-0b35-7b6a-b391-56242cc0d329.parquet",
+      "rows": 107963507,
+      "min_timestamp_ns": 1743984000000000000,
+      "max_timestamp_ns": 1744047667676991692
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20185/01a16973-6206-7da8-ae64-d57b75673699.parquet",
+      "rows": 38658626,
+      "min_timestamp_ns": 1744047615579488044,
+      "max_timestamp_ns": 1744070399994489612
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20186/01a16974-7250-7332-89b9-83400edc5b2a.parquet",
+      "rows": 108078217,
+      "min_timestamp_ns": 1744070400000000000,
+      "max_timestamp_ns": 1744135060849459214
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20186/01a16975-cc52-7fc3-b5d3-d2970eefcd36.parquet",
+      "rows": 34992402,
+      "min_timestamp_ns": 1744133850597654938,
+      "max_timestamp_ns": 1744156799998044522
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20187/01a16976-b87e-7b98-b2ff-49b809497d63.parquet",
+      "rows": 107475023,
+      "min_timestamp_ns": 1744156800000000000,
+      "max_timestamp_ns": 1744228811296286801
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20187/01a16977-d9e9-7dbc-add3-7e1b2c194826.parquet",
+      "rows": 24237111,
+      "min_timestamp_ns": 1744228200557103881,
+      "max_timestamp_ns": 1744243199990016579
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20188/01a16978-b39e-7683-b1d5-24cecc2174b6.parquet",
+      "rows": 106833838,
+      "min_timestamp_ns": 1744243200000000000,
+      "max_timestamp_ns": 1744306346762422245
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20188/01a1697a-1205-751c-958c-e6105bbabb89.parquet",
+      "rows": 38158235,
+      "min_timestamp_ns": 1744305574940284966,
+      "max_timestamp_ns": 1744329599990477474
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20189/01a1697b-2d2b-7390-9a4c-b4bf31cccdfd.parquet",
+      "rows": 106884652,
+      "min_timestamp_ns": 1744329600000000000,
+      "max_timestamp_ns": 1744393478805767534
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20189/01a1697c-82d5-7e2e-a751-1533b48e0c47.parquet",
+      "rows": 40120003,
+      "min_timestamp_ns": 1744392227798685357,
+      "max_timestamp_ns": 1744415999999412693
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20190/01a1697d-9c8e-78a8-b9ec-d23a2ffe00ae.parquet",
+      "rows": 106529340,
+      "min_timestamp_ns": 1744416000000000000,
+      "max_timestamp_ns": 1744475240566126090
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20190/01a1697f-008d-7f8b-b1e6-01dc01e823dc.parquet",
+      "rows": 49829211,
+      "min_timestamp_ns": 1744474155286681094,
+      "max_timestamp_ns": 1744502399990823682
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20191/01a16980-3a59-734b-8185-d632fb1f85b8.parquet",
+      "rows": 106551184,
+      "min_timestamp_ns": 1744502400000000000,
+      "max_timestamp_ns": 1744562505210289307
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20191/01a16981-98fb-7f9f-a60f-2f8d5aa46a9e.parquet",
+      "rows": 47044247,
+      "min_timestamp_ns": 1744561447588090012,
+      "max_timestamp_ns": 1744588799999346707
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20192/01a16982-b979-79a2-9a3f-c54a0c7b1f6d.parquet",
+      "rows": 106131916,
+      "min_timestamp_ns": 1744588800000000000,
+      "max_timestamp_ns": 1744657499821067682
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20192/01a16984-00ee-7983-8eb3-c50f3996d69d.parquet",
+      "rows": 25591461,
+      "min_timestamp_ns": 1744656847601514751,
+      "max_timestamp_ns": 1744675199999852789
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20193/01a16984-d830-7d0f-8c81-6a99935c87d8.parquet",
+      "rows": 104427441,
+      "min_timestamp_ns": 1744675200000000000,
+      "max_timestamp_ns": 1744748630789995003
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20193/01a16986-17a0-7519-a946-dd44ff3c2d6f.parquet",
+      "rows": 20373631,
+      "min_timestamp_ns": 1744747981673285232,
+      "max_timestamp_ns": 1744761599997907334
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20194/01a16986-e5fa-735c-8e43-af21b8e89dde.parquet",
+      "rows": 105001079,
+      "min_timestamp_ns": 1744761600000000000,
+      "max_timestamp_ns": 1744830073847442628
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20194/01a16988-31e9-7290-960c-d08f2e155b82.parquet",
+      "rows": 28395844,
+      "min_timestamp_ns": 1744829483196022176,
+      "max_timestamp_ns": 1744847999995904263
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20195/01a16989-0eaa-7a41-a5e7-ddb19d67e211.parquet",
+      "rows": 105383936,
+      "min_timestamp_ns": 1744848000000000000,
+      "max_timestamp_ns": 1744915929759495960
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20195/01a1698a-7e8f-7005-8be2-ac032796b021.parquet",
+      "rows": 28795295,
+      "min_timestamp_ns": 1744915854298262413,
+      "max_timestamp_ns": 1744934399988884095
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20196/01a1698b-63e3-7036-82f8-8596604f6842.parquet",
+      "rows": 105971847,
+      "min_timestamp_ns": 1744934400000000000,
+      "max_timestamp_ns": 1745003617440226655
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20196/01a1698c-b447-7e9a-b2f8-3e9cba99ffb1.parquet",
+      "rows": 25706730,
+      "min_timestamp_ns": 1745002811197095992,
+      "max_timestamp_ns": 1745020799999137441
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20197/01a1698d-8105-7605-bea5-d45ee8e71397.parquet",
+      "rows": 105178480,
+      "min_timestamp_ns": 1745020800000000000,
+      "max_timestamp_ns": 1745098002856736656
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20197/01a1698e-d267-7f37-8aae-097f82c70bc2.parquet",
+      "rows": 14241993,
+      "min_timestamp_ns": 1745096601596752628,
+      "max_timestamp_ns": 1745107199998726846
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20198/01a1698f-8157-7d55-95b9-716df5290e38.parquet",
+      "rows": 104288256,
+      "min_timestamp_ns": 1745107200000000000,
+      "max_timestamp_ns": 1745181163892559835
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20198/01a16990-c47d-7101-8fb4-4d556bc95bb1.parquet",
+      "rows": 17200871,
+      "min_timestamp_ns": 1745181084883714509,
+      "max_timestamp_ns": 1745193599997558472
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20199/01a16991-8c65-7c90-9fa5-9f12f6d78f42.parquet",
+      "rows": 105403777,
+      "min_timestamp_ns": 1745193600000000000,
+      "max_timestamp_ns": 1745262681539493722
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20199/01a16992-e152-78e8-aab2-fde9fe6d7796.parquet",
+      "rows": 26002001,
+      "min_timestamp_ns": 1745261742272035325,
+      "max_timestamp_ns": 1745279999988650760
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20200/01a16993-aa74-750f-8406-68c13a1bc5b7.parquet",
+      "rows": 105703819,
+      "min_timestamp_ns": 1745280000000000000,
+      "max_timestamp_ns": 1745358851011078320
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20200/01a16994-e500-714e-a5df-a6849eedf54f.parquet",
+      "rows": 10814670,
+      "min_timestamp_ns": 1745358670530431184,
+      "max_timestamp_ns": 1745366399987299539
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20201/01a16995-9245-7e58-8842-0feae7ff96ed.parquet",
+      "rows": 110899630,
+      "min_timestamp_ns": 1745366400000000000,
+      "max_timestamp_ns": 1745441145965070218
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20201/01a16996-f42f-7769-803c-523da632958b.parquet",
+      "rows": 17552784,
+      "min_timestamp_ns": 1745440203531333418,
+      "max_timestamp_ns": 1745452799993409931
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20202/01a16997-bafe-7e2c-8f1e-31a94813cb5e.parquet",
+      "rows": 108793258,
+      "min_timestamp_ns": 1745452800000000000,
+      "max_timestamp_ns": 1745525257148722864
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20202/01a16999-1da3-78e1-88f1-a5bff4d6d2ed.parquet",
+      "rows": 21333737,
+      "min_timestamp_ns": 1745524408755427360,
+      "max_timestamp_ns": 1745539199999029107
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20203/01a16999-e434-7e8b-9876-a807c589de7d.parquet",
+      "rows": 107462496,
+      "min_timestamp_ns": 1745539200000000000,
+      "max_timestamp_ns": 1745611662327043363
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20203/01a1699b-23b5-7998-97e1-185ed37255e0.parquet",
+      "rows": 21810902,
+      "min_timestamp_ns": 1745610251611732573,
+      "max_timestamp_ns": 1745625599997129318
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20204/01a1699b-e788-7b9a-a3f5-88194d9511f3.parquet",
+      "rows": 107029921,
+      "min_timestamp_ns": 1745625600000000000,
+      "max_timestamp_ns": 1745695232293760346
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20204/01a1699d-34f2-7d2e-9ee1-471873ec93c4.parquet",
+      "rows": 25386483,
+      "min_timestamp_ns": 1745694794801276234,
+      "max_timestamp_ns": 1745711999996703514
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20205/01a1699e-0bba-7f0d-8285-36ed4b035ca3.parquet",
+      "rows": 107542001,
+      "min_timestamp_ns": 1745712000000000000,
+      "max_timestamp_ns": 1745783643781835984
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20205/01a1699f-6fba-76d6-b539-2ded4b8c170b.parquet",
+      "rows": 23429480,
+      "min_timestamp_ns": 1745782851152807079,
+      "max_timestamp_ns": 1745798399998707263
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20206/01a169a0-3b1b-721c-8dfc-d8860d21b8eb.parquet",
+      "rows": 108478571,
+      "min_timestamp_ns": 1745798400000000000,
+      "max_timestamp_ns": 1745865440619765311
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20206/01a169a1-9e5e-79e4-970d-2de7958c5d2c.parquet",
+      "rows": 33005653,
+      "min_timestamp_ns": 1745864303942945265,
+      "max_timestamp_ns": 1745884799981506959
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20207/01a169a2-9829-770a-8f92-87961c6f4cf7.parquet",
+      "rows": 108899074,
+      "min_timestamp_ns": 1745884800000000000,
+      "max_timestamp_ns": 1745948957881919864
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20207/01a169a4-1286-7811-9289-629411a0009d.parquet",
+      "rows": 36804574,
+      "min_timestamp_ns": 1745947746698205133,
+      "max_timestamp_ns": 1745971199991149874
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20208/01a169a5-0ee9-7ad0-a5f1-cee49e255118.parquet",
+      "rows": 108194840,
+      "min_timestamp_ns": 1745971200000000000,
+      "max_timestamp_ns": 1746039750167294562
+    },
+    {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/data/day_time_1=20208/01a169a6-615d-7c27-bbc5-d1857bc563e3.parquet",
+      "rows": 30428663,
+      "min_timestamp_ns": 1746038608267068436,
+      "max_timestamp_ns": 1746057599994422512
+    }
+  ],
+  "metadata_location": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/metadata/00061-d6d62b83-8bc4-4771-9e67-f0aee3e33bfb.metadata.json"
+}

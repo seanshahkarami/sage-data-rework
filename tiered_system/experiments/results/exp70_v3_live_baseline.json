@@ -1,0 +1,265 @@
+{
+  "label": "v3 live March 1 baseline, one series",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "series": {
+    "name": "wxt.env.temp",
+    "vsn": "W0A0"
+  },
+  "scope": "Arrow and NDJSON timing plus full archive comparison; profiling off",
+  "results": [
+    {
+      "query": "minute",
+      "format": "arrow",
+      "repetition": 1,
+      "bytes": 15032,
+      "total_seconds": 0.21458112499385606,
+      "first_batch_seconds": 0.21443554198776837,
+      "mode": "zstd",
+      "rows": 698,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "minute",
+      "format": "arrow",
+      "repetition": 2,
+      "bytes": 15032,
+      "total_seconds": 0.21458712499588728,
+      "first_batch_seconds": 0.21454233300755732,
+      "mode": "zstd"
+    },
+    {
+      "query": "minute",
+      "format": "arrow",
+      "repetition": 3,
+      "bytes": 15032,
+      "total_seconds": 0.21541408299526665,
+      "first_batch_seconds": 0.21533704199828207,
+      "mode": "zstd"
+    },
+    {
+      "query": "minute",
+      "format": "ndjson",
+      "repetition": 1,
+      "bytes": 241437,
+      "total_seconds": 0.21144379199540708,
+      "first_batch_seconds": 0.21142012500786223,
+      "mode": null,
+      "rows": 698,
+      "exact_string_mismatches": 1396,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "minute",
+      "format": "ndjson",
+      "repetition": 2,
+      "bytes": 241437,
+      "total_seconds": 0.21210212499136105,
+      "first_batch_seconds": 0.21208070799184497,
+      "mode": null
+    },
+    {
+      "query": "minute",
+      "format": "ndjson",
+      "repetition": 3,
+      "bytes": 241437,
+      "total_seconds": 0.21721124999749009,
+      "first_batch_seconds": 0.2171715409931494,
+      "mode": null
+    },
+    {
+      "query": "hour",
+      "format": "arrow",
+      "repetition": 1,
+      "bytes": 780280,
+      "total_seconds": 0.6067464999941876,
+      "first_batch_seconds": 0.6004792919993633,
+      "mode": "zstd",
+      "rows": 43509,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "hour",
+      "format": "arrow",
+      "repetition": 2,
+      "bytes": 780280,
+      "total_seconds": 0.6412969590019202,
+      "first_batch_seconds": 0.6337672090012347,
+      "mode": "zstd"
+    },
+    {
+      "query": "hour",
+      "format": "arrow",
+      "repetition": 3,
+      "bytes": 780280,
+      "total_seconds": 0.6187518749939045,
+      "first_batch_seconds": 0.6080843749950873,
+      "mode": "zstd"
+    },
+    {
+      "query": "hour",
+      "format": "ndjson",
+      "repetition": 1,
+      "bytes": 15036332,
+      "total_seconds": 0.8592078750079963,
+      "first_batch_seconds": 0.6399740000051679,
+      "mode": null,
+      "rows": 43509,
+      "exact_string_mismatches": 87018,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "hour",
+      "format": "ndjson",
+      "repetition": 2,
+      "bytes": 15036332,
+      "total_seconds": 0.8474404999869876,
+      "first_batch_seconds": 0.6314537089929217,
+      "mode": null
+    },
+    {
+      "query": "hour",
+      "format": "ndjson",
+      "repetition": 3,
+      "bytes": 15036332,
+      "total_seconds": 0.8281024159950903,
+      "first_batch_seconds": 0.6191372500034049,
+      "mode": null
+    },
+    {
+      "query": "day",
+      "format": "arrow",
+      "repetition": 1,
+      "bytes": 19171032,
+      "total_seconds": 15.245174167008372,
+      "first_batch_seconds": 15.019378375000088,
+      "mode": "zstd",
+      "rows": 1048491,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "day",
+      "format": "arrow",
+      "repetition": 2,
+      "bytes": 19171032,
+      "total_seconds": 10.296045958006289,
+      "first_batch_seconds": 10.066939542011824,
+      "mode": "zstd"
+    },
+    {
+      "query": "day",
+      "format": "arrow",
+      "repetition": 3,
+      "bytes": 19171032,
+      "total_seconds": 10.130046749996836,
+      "first_batch_seconds": 9.9644361249957,
+      "mode": "zstd"
+    },
+    {
+      "query": "day",
+      "format": "ndjson",
+      "repetition": 1,
+      "bytes": 362323649,
+      "total_seconds": 21.472450958011905,
+      "first_batch_seconds": 15.745847875004984,
+      "mode": null,
+      "rows": 1048491,
+      "exact_string_mismatches": 2096982,
+      "canonical_mismatches": 0,
+      "out_of_order": 0,
+      "sample": []
+    },
+    {
+      "query": "day",
+      "format": "ndjson",
+      "repetition": 2,
+      "bytes": 362323649,
+      "total_seconds": 16.127844499991625,
+      "first_batch_seconds": 9.723847374989418,
+      "mode": null
+    },
+    {
+      "query": "day",
+      "format": "ndjson",
+      "repetition": 3,
+      "bytes": 362323649,
+      "total_seconds": 15.582285583004705,
+      "first_batch_seconds": 9.590901750008925,
+      "mode": null
+    }
+  ],
+  "summaries": [
+    {
+      "query": "minute",
+      "format": "arrow",
+      "rows": 698,
+      "total_seconds": 0.21458712499588728,
+      "first_batch_seconds": 0.21454233300755732,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    },
+    {
+      "query": "minute",
+      "format": "ndjson",
+      "rows": 698,
+      "total_seconds": 0.21210212499136105,
+      "first_batch_seconds": 0.21208070799184497,
+      "exact_string_mismatches": 1396,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    },
+    {
+      "query": "hour",
+      "format": "arrow",
+      "rows": 43509,
+      "total_seconds": 0.6187518749939045,
+      "first_batch_seconds": 0.6080843749950873,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    },
+    {
+      "query": "hour",
+      "format": "ndjson",
+      "rows": 43509,
+      "total_seconds": 0.8474404999869876,
+      "first_batch_seconds": 0.6314537089929217,
+      "exact_string_mismatches": 87018,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    },
+    {
+      "query": "day",
+      "format": "arrow",
+      "rows": 1048491,
+      "total_seconds": 10.296045958006289,
+      "first_batch_seconds": 10.066939542011824,
+      "exact_string_mismatches": 0,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    },
+    {
+      "query": "day",
+      "format": "ndjson",
+      "rows": 1048491,
+      "total_seconds": 16.127844499991625,
+      "first_batch_seconds": 9.723847374989418,
+      "exact_string_mismatches": 2096982,
+      "canonical_mismatches": 0,
+      "out_of_order": 0
+    }
+  ]
+}

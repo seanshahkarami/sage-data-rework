@@ -1,0 +1,358 @@
+{
+  "scope": "cold query elapsed phases and DuckDB operator work",
+  "notes": [
+    "Backend phases are elapsed seconds; *_since_backend_start and lifetime are overlapping markers, not additive phases.",
+    "Backend lifetime includes consumer pacing/IPC/compression/socket backpressure; fetch/conversion do not measure all response encoding work.",
+    "DuckDB operator seconds describe operator work across threads, may include I/O waits, and must not be summed with backend phases or interpreted as pure CPU.",
+    "prepare_seconds includes binding/planning and may include Iceberg metadata HTTP reads; scan work may include Pelican waits and decompression.",
+    "DuckDB byte counters are engine-reported, not a complete measurement of Pelican HTTP traffic; zero does not prove no reads.",
+    "Only complete queries with a valid DuckDB profile are eligible for bottleneck analysis. Profiling itself can add overhead."
+  ],
+  "queries": [
+    {
+      "source": "/tmp/sage-exp65-copy.UcLaQW/sage-cold-profiles/session-538626230/query-1444261438.timing.json",
+      "status": "complete",
+      "rows": 25940207,
+      "batches": 12667,
+      "phases": {
+        "arrow_conversion_seconds": 0.7043202869999993,
+        "arrow_engine_init_seconds": 4.1e-08,
+        "arrow_queue_wait_seconds": 2e-06,
+        "arrow_schema_seconds": 0.000370417,
+        "auth_seconds": 0.008895959,
+        "connection_setup_seconds": 0.019964541,
+        "execute_pending_seconds": 43.970077812,
+        "fetch_chunks_seconds": 5.939837718000011,
+        "first_batch_since_backend_start_seconds": 44.688761605,
+        "hint_http_seconds": 0.040943584,
+        "native_eof_since_backend_start_seconds": 55.52443886,
+        "native_ready_since_backend_start_seconds": 44.686792397,
+        "pending_seconds": 0.122609833,
+        "prepare_seconds": 0.518483751,
+        "profiling_setup_seconds": 0.000673334,
+        "sql_build_seconds": 0.000680875,
+        "total_backend_lifetime_seconds": 55.524700318
+      },
+      "eligible": true,
+      "duckdb": {
+        "metrics": {
+          "latency": 55.448247026,
+          "cpu_time": 92.34155563799943,
+          "rows_returned": 25940207,
+          "cumulative_rows_scanned": 16914373908,
+          "total_bytes_read": 402484516,
+          "total_bytes_written": 0,
+          "system_peak_buffer_memory": 5771190928,
+          "system_peak_temp_dir_size": 2762407936,
+          "blocked_thread_time": 0.000122
+        },
+        "detailed_planning_seconds": {
+          "physical_planner": 0.00024858400000000004,
+          "physical_planner_column_binding": 1.8416e-05,
+          "physical_planner_create_plan": 0.000219292,
+          "physical_planner_resolve_types": 6.67e-07,
+          "planner": 0.454480625,
+          "planner_binding": 0.454441042,
+          "optimizer_common_subplan": 2.7e-05,
+          "optimizer_join_elimination": 2.0875e-05,
+          "optimizer_common_subexpressions": 0.000111708,
+          "optimizer_window_self_join": 0.000222875,
+          "optimizer_statistics_propagation": 0.0006685419999999999,
+          "optimizer_join_order": 0.17624975,
+          "optimizer_in_clause": 6.499e-06,
+          "optimizer_unnest_rewriter": 7.084e-06,
+          "optimizer_common_aggregate": 1.5e-06,
+          "optimizer_deliminator": 1.6669999999999999e-06,
+          "optimizer_unused_columns": 0.000718751,
+          "optimizer_top_n_window_elimination": 4.3375e-05,
+          "optimizer_regex_range": 4.459e-06,
+          "optimizer_cte_filter_pusher": 2.75e-06,
+          "optimizer_empty_result_pullup": 1.209e-06,
+          "optimizer_filter_pushdown": 0.0026957080000000002,
+          "optimizer_filter_pullup": 1.7667e-05,
+          "optimizer_expression_rewriter": 0.002017834,
+          "optimizer_column_lifetime": 1.9708999999999997e-05,
+          "optimizer_build_side_probe_side": 1.4707999999999999e-05,
+          "optimizer_limit_pushdown": 1.2080000000000001e-06,
+          "optimizer_top_n": 1.833e-06,
+          "optimizer_compressed_materialization": 0.0,
+          "optimizer_duplicate_groups": 1.125e-05,
+          "optimizer_reorder_filter": 9.625e-06,
+          "optimizer_sampling_pushdown": 8.75e-07,
+          "optimizer_join_filter_pushdown": 2.4999999999999998e-06,
+          "optimizer_extension": 5.5e-06,
+          "optimizer_materialized_cte": 0.0,
+          "optimizer_sum_rewriter": 0.000207416,
+          "optimizer_late_materialization": 2.792e-06,
+          "optimizer_cte_inlining": 0.000216374,
+          "optimizer_row_group_pruner": 3.708e-06
+        },
+        "operator_work_seconds": {
+          "sort": 18.405078577,
+          "projection": 20.699236136,
+          "scan": 51.64285037099944
+        },
+        "operators": [
+          {
+            "name": "ICEBERG_SCAN",
+            "depth": 3,
+            "seconds": 51.64285037099944,
+            "rows": 25940207,
+            "rows_scanned": 16914373908
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 1,
+            "seconds": 20.692377993,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "ORDER_BY",
+            "depth": 0,
+            "seconds": 18.405078577,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 2,
+            "seconds": 0.006858143000000043,
+            "rows": 25940207,
+            "rows_scanned": 0
+          }
+        ]
+      }
+    },
+    {
+      "source": "/tmp/sage-exp65-copy.UcLaQW/sage-cold-profiles/session-538626230/query-3881868522.timing.json",
+      "status": "complete",
+      "rows": 25940207,
+      "batches": 12667,
+      "phases": {
+        "arrow_conversion_seconds": 0.7519262749999984,
+        "arrow_engine_init_seconds": 4.2e-08,
+        "arrow_queue_wait_seconds": 2.708e-06,
+        "arrow_schema_seconds": 9.5084e-05,
+        "auth_seconds": 0.004972834,
+        "connection_setup_seconds": 0.010027833,
+        "execute_pending_seconds": 41.440966729,
+        "fetch_chunks_seconds": 5.3464728889999895,
+        "first_batch_since_backend_start_seconds": 42.119878604,
+        "hint_http_seconds": 0.037036084,
+        "native_eof_since_backend_start_seconds": 52.572185817,
+        "native_ready_since_backend_start_seconds": 42.119031687,
+        "pending_seconds": 0.115492875,
+        "prepare_seconds": 0.501956958,
+        "profiling_setup_seconds": 0.000986333,
+        "sql_build_seconds": 0.000886583,
+        "total_backend_lifetime_seconds": 52.572396651
+      },
+      "eligible": true,
+      "duckdb": {
+        "metrics": {
+          "latency": 52.5110609,
+          "cpu_time": 85.67561647199759,
+          "rows_returned": 25940207,
+          "cumulative_rows_scanned": 16914373908,
+          "total_bytes_read": 390244584,
+          "total_bytes_written": 0,
+          "system_peak_buffer_memory": 5566784410,
+          "system_peak_temp_dir_size": 2925494272,
+          "blocked_thread_time": 0.000135
+        },
+        "detailed_planning_seconds": {
+          "physical_planner": 0.000121499,
+          "physical_planner_column_binding": 2.2499999999999998e-05,
+          "physical_planner_create_plan": 8.7709e-05,
+          "physical_planner_resolve_types": 1.416e-06,
+          "planner": 0.40858216799999997,
+          "planner_binding": 0.408549626,
+          "optimizer_common_subplan": 4.5917e-05,
+          "optimizer_join_elimination": 2.3916e-05,
+          "optimizer_common_subexpressions": 0.000233625,
+          "optimizer_window_self_join": 5.9579999999999995e-06,
+          "optimizer_statistics_propagation": 0.00037575,
+          "optimizer_join_order": 0.199225375,
+          "optimizer_in_clause": 1.05e-05,
+          "optimizer_unnest_rewriter": 6.2499999999999995e-06,
+          "optimizer_common_aggregate": 1.709e-06,
+          "optimizer_deliminator": 1.916e-06,
+          "optimizer_unused_columns": 0.000605708,
+          "optimizer_top_n_window_elimination": 3.3125e-05,
+          "optimizer_regex_range": 1.0708e-05,
+          "optimizer_cte_filter_pusher": 3.1670000000000003e-06,
+          "optimizer_empty_result_pullup": 1.541e-06,
+          "optimizer_filter_pushdown": 0.003113083,
+          "optimizer_filter_pullup": 0.00022250000000000001,
+          "optimizer_expression_rewriter": 0.000963042,
+          "optimizer_column_lifetime": 2.4291999999999997e-05,
+          "optimizer_build_side_probe_side": 0.000235874,
+          "optimizer_limit_pushdown": 2.251e-06,
+          "optimizer_top_n": 1.708e-06,
+          "optimizer_compressed_materialization": 0.0,
+          "optimizer_duplicate_groups": 1.7625e-05,
+          "optimizer_reorder_filter": 8.208e-06,
+          "optimizer_sampling_pushdown": 1.0409999999999999e-06,
+          "optimizer_join_filter_pushdown": 7.875e-06,
+          "optimizer_extension": 7.040999999999999e-06,
+          "optimizer_materialized_cte": 0.0,
+          "optimizer_sum_rewriter": 1.7875e-05,
+          "optimizer_late_materialization": 2.7919999999999997e-06,
+          "optimizer_cte_inlining": 8.541e-06,
+          "optimizer_row_group_pruner": 9.875e-06
+        },
+        "operator_work_seconds": {
+          "sort": 14.10662888200001,
+          "projection": 20.592329490000058,
+          "scan": 49.25627759199752
+        },
+        "operators": [
+          {
+            "name": "ICEBERG_SCAN",
+            "depth": 3,
+            "seconds": 49.25627759199752,
+            "rows": 25940207,
+            "rows_scanned": 16914373908
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 1,
+            "seconds": 20.58476806200006,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "ORDER_BY",
+            "depth": 0,
+            "seconds": 14.10662888200001,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 2,
+            "seconds": 0.007561428000000299,
+            "rows": 25940207,
+            "rows_scanned": 0
+          }
+        ]
+      }
+    },
+    {
+      "source": "/tmp/sage-exp65-copy.UcLaQW/sage-cold-profiles/session-538626230/query-4178759046.timing.json",
+      "status": "complete",
+      "rows": 25940207,
+      "batches": 12667,
+      "phases": {
+        "arrow_conversion_seconds": 0.7159836020000006,
+        "arrow_engine_init_seconds": 0.093951375,
+        "arrow_queue_wait_seconds": 4.1e-08,
+        "arrow_schema_seconds": 0.000306708,
+        "auth_seconds": 0.001075583,
+        "connection_setup_seconds": 0.000842084,
+        "execute_pending_seconds": 42.956655062,
+        "fetch_chunks_seconds": 5.908329886000037,
+        "first_batch_since_backend_start_seconds": 43.737507646,
+        "hint_http_seconds": 0.129637375,
+        "native_eof_since_backend_start_seconds": 54.685078484,
+        "native_ready_since_backend_start_seconds": 43.736181646,
+        "pending_seconds": 0.115737625,
+        "prepare_seconds": 0.436393542,
+        "profiling_setup_seconds": 0.0009225,
+        "sql_build_seconds": 0.00047725,
+        "total_backend_lifetime_seconds": 54.687026359
+      },
+      "eligible": true,
+      "duckdb": {
+        "metrics": {
+          "latency": 54.455991526,
+          "cpu_time": 89.78345420799835,
+          "rows_returned": 25940207,
+          "cumulative_rows_scanned": 16914373908,
+          "total_bytes_read": 392922336,
+          "total_bytes_written": 0,
+          "system_peak_buffer_memory": 5770073285,
+          "system_peak_temp_dir_size": 2881683456,
+          "blocked_thread_time": 0.004016
+        },
+        "detailed_planning_seconds": {
+          "physical_planner": 0.000374665,
+          "physical_planner_column_binding": 0.000269249,
+          "physical_planner_create_plan": 9.695799999999999e-05,
+          "physical_planner_resolve_types": 8.34e-07,
+          "planner": 0.363930333,
+          "planner_binding": 0.363892125,
+          "optimizer_common_subplan": 2.2375000000000002e-05,
+          "optimizer_join_elimination": 1.2541e-05,
+          "optimizer_common_subexpressions": 0.00011616600000000001,
+          "optimizer_window_self_join": 1.624e-06,
+          "optimizer_statistics_propagation": 0.000128042,
+          "optimizer_join_order": 0.183971042,
+          "optimizer_in_clause": 7.6259999999999995e-06,
+          "optimizer_unnest_rewriter": 1.5e-06,
+          "optimizer_common_aggregate": 1e-06,
+          "optimizer_deliminator": 1.292e-06,
+          "optimizer_unused_columns": 0.000111501,
+          "optimizer_top_n_window_elimination": 9.5e-06,
+          "optimizer_regex_range": 1.2090000000000002e-06,
+          "optimizer_cte_filter_pusher": 1.7909999999999999e-06,
+          "optimizer_empty_result_pullup": 1.0840000000000001e-06,
+          "optimizer_filter_pushdown": 0.000227876,
+          "optimizer_filter_pullup": 2.458e-06,
+          "optimizer_expression_rewriter": 0.001035917,
+          "optimizer_column_lifetime": 2.8790999999999996e-05,
+          "optimizer_build_side_probe_side": 6.417e-06,
+          "optimizer_limit_pushdown": 9.58e-07,
+          "optimizer_top_n": 1.334e-06,
+          "optimizer_compressed_materialization": 0.0,
+          "optimizer_duplicate_groups": 1.1750000000000001e-05,
+          "optimizer_reorder_filter": 3.0009999999999997e-06,
+          "optimizer_sampling_pushdown": 7.5e-07,
+          "optimizer_join_filter_pushdown": 2.2920000000000002e-06,
+          "optimizer_extension": 4.624e-06,
+          "optimizer_materialized_cte": 0.0,
+          "optimizer_sum_rewriter": 9.625e-06,
+          "optimizer_late_materialization": 3.959e-06,
+          "optimizer_cte_inlining": 2.0400000000000004e-06,
+          "optimizer_row_group_pruner": 9.59e-07
+        },
+        "operator_work_seconds": {
+          "sort": 18.833397123000037,
+          "projection": 21.280584387000026,
+          "scan": 47.75641196499829
+        },
+        "operators": [
+          {
+            "name": "ICEBERG_SCAN",
+            "depth": 3,
+            "seconds": 47.75641196499829,
+            "rows": 25940207,
+            "rows_scanned": 16914373908
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 1,
+            "seconds": 21.273145830000026,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "ORDER_BY",
+            "depth": 0,
+            "seconds": 18.833397123000037,
+            "rows": 25940207,
+            "rows_scanned": 0
+          },
+          {
+            "name": "PROJECTION",
+            "depth": 2,
+            "seconds": 0.0074385570000000695,
+            "rows": 25940207,
+            "rows_scanned": 0
+          }
+        ]
+      }
+    }
+  ]
+}

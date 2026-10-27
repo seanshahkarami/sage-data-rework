@@ -1,0 +1,64 @@
+{
+  "target_engine": "2.0.0",
+  "driver_tag": "v2.20000.0",
+  "driver_commit": "bb8380a152d28fb07f6771a762d1a35f9308fd4e",
+  "bindings_tag": "v0.20000.0",
+  "initial_io_settings": {
+    "cpu_workers": 2,
+    "async_threads": 8,
+    "read_ahead_depth": -1,
+    "memory_limit": "3GB"
+  },
+  "completed_checks": {
+    "selected_go_tests_with_race": "passed; cached temporary module using Arrow 18.8.0, not native DuckDB 2.0",
+    "python_experiment_unit_tests": 5,
+    "offline_data_client_tests": 25,
+    "duckdb156_migrated_sql_exact_semantic_comparisons": 6,
+    "native_vm_tests": "go test -tags=duckdb_arrow ./... passed, as reported in plan"
+  },
+  "baseline_bundle": "sage-data-rework/data/duckdb20-evaluation/duckdb156-source.tar.gz",
+  "baseline_bundle_sha256": "af15fcec2ddcbd3af43975aaf2de6e52216531537cf00fd51fb3e7857a4d0ef5",
+  "previous_sandbox_status": {
+    "status": "migration_candidate_prepared_native_build_and_evaluation_pending",
+    "native_duckdb20_test_status": "not run",
+    "performance_conclusion": null,
+    "blockers": [
+      "Go module download: DNS resolution for proxy.golang.org fails",
+      "Docker socket access denied",
+      "VM API at 127.0.0.1:10000 unreachable"
+    ],
+    "checksum_status": "bindings/native entries copied from tagged upstream go.sum; run go mod tidy to resolve driver checksum and verify graph"
+  },
+  "status": "vm_build_and_benchmarks_reported_complete_results_reviewed",
+  "native_duckdb20_test_status": "passed on VM, as reported in plan 8; not rerun in restricted sandbox",
+  "checksum_status": "resolved on VM; tagged driver package and go.mod checksums present in workspace go.sum",
+  "artifact_review": {
+    "exp66_duckdb20_evaluation": {
+      "minute": "engine identities, schema, row count and full-row checksum signatures match",
+      "day": "engine identities, schema, row count and full-row checksum signatures match",
+      "stress": "engine identities, schema, row count and full-row checksum signatures match"
+    },
+    "exp66_duckdb20_evaluation_3gb": {
+      "minute": "engine identities, schema, row count and full-row checksum signatures match",
+      "day": "engine identities, schema, row count and full-row checksum signatures match",
+      "stress": "engine identities, schema, row count and full-row checksum signatures match"
+    },
+    "live": "all five cases match 1.5.6 full-row signatures, columns and dtypes",
+    "profiles": "three complete eligible profiles identify v2.0.0"
+  },
+  "performance_conclusion": {
+    "recommendation": "retain DuckDB 2.0 with async_threads=8 and budgeted read-ahead; investigate short-query regression separately",
+    "march_total_seconds": 30.403168958000606,
+    "historical_baseline_total_seconds": 58.19425891600258,
+    "march_total_speedup": 1.9140853046073258,
+    "march_first_batch_seconds": 22.012426374989445,
+    "historical_baseline_first_batch_seconds": 46.90298220800469,
+    "march_first_batch_speedup": 2.130750213947152,
+    "caveats": [
+      "Live baseline is historical, not a fresh alternating comparison",
+      "One-hour single-name live median regressed; cause not established",
+      "Cross-version operator timing and I/O counters do not isolate asynchronous I/O benefit",
+      "4/8/16 async-thread samples do not establish a statistically optimal pool size"
+    ]
+  }
+}

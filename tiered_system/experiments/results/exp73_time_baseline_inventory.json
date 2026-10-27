@@ -1,0 +1,20 @@
+{
+  "layout": "time",
+  "metadata_location": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-1792707566/sage/obs/metadata/00061-d6d62b83-8bc4-4771-9e67-f0aee3e33bfb.metadata.json",
+  "table_uuid": "50627796-6974-42d0-a8fa-e5da2940e4c4",
+  "snapshot_id": 8224181995245028531,
+  "snapshots": 61,
+  "value_field_id": 11,
+  "value_type": "variant",
+  "files": 122,
+  "rows": 8457186954,
+  "bytes": 44678623625,
+  "row_groups": 32062,
+  "mixed_plugin_groups": 32062,
+  "ordering_checked": false,
+  "physical_typed_value_types": {
+    "double": 122
+  },
+  "min_timestamp_ns": 1740787200000000000,
+  "max_timestamp_ns": 1746057599994422512
+}

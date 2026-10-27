@@ -1,0 +1,17 @@
+{
+  "compression": "zstd",
+  "engine": {
+    "async_threads": "8",
+    "http_client_pool_capacity": "36",
+    "memory_limit": "2.7 GiB",
+    "read_ahead_depth": "-1",
+    "threads": "2",
+    "version": "v2.0.0"
+  },
+  "first_batch_seconds": 1.570953416,
+  "profiled": true,
+  "ready_seconds": 0.010616166,
+  "rows": 1048491,
+  "scope": "native Go streaming + Zstd IPC to isolated local file; no Iceberg or network",
+  "total_seconds": 1.698618875
+}

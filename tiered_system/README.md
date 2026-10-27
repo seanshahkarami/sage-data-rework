@@ -19,8 +19,18 @@ docker compose up -d                 # InfluxDB
 docker compose --profile cold up -d  # data-api, after seed_cold.py has published a version-hint
 ```
 
-`tools/seed_cold.py` prints `COLD_WAREHOUSE` and the `version-hint.text` path. `COLD_WATERMARK` is the cut: rows strictly before it are cold, rows at or after it are hot.
+See the [demo guide](demo/README.md) to use the already-published adopted warehouse.
+
+Cold now requires Iceberg v3 with nanosecond time and one stored VARIANT value.
+Use the isolated REST catalog and v3 seeding commands in [plan 10](../plans/10_iceberg_v3.md) before starting the cold profile. `tools/seed_cold.py` prints `COLD_WAREHOUSE` after successful Pelican publication. `COLD_WATERMARK` is the cut: rows strictly before it are cold, rows at or after it are hot.
 
 ## experiments/
 
 The measurements that led here. Findings are in `experiments/results/SUMMARY.md`. How to run a script is in `experiments/README.md`.
+
+The adopted warehouse uses day partitions, chronological file batches of up to
+10 million rows, plugin/vsn/time sorting within each file, and plugin-pure row
+groups capped at 262,144 rows. Time-first and other layouts remain historical
+controls. See the [demo guide](demo/README.md) for the current warehouse, tools,
+and explicit adopted-policy seeder flags, and [plan 10](../plans/10_iceberg_v3.md)
+for the full March/April validation and adoption decision.

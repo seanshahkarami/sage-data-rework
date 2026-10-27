@@ -1,0 +1,36 @@
+{
+  "when": "2026-10-20",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "curl + duckdb read_ndjson_auto / read_arrow",
+  "scope": "cold March 2025, wxt.env.temp on vsn W0A0, live Iceberg table, meta as a JSON string",
+  "start": "2025-03-01T00:00:00Z",
+  "end": "2025-04-01T00:00:00Z",
+  "filter": {"name": "wxt.env.temp", "vsn": "W0A0"},
+  "container_cap": "12GiB",
+  "smoke": {
+    "cold_1min_rows": 698,
+    "hot_1min_rows": 686,
+    "arrow_meta_type": "VARCHAR",
+    "client_value": "float",
+    "client_meta_vsn": "W0A0"
+  },
+  "ndjson": {
+    "rows": 25940207,
+    "raw_bytes": 8871926444,
+    "download_s": 461.934,
+    "decode_s": 1.294,
+    "total_s": 463.228,
+    "server_s": 461.93,
+    "peak_memory": "10.45GiB",
+    "api_memory_at_end": "2.083GiB",
+    "runs": 1,
+    "oom_below_cap": ["8GiB", "10GiB"]
+  },
+  "arrow": {
+    "rows": null,
+    "bytes_received": 0,
+    "peak_memory": "10.43GiB",
+    "note": "Held 10.4 GB from about two minutes in. Stopped after 17 minutes with an empty body. No served line in the API log."
+  },
+  "note": "The second newline-JSON pass in the same process sat at 10.5 GB for 18 minutes and curl timed out with 0 bytes. That pass is not a measurement."
+}

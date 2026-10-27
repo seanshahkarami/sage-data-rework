@@ -1,0 +1,386 @@
+{
+  "when": "2026-10-21",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "curl + duckdb read_arrow / read_ndjson_auto",
+  "duckdb": "1.5.6",
+  "short_reps": 2,
+  "month_reps": 1,
+  "warmup_excluded_from_short_median": true,
+  "peak_memory": "max sampled API container usage during the download",
+  "gzip": "level 6 of the last body, not sent by the server, not included in latency",
+  "results": [
+    {
+      "query": "hot 1 min, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 686,
+      "arrow_rows": 686,
+      "ndjson": {
+        "rows": 686,
+        "bytes": 237287.0,
+        "gzip": 6002,
+        "ttfb": 0.012052,
+        "download": 0.0158745,
+        "decode": 0.01344049999897834,
+        "total": 0.02931499999897834,
+        "server": 0.014505979000000002,
+        "peak": 211812352.0,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 686,
+        "bytes": 200952.0,
+        "gzip": 9001,
+        "ttfb": 0.014919499999999999,
+        "download": 0.0154555,
+        "decode": 0.0009860624995781109,
+        "total": 0.01644156249957811,
+        "server": 0.012784208500000002,
+        "peak": 213280358.4,
+        "reps": 2
+      },
+      "speedup": 1.7829813924151405
+    },
+    {
+      "query": "hot 1 hour, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43525,
+      "arrow_rows": 43525,
+      "ndjson": {
+        "rows": 43525,
+        "bytes": 15048949.0,
+        "gzip": 359999,
+        "ttfb": 0.0123885,
+        "download": 0.2425895,
+        "decode": 0.09906402050546603,
+        "total": 0.34165352050546605,
+        "server": 0.24132225000000002,
+        "peak": 213070643.2,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43525,
+        "bytes": 12704128.0,
+        "gzip": 422130,
+        "ttfb": 0.158478,
+        "download": 0.18553,
+        "decode": 0.006403250008588657,
+        "total": 0.19193325000858866,
+        "server": 0.163722833,
+        "peak": 255957401.6,
+        "reps": 2
+      },
+      "speedup": 1.7800642696884343
+    },
+    {
+      "query": "hot 6 hours, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T06:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 261034,
+      "arrow_rows": 261034,
+      "ndjson": {
+        "rows": 261034,
+        "bytes": 90239188.0,
+        "gzip": 2153382,
+        "ttfb": 0.012368500000000001,
+        "download": 1.36897,
+        "decode": 0.11943997950584162,
+        "total": 1.4884099795058416,
+        "server": 1.367808938,
+        "peak": 216321228.8,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 261034,
+        "bytes": 76174280.0,
+        "gzip": 2533010,
+        "ttfb": 0.215274,
+        "download": 0.886218,
+        "decode": 0.03488231250230456,
+        "total": 0.9211003125023045,
+        "server": 0.8532682715,
+        "peak": 255118540.8,
+        "reps": 2
+      },
+      "speedup": 1.6159043258408599
+    },
+    {
+      "query": "hot 1 min, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6243,
+      "arrow_rows": 6243,
+      "ndjson": {
+        "rows": 6243,
+        "bytes": 2219426.0,
+        "gzip": 57484,
+        "ttfb": 0.1004295,
+        "download": 0.13811,
+        "decode": 0.06968470799620263,
+        "total": 0.20779470799620264,
+        "server": 0.136232771,
+        "peak": 216426086.4,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6243,
+        "bytes": 1883560.0,
+        "gzip": 50583,
+        "ttfb": 0.07454150000000001,
+        "download": 0.0780875,
+        "decode": 0.0016211250040214509,
+        "total": 0.07970862500402146,
+        "server": 0.073274042,
+        "peak": 219152384.0,
+        "reps": 2
+      },
+      "speedup": 2.606928773212673
+    },
+    {
+      "query": "hot 1 hour, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 396225,
+      "arrow_rows": 396225,
+      "ndjson": {
+        "rows": 396225,
+        "bytes": 140866993.0,
+        "gzip": 3452949,
+        "ttfb": 0.041513999999999995,
+        "download": 2.0557895,
+        "decode": 0.12933993749902584,
+        "total": 2.1851294374990258,
+        "server": 2.0537650430000003,
+        "peak": 217684377.6,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 396225,
+        "bytes": 119518336.0,
+        "gzip": 4507296,
+        "ttfb": 0.2507065,
+        "download": 1.368888,
+        "decode": 0.04425672900106292,
+        "total": 1.413144729001063,
+        "server": 1.345612563,
+        "peak": 218523238.4,
+        "reps": 2
+      },
+      "speedup": 1.546288495902094
+    },
+    {
+      "query": "cold 1 min, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 698,
+      "arrow_rows": 698,
+      "ndjson": {
+        "rows": 698,
+        "bytes": 239337.0,
+        "gzip": 4961,
+        "ttfb": 0.389955,
+        "download": 0.3946425,
+        "decode": 0.015709521001554094,
+        "total": 0.4103520210015541,
+        "server": 0.39243845850000003,
+        "peak": 305555046.4,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 698,
+        "bytes": 204456.0,
+        "gzip": 9130,
+        "ttfb": 1.9373144999999998,
+        "download": 1.9410535000000002,
+        "decode": 0.0012067709976690821,
+        "total": 1.9422602709976693,
+        "server": 1.93542623,
+        "peak": 371510476.8,
+        "reps": 2
+      },
+      "speedup": 0.2112755057234276
+    },
+    {
+      "query": "cold 1 hour, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43509,
+      "arrow_rows": 43509,
+      "ndjson": {
+        "rows": 43509,
+        "bytes": 14891210.0,
+        "gzip": 284146,
+        "ttfb": 0.5694195,
+        "download": 0.7839940000000001,
+        "decode": 0.1071212085080333,
+        "total": 0.8911152085080334,
+        "server": 0.782851084,
+        "peak": 441765068.8,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43509,
+        "bytes": 12699872.0,
+        "gzip": 519057,
+        "ttfb": 1.8819245,
+        "download": 1.9075945,
+        "decode": 0.005175207988941111,
+        "total": 1.9127697079889412,
+        "server": 1.8876651675,
+        "peak": 429391872.0,
+        "reps": 2
+      },
+      "speedup": 0.4658768929611183
+    },
+    {
+      "query": "cold 1 min, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6352,
+      "arrow_rows": 6352,
+      "ndjson": {
+        "rows": 6352,
+        "bytes": 2244631.0,
+        "gzip": 38286,
+        "ttfb": 0.5016575,
+        "download": 0.5326470000000001,
+        "decode": 0.05203656299272552,
+        "total": 0.5846835629927256,
+        "server": 0.5308320630000001,
+        "peak": 616667545.6,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6352,
+        "bytes": 1926260.0,
+        "gzip": 60265,
+        "ttfb": 4.343284000000001,
+        "download": 4.3495025,
+        "decode": 0.002248249998956453,
+        "total": 4.351750749998956,
+        "server": 4.342414565,
+        "peak": 781608550.4,
+        "reps": 2
+      },
+      "speedup": 0.13435594007604085
+    },
+    {
+      "query": "cold 1 hour, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 395989,
+      "arrow_rows": 395989,
+      "ndjson": {
+        "rows": 395989,
+        "bytes": 139636489.0,
+        "gzip": 2251111,
+        "ttfb": 1.5153699999999999,
+        "download": 3.606166,
+        "decode": 0.12495252049848204,
+        "total": 3.731118520498482,
+        "server": 3.6050445645,
+        "peak": 1136018849.792,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 395989,
+        "bytes": 119791444.0,
+        "gzip": 3799090,
+        "ttfb": 6.072648,
+        "download": 6.3334085,
+        "decode": 0.02972645799309248,
+        "total": 6.3631349579930925,
+        "server": 6.2930180655,
+        "peak": 953260441.6,
+        "reps": 2
+      },
+      "speedup": 0.58636482569203
+    },
+    {
+      "query": "hot May, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 30388936,
+      "arrow_rows": 30388936,
+      "ndjson": {
+        "rows": 30388936,
+        "bytes": 10496865583,
+        "gzip": 250645185,
+        "ttfb": 0.125225,
+        "download": 153.81398,
+        "decode": 1.484183458989719,
+        "total": 155.2981634589897,
+        "server": 153.81264973999998,
+        "peak": 691116441.6,
+        "reps": 1
+      },
+      "arrow": {
+        "rows": 30388936,
+        "bytes": 8859410040,
+        "gzip": 296905173,
+        "ttfb": 0.256404,
+        "download": 99.740671,
+        "decode": 2.633218416987802,
+        "total": 102.37388941698781,
+        "server": 99.713019256,
+        "peak": 743020953.6,
+        "reps": 1
+      },
+      "speedup": 1.5169704339983756
+    },
+    {
+      "query": "cold March, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "error": {
+        "ndjson": {
+          "error": "<urlopen error curl: (52) Empty reply from server>"
+        },
+        "arrow": {
+          "error": "<urlopen error curl: (7) Failed to connect to 127.0.0.1 port 10000 after 0 ms: Couldn't connect to server>"
+        }
+      }
+    }
+  ]
+}

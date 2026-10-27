@@ -1,0 +1,154 @@
+{
+  "sample": "/private/tmp/exp-check-cold.arrows",
+  "sample_rows": 698,
+  "pandas": "3.0.6",
+  "pyarrow": "25.0.1",
+  "sample_schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+  "sample_columns_bytes": {
+    "timestamp": 5584,
+    "name": 11168,
+    "value": 5584,
+    "meta": 181480
+  },
+  "sample_unique_meta": 1,
+  "sample_ipc_sizes": {
+    "plain": 204448,
+    "zstd": 9056,
+    "dictionary_name_meta": 18072
+  },
+  "prototype_sample_values_match": true,
+  "scope": "Repeated saved API sample; fresh-process local decoder costs, not a month or network benchmark",
+  "measurements": [
+    {
+      "mode": "current",
+      "rows": 200000,
+      "seconds": 0.5854899999976624,
+      "dataframe_bytes": 52425132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "str",
+        "meta.sensor": "str",
+        "meta.units": "str",
+        "meta.plugin": "str",
+        "meta.vsn": "str",
+        "meta.node": "str",
+        "meta.host": "str",
+        "meta.task": "str",
+        "meta.zone": "str"
+      },
+      "peak_rss_bytes": 536199168
+    },
+    {
+      "mode": "prototype",
+      "rows": 200000,
+      "seconds": 0.09317966700473335,
+      "dataframe_bytes": 45450132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "peak_rss_bytes": 227311616
+    },
+    {
+      "mode": "current",
+      "rows": 1000000,
+      "seconds": 2.8659703750017798,
+      "dataframe_bytes": 262125132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "str",
+        "meta.sensor": "str",
+        "meta.units": "str",
+        "meta.plugin": "str",
+        "meta.vsn": "str",
+        "meta.node": "str",
+        "meta.host": "str",
+        "meta.task": "str",
+        "meta.zone": "str"
+      },
+      "peak_rss_bytes": 2170519552
+    },
+    {
+      "mode": "prototype",
+      "rows": 1000000,
+      "seconds": 0.4193409160070587,
+      "dataframe_bytes": 227250132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "peak_rss_bytes": 714113024
+    }
+  ],
+  "current_profile": {
+    "mode": "current",
+    "rows": 200000,
+    "seconds": 1.0432751670014113,
+    "dataframe_bytes": 52425132,
+    "dtypes": {
+      "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+      "name": "string[pyarrow]",
+      "value": "float64",
+      "meta.missing": "str",
+      "meta.sensor": "str",
+      "meta.units": "str",
+      "meta.plugin": "str",
+      "meta.vsn": "str",
+      "meta.node": "str",
+      "meta.host": "str",
+      "meta.task": "str",
+      "meta.zone": "str"
+    },
+    "profile": [
+      {
+        "function": "_load_arrow",
+        "calls": 1,
+        "own_seconds": 0.018580582000000002,
+        "cumulative_seconds": 1.017828875
+      },
+      {
+        "function": "_meta_columns",
+        "calls": 1,
+        "own_seconds": 0.19704305000000003,
+        "cumulative_seconds": 0.641392292
+      },
+      {
+        "function": "loads",
+        "calls": 400000,
+        "own_seconds": 0.08296587700000001,
+        "cumulative_seconds": 0.516107135
+      },
+      {
+        "function": "_arrow_values",
+        "calls": 1,
+        "own_seconds": 0.029922153000000003,
+        "cumulative_seconds": 0.24281495800000003
+      }
+    ],
+    "peak_rss_bytes": 538296320
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "label": "DuckDB 2.0 promoted JSON fast paths, profiled",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "scope": "cold public-schema query timing; fixed server codec",
+  "baseline": "sage-data-rework/tiered_system/experiments/results/exp67_after_live.json",
+  "results": [
+    {
+      "case": [
+        "cold March, one name",
+        "2025-03-01T00:00:00Z",
+        "2025-04-01T00:00:00Z",
+        {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        true,
+        "1200"
+      ],
+      "repetition": 1,
+      "mode": "zstd",
+      "arrow_schema": 1,
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "bytes": 430985448,
+      "total_seconds": 27.88257041601173,
+      "client_cpu_seconds": 8.115706999999999,
+      "client_major_faults": 0,
+      "first_body_seconds": 20.617237625003327,
+      "first_batch_seconds": 20.618655458005378,
+      "dataframe_bytes": 5891669648,
+      "row_hash_sum": "16208072146768407073",
+      "row_hash_xor": "16639512654829667005",
+      "columns": [
+        "timestamp",
+        "name",
+        "value",
+        "meta.missing",
+        "meta.sensor",
+        "meta.units",
+        "meta.plugin",
+        "meta.vsn",
+        "meta.node",
+        "meta.host",
+        "meta.task",
+        "meta.zone"
+      ],
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "client_peak_rss_bytes": 4814536704
+    },
+    {
+      "case": [
+        "cold March, one name",
+        "2025-03-01T00:00:00Z",
+        "2025-04-01T00:00:00Z",
+        {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        true,
+        "1200"
+      ],
+      "repetition": 2,
+      "mode": "zstd",
+      "arrow_schema": 1,
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "bytes": 430985448,
+      "total_seconds": 26.745768749999115,
+      "client_cpu_seconds": 7.929579,
+      "client_major_faults": 0,
+      "first_body_seconds": 19.054105832998175,
+      "first_batch_seconds": 19.054892749991268,
+      "dataframe_bytes": 5891669648,
+      "row_hash_sum": "16208072146768407073",
+      "row_hash_xor": "16639512654829667005",
+      "columns": [
+        "timestamp",
+        "name",
+        "value",
+        "meta.missing",
+        "meta.sensor",
+        "meta.units",
+        "meta.plugin",
+        "meta.vsn",
+        "meta.node",
+        "meta.host",
+        "meta.task",
+        "meta.zone"
+      ],
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "client_peak_rss_bytes": 4794548224
+    },
+    {
+      "case": [
+        "cold March, one name",
+        "2025-03-01T00:00:00Z",
+        "2025-04-01T00:00:00Z",
+        {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        true,
+        "1200"
+      ],
+      "repetition": 3,
+      "mode": "zstd",
+      "arrow_schema": 1,
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "bytes": 430985448,
+      "total_seconds": 23.06858116699732,
+      "client_cpu_seconds": 7.700763,
+      "client_major_faults": 0,
+      "first_body_seconds": 16.68684879200009,
+      "first_batch_seconds": 16.687991250000778,
+      "dataframe_bytes": 5891669648,
+      "row_hash_sum": "16208072146768407073",
+      "row_hash_xor": "16639512654829667005",
+      "columns": [
+        "timestamp",
+        "name",
+        "value",
+        "meta.missing",
+        "meta.sensor",
+        "meta.units",
+        "meta.plugin",
+        "meta.vsn",
+        "meta.node",
+        "meta.host",
+        "meta.task",
+        "meta.zone"
+      ],
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "client_peak_rss_bytes": 4619829248
+    }
+  ],
+  "summaries": [
+    {
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "mode": "zstd",
+      "total_seconds": 26.745768749999115,
+      "first_batch_seconds": 19.054892749991268,
+      "baseline_total_seconds": 29.084053041005973,
+      "baseline_first_batch_seconds": 18.797752291997313,
+      "rows_content_dtypes_match_baseline": true
+    }
+  ],
+  "memory_scope": "whole client process includes checksum validation; server CPU/memory must be sampled externally"
+}

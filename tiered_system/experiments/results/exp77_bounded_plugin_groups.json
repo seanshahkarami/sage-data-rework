@@ -1,0 +1,1683 @@
+{
+  "scope": "Repack fixed plugin-sorted files at bounded row-group sizes, read-only inputs.\n\nPreserves exact file membership/order for an isolated row-group-cap experiment.\nBoth archive-order and chronological file batches can be supplied. No Iceberg\ncommits, Pelican writes or API changes. Outputs remain for exp74 benchmarks.\n",
+  "status": "complete",
+  "work_dir": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023",
+  "caps": [
+    100000,
+    262144,
+    524288,
+    1000000
+  ],
+  "datasets": {
+    "archive_100000": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 730100005,
+        "row_groups": 63
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 1023457798,
+        "row_groups": 1449,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 100000,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 100000,
+        "batch_order": "archive",
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200023531540,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0008.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740825864740187393,
+            "max_timestamp_ns": 1740873599972061075
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740873599954046793
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_100000/data/batch-0014.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 126.88573166698916,
+      "helper_peak_rss_bytes": 394608640,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92216217526029412810750635",
+          "13054104316796556821"
+        ],
+        [
+          10000000,
+          "92229885594662787382301923",
+          "16925427851546924203"
+        ],
+        [
+          10000000,
+          "92229614251816406438284672",
+          "6297251984662996794"
+        ],
+        [
+          10000000,
+          "92231667446552102898915641",
+          "14600385518015131537"
+        ],
+        [
+          10000000,
+          "92227859958666247614014254",
+          "8980500634841560508"
+        ],
+        [
+          10000000,
+          "92220917085149467871619534",
+          "4959371652230276410"
+        ],
+        [
+          10000000,
+          "92242738018947231544469052",
+          "316654109238070220"
+        ],
+        [
+          10000000,
+          "92270027948685234437945864",
+          "9358057315978257582"
+        ],
+        [
+          578674,
+          "5336641364214835853372002",
+          "4194957986538497116"
+        ],
+        [
+          10000000,
+          "92247145319119363581576078",
+          "9972918348303479734"
+        ],
+        [
+          10000000,
+          "92239564240369718463875123",
+          "8350790375117462185"
+        ],
+        [
+          10000000,
+          "92207386554463635791055832",
+          "12815642839666647548"
+        ],
+        [
+          10000000,
+          "92238572956665730019046523",
+          "8316960331589822281"
+        ],
+        [
+          10000000,
+          "92254412654485168437064800",
+          "8715738676136467864"
+        ],
+        [
+          10000000,
+          "92237464134122333585581412",
+          "8667696981351009986"
+        ]
+      ]
+    },
+    "archive_262144": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 730100005,
+        "row_groups": 63
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 885503238,
+        "row_groups": 584,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 262144,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 262144,
+        "batch_order": "archive",
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200023531540,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0008.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740825864740187393,
+            "max_timestamp_ns": 1740873599972061075
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740873599954046793
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_262144/data/batch-0014.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 124.80034791701473,
+      "helper_peak_rss_bytes": 417742848,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92216217526029412810750635",
+          "13054104316796556821"
+        ],
+        [
+          10000000,
+          "92229885594662787382301923",
+          "16925427851546924203"
+        ],
+        [
+          10000000,
+          "92229614251816406438284672",
+          "6297251984662996794"
+        ],
+        [
+          10000000,
+          "92231667446552102898915641",
+          "14600385518015131537"
+        ],
+        [
+          10000000,
+          "92227859958666247614014254",
+          "8980500634841560508"
+        ],
+        [
+          10000000,
+          "92220917085149467871619534",
+          "4959371652230276410"
+        ],
+        [
+          10000000,
+          "92242738018947231544469052",
+          "316654109238070220"
+        ],
+        [
+          10000000,
+          "92270027948685234437945864",
+          "9358057315978257582"
+        ],
+        [
+          578674,
+          "5336641364214835853372002",
+          "4194957986538497116"
+        ],
+        [
+          10000000,
+          "92247145319119363581576078",
+          "9972918348303479734"
+        ],
+        [
+          10000000,
+          "92239564240369718463875123",
+          "8350790375117462185"
+        ],
+        [
+          10000000,
+          "92207386554463635791055832",
+          "12815642839666647548"
+        ],
+        [
+          10000000,
+          "92238572956665730019046523",
+          "8316960331589822281"
+        ],
+        [
+          10000000,
+          "92254412654485168437064800",
+          "8715738676136467864"
+        ],
+        [
+          10000000,
+          "92237464134122333585581412",
+          "8667696981351009986"
+        ]
+      ]
+    },
+    "archive_524288": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 730100005,
+        "row_groups": 63
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 805926039,
+        "row_groups": 316,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 524288,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 524288,
+        "batch_order": "archive",
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200023531540,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0008.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740825864740187393,
+            "max_timestamp_ns": 1740873599972061075
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740873599954046793
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_524288/data/batch-0014.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 122.73771979101002,
+      "helper_peak_rss_bytes": 415301632,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92216217526029412810750635",
+          "13054104316796556821"
+        ],
+        [
+          10000000,
+          "92229885594662787382301923",
+          "16925427851546924203"
+        ],
+        [
+          10000000,
+          "92229614251816406438284672",
+          "6297251984662996794"
+        ],
+        [
+          10000000,
+          "92231667446552102898915641",
+          "14600385518015131537"
+        ],
+        [
+          10000000,
+          "92227859958666247614014254",
+          "8980500634841560508"
+        ],
+        [
+          10000000,
+          "92220917085149467871619534",
+          "4959371652230276410"
+        ],
+        [
+          10000000,
+          "92242738018947231544469052",
+          "316654109238070220"
+        ],
+        [
+          10000000,
+          "92270027948685234437945864",
+          "9358057315978257582"
+        ],
+        [
+          578674,
+          "5336641364214835853372002",
+          "4194957986538497116"
+        ],
+        [
+          10000000,
+          "92247145319119363581576078",
+          "9972918348303479734"
+        ],
+        [
+          10000000,
+          "92239564240369718463875123",
+          "8350790375117462185"
+        ],
+        [
+          10000000,
+          "92207386554463635791055832",
+          "12815642839666647548"
+        ],
+        [
+          10000000,
+          "92238572956665730019046523",
+          "8316960331589822281"
+        ],
+        [
+          10000000,
+          "92254412654485168437064800",
+          "8715738676136467864"
+        ],
+        [
+          10000000,
+          "92237464134122333585581412",
+          "8667696981351009986"
+        ]
+      ]
+    },
+    "archive_1000000": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 730100005,
+        "row_groups": 63
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 764970406,
+        "row_groups": 186,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 1000000,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 1000000,
+        "batch_order": "archive",
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200023531540,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0008.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740825864740187393,
+            "max_timestamp_ns": 1740873599972061075
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740873599954046793
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599988061138
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200012712418,
+            "max_timestamp_ns": 1740873599998558748
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/archive_1000000/data/batch-0014.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200019903627,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 120.50513999999384,
+      "helper_peak_rss_bytes": 429817856,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92216217526029412810750635",
+          "13054104316796556821"
+        ],
+        [
+          10000000,
+          "92229885594662787382301923",
+          "16925427851546924203"
+        ],
+        [
+          10000000,
+          "92229614251816406438284672",
+          "6297251984662996794"
+        ],
+        [
+          10000000,
+          "92231667446552102898915641",
+          "14600385518015131537"
+        ],
+        [
+          10000000,
+          "92227859958666247614014254",
+          "8980500634841560508"
+        ],
+        [
+          10000000,
+          "92220917085149467871619534",
+          "4959371652230276410"
+        ],
+        [
+          10000000,
+          "92242738018947231544469052",
+          "316654109238070220"
+        ],
+        [
+          10000000,
+          "92270027948685234437945864",
+          "9358057315978257582"
+        ],
+        [
+          578674,
+          "5336641364214835853372002",
+          "4194957986538497116"
+        ],
+        [
+          10000000,
+          "92247145319119363581576078",
+          "9972918348303479734"
+        ],
+        [
+          10000000,
+          "92239564240369718463875123",
+          "8350790375117462185"
+        ],
+        [
+          10000000,
+          "92207386554463635791055832",
+          "12815642839666647548"
+        ],
+        [
+          10000000,
+          "92238572956665730019046523",
+          "8316960331589822281"
+        ],
+        [
+          10000000,
+          "92254412654485168437064800",
+          "8715738676136467864"
+        ],
+        [
+          10000000,
+          "92237464134122333585581412",
+          "8667696981351009986"
+        ]
+      ]
+    },
+    "time_100000": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 456518307,
+        "row_groups": 565
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 455992582,
+        "row_groups": 1907,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 100000,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 100000,
+        "batch_order": "time",
+        "time_batch_ranges_checked": true,
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740793187938633861
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740793187938633861,
+            "max_timestamp_ns": 1740799142608234658
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740799142608234658,
+            "max_timestamp_ns": 1740805079792975378
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740805079792975378,
+            "max_timestamp_ns": 1740811019100747559
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740811019100747559,
+            "max_timestamp_ns": 1740816952685662285
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740816952704151013,
+            "max_timestamp_ns": 1740822900375940962
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740822900375940962,
+            "max_timestamp_ns": 1740828855446485836
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740828855446485836,
+            "max_timestamp_ns": 1740835084950837649
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0008.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740835084950837649,
+            "max_timestamp_ns": 1740841425570187520
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740841425570187520,
+            "max_timestamp_ns": 1740847763724575120
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740847763724575120,
+            "max_timestamp_ns": 1740854132866341973
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740854132866341973,
+            "max_timestamp_ns": 1740860502686156862
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740860502686156862,
+            "max_timestamp_ns": 1740866872106274890
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740866872113198345,
+            "max_timestamp_ns": 1740873230698392164
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_100000/data/batch-0014.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740873230698392164,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 124.81074695798452,
+      "helper_peak_rss_bytes": 297631744,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92249512035190382765048908",
+          "15123649219798472082"
+        ],
+        [
+          10000000,
+          "92253743634513445387080880",
+          "10829866559804807228"
+        ],
+        [
+          10000000,
+          "92244455198042690590186500",
+          "8098438713617935084"
+        ],
+        [
+          10000000,
+          "92224081662133768364652004",
+          "14550360229006920778"
+        ],
+        [
+          10000000,
+          "92238377234532129261245645",
+          "15964801900558184245"
+        ],
+        [
+          10000000,
+          "92212084431299135593897191",
+          "7944684813548304023"
+        ],
+        [
+          10000000,
+          "92248346461769944689159750",
+          "17748972808866400718"
+        ],
+        [
+          10000000,
+          "92230754231543018843336604",
+          "9345497927404895700"
+        ],
+        [
+          10000000,
+          "92226050354412043726934696",
+          "14665453592891797538"
+        ],
+        [
+          10000000,
+          "92229450658666348409594476",
+          "12653998424494107312"
+        ],
+        [
+          10000000,
+          "92254937035893859824626149",
+          "6080102491380901103"
+        ],
+        [
+          10000000,
+          "92237975710982187085037345",
+          "7613475194370318499"
+        ],
+        [
+          10000000,
+          "92212306568017363198059225",
+          "1825024457031255507"
+        ],
+        [
+          10000000,
+          "92219656386687094346300418",
+          "8728511760394681260"
+        ],
+        [
+          578674,
+          "5348383450266264644713554",
+          "9074000095118019404"
+        ]
+      ]
+    },
+    "time_262144": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 456518307,
+        "row_groups": 565
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 465676466,
+        "row_groups": 1071,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 262144,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 262144,
+        "batch_order": "time",
+        "time_batch_ranges_checked": true,
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740793187938633861
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740793187938633861,
+            "max_timestamp_ns": 1740799142608234658
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740799142608234658,
+            "max_timestamp_ns": 1740805079792975378
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740805079792975378,
+            "max_timestamp_ns": 1740811019100747559
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740811019100747559,
+            "max_timestamp_ns": 1740816952685662285
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740816952704151013,
+            "max_timestamp_ns": 1740822900375940962
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740822900375940962,
+            "max_timestamp_ns": 1740828855446485836
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740828855446485836,
+            "max_timestamp_ns": 1740835084950837649
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0008.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740835084950837649,
+            "max_timestamp_ns": 1740841425570187520
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740841425570187520,
+            "max_timestamp_ns": 1740847763724575120
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740847763724575120,
+            "max_timestamp_ns": 1740854132866341973
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740854132866341973,
+            "max_timestamp_ns": 1740860502686156862
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740860502686156862,
+            "max_timestamp_ns": 1740866872106274890
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740866872113198345,
+            "max_timestamp_ns": 1740873230698392164
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_262144/data/batch-0014.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740873230698392164,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 125.01610283300397,
+      "helper_peak_rss_bytes": 351125504,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92249512035190382765048908",
+          "15123649219798472082"
+        ],
+        [
+          10000000,
+          "92253743634513445387080880",
+          "10829866559804807228"
+        ],
+        [
+          10000000,
+          "92244455198042690590186500",
+          "8098438713617935084"
+        ],
+        [
+          10000000,
+          "92224081662133768364652004",
+          "14550360229006920778"
+        ],
+        [
+          10000000,
+          "92238377234532129261245645",
+          "15964801900558184245"
+        ],
+        [
+          10000000,
+          "92212084431299135593897191",
+          "7944684813548304023"
+        ],
+        [
+          10000000,
+          "92248346461769944689159750",
+          "17748972808866400718"
+        ],
+        [
+          10000000,
+          "92230754231543018843336604",
+          "9345497927404895700"
+        ],
+        [
+          10000000,
+          "92226050354412043726934696",
+          "14665453592891797538"
+        ],
+        [
+          10000000,
+          "92229450658666348409594476",
+          "12653998424494107312"
+        ],
+        [
+          10000000,
+          "92254937035893859824626149",
+          "6080102491380901103"
+        ],
+        [
+          10000000,
+          "92237975710982187085037345",
+          "7613475194370318499"
+        ],
+        [
+          10000000,
+          "92212306568017363198059225",
+          "1825024457031255507"
+        ],
+        [
+          10000000,
+          "92219656386687094346300418",
+          "8728511760394681260"
+        ],
+        [
+          578674,
+          "5348383450266264644713554",
+          "9074000095118019404"
+        ]
+      ]
+    },
+    "time_524288": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 456518307,
+        "row_groups": 565
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 471346809,
+        "row_groups": 818,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 524288,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 524288,
+        "batch_order": "time",
+        "time_batch_ranges_checked": true,
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740793187938633861
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740793187938633861,
+            "max_timestamp_ns": 1740799142608234658
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740799142608234658,
+            "max_timestamp_ns": 1740805079792975378
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740805079792975378,
+            "max_timestamp_ns": 1740811019100747559
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740811019100747559,
+            "max_timestamp_ns": 1740816952685662285
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740816952704151013,
+            "max_timestamp_ns": 1740822900375940962
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740822900375940962,
+            "max_timestamp_ns": 1740828855446485836
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740828855446485836,
+            "max_timestamp_ns": 1740835084950837649
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0008.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740835084950837649,
+            "max_timestamp_ns": 1740841425570187520
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740841425570187520,
+            "max_timestamp_ns": 1740847763724575120
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740847763724575120,
+            "max_timestamp_ns": 1740854132866341973
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740854132866341973,
+            "max_timestamp_ns": 1740860502686156862
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740860502686156862,
+            "max_timestamp_ns": 1740866872106274890
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740866872113198345,
+            "max_timestamp_ns": 1740873230698392164
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_524288/data/batch-0014.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740873230698392164,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 125.04485425000894,
+      "helper_peak_rss_bytes": 353320960,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92249512035190382765048908",
+          "15123649219798472082"
+        ],
+        [
+          10000000,
+          "92253743634513445387080880",
+          "10829866559804807228"
+        ],
+        [
+          10000000,
+          "92244455198042690590186500",
+          "8098438713617935084"
+        ],
+        [
+          10000000,
+          "92224081662133768364652004",
+          "14550360229006920778"
+        ],
+        [
+          10000000,
+          "92238377234532129261245645",
+          "15964801900558184245"
+        ],
+        [
+          10000000,
+          "92212084431299135593897191",
+          "7944684813548304023"
+        ],
+        [
+          10000000,
+          "92248346461769944689159750",
+          "17748972808866400718"
+        ],
+        [
+          10000000,
+          "92230754231543018843336604",
+          "9345497927404895700"
+        ],
+        [
+          10000000,
+          "92226050354412043726934696",
+          "14665453592891797538"
+        ],
+        [
+          10000000,
+          "92229450658666348409594476",
+          "12653998424494107312"
+        ],
+        [
+          10000000,
+          "92254937035893859824626149",
+          "6080102491380901103"
+        ],
+        [
+          10000000,
+          "92237975710982187085037345",
+          "7613475194370318499"
+        ],
+        [
+          10000000,
+          "92212306568017363198059225",
+          "1825024457031255507"
+        ],
+        [
+          10000000,
+          "92219656386687094346300418",
+          "8728511760394681260"
+        ],
+        [
+          578674,
+          "5348383450266264644713554",
+          "9074000095118019404"
+        ]
+      ]
+    },
+    "time_1000000": {
+      "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data",
+      "source_inventory": {
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 456518307,
+        "row_groups": 565
+      },
+      "audit": {
+        "layout": "plugin-vsn-time",
+        "table_uuid": "local-cap-experiment",
+        "snapshot_id": null,
+        "snapshots": 0,
+        "value_field_id": 11,
+        "value_type": "variant",
+        "files": 15,
+        "rows": 140578674,
+        "bytes": 477592158,
+        "row_groups": 691,
+        "mixed_plugin_groups": 0,
+        "ordering_checked": true,
+        "physical_typed_value_types": {
+          "double": 15
+        },
+        "min_timestamp_ns": 1740787200000000000,
+        "max_timestamp_ns": 1740873599998558748,
+        "file_row_limit": 10000000,
+        "one_group_per_plugin": false,
+        "plugin_pure_groups": true,
+        "row_group_row_limit": 1000000,
+        "bounded_plugin_groups": true,
+        "max_row_group_rows": 1000000,
+        "batch_order": "time",
+        "time_batch_ranges_checked": true,
+        "file_time_ranges": [
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0000.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740787200000000000,
+            "max_timestamp_ns": 1740793187938633861
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0001.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740793187938633861,
+            "max_timestamp_ns": 1740799142608234658
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0002.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740799142608234658,
+            "max_timestamp_ns": 1740805079792975378
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0003.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740805079792975378,
+            "max_timestamp_ns": 1740811019100747559
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0004.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740811019100747559,
+            "max_timestamp_ns": 1740816952685662285
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0005.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740816952704151013,
+            "max_timestamp_ns": 1740822900375940962
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0006.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740822900375940962,
+            "max_timestamp_ns": 1740828855446485836
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0007.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740828855446485836,
+            "max_timestamp_ns": 1740835084950837649
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0008.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740835084950837649,
+            "max_timestamp_ns": 1740841425570187520
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0009.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740841425570187520,
+            "max_timestamp_ns": 1740847763724575120
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0010.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740847763724575120,
+            "max_timestamp_ns": 1740854132866341973
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0011.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740854132866341973,
+            "max_timestamp_ns": 1740860502686156862
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0012.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740860502686156862,
+            "max_timestamp_ns": 1740866872106274890
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0013.parquet",
+            "rows": 10000000,
+            "min_timestamp_ns": 1740866872113198345,
+            "max_timestamp_ns": 1740873230698392164
+          },
+          {
+            "path": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/exp77-bounded-groups-20261023/time_1000000/data/batch-0014.parquet",
+            "rows": 578674,
+            "min_timestamp_ns": 1740873230698392164,
+            "max_timestamp_ns": 1740873599998558748
+          }
+        ]
+      },
+      "build_and_verify_seconds": 125.08934358300758,
+      "helper_peak_rss_bytes": 354697216,
+      "raw_rows_checked": 140578674,
+      "file_fingerprints": [
+        [
+          10000000,
+          "92249512035190382765048908",
+          "15123649219798472082"
+        ],
+        [
+          10000000,
+          "92253743634513445387080880",
+          "10829866559804807228"
+        ],
+        [
+          10000000,
+          "92244455198042690590186500",
+          "8098438713617935084"
+        ],
+        [
+          10000000,
+          "92224081662133768364652004",
+          "14550360229006920778"
+        ],
+        [
+          10000000,
+          "92238377234532129261245645",
+          "15964801900558184245"
+        ],
+        [
+          10000000,
+          "92212084431299135593897191",
+          "7944684813548304023"
+        ],
+        [
+          10000000,
+          "92248346461769944689159750",
+          "17748972808866400718"
+        ],
+        [
+          10000000,
+          "92230754231543018843336604",
+          "9345497927404895700"
+        ],
+        [
+          10000000,
+          "92226050354412043726934696",
+          "14665453592891797538"
+        ],
+        [
+          10000000,
+          "92229450658666348409594476",
+          "12653998424494107312"
+        ],
+        [
+          10000000,
+          "92254937035893859824626149",
+          "6080102491380901103"
+        ],
+        [
+          10000000,
+          "92237975710982187085037345",
+          "7613475194370318499"
+        ],
+        [
+          10000000,
+          "92212306568017363198059225",
+          "1825024457031255507"
+        ],
+        [
+          10000000,
+          "92219656386687094346300418",
+          "8728511760394681260"
+        ],
+        [
+          578674,
+          "5348383450266264644713554",
+          "9074000095118019404"
+        ]
+      ]
+    }
+  },
+  "helper_sha256": "21f61fb073dbc3042f672f4af7412b81ee56eca6c94dd39881b66fd6b56b81ce",
+  "native_sha256": "4975710e75fd1440dc0b847463a0eef7d098d354a657648d23f6d4327bae0f97",
+  "fingerprints_checked_files": 120,
+  "total_wall_seconds": 1023.840180625004,
+  "complete_day_fingerprint": [
+    140578674,
+    "1296630115053949676729873345",
+    "9099187488452193629"
+  ],
+  "canonical_reference": "exp76_time_batch_layout.json: original time-first day fingerprint"
+}

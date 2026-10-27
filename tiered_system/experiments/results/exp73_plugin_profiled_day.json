@@ -1,0 +1,187 @@
+{
+  "scope": "live HTTP receive + Arrow IPC iteration + file spool; excludes canonical validation and dataframe decoding",
+  "status": "complete",
+  "endpoints": {
+    "time": "http://127.0.0.1:10000/api/v1/query",
+    "plugin_vsn_time": "http://127.0.0.1:10001/api/v1/query"
+  },
+  "declared_api_image": "sha256:c1c465a46a16432040956221f36373ff905e482c5eb4a389d51230ef3b97c243",
+  "candidate_audit": {
+    "layout": "plugin-vsn-time",
+    "table_uuid": "a8e7af06-634e-4020-81c3-91dbd28e9c23",
+    "snapshot_id": 1040454635680553670,
+    "snapshots": 1,
+    "value_field_id": 11,
+    "value_type": "variant",
+    "files": 15,
+    "rows": 140578674,
+    "bytes": 730100005,
+    "row_groups": 63,
+    "mixed_plugin_groups": 0,
+    "ordering_checked": true,
+    "physical_typed_value_types": {
+      "double": 15
+    },
+    "min_timestamp_ns": 1740787200000000000,
+    "max_timestamp_ns": 1740873599998558748,
+    "file_row_limit": 10000000,
+    "one_group_per_plugin": true,
+    "metadata_location": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-plugin-trial-1792792556/sage/obs/metadata/00001-ebdae847-86c5-4130-9e8c-fa41854eb82d.metadata.json"
+  },
+  "selected_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "timestamp_precision": "nanoseconds, no flooring",
+  "validation": "first",
+  "cache_protocol": "one excluded warmup per endpoint/format/case; rotate measured endpoint/format order; sequential requests",
+  "results": [
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 9.491413207986625,
+      "first_result_seconds": 9.325467540998943,
+      "client_cpu_seconds": 0.15515900000000027,
+      "codec": "zstd",
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 1.3566482909955084,
+      "first_result_seconds": 1.1872159159975126,
+      "client_cpu_seconds": 0.14768000000000026,
+      "codec": "zstd",
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 15.377156750007998,
+      "first_result_seconds": 9.639382708002813,
+      "client_cpu_seconds": 1.255998,
+      "codec": null,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 7.142981915996643,
+      "first_result_seconds": 1.3577305829967372,
+      "client_cpu_seconds": 1.2613449999999986,
+      "codec": null,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    }
+  ],
+  "summaries": [
+    {
+      "case": "series_day",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 1048491,
+      "total_seconds": 9.491413207986625,
+      "first_result_seconds": 9.325467540998943,
+      "bytes": 19171032,
+      "client_cpu_seconds": 0.15515900000000027,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 1048491,
+      "total_seconds": 1.3566482909955084,
+      "first_result_seconds": 1.1872159159975126,
+      "bytes": 19171032,
+      "client_cpu_seconds": 0.14768000000000026,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 1048491,
+      "total_seconds": 15.377156750007998,
+      "first_result_seconds": 9.639382708002813,
+      "bytes": 362323649,
+      "client_cpu_seconds": 1.255998,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 1048491,
+      "total_seconds": 7.142981915996643,
+      "first_result_seconds": 1.3577305829967372,
+      "bytes": 362323649,
+      "client_cpu_seconds": 1.2613449999999986,
+      "content_checked_against_both_layouts_and_formats": true
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "label": "DuckDB 2.0 async=16",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "scope": "cold public-schema query timing; fixed server codec",
+  "baseline": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/tiered_system/experiments/results/exp66_duckdb20_live.json",
+  "results": [
+    {
+      "case": [
+        "cold March, one name",
+        "2025-03-01T00:00:00Z",
+        "2025-04-01T00:00:00Z",
+        {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        true,
+        "1200"
+      ],
+      "repetition": 1,
+      "mode": "zstd",
+      "arrow_schema": 1,
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "bytes": 430985448,
+      "total_seconds": 35.18599879198882,
+      "client_cpu_seconds": 7.878205,
+      "client_major_faults": 0,
+      "first_body_seconds": 26.565154749987414,
+      "first_batch_seconds": 26.56566737499088,
+      "dataframe_bytes": 5891669648,
+      "row_hash_sum": "16208072146768407073",
+      "row_hash_xor": "16639512654829667005",
+      "columns": [
+        "timestamp",
+        "name",
+        "value",
+        "meta.missing",
+        "meta.sensor",
+        "meta.units",
+        "meta.plugin",
+        "meta.vsn",
+        "meta.node",
+        "meta.host",
+        "meta.task",
+        "meta.zone"
+      ],
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "client_peak_rss_bytes": 4685774848
+    },
+    {
+      "case": [
+        "cold March, one name",
+        "2025-03-01T00:00:00Z",
+        "2025-04-01T00:00:00Z",
+        {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        true,
+        "1200"
+      ],
+      "repetition": 2,
+      "mode": "zstd",
+      "arrow_schema": 1,
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "bytes": 430985448,
+      "total_seconds": 33.08274891700421,
+      "client_cpu_seconds": 7.675569,
+      "client_major_faults": 0,
+      "first_body_seconds": 24.77671650001139,
+      "first_batch_seconds": 24.777499334013555,
+      "dataframe_bytes": 5891669648,
+      "row_hash_sum": "16208072146768407073",
+      "row_hash_xor": "16639512654829667005",
+      "columns": [
+        "timestamp",
+        "name",
+        "value",
+        "meta.missing",
+        "meta.sensor",
+        "meta.units",
+        "meta.plugin",
+        "meta.vsn",
+        "meta.node",
+        "meta.host",
+        "meta.task",
+        "meta.zone"
+      ],
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "client_peak_rss_bytes": 5040340992
+    }
+  ],
+  "summaries": [
+    {
+      "query": "cold March, one name",
+      "rows": 25940207,
+      "mode": "zstd",
+      "total_seconds": 34.134373854496516,
+      "first_batch_seconds": 25.671583354502218,
+      "baseline_total_seconds": 30.403168958000606,
+      "baseline_first_batch_seconds": 22.012426374989445,
+      "rows_content_dtypes_match_baseline": true
+    }
+  ],
+  "memory_scope": "whole client process includes checksum validation; server CPU/memory must be sampled externally"
+}

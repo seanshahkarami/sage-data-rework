@@ -1,0 +1,220 @@
+{
+  "when": "2026-10-21",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "sage-data-client _load_arrow after the batched decoder",
+  "client": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-client/src/sage_data_client/query.py",
+  "short_reps": 2,
+  "month_reps": 1,
+  "warmup_excluded_from_short_median": true,
+  "latency": "request start until the pandas dataframe exists",
+  "api_peak": "max sampled API container usage during the call",
+  "client_rss": "max ps RSS of this process during the measured call",
+  "majflt": "increase in ru_majflt across the measured call",
+  "results": [
+    {
+      "query": "hot 1 min, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 686,
+      "bytes": 200952.0,
+      "ttfb": 0.018876166497648228,
+      "total": 0.020614499495422933,
+      "server": 0.014688687999999998,
+      "api_peak": 42068869.12,
+      "client_rss": 118915072,
+      "majflt": 0,
+      "warmup_total": 0.7170920000062324,
+      "reps": 2
+    },
+    {
+      "query": "hot 1 hour, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43525,
+      "bytes": 12704128.0,
+      "ttfb": 0.2198718125000596,
+      "total": 0.25357889600127237,
+      "server": 0.2296083955,
+      "api_peak": 86643834.88,
+      "client_rss": 190611456,
+      "majflt": 0,
+      "warmup_total": 0.35476337499858346,
+      "reps": 2
+    },
+    {
+      "query": "hot 6 hours, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T06:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 261034,
+      "bytes": 76174280.0,
+      "ttfb": 0.23956908300169744,
+      "total": 0.9761982709969743,
+      "server": 0.9268438335,
+      "api_peak": 83036733.44,
+      "client_rss": 361381888,
+      "majflt": 0,
+      "warmup_total": 1.0429365000018151,
+      "reps": 2
+    },
+    {
+      "query": "hot 1 min, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6243,
+      "bytes": 1883560.0,
+      "ttfb": 0.08490285399602726,
+      "total": 0.09237964549538447,
+      "server": 0.080526333,
+      "api_peak": 48224010.24,
+      "client_rss": 226541568,
+      "majflt": 0,
+      "warmup_total": 1.5048720000049798,
+      "reps": 2
+    },
+    {
+      "query": "hot 1 hour, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 396225,
+      "bytes": 119518336.0,
+      "ttfb": 0.3421668539958773,
+      "total": 1.693536728998879,
+      "server": 1.656990313,
+      "api_peak": 48800727.04,
+      "client_rss": 467517440,
+      "majflt": 0,
+      "warmup_total": 2.309193541004788,
+      "reps": 2
+    },
+    {
+      "query": "cold 1 min, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 698,
+      "bytes": 204456.0,
+      "ttfb": 0.38812891650013626,
+      "total": 0.39087429150094977,
+      "server": 0.3827876255,
+      "api_peak": 118174515.2,
+      "client_rss": 316162048,
+      "majflt": 0,
+      "warmup_total": 2.1774420409929007,
+      "reps": 2
+    },
+    {
+      "query": "cold 1 hour, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43509,
+      "bytes": 12699872.0,
+      "ttfb": 0.6313411875016754,
+      "total": 0.6605967085051816,
+      "server": 0.6403690005,
+      "api_peak": 192413696.0,
+      "client_rss": 270893056,
+      "majflt": 0,
+      "warmup_total": 0.6109605000092415,
+      "reps": 2
+    },
+    {
+      "query": "cold 1 min, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6352,
+      "bytes": 1926256.0,
+      "ttfb": 0.5140487085009227,
+      "total": 0.5196001670046826,
+      "server": 0.5110501869999999,
+      "api_peak": 385771110.4,
+      "client_rss": 127991808,
+      "majflt": 0,
+      "warmup_total": 3.4554044579999754,
+      "reps": 2
+    },
+    {
+      "query": "cold 1 hour, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 395989,
+      "bytes": 119791428.0,
+      "ttfb": 1.707103000000643,
+      "total": 1.9963757709992933,
+      "server": 1.9320701465,
+      "api_peak": 747634688.0,
+      "client_rss": 314900480,
+      "majflt": 0,
+      "warmup_total": 2.320139209012268,
+      "reps": 2
+    },
+    {
+      "query": "hot May, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 30388936,
+      "bytes": 8859410040,
+      "ttfb": 0.7077794159995392,
+      "total": 104.45662104099756,
+      "server": 103.643414508,
+      "api_peak": 813590118.4,
+      "client_rss": 685604864,
+      "majflt": 0,
+      "warmup_total": null,
+      "reps": 1
+    },
+    {
+      "query": "cold March, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 25940207,
+      "bytes": 7561888648,
+      "ttfb": 112.76061183300044,
+      "total": 137.1457648749929,
+      "server": 136.39911994,
+      "api_peak": 3890166628.352,
+      "client_rss": 2160148480,
+      "majflt": 123,
+      "warmup_total": null,
+      "reps": 1
+    }
+  ]
+}

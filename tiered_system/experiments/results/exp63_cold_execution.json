@@ -1,0 +1,2093 @@
+{
+  "duckdb": "1.5.6",
+  "pyarrow": "25.0.1",
+  "pandas": "3.0.6",
+  "archive_day": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01",
+  "archive_files": 15,
+  "reps": 2,
+  "memory_limit": "512MB",
+  "threads": 2,
+  "build_note": "Selected production Go SQL compiled with cached Arrow Go v18.8.0 using temporary modfile; pinned dependencies/native DuckDB Go integration unavailable offline; no workspace dependency changes.",
+  "probe_build_info": "/private/tmp/sage-cold-execution.test: go1.26.5\n\tpath\tcommand-line-arguments\n\tdep\tgithub.com/apache/arrow-go/v18\tv18.8.0\th1:BLOzbPv7bxMPgXPacAg6HQjnxupYsZzC4tf+FkqPU/M=\n\tdep\tgithub.com/apapsch/go-jsonmerge/v2\tv2.0.0\th1:axGnT1gRIfimI7gJifB699GoE/oq+F2MU7Dml6nw9rQ=\n\tdep\tgithub.com/beorn7/perks\tv1.0.1\th1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=\n\tdep\tgithub.com/cespare/xxhash/v2\tv2.3.0\th1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=\n\tdep\tgithub.com/goccy/go-json\tv0.10.6\th1:p8HrPJzOakx/mn/bQtjgNjdTcN+/S6FcG2CTtQOrHVU=\n\tdep\tgithub.com/google/flatbuffers\tv25.12.19+incompatible\th1:haMV2JRRJCe1998HeW/p0X9UaMTK6SDo0ffLn2+DbLs=\n\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=\n\tdep\tgithub.com/influxdata/influxdb-client-go/v2\tv2.13.0\th1:ioBbLmR5NMbAjP4UVA5r9b5xGjpABD7j65pI8kFphDM=\n\tdep\tgithub.com/influxdata/line-protocol\tv0.0.0-20210922203350-b1ad95c89adf\th1:7JTmneyiNEwVBOHSjoMxiWAqB992atOeepeFYegn5RU=\n\tdep\tgithub.com/klauspost/compress\tv1.19.2\th1:hMRETovs/pu/dVWN7zIT1PGG8t509MwT6bO7XSi26R8=\n\tdep\tgithub.com/oapi-codegen/runtime\tv1.1.1\th1:EXLHh0DXIJnWhdRPN2w4MXAzFyE4CskzhNLUmtpMYro=\n\tdep\tgithub.com/pierrec/lz4/v4\tv4.1.29\th1:CDQY6qZOLI4DW0Nx6R1vRrifrCeQHnNXkMb0hZWXFjg=\n\tdep\tgithub.com/prometheus/client_golang\tv1.19.0\th1:ygXvpU1AoN1MhdzckN+PyD9QJOSD4x7kmXYlnfbA6JU=\n\tdep\tgithub.com/prometheus/client_model\tv0.6.0\th1:k1v3CzpSRUTrKMppY35TLwPvxHqBu0bYgxZzqGIgaos=\n\tdep\tgithub.com/prometheus/common\tv0.50.0\th1:YSZE6aa9+luNa2da6/Tik0q0A5AbR+U003TItK57CPQ=\n\tdep\tgithub.com/prometheus/procfs\tv0.13.0\th1:GqzLlQyfsPbaEHaQkO7tbDlriv/4o5Hudv6OXHGKX7o=\n\tdep\tgithub.com/zeebo/xxh3\tv1.1.0\th1:s7DLGDK45Dyfg7++yxI0khrfwq9661w9EN78eP/UZVs=\n\tdep\tgolang.org/x/exp\tv0.0.0-20260112195511-716be5621a96\n\t=>\tgolang.org/x/exp\tv0.0.0-20260603202125-055de637280b\th1:v1uXiEBHo8QA0LiGCo7UgHMzHT4Kdfpl2zmtH5vaP1Q=\n\t\n\tdep\tgolang.org/x/net\tv0.58.0\th1:ynWG7rqYi4ccpTEuPZ2QGWHktVEM9DMCj9yzDE0Q7To=\n\tdep\tgolang.org/x/sys\tv0.47.0\th1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=\n\tdep\tgoogle.golang.org/protobuf\tv1.36.12\th1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\tCGO_ENABLED=1\n\tbuild\tCGO_CFLAGS=\n\tbuild\tCGO_CPPFLAGS=\n\tbuild\tCGO_CXXFLAGS=\n\tbuild\tCGO_LDFLAGS=\n\tbuild\tGOARCH=arm64\n\tbuild\tGOOS=darwin\n\tbuild\tGOARM64=v8.0\n",
+  "scope": "local archive Parquet and synthetic spill stress; SQL + uncompressed IPC, no Iceberg/network/Zstd",
+  "memory_scope": "whole subprocess RSS includes imports and post-timing checksum validation",
+  "measurements": [
+    {
+      "case": "day",
+      "mode": "baseline",
+      "rows": 1048491,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 5.915237082997919,
+          "cpu_seconds": 11.481489,
+          "first_batch_seconds": 5.749790666988702,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.075547245,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.24182333600000014,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 4.988246121000002,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.4647938250000152,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 557144208,
+          "spill_peak_bytes": 0,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 667762688
+        },
+        {
+          "seconds": 5.472502624994377,
+          "cpu_seconds": 5.493765000000001,
+          "first_batch_seconds": 5.366598915992654,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.058349075000000056,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.24134309300000018,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 4.755222277,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.32303111100001025,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 745599172,
+          "spill_peak_bytes": 0,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 713818112
+        }
+      ],
+      "seconds": 5.693869853996148,
+      "cpu_seconds": 8.487627,
+      "first_batch_seconds": 5.558194791490678,
+      "ipc_bytes": 306006408.0,
+      "peak_rss_bytes": 713818112,
+      "duckdb_buffer_peak_bytes": 745599172,
+      "spill_peak_bytes": 0
+    },
+    {
+      "case": "day",
+      "mode": "optimized",
+      "rows": 1048491,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 1.4210619170044083,
+          "cpu_seconds": 1.39195,
+          "first_batch_seconds": 1.2590809170069406,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.07293042000000001,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.8775419220000007,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0001136239999999999,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.3138774710000043,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 721188286,
+          "spill_peak_bytes": 524288,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 715489280
+        },
+        {
+          "seconds": 1.3429043750074925,
+          "cpu_seconds": 1.3689390000000001,
+          "first_batch_seconds": 1.256821957998909,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.07196350199999993,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.8742713480000007,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.00012854399999999994,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.31814162300000726,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 731383464,
+          "spill_peak_bytes": 557056,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 699269120
+        }
+      ],
+      "seconds": 1.3819831460059504,
+      "cpu_seconds": 1.3804445,
+      "first_batch_seconds": 1.2579514375029248,
+      "ipc_bytes": 306006408.0,
+      "peak_rss_bytes": 715489280,
+      "duckdb_buffer_peak_bytes": 731383464,
+      "spill_peak_bytes": 557056
+    },
+    {
+      "case": "day",
+      "mode": "delayed_json",
+      "rows": 1048491,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 5.732708250012365,
+          "cpu_seconds": 11.047783,
+          "first_batch_seconds": 5.332079167012125,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.23382213199999996,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.17452386700000005,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 4.884066957000003,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.3418984170000167,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 829147972,
+          "spill_peak_bytes": 17072128,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 741392384
+        },
+        {
+          "seconds": 5.529960500003654,
+          "cpu_seconds": 5.600539,
+          "first_batch_seconds": 5.152221417010878,
+          "ipc_bytes": 306006408,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.22966086500000002,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.16471776400000018,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 4.728504040999995,
+              "rows": 1048491,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.32392131100000515,
+              "rows": 1048491,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 829147972,
+          "spill_peak_bytes": 15237120,
+          "rows": 1048491,
+          "row_hash_sum": "11647213062444967911",
+          "row_hash_xor": "4795963685339311295",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 729513984
+        }
+      ],
+      "seconds": 5.631334375008009,
+      "cpu_seconds": 8.324161,
+      "first_batch_seconds": 5.242150292011502,
+      "ipc_bytes": 306006408.0,
+      "peak_rss_bytes": 741392384,
+      "duckdb_buffer_peak_bytes": 829147972,
+      "spill_peak_bytes": 17072128
+    },
+    {
+      "case": "minute",
+      "mode": "baseline",
+      "rows": 698,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 0.2407413750042906,
+          "cpu_seconds": 0.259536,
+          "first_batch_seconds": 0.2406089160067495,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 9.866700000000001e-05,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.000246167,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.003214417,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.256611445,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 32046990,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 168542208
+        },
+        {
+          "seconds": 0.22692812499008141,
+          "cpu_seconds": 0.239714,
+          "first_batch_seconds": 0.226793916997849,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 7.975e-05,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.000206917,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.003361542,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.23330715099999358,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 30928782,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 168247296
+        }
+      ],
+      "seconds": 0.233834749997186,
+      "cpu_seconds": 0.24962499999999999,
+      "first_batch_seconds": 0.23370141650229925,
+      "ipc_bytes": 204448.0,
+      "peak_rss_bytes": 168542208,
+      "duckdb_buffer_peak_bytes": 32046990,
+      "spill_peak_bytes": 0
+    },
+    {
+      "case": "minute",
+      "mode": "optimized",
+      "rows": 698,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 0.2271211249899352,
+          "cpu_seconds": 0.24953899999999996,
+          "first_batch_seconds": 0.22697524999966845,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 7.999999999999999e-05,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.000972125,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 4.58e-07,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.2454038480000028,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 69563938,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 173719552
+        },
+        {
+          "seconds": 0.23910758399870247,
+          "cpu_seconds": 0.476565,
+          "first_batch_seconds": 0.23896112499642186,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.000100042,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.001110625,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 5e-07,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.2566567279999975,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 66358028,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 172195840
+        }
+      ],
+      "seconds": 0.23311435449431883,
+      "cpu_seconds": 0.363052,
+      "first_batch_seconds": 0.23296818749804515,
+      "ipc_bytes": 204448.0,
+      "peak_rss_bytes": 173719552,
+      "duckdb_buffer_peak_bytes": 69563938,
+      "spill_peak_bytes": 0
+    },
+    {
+      "case": "minute",
+      "mode": "delayed_json",
+      "rows": 698,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 0.22568750000209548,
+          "cpu_seconds": 0.238862,
+          "first_batch_seconds": 0.22550679100095294,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.000227334,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.000167291,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.003178416,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.2321847639999991,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 47938740,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 168771584
+        },
+        {
+          "seconds": 0.22973008301050868,
+          "cpu_seconds": 0.25253100000000006,
+          "first_batch_seconds": 0.22958158300025389,
+          "ipc_bytes": 204448,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.000226584,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.000160542,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.003127459,
+              "rows": 698,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "30000000"
+              }
+            },
+            {
+              "name": "READ_PARQUET",
+              "seconds": 0.24575259299999877,
+              "rows": 698,
+              "rows_scanned": 300000000,
+              "extra": {
+                "Function": "READ_PARQUET",
+                "Projections": [
+                  "time",
+                  "name",
+                  "vsn",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Filters": [
+                  "time>='2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND time<'2025-03-01 00:01:00+00'::TIMESTAMP WITH TIME ZONE",
+                  "name='wxt.env.temp'",
+                  "vsn='W0A0'"
+                ],
+                "Estimated Cardinality": "30000000",
+                "Total Files Read": "15",
+                "Filename(s)": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_0.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_1.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_10.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_11.parquet, /Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-01/data_12.parquet, ..."
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502        READ_PARQUET       \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         Function:         \u2502\n\u2502        READ_PARQUET       \u2502\n\u2502                           \u2502\n\u2502        Projections:       \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502            vsn            \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502          Filters:         \u2502\n\u2502 time>='2025-03-01 00:00:00\u2502\n\u2502 +00'::TIMESTAMP WITH TIME \u2502\n\u2502  ZONE AND time<'2025-03-01\u2502\n\u2502   00:01:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE      \u2502\n\u2502    name='wxt.env.temp'    \u2502\n\u2502         vsn='W0A0'        \u2502\n\u2502                           \u2502\n\u2502      ~30,000,000 rows     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 50121908,
+          "spill_peak_bytes": 0,
+          "rows": 698,
+          "row_hash_sum": "912296597046470541",
+          "row_hash_xor": "7947781416541548785",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 168902656
+        }
+      ],
+      "seconds": 0.22770879150630208,
+      "cpu_seconds": 0.24569650000000004,
+      "first_batch_seconds": 0.22754418700060342,
+      "ipc_bytes": 204448.0,
+      "peak_rss_bytes": 168902656,
+      "duckdb_buffer_peak_bytes": 50121908,
+      "spill_peak_bytes": 0
+    },
+    {
+      "case": "stress",
+      "mode": "baseline",
+      "rows": 2000000,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 5.700354249987868,
+          "cpu_seconds": 5.52386,
+          "first_batch_seconds": 5.474138083998696,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0026032870000000045,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.25723424899999986,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0006301280000000048,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.35891931399999993,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 3.948176998999998,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.851117444999999,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.05218348999999998,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.0005301770000000019,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502          ~0 rows          \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 806567936,
+          "spill_peak_bytes": 100597760,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 776142848
+        },
+        {
+          "seconds": 5.288984416998574,
+          "cpu_seconds": 5.285784,
+          "first_batch_seconds": 5.104137666989118,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0025445880000000047,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.17288950200000003,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.00025060900000000043,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.3318108390000004,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 3.748755074,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.815336217999999,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.04926505899999993,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.0002639120000000003,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502          ~0 rows          \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 806567936,
+          "spill_peak_bytes": 117899264,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 761053184
+        }
+      ],
+      "seconds": 5.494669333493221,
+      "cpu_seconds": 5.404821999999999,
+      "first_batch_seconds": 5.289137875493907,
+      "ipc_bytes": 469240920.0,
+      "peak_rss_bytes": 776142848,
+      "duckdb_buffer_peak_bytes": 806567936,
+      "spill_peak_bytes": 117899264
+    },
+    {
+      "case": "stress",
+      "mode": "optimized",
+      "rows": 2000000,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 2.3314435000065714,
+          "cpu_seconds": 2.336615,
+          "first_batch_seconds": 2.1565090829972178,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.002519974000000003,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.17217069900000007,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0002277129999999982,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 1.1507426549999993,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.00736849899999997,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.7897122620000006,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.0466273810000001,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.00020115299999999843,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502          ~0 rows          \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 868474880,
+          "spill_peak_bytes": 127991808,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 764592128
+        },
+        {
+          "seconds": 2.3610982919926755,
+          "cpu_seconds": 2.362703,
+          "first_batch_seconds": 2.186399166996125,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0025390890000000013,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.17049332600000022,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "CAST(unnamed_subquery.\"timestamp\" AS \"TIMESTAMP_NS\") ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0002190769999999992,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "#3"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 1.1559349550000004,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.007510254999999989,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.8128362170000002,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.04774101099999999,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.000223898,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502          ~0 rows          \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502   CAST(unnamed_subquery.  \u2502\n\u2502      \"timestamp\" AS       \u2502\n\u2502    \"TIMESTAMP_NS\") ASC    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502             #3            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 868474880,
+          "spill_peak_bytes": 127959040,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 735232000
+        }
+      ],
+      "seconds": 2.3462708959996235,
+      "cpu_seconds": 2.349659,
+      "first_batch_seconds": 2.1714541249966715,
+      "ipc_bytes": 469240920.0,
+      "peak_rss_bytes": 764592128,
+      "duckdb_buffer_peak_bytes": 868474880,
+      "spill_peak_bytes": 127991808
+    },
+    {
+      "case": "stress",
+      "mode": "delayed_json",
+      "rows": 2000000,
+      "rows_schema_exact_json_match": true,
+      "runs": [
+        {
+          "seconds": 5.310405833995901,
+          "cpu_seconds": 5.33769,
+          "first_batch_seconds": 4.753999958993518,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.32283433000000006,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.002873053000000003,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "__internal_decompress_integral_bigint(#3, NULL)",
+                  "__internal_decompress_string(#4)",
+                  "#5"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.2682788340000001,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.003005464000000044,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "__internal_compress_integral_utinyint(#3, NULL)",
+                  "__internal_compress_string_utinyint(#4)",
+                  "#5"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 3.698783992999998,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.8013804580000001,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.04916122899999999,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.0002548520000000002,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502__internal_decompress_integ\u2502\n\u2502    ral_bigint(#3, NULL)   \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#4)           \u2502\n\u2502             #5            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502__internal_compress_integra\u2502\n\u2502    l_utinyint(#3, NULL)   \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        utinyint(#4)       \u2502\n\u2502             #5            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 798380032,
+          "spill_peak_bytes": 124682240,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 746946560
+        },
+        {
+          "seconds": 5.347811500003445,
+          "cpu_seconds": 5.383316,
+          "first_batch_seconds": 4.776734875005786,
+          "ipc_bytes": 469240920,
+          "operators": [
+            {
+              "name": "PROJECTION",
+              "seconds": 0.32784687599999995,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0028601200000000025,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_decompress_string(#1)",
+                  "#2",
+                  "__internal_decompress_integral_bigint(#3, NULL)",
+                  "__internal_decompress_string(#4)",
+                  "#5"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "ORDER_BY",
+              "seconds": 0.26968437100000014,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Order By": "unnamed_subquery.\"timestamp\" ASC"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.0007856349999999947,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "#0",
+                  "__internal_compress_string_uhugeint(#1)",
+                  "#2",
+                  "__internal_compress_integral_utinyint(#3, NULL)",
+                  "__internal_compress_string_utinyint(#4)",
+                  "#5"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 3.7121318910000016,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "timestamp",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "PROJECTION",
+              "seconds": 0.8091980140000001,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Projections": [
+                  "time",
+                  "name",
+                  "value_float",
+                  "value_int",
+                  "value_str",
+                  "meta",
+                  "plugin",
+                  "vsn",
+                  "node",
+                  "host",
+                  "task",
+                  "job",
+                  "zone"
+                ],
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "FILTER",
+              "seconds": 0.048739797,
+              "rows": 2000000,
+              "rows_scanned": 0,
+              "extra": {
+                "Expression": "(('2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE + ((2000000 - i) * '00:00:00.000001'::INTERVAL)) BETWEEN '2025-03-01 00:00:00+00'::TIMESTAMP WITH TIME ZONE AND '2025-03-02 00:00:00+00'::TIMESTAMP WITH TIME ZONE)",
+                "Estimated Cardinality": "400000"
+              }
+            },
+            {
+              "name": "RANGE",
+              "seconds": 0.00028983499999999957,
+              "rows": 2000000,
+              "rows_scanned": 2000000,
+              "extra": {
+                "Function": "RANGE",
+                "Estimated Cardinality": "2000000"
+              }
+            }
+          ],
+          "plan": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502           value           \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#1)           \u2502\n\u2502             #2            \u2502\n\u2502__internal_decompress_integ\u2502\n\u2502    ral_bigint(#3, NULL)   \u2502\n\u2502__internal_decompress_strin\u2502\n\u2502           g(#4)           \u2502\n\u2502             #5            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          ORDER_BY         \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502     unnamed_subquery.     \u2502\n\u2502      \"timestamp\" ASC      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502             #0            \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        uhugeint(#1)       \u2502\n\u2502             #2            \u2502\n\u2502__internal_compress_integra\u2502\n\u2502    l_utinyint(#3, NULL)   \u2502\n\u2502__internal_compress_string_\u2502\n\u2502        utinyint(#4)       \u2502\n\u2502             #5            \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502         timestamp         \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         PROJECTION        \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502            time           \u2502\n\u2502            name           \u2502\n\u2502        value_float        \u2502\n\u2502         value_int         \u2502\n\u2502         value_str         \u2502\n\u2502            meta           \u2502\n\u2502           plugin          \u2502\n\u2502            vsn            \u2502\n\u2502            node           \u2502\n\u2502            host           \u2502\n\u2502            task           \u2502\n\u2502            job            \u2502\n\u2502            zone           \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           FILTER          \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502 (('2025-03-01 00:00:00+00'\u2502\n\u2502 ::TIMESTAMP WITH TIME ZONE\u2502\n\u2502  + ((2000000 - i) * '00:00\u2502\n\u2502  :00.000001'::INTERVAL))  \u2502\n\u2502  BETWEEN '2025-03-01 00:00\u2502\n\u2502  :00+00'::TIMESTAMP WITH  \u2502\n\u2502  TIME ZONE AND '2025-03-02\u2502\n\u2502   00:00:00+00'::TIMESTAMP \u2502\n\u2502       WITH TIME ZONE)     \u2502\n\u2502                           \u2502\n\u2502       ~400,000 rows       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502           RANGE           \u2502\n\u2502    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500   \u2502\n\u2502      Function: RANGE      \u2502\n\u2502                           \u2502\n\u2502      ~2,000,000 rows      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n",
+          "duckdb_buffer_peak_bytes": 796753920,
+          "spill_peak_bytes": 125763584,
+          "rows": 2000000,
+          "row_hash_sum": "16253779672491044773",
+          "row_hash_xor": "10832196278289535687",
+          "schema": "timestamp: timestamp[ns]\nname: string\nvalue: string\nmeta: string",
+          "peak_rss_bytes": 742309888
+        }
+      ],
+      "seconds": 5.329108666999673,
+      "cpu_seconds": 5.360503,
+      "first_batch_seconds": 4.765367416999652,
+      "ipc_bytes": 469240920.0,
+      "peak_rss_bytes": 746946560,
+      "duckdb_buffer_peak_bytes": 798380032,
+      "spill_peak_bytes": 125763584
+    }
+  ],
+  "semantic_checks": [
+    {
+      "case": "semantics",
+      "format": "arrow",
+      "rows": 240,
+      "exact_arrow_table_matches": true
+    },
+    {
+      "case": "semantics",
+      "format": "ndjson projection",
+      "rows": 240,
+      "exact_arrow_table_matches": true
+    },
+    {
+      "case": "head",
+      "format": "arrow",
+      "rows": 120,
+      "exact_arrow_table_matches": true
+    },
+    {
+      "case": "head",
+      "format": "ndjson projection",
+      "rows": 120,
+      "exact_arrow_table_matches": true
+    },
+    {
+      "case": "tail",
+      "format": "arrow",
+      "rows": 120,
+      "exact_arrow_table_matches": true
+    },
+    {
+      "case": "tail",
+      "format": "ndjson projection",
+      "rows": 120,
+      "exact_arrow_table_matches": true
+    }
+  ]
+}

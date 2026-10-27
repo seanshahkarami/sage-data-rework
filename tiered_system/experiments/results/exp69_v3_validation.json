@@ -1,0 +1,82 @@
+{
+  "scope": "native DuckDB 2.0, actual current Go v3 SQL, stored VARIANT Parquet; no REST/HTTP transport test",
+  "checks": [
+    {
+      "case": "all",
+      "rows": 4,
+      "timestamps_ns": [
+        1740787207420753193,
+        1740787207420753571,
+        1740787208000000001,
+        1740787208000000002
+      ],
+      "values": [
+        "21.5",
+        "9007199254740993",
+        "\"123\"",
+        "true"
+      ],
+      "passed": true
+    },
+    {
+      "case": "head",
+      "rows": 3,
+      "timestamps_ns": [
+        1740787207420753193,
+        1740787208000000001,
+        1740787208000000002
+      ],
+      "values": [
+        "21.5",
+        "\"123\"",
+        "true"
+      ],
+      "passed": true
+    },
+    {
+      "case": "tail",
+      "rows": 3,
+      "timestamps_ns": [
+        1740787207420753571,
+        1740787208000000001,
+        1740787208000000002
+      ],
+      "values": [
+        "9007199254740993",
+        "\"123\"",
+        "true"
+      ],
+      "passed": true
+    },
+    {
+      "case": "upper_ns",
+      "rows": 1,
+      "timestamps_ns": [
+        1740787207420753193
+      ],
+      "values": [
+        "21.5"
+      ],
+      "passed": true
+    },
+    {
+      "case": "lower_ns",
+      "rows": 1,
+      "timestamps_ns": [
+        1740787207420753571
+      ],
+      "values": [
+        "9007199254740993"
+      ],
+      "passed": true
+    },
+    {
+      "case": "empty",
+      "rows": 0,
+      "timestamps_ns": [],
+      "values": [],
+      "passed": true
+    }
+  ],
+  "ingestion_rows_checked": 1024
+}

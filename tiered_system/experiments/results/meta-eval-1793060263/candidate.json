@@ -1,0 +1,304 @@
+{
+  "status": "complete",
+  "scope": "Read-only whole-range HTTP measurements and request-paired native profiles.\n\nRun on the VM beside one dedicated API container. The script inspects but never\nconfigures/restarts containers. Profile timings are diagnostic, not the primary\nunprofiled latency measurement. cgroup peak memory includes warmups/file cache\nand is a container-lifetime high-water mark, not per-query RSS.\n",
+  "profiled": false,
+  "uniform_metadata": true,
+  "selected_cases": [
+    "2025-03_series_month",
+    "2025-04_series_month"
+  ],
+  "endpoint": "http://127.0.0.1:10008/api/v1/query",
+  "reference": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/tiered_system/experiments/results/full-layout-1792962354/http-arrow.json",
+  "runtime_before": {
+    "container_id": "d219cc33ab3f2df44eaf721cb9633e7be4c0c5e7a2a23295b20af5d4d6a0719b",
+    "image": "sha256:200674a7844209ac775f1804d1123410e43ee55a0a859ab2871f9d61231a8c38",
+    "settings": {
+      "COLD_WAREHOUSE": "https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse",
+      "COLD_WATERMARK": "2025-05-01T00:00:00Z",
+      "COLD_ASYNC_THREADS": "8",
+      "COLD_READ_AHEAD_DEPTH": "-1",
+      "ARROW_COMPRESSION": "zstd",
+      "COLD_PROFILE_DIR": "",
+      "COLD_UNIFORM_METADATA": "true"
+    },
+    "memory_limit_bytes": 15032385536,
+    "nano_cpus": 2000000000,
+    "status": "running",
+    "restarts": 0,
+    "oom_killed": false,
+    "cgroup_peak_memory_bytes": 225419264,
+    "cgroup_memory_events": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "notes": [
+    "Backend *_seconds fields are elapsed seconds; *_since_backend_start and lifetime are overlapping markers, not additive phases. metadata_discovery_rows and metadata_reuse_applied are counts/flags.",
+    "Backend lifetime includes consumer pacing/IPC/compression/socket backpressure; fetch/conversion do not measure all response encoding work.",
+    "DuckDB operator seconds describe operator work across threads, may include I/O waits, and must not be summed with backend phases or interpreted as pure CPU.",
+    "prepare_seconds includes binding/planning and may include Iceberg metadata HTTP reads; scan work may include Pelican waits and decompression.",
+    "DuckDB byte counters are engine-reported, not a complete measurement of Pelican HTTP traffic; zero does not prove no reads.",
+    "Only complete queries with a valid DuckDB profile are eligible for bottleneck analysis. Profiling itself can add overhead.",
+    "Uniform metadata discovery is timed separately and excluded from the main native profile; use metadata_discovery_seconds and full HTTP elapsed time to include its cost."
+  ],
+  "control_source": "sage-data-rework/tiered_system/experiments/results/meta-eval-1793060263/control.json",
+  "cache_protocol": "one excluded warmup per case; sequential requests, case order rotates; OS/Pelican caches uncontrolled",
+  "validation": "full body first measured response per case; schema/count every response; signatures checked against completed full-layout sweep",
+  "results": [
+    {
+      "case": "2025-03_series_month",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-04-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 0,
+      "warmup": true,
+      "response": {
+        "rows": 25940207,
+        "bytes": 474386272,
+        "total_seconds": 169.89882658299757,
+        "first_result_seconds": 162.7678287079907,
+        "client_cpu_seconds": 4.239851,
+        "codec": "zstd"
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-04_series_month",
+      "query": {
+        "start": "2025-04-01T00:00:00+00:00",
+        "end": "2025-05-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 0,
+      "warmup": true,
+      "response": {
+        "rows": 31189045,
+        "bytes": 570060120,
+        "total_seconds": 177.86521199997514,
+        "first_result_seconds": 169.23924724996323,
+        "client_cpu_seconds": 5.164998,
+        "codec": "zstd"
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-04_series_month",
+      "query": {
+        "start": "2025-04-01T00:00:00+00:00",
+        "end": "2025-05-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 1,
+      "warmup": false,
+      "response": {
+        "rows": 31189045,
+        "bytes": 570060120,
+        "total_seconds": 177.4194712919998,
+        "first_result_seconds": 169.09052320796764,
+        "client_cpu_seconds": 5.008246,
+        "codec": "zstd",
+        "validation": {
+          "rows": 31189045,
+          "row_hash_sum": "130840305712950040167624667788466276678",
+          "row_hash_xor": "332519133267214022003681558392792335520",
+          "timestamps_ordered": true
+        }
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-03_series_month",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-04-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 1,
+      "warmup": false,
+      "response": {
+        "rows": 25940207,
+        "bytes": 474386272,
+        "total_seconds": 169.7203229169827,
+        "first_result_seconds": 162.8991018749657,
+        "client_cpu_seconds": 4.1578580000000045,
+        "codec": "zstd",
+        "validation": {
+          "rows": 25940207,
+          "row_hash_sum": "302263489284556672784927900454119137185",
+          "row_hash_xor": "136901366758555472061693524683489485101",
+          "timestamps_ordered": true
+        }
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-03_series_month",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-04-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 2,
+      "warmup": false,
+      "response": {
+        "rows": 25940207,
+        "bytes": 474386272,
+        "total_seconds": 139.2916923329467,
+        "first_result_seconds": 132.90849333297228,
+        "client_cpu_seconds": 4.3894289999999785,
+        "codec": "zstd"
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-04_series_month",
+      "query": {
+        "start": "2025-04-01T00:00:00+00:00",
+        "end": "2025-05-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 2,
+      "warmup": false,
+      "response": {
+        "rows": 31189045,
+        "bytes": 570060120,
+        "total_seconds": 156.8495404580026,
+        "first_result_seconds": 148.7423611659906,
+        "client_cpu_seconds": 4.895831000000015,
+        "codec": "zstd"
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-04_series_month",
+      "query": {
+        "start": "2025-04-01T00:00:00+00:00",
+        "end": "2025-05-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 3,
+      "warmup": false,
+      "response": {
+        "rows": 31189045,
+        "bytes": 570060120,
+        "total_seconds": 166.36063624999952,
+        "first_result_seconds": 155.4323240829981,
+        "client_cpu_seconds": 5.463900000000024,
+        "codec": "zstd"
+      },
+      "profile": null
+    },
+    {
+      "case": "2025-03_series_month",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-04-01T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "repetition": 3,
+      "warmup": false,
+      "response": {
+        "rows": 25940207,
+        "bytes": 474386272,
+        "total_seconds": 142.5889032499981,
+        "first_result_seconds": 135.65092458302388,
+        "client_cpu_seconds": 4.387135000000001,
+        "codec": "zstd"
+      },
+      "profile": null
+    }
+  ],
+  "summaries": [
+    {
+      "case": "2025-03_series_month",
+      "response": {
+        "bytes": 474386272,
+        "client_cpu_seconds": 4.387135000000001,
+        "first_result_seconds": 135.65092458302388,
+        "rows": 25940207,
+        "total_seconds": 142.5889032499981
+      },
+      "unprofiled_control_response": {
+        "bytes": 474386272,
+        "client_cpu_seconds": 4.032064000000005,
+        "first_result_seconds": 69.88080579199595,
+        "rows": 25940207,
+        "total_seconds": 76.3965165829868
+      }
+    },
+    {
+      "case": "2025-04_series_month",
+      "response": {
+        "bytes": 570060120,
+        "client_cpu_seconds": 5.008246,
+        "first_result_seconds": 155.4323240829981,
+        "rows": 31189045,
+        "total_seconds": 166.36063624999952
+      },
+      "unprofiled_control_response": {
+        "bytes": 570060120,
+        "client_cpu_seconds": 4.871650000000001,
+        "first_result_seconds": 67.10422391595785,
+        "rows": 31189045,
+        "total_seconds": 76.01928474998567
+      }
+    }
+  ],
+  "runtime_after": {
+    "container_id": "d219cc33ab3f2df44eaf721cb9633e7be4c0c5e7a2a23295b20af5d4d6a0719b",
+    "image": "sha256:200674a7844209ac775f1804d1123410e43ee55a0a859ab2871f9d61231a8c38",
+    "settings": {
+      "COLD_WAREHOUSE": "https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse",
+      "COLD_WATERMARK": "2025-05-01T00:00:00Z",
+      "COLD_ASYNC_THREADS": "8",
+      "COLD_READ_AHEAD_DEPTH": "-1",
+      "ARROW_COMPRESSION": "zstd",
+      "COLD_PROFILE_DIR": "",
+      "COLD_UNIFORM_METADATA": "true"
+    },
+    "memory_limit_bytes": 15032385536,
+    "nano_cpus": 2000000000,
+    "status": "running",
+    "restarts": 0,
+    "oom_killed": false,
+    "cgroup_peak_memory_bytes": 6939881472,
+    "cgroup_memory_events": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  }
+}

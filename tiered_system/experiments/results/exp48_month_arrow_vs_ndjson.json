@@ -1,0 +1,48 @@
+{
+  "when": "2026-10-20",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "curl + duckdb read_arrow / read_ndjson_auto",
+  "duckdb": "1.5.6",
+  "reps": 2,
+  "warmup_excluded_from_median": true,
+  "gzip": "one streaming gzip level 6 of the last body of each format; not included in total_s; the server did not compress",
+  "scope": "hot May 2025 only, wxt.env.temp on vsn W0A0. Not the whole fleet, and not cold storage.",
+  "medians": [
+    {
+      "query": "hot May temp+vsn",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "fmt": "ndjson",
+      "rows": 30388936,
+      "raw_gb": 10.497,
+      "gzip_mb": 250.65,
+      "ttfb_s": 0.067,
+      "download_s": 165.923,
+      "decode_s": 1.528,
+      "total_s": 167.45,
+      "server_s": 165.915
+    },
+    {
+      "query": "hot May temp+vsn",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "fmt": "arrow",
+      "rows": 30388936,
+      "raw_gb": 9.376,
+      "gzip_mb": 1080.97,
+      "ttfb_s": 0.289,
+      "download_s": 93.144,
+      "decode_s": 61.458,
+      "total_s": 154.602,
+      "server_s": 93.115
+    }
+  ]
+}

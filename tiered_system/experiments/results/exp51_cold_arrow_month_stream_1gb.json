@@ -1,0 +1,15 @@
+{
+  "memory_limit": "1GB",
+  "threads": 2,
+  "results": [
+    {
+      "mode": "stream",
+      "rows": 25940207,
+      "peak_rss_mb": 1101.8,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=18.118502\nPROBE rows=25940207 total_seconds=25.490470\n--- PASS: TestColdArrowMemoryProbe (25.49s)\nPASS\n",
+      "ready_seconds": 18.118502,
+      "total_seconds": 25.49047
+    }
+  ]
+}

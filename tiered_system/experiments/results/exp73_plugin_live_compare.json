@@ -1,0 +1,2407 @@
+{
+  "scope": "live HTTP receive + Arrow IPC iteration + file spool; excludes canonical validation and dataframe decoding",
+  "status": "complete",
+  "endpoints": {
+    "time": "http://127.0.0.1:10000/api/v1/query",
+    "plugin_vsn_time": "http://127.0.0.1:10001/api/v1/query"
+  },
+  "declared_api_image": "sha256:c1c465a46a16432040956221f36373ff905e482c5eb4a389d51230ef3b97c243",
+  "candidate_audit": {
+    "layout": "plugin-vsn-time",
+    "table_uuid": "a8e7af06-634e-4020-81c3-91dbd28e9c23",
+    "snapshot_id": 1040454635680553670,
+    "snapshots": 1,
+    "value_field_id": 11,
+    "value_type": "variant",
+    "files": 15,
+    "rows": 140578674,
+    "bytes": 730100005,
+    "row_groups": 63,
+    "mixed_plugin_groups": 0,
+    "ordering_checked": true,
+    "physical_typed_value_types": {
+      "double": 15
+    },
+    "min_timestamp_ns": 1740787200000000000,
+    "max_timestamp_ns": 1740873599998558748,
+    "file_row_limit": 10000000,
+    "one_group_per_plugin": true,
+    "metadata_location": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/scratch/v3-plugin-trial-1792792556/sage/obs/metadata/00001-ebdae847-86c5-4130-9e8c-fa41854eb82d.metadata.json"
+  },
+  "selected_plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+  "timestamp_precision": "nanoseconds, no flooring",
+  "validation": "first",
+  "cache_protocol": "one excluded warmup per endpoint/format/case; rotate measured endpoint/format order; sequential requests",
+  "results": [
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.48453866702038795,
+      "first_result_seconds": 0.48384920801618136,
+      "client_cpu_seconds": 0.002794999999999992,
+      "codec": "zstd",
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.7215201670187525,
+      "first_result_seconds": 0.7211325000098441,
+      "client_cpu_seconds": 0.002242999999999995,
+      "codec": "zstd",
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.4246573749987874,
+      "first_result_seconds": 0.42118162498809397,
+      "client_cpu_seconds": 0.002024999999999999,
+      "codec": null,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.5280120419920422,
+      "first_result_seconds": 0.5250593340024352,
+      "client_cpu_seconds": 0.0014490000000000058,
+      "codec": null,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.3007788750110194,
+      "first_result_seconds": 0.3004140419943724,
+      "client_cpu_seconds": 0.0019259999999999833,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.41222320799715817,
+      "first_result_seconds": 0.41135683297761716,
+      "client_cpu_seconds": 0.0016490000000000116,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.4963605000230018,
+      "first_result_seconds": 0.49296800000593066,
+      "client_cpu_seconds": 0.0030509999999999704,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.38499437499558553,
+      "first_result_seconds": 0.38465716698556207,
+      "client_cpu_seconds": 0.0013900000000000023,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.7720312910096254,
+      "first_result_seconds": 0.767712916014716,
+      "client_cpu_seconds": 0.0017790000000000306,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.7153595830022823,
+      "first_result_seconds": 0.7119028329907451,
+      "client_cpu_seconds": 0.0016319999999999668,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.38599533299566247,
+      "first_result_seconds": 0.38578966600471176,
+      "client_cpu_seconds": 0.0011440000000000339,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 698,
+      "bytes": 15032,
+      "total_seconds": 0.31032566700014286,
+      "first_result_seconds": 0.31003054199391045,
+      "client_cpu_seconds": 0.001784999999999981,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.795756125007756,
+      "first_result_seconds": 0.7890096250048373,
+      "client_cpu_seconds": 0.007388999999999979,
+      "codec": "zstd",
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.3668982500093989,
+      "first_result_seconds": 0.3588373750098981,
+      "client_cpu_seconds": 0.006785000000000041,
+      "codec": "zstd",
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 1.0367057089752052,
+      "first_result_seconds": 0.7671843749994878,
+      "client_cpu_seconds": 0.055479000000000056,
+      "codec": null,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 0.6676179580099415,
+      "first_result_seconds": 0.43121791700832546,
+      "client_cpu_seconds": 0.05320299999999989,
+      "codec": null,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.34287554200273007,
+      "first_result_seconds": 0.3365823340136558,
+      "client_cpu_seconds": 0.008110000000000062,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 0.9984734159952495,
+      "first_result_seconds": 0.7445071660040412,
+      "client_cpu_seconds": 0.05415000000000014,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 0.5730549159925431,
+      "first_result_seconds": 0.33747312499326654,
+      "client_cpu_seconds": 0.05352100000000015,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.7421350420045201,
+      "first_result_seconds": 0.7346062090073247,
+      "client_cpu_seconds": 0.010061000000000098,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 0.9459910420118831,
+      "first_result_seconds": 0.7092011250206269,
+      "client_cpu_seconds": 0.05423,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 43509,
+      "bytes": 15036332,
+      "total_seconds": 0.5752373329887632,
+      "first_result_seconds": 0.3173662910121493,
+      "client_cpu_seconds": 0.05590000000000006,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.7585407499864232,
+      "first_result_seconds": 0.7496301659848541,
+      "client_cpu_seconds": 0.010220999999999814,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 43509,
+      "bytes": 780280,
+      "total_seconds": 0.5009166249947157,
+      "first_result_seconds": 0.48880662498413585,
+      "client_cpu_seconds": 0.009465999999999974,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 10.156201541016344,
+      "first_result_seconds": 9.91018033301225,
+      "client_cpu_seconds": 0.15799300000000027,
+      "codec": "zstd",
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 1.8597351670032367,
+      "first_result_seconds": 1.5941504590155091,
+      "client_cpu_seconds": 0.1493669999999998,
+      "codec": "zstd",
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 16.354288083006395,
+      "first_result_seconds": 9.871092916990165,
+      "client_cpu_seconds": 1.3347730000000002,
+      "codec": null,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 7.309263208007906,
+      "first_result_seconds": 1.5186078750120942,
+      "client_cpu_seconds": 1.270653000000003,
+      "codec": null,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 1.387543666001875,
+      "first_result_seconds": 1.1872447909845505,
+      "client_cpu_seconds": 0.15627800000000036,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 15.699723249999806,
+      "first_result_seconds": 9.750523499998963,
+      "client_cpu_seconds": 1.2858470000000004,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 6.938610165991122,
+      "first_result_seconds": 1.2685779159946833,
+      "client_cpu_seconds": 1.2641010000000001,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 9.858848875010153,
+      "first_result_seconds": 9.67272483301349,
+      "client_cpu_seconds": 0.1547610000000006,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 15.582345792005071,
+      "first_result_seconds": 9.736013499990804,
+      "client_cpu_seconds": 1.2874909999999993,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 1048491,
+      "bytes": 362323649,
+      "total_seconds": 6.935638708004262,
+      "first_result_seconds": 1.2968249160039704,
+      "client_cpu_seconds": 1.2754210000000015,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 9.791848541004583,
+      "first_result_seconds": 9.61455324999406,
+      "client_cpu_seconds": 0.20265800000000667,
+      "codec": "zstd"
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 1048491,
+      "bytes": 19171032,
+      "total_seconds": 1.292794375010999,
+      "first_result_seconds": 1.1143445840280037,
+      "client_cpu_seconds": 0.16953000000000173,
+      "codec": "zstd"
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 9436419,
+      "bytes": 170840080,
+      "total_seconds": 27.93877487501595,
+      "first_result_seconds": 25.283953625010327,
+      "client_cpu_seconds": 1.6530860000000018,
+      "codec": "zstd",
+      "validation": {
+        "rows": 9436419,
+        "row_hash_sum": "240413851775816059357306634812080702866",
+        "row_hash_xor": "274641358753821377906203309164882238616",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 9436419,
+      "bytes": 123842560,
+      "total_seconds": 12.413551791978534,
+      "first_result_seconds": 10.62994158299989,
+      "client_cpu_seconds": 1.2012670000000014,
+      "codec": "zstd",
+      "validation": {
+        "rows": 9436419,
+        "row_hash_sum": "240413851775816059357306634812080702866",
+        "row_hash_xor": "274641358753821377906203309164882238616",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 82.32765016600024,
+      "first_result_seconds": 27.165165874990635,
+      "client_cpu_seconds": 11.727282000000017,
+      "codec": null,
+      "validation": {
+        "rows": 9436419,
+        "row_hash_sum": "240413851775816059357306634812080702866",
+        "row_hash_xor": "274641358753821377906203309164882238616",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 65.54928116701194,
+      "first_result_seconds": 12.434891750017414,
+      "client_cpu_seconds": 11.777394999999984,
+      "codec": null,
+      "validation": {
+        "rows": 9436419,
+        "row_hash_sum": "240413851775816059357306634812080702866",
+        "row_hash_xor": "274641358753821377906203309164882238616",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 9436419,
+      "bytes": 123846872,
+      "total_seconds": 11.987949542002752,
+      "first_result_seconds": 10.137825874990085,
+      "client_cpu_seconds": 1.2346900000000005,
+      "codec": "zstd"
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 81.43745783399208,
+      "first_result_seconds": 26.638407666992862,
+      "client_cpu_seconds": 11.788234999999986,
+      "codec": null
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 64.96982212501462,
+      "first_result_seconds": 11.681423917005304,
+      "client_cpu_seconds": 11.74878700000005,
+      "codec": null
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 9436419,
+      "bytes": 170834488,
+      "total_seconds": 29.109868375002407,
+      "first_result_seconds": 26.467253166018054,
+      "client_cpu_seconds": 1.6807440000000042,
+      "codec": "zstd"
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 80.70378104198608,
+      "first_result_seconds": 26.58813612497761,
+      "client_cpu_seconds": 11.774679000000049,
+      "codec": null
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 9436419,
+      "bytes": 3365696698,
+      "total_seconds": 65.3014685829985,
+      "first_result_seconds": 11.691460750007536,
+      "client_cpu_seconds": 11.837441999999953,
+      "codec": null
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 9436419,
+      "bytes": 170840032,
+      "total_seconds": 28.19026079197647,
+      "first_result_seconds": 25.27236229198752,
+      "client_cpu_seconds": 1.693115999999975,
+      "codec": "zstd"
+    },
+    {
+      "case": "plugin_vsn_day",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "plugin": "registry.sagecontinuum.org/jrobrien/waggle-wxt536:0.24.11.14",
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 9436419,
+      "bytes": 123846872,
+      "total_seconds": 11.604519666987471,
+      "first_result_seconds": 9.798399041988887,
+      "client_cpu_seconds": 1.2141599999999926,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 6352,
+      "bytes": 119040,
+      "total_seconds": 0.3712039170204662,
+      "first_result_seconds": 0.36990629200590774,
+      "client_cpu_seconds": 0.0041760000000294895,
+      "codec": "zstd",
+      "validation": {
+        "rows": 6352,
+        "row_hash_sum": "324068328395524242887372625643163170259",
+        "row_hash_xor": "71689240364542753187128585090763398113",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 6352,
+      "bytes": 87616,
+      "total_seconds": 0.8921004580042791,
+      "first_result_seconds": 0.8913117919873912,
+      "client_cpu_seconds": 0.0027180000000157634,
+      "codec": "zstd",
+      "validation": {
+        "rows": 6352,
+        "row_hash_sum": "324068328395524242887372625643163170259",
+        "row_hash_xor": "71689240364542753187128585090763398113",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.420937832997879,
+      "first_result_seconds": 0.3777866250020452,
+      "client_cpu_seconds": 0.010731999999961772,
+      "codec": null,
+      "validation": {
+        "rows": 6352,
+        "row_hash_sum": "324068328395524242887372625643163170259",
+        "row_hash_xor": "71689240364542753187128585090763398113",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.8932060829829425,
+      "first_result_seconds": 0.8534714579873253,
+      "client_cpu_seconds": 0.011282999999991716,
+      "codec": null,
+      "validation": {
+        "rows": 6352,
+        "row_hash_sum": "324068328395524242887372625643163170259",
+        "row_hash_xor": "71689240364542753187128585090763398113",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 6352,
+      "bytes": 87608,
+      "total_seconds": 0.844023332989309,
+      "first_result_seconds": 0.8422006670152768,
+      "client_cpu_seconds": 0.0041049999999813735,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.39870470800087787,
+      "first_result_seconds": 0.3668501249921974,
+      "client_cpu_seconds": 0.009896000000026106,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.723052417015424,
+      "first_result_seconds": 0.681860750017222,
+      "client_cpu_seconds": 0.011132000000031894,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 6352,
+      "bytes": 119040,
+      "total_seconds": 0.34534233299200423,
+      "first_result_seconds": 0.34386008299770765,
+      "client_cpu_seconds": 0.003730000000018663,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.4117572919931263,
+      "first_result_seconds": 0.37457966699730605,
+      "client_cpu_seconds": 0.010700999999983196,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 6352,
+      "bytes": 2266867,
+      "total_seconds": 0.7282634169969242,
+      "first_result_seconds": 0.690706291992683,
+      "client_cpu_seconds": 0.011933999999996558,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 6352,
+      "bytes": 119040,
+      "total_seconds": 0.35539354200591333,
+      "first_result_seconds": 0.35431908298050985,
+      "client_cpu_seconds": 0.0031060000000024957,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 6352,
+      "bytes": 87664,
+      "total_seconds": 0.8487034589925315,
+      "first_result_seconds": 0.847604875016259,
+      "client_cpu_seconds": 0.003368999999963762,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 395989,
+      "bytes": 7319792,
+      "total_seconds": 0.966881000000285,
+      "first_result_seconds": 0.8754161249962635,
+      "client_cpu_seconds": 0.07449100000002318,
+      "codec": "zstd",
+      "validation": {
+        "rows": 395989,
+        "row_hash_sum": "228184497254565068965260142171938347275",
+        "row_hash_xor": "231386209558579506104047936998997430437",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 395989,
+      "bytes": 5367000,
+      "total_seconds": 0.9919195000256877,
+      "first_result_seconds": 0.9290167920116801,
+      "client_cpu_seconds": 0.05642199999999775,
+      "codec": "zstd",
+      "validation": {
+        "rows": 395989,
+        "row_hash_sum": "228184497254565068965260142171938347275",
+        "row_hash_xor": "231386209558579506104047936998997430437",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.2696711250173394,
+      "first_result_seconds": 0.9549775840132497,
+      "client_cpu_seconds": 0.5060000000000286,
+      "codec": null,
+      "validation": {
+        "rows": 395989,
+        "row_hash_sum": "228184497254565068965260142171938347275",
+        "row_hash_xor": "231386209558579506104047936998997430437",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.1564087079896126,
+      "first_result_seconds": 0.9717162080050912,
+      "client_cpu_seconds": 0.49586800000002995,
+      "codec": null,
+      "validation": {
+        "rows": 395989,
+        "row_hash_sum": "228184497254565068965260142171938347275",
+        "row_hash_xor": "231386209558579506104047936998997430437",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 395989,
+      "bytes": 5367000,
+      "total_seconds": 0.9905102920019999,
+      "first_result_seconds": 0.9296887500095181,
+      "client_cpu_seconds": 0.06268099999999777,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.1396514999796636,
+      "first_result_seconds": 0.9145954579871614,
+      "client_cpu_seconds": 0.5020059999999944,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.0437695830187295,
+      "first_result_seconds": 0.9035207080014516,
+      "client_cpu_seconds": 0.49401799999998275,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 395989,
+      "bytes": 7319696,
+      "total_seconds": 0.955872708989773,
+      "first_result_seconds": 0.8708509170101024,
+      "client_cpu_seconds": 0.07709699999998065,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.132123874995159,
+      "first_result_seconds": 0.8907481670030393,
+      "client_cpu_seconds": 0.49630899999999656,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 395989,
+      "bytes": 141058789,
+      "total_seconds": 3.1048990830022376,
+      "first_result_seconds": 0.8968359999998938,
+      "client_cpu_seconds": 0.5080810000000042,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 395989,
+      "bytes": 7319784,
+      "total_seconds": 0.9802637079847045,
+      "first_result_seconds": 0.8848514999845065,
+      "client_cpu_seconds": 0.07625000000001592,
+      "codec": "zstd"
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 395989,
+      "bytes": 5367176,
+      "total_seconds": 0.9829153750033583,
+      "first_result_seconds": 0.9188200829958078,
+      "client_cpu_seconds": 0.055581000000017866,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 94654,
+      "bytes": 2114344,
+      "total_seconds": 0.48480120801832527,
+      "first_result_seconds": 0.459312916995259,
+      "client_cpu_seconds": 0.02145300000000816,
+      "codec": "zstd",
+      "validation": {
+        "rows": 94654,
+        "row_hash_sum": "109702848255692556497134645036650448969",
+        "row_hash_xor": "60572288576653549458435498025459378233",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 94654,
+      "bytes": 2070400,
+      "total_seconds": 1.3615161670022644,
+      "first_result_seconds": 1.336562500015134,
+      "client_cpu_seconds": 0.023408000000017637,
+      "codec": "zstd",
+      "validation": {
+        "rows": 94654,
+        "row_hash_sum": "109702848255692556497134645036650448969",
+        "row_hash_xor": "60572288576653549458435498025459378233",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 0.9925273339904379,
+      "first_result_seconds": 0.4392315000004601,
+      "client_cpu_seconds": 0.12464199999999437,
+      "codec": null,
+      "validation": {
+        "rows": 94654,
+        "row_hash_sum": "109702848255692556497134645036650448969",
+        "row_hash_xor": "60572288576653549458435498025459378233",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 1.9268403750029393,
+      "first_result_seconds": 1.4005829590023495,
+      "client_cpu_seconds": 0.12232399999999188,
+      "codec": null,
+      "validation": {
+        "rows": 94654,
+        "row_hash_sum": "109702848255692556497134645036650448969",
+        "row_hash_xor": "60572288576653549458435498025459378233",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 94654,
+      "bytes": 2070400,
+      "total_seconds": 1.377449916995829,
+      "first_result_seconds": 1.353333416976966,
+      "client_cpu_seconds": 0.027112999999985732,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 0.9856919579906389,
+      "first_result_seconds": 0.44495612499304116,
+      "client_cpu_seconds": 0.12346100000002025,
+      "codec": null
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 1.8712895000062417,
+      "first_result_seconds": 1.3352445409982465,
+      "client_cpu_seconds": 0.12324799999998959,
+      "codec": null
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 94654,
+      "bytes": 2114344,
+      "total_seconds": 0.4546907499898225,
+      "first_result_seconds": 0.432015207974473,
+      "client_cpu_seconds": 0.027837999999974272,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 0.9587628750014119,
+      "first_result_seconds": 0.4188608329859562,
+      "client_cpu_seconds": 0.12114500000001271,
+      "codec": null
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 94654,
+      "bytes": 34145090,
+      "total_seconds": 1.8571395420003682,
+      "first_result_seconds": 1.3332616669940762,
+      "client_cpu_seconds": 0.12165300000003754,
+      "codec": null
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 94654,
+      "bytes": 2114344,
+      "total_seconds": 0.4587962079967838,
+      "first_result_seconds": 0.43002741600503214,
+      "client_cpu_seconds": 0.025387999999963995,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 94654,
+      "bytes": 2070400,
+      "total_seconds": 1.41462691599736,
+      "first_result_seconds": 1.392513916012831,
+      "client_cpu_seconds": 0.025917000000049484,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 6011615,
+      "bytes": 132634288,
+      "total_seconds": 5.08402754200506,
+      "first_result_seconds": 3.472541208000621,
+      "client_cpu_seconds": 1.1799179999999865,
+      "codec": "zstd",
+      "validation": {
+        "rows": 6011615,
+        "row_hash_sum": "168098388409179185700155652262240496743",
+        "row_hash_xor": "211082353452851047562654233534438160571",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 1,
+      "rows": 6011615,
+      "bytes": 127592944,
+      "total_seconds": 9.31285466600093,
+      "first_result_seconds": 7.712571874988498,
+      "client_cpu_seconds": 1.1311689999999999,
+      "codec": "zstd",
+      "validation": {
+        "rows": 6011615,
+        "row_hash_sum": "168098388409179185700155652262240496743",
+        "row_hash_xor": "211082353452851047562654233534438160571",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 41.12384387498605,
+      "first_result_seconds": 3.70993591597653,
+      "client_cpu_seconds": 7.607492000000036,
+      "codec": null,
+      "validation": {
+        "rows": 6011615,
+        "row_hash_sum": "168098388409179185700155652262240496743",
+        "row_hash_xor": "211082353452851047562654233534438160571",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 1,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 46.13033341700793,
+      "first_result_seconds": 11.163810792000731,
+      "client_cpu_seconds": 7.647451999999987,
+      "codec": null,
+      "validation": {
+        "rows": 6011615,
+        "row_hash_sum": "168098388409179185700155652262240496743",
+        "row_hash_xor": "211082353452851047562654233534438160571",
+        "timestamps_ordered": true
+      }
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 6011615,
+      "bytes": 126498520,
+      "total_seconds": 9.603191624977626,
+      "first_result_seconds": 7.918685249984264,
+      "client_cpu_seconds": 1.1710789999999633,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 43.272421917004976,
+      "first_result_seconds": 4.48025916700135,
+      "client_cpu_seconds": 7.533489999999972,
+      "codec": null
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 2,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 43.736028417013586,
+      "first_result_seconds": 9.122833458008245,
+      "client_cpu_seconds": 7.673175000000015,
+      "codec": null
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 2,
+      "rows": 6011615,
+      "bytes": 132633912,
+      "total_seconds": 6.480660874978639,
+      "first_result_seconds": 4.830643083987525,
+      "client_cpu_seconds": 1.154884999999922,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 38.969786208996084,
+      "first_result_seconds": 3.869096084003104,
+      "client_cpu_seconds": 7.580826000000002,
+      "codec": null
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "repetition": 3,
+      "rows": 6011615,
+      "bytes": 2162741995,
+      "total_seconds": 42.43373258400243,
+      "first_result_seconds": 7.98562329201377,
+      "client_cpu_seconds": 7.627204000000006,
+      "codec": null
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 6011615,
+      "bytes": 132633920,
+      "total_seconds": 5.4577035830006935,
+      "first_result_seconds": 3.7474916669889353,
+      "client_cpu_seconds": 1.176559999999995,
+      "codec": "zstd"
+    },
+    {
+      "case": "fleet_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {}
+      },
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "repetition": 3,
+      "rows": 6011615,
+      "bytes": 126813888,
+      "total_seconds": 9.307868083007634,
+      "first_result_seconds": 7.684704583021812,
+      "client_cpu_seconds": 1.1355629999999337,
+      "codec": "zstd"
+    }
+  ],
+  "summaries": [
+    {
+      "case": "series_minute",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 698,
+      "total_seconds": 0.38599533299566247,
+      "first_result_seconds": 0.38578966600471176,
+      "bytes": 15032,
+      "client_cpu_seconds": 0.0013900000000000023,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_minute",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 698,
+      "total_seconds": 0.31032566700014286,
+      "first_result_seconds": 0.31003054199391045,
+      "bytes": 15032,
+      "client_cpu_seconds": 0.0019259999999999833,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_minute",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 698,
+      "total_seconds": 0.4246573749987874,
+      "first_result_seconds": 0.42118162498809397,
+      "bytes": 241437,
+      "client_cpu_seconds": 0.0017790000000000306,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_minute",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 698,
+      "total_seconds": 0.5280120419920422,
+      "first_result_seconds": 0.5250593340024352,
+      "bytes": 241437,
+      "client_cpu_seconds": 0.0016319999999999668,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_hour",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 43509,
+      "total_seconds": 0.7585407499864232,
+      "first_result_seconds": 0.7496301659848541,
+      "bytes": 780280,
+      "client_cpu_seconds": 0.010061000000000098,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_hour",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 43509,
+      "total_seconds": 0.3668982500093989,
+      "first_result_seconds": 0.3588373750098981,
+      "bytes": 780280,
+      "client_cpu_seconds": 0.008110000000000062,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_hour",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 43509,
+      "total_seconds": 0.9984734159952495,
+      "first_result_seconds": 0.7445071660040412,
+      "bytes": 15036332,
+      "client_cpu_seconds": 0.05423,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_hour",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 43509,
+      "total_seconds": 0.5752373329887632,
+      "first_result_seconds": 0.33747312499326654,
+      "bytes": 15036332,
+      "client_cpu_seconds": 0.05352100000000015,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 1048491,
+      "total_seconds": 9.858848875010153,
+      "first_result_seconds": 9.67272483301349,
+      "bytes": 19171032,
+      "client_cpu_seconds": 0.15799300000000027,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 1048491,
+      "total_seconds": 1.387543666001875,
+      "first_result_seconds": 1.1872447909845505,
+      "bytes": 19171032,
+      "client_cpu_seconds": 0.15627800000000036,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 1048491,
+      "total_seconds": 15.699723249999806,
+      "first_result_seconds": 9.750523499998963,
+      "bytes": 362323649,
+      "client_cpu_seconds": 1.2874909999999993,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "series_day",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 1048491,
+      "total_seconds": 6.938610165991122,
+      "first_result_seconds": 1.2968249160039704,
+      "bytes": 362323649,
+      "client_cpu_seconds": 1.270653000000003,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "plugin_vsn_day",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 9436419,
+      "total_seconds": 28.19026079197647,
+      "first_result_seconds": 25.283953625010327,
+      "bytes": 170840032,
+      "client_cpu_seconds": 1.6807440000000042,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "plugin_vsn_day",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 9436419,
+      "total_seconds": 11.987949542002752,
+      "first_result_seconds": 10.137825874990085,
+      "bytes": 123846872,
+      "client_cpu_seconds": 1.2141599999999926,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "plugin_vsn_day",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 9436419,
+      "total_seconds": 81.43745783399208,
+      "first_result_seconds": 26.638407666992862,
+      "bytes": 3365696698,
+      "client_cpu_seconds": 11.774679000000049,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "plugin_vsn_day",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 9436419,
+      "total_seconds": 65.3014685829985,
+      "first_result_seconds": 11.691460750007536,
+      "bytes": 3365696698,
+      "client_cpu_seconds": 11.777394999999984,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 6352,
+      "total_seconds": 0.35539354200591333,
+      "first_result_seconds": 0.35431908298050985,
+      "bytes": 119040,
+      "client_cpu_seconds": 0.003730000000018663,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 6352,
+      "total_seconds": 0.8487034589925315,
+      "first_result_seconds": 0.847604875016259,
+      "bytes": 87616,
+      "client_cpu_seconds": 0.003368999999963762,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 6352,
+      "total_seconds": 0.4117572919931263,
+      "first_result_seconds": 0.37457966699730605,
+      "bytes": 2266867,
+      "client_cpu_seconds": 0.010700999999983196,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 6352,
+      "total_seconds": 0.7282634169969242,
+      "first_result_seconds": 0.690706291992683,
+      "bytes": 2266867,
+      "client_cpu_seconds": 0.011282999999991716,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 395989,
+      "total_seconds": 0.966881000000285,
+      "first_result_seconds": 0.8754161249962635,
+      "bytes": 7319784,
+      "client_cpu_seconds": 0.07625000000001592,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 395989,
+      "total_seconds": 0.9905102920019999,
+      "first_result_seconds": 0.9290167920116801,
+      "bytes": 5367000,
+      "client_cpu_seconds": 0.05642199999999775,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 395989,
+      "total_seconds": 3.1396514999796636,
+      "first_result_seconds": 0.9145954579871614,
+      "bytes": 141058789,
+      "client_cpu_seconds": 0.5020059999999944,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 395989,
+      "total_seconds": 3.1048990830022376,
+      "first_result_seconds": 0.9035207080014516,
+      "bytes": 141058789,
+      "client_cpu_seconds": 0.49586800000002995,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_minute",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 94654,
+      "total_seconds": 0.4587962079967838,
+      "first_result_seconds": 0.432015207974473,
+      "bytes": 2114344,
+      "client_cpu_seconds": 0.025387999999963995,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_minute",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 94654,
+      "total_seconds": 1.377449916995829,
+      "first_result_seconds": 1.353333416976966,
+      "bytes": 2070400,
+      "client_cpu_seconds": 0.025917000000049484,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_minute",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 94654,
+      "total_seconds": 0.9856919579906389,
+      "first_result_seconds": 0.4392315000004601,
+      "bytes": 34145090,
+      "client_cpu_seconds": 0.12346100000002025,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_minute",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 94654,
+      "total_seconds": 1.8712895000062417,
+      "first_result_seconds": 1.3352445409982465,
+      "bytes": 34145090,
+      "client_cpu_seconds": 0.12232399999999188,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_hour",
+      "layout": "time",
+      "format": "arrow",
+      "rows": 6011615,
+      "total_seconds": 5.4577035830006935,
+      "first_result_seconds": 3.7474916669889353,
+      "bytes": 132633920,
+      "client_cpu_seconds": 1.176559999999995,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_hour",
+      "layout": "plugin_vsn_time",
+      "format": "arrow",
+      "rows": 6011615,
+      "total_seconds": 9.31285466600093,
+      "first_result_seconds": 7.712571874988498,
+      "bytes": 126813888,
+      "client_cpu_seconds": 1.1355629999999337,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_hour",
+      "layout": "time",
+      "format": "ndjson",
+      "rows": 6011615,
+      "total_seconds": 41.12384387498605,
+      "first_result_seconds": 3.869096084003104,
+      "bytes": 2162741995,
+      "client_cpu_seconds": 7.580826000000002,
+      "content_checked_against_both_layouts_and_formats": true
+    },
+    {
+      "case": "fleet_hour",
+      "layout": "plugin_vsn_time",
+      "format": "ndjson",
+      "rows": 6011615,
+      "total_seconds": 43.736028417013586,
+      "first_result_seconds": 9.122833458008245,
+      "bytes": 2162741995,
+      "client_cpu_seconds": 7.647451999999987,
+      "content_checked_against_both_layouts_and_formats": true
+    }
+  ]
+}

@@ -85,6 +85,22 @@ Run from this directory with `python -I <script> ...`.
 | `exp39_iceberg_vs_custom.py` | Does Iceberg add latency vs plain Parquet? (5/5 — no) |
 | `exp40_metadata_storage.py` | What storage does Iceberg add? (9/9 — net −35 GB) |
 | `exp41_metadata_retention.py` | Can Iceberg bound old `metadata.json` itself? (6/6 — yes, but it can break a hint) |
+| `exp42_sort_day.py` | Write one cold day before and after `sort_by_time` (plans/7) |
+| `exp43_rewrite_rowgroups.py` | Rewrite that sorted day at larger `ROW_GROUP_SIZE` values |
+| `exp44_rowgroup_query_bytes.py` | Bytes and range requests for a minute, an hour, and a day |
+| `exp45_rowgroup_pelican.py` | Pelican wall time for those same queries |
+| `exp46_arrow_vs_ndjson.py` | Arrow IPC stream versus newline JSON on the local demo API (plans/8) |
+| `exp47_arrow_vs_ndjson_curl.py` | The same queries with curl and DuckDB, no sage-data-client (plans/8) |
+| `exp48_month_arrow_vs_ndjson.py` | May 2025, one series, Arrow versus newline JSON with curl and DuckDB (plans/8) |
+| `exp49_cold_month_arrow_vs_ndjson.py` | March 2025 cold, the same series, Arrow versus newline JSON (plans/8) |
+| `exp52_arrow_vs_ndjson_rerun.py` | Hot and cold Arrow versus newline JSON after the streaming reader (plans/8) |
+| `exp54_arrow_engine_reuse_e2e.py` | Cold short queries after Arrow reuses one DuckDB (plans/8) |
+| `exp55_sage_data_client_reused_engine.py` | Same windows as exp52 through sage-data-client (plans/8) |
+| `exp58_arrow_decoder_live.py` | Live Arrow windows after the batched sage-data-client decoder (plans/8) |
+| `exp59_arrow_ipc_compression.py` | Local none/Zstd/LZ4 IPC size and decode cost (plans/8) |
+| `exp60_arrow_compression_live.py` | Live none/Zstd/LZ4 comparison against the demo API (plans/8) |
+| `exp63_cold_execution.py` | Local cold SQL profile of metadata assembly (plans/8) |
+| `exp64_cold_execution_live.py` | Live cold windows before and after that SQL change (plans/8) |
 | `probe_pelican_cas.py` | Does *any* conditional primitive on this origin give compare-and-swap? (7 — none) |
 | `probe_pelican_cas2.py` | Controls for the above: are those negatives real, or an origin that acks everything? |
 
@@ -579,6 +595,14 @@ one is easy to get wrong.
 
 ## Reproducing the headline numbers
 
+For the DuckDB 2.0 stored-value comparison, `exp68_value_variant.py` rewrites
+read-only archive input into matching split-value and single-VARIANT Parquet
+datasets in temporary storage. It exports current Go response SQL, preserves
+the public four-column Arrow schema and exp67 metadata expression, checks exact
+semantic fixtures, and alternates native streaming runs. Plan 8 records results
+and commands, including a memory-limited spill case. This is a local Parquet
+experiment, not an Iceberg schema migration or a live Pelican benchmark.
+
 ```sh
 # the pruning failure, and the fix
 python -I exp03_range_reads.py <some data_0.parquet>
@@ -594,3 +618,114 @@ python -I exp10_compaction.py ../data/archive ../scratch/compaction --days 3
 
 A Go A/B harness for the exporter change (`scratch/pqtest/`, gitignored) was
 run on sage03 against real archive data; results in `results/SUMMARY.md` §11.
+
+
+`exp73_plugin_live_compare.py` compares isolated time-first and plugin/vsn/time
+v3 HTTP endpoints in Arrow and NDJSON. The candidate must use fixed file batches
+and plugin-pure row groups, with an audited row cap for bounded candidates. It uses committed-layout audits and
+nanosecond-safe bounded validation. It does not switch or rebuild servers.
+Its HTTP receive/spool timer differs from exp71's Sage-client dataframe timer.
+Plan 10 contains the candidate publisher, sidecar and profiling procedure.
+
+
+The pruning follow-up uses `exp74_layout_scan_profiles.py` on actual local
+published files (equal March 1 coverage; no Iceberg/Pelican/HTTP),
+`exp75_paired_live_profiles.py` on two dedicated profiling sidecars (fresh
+request/profile pairing and matched audits), and `exp76_time_batch_layout.py`
+to build the chronological-batch physical candidate in a fresh local directory.
+`seed_cold.py --batch-order time` publishes that policy through the v3 path;
+`seed_time_control.py` creates a byte-identical one-day baseline control.
+Plan 10 records commands, local measurements and the pending VM comparison.
+
+For the local plugin extension, exp74 accepts `--case plugin_hour` (one hour,
+plugin-only filter across all nodes) and `--case plugin_vsn_day` (one day,
+plugin plus W0A0). `--plugin` overrides the recorded exp73 plugin. Each report
+records the exact filters and ranges; added measurements are kept separately
+in `results/exp74_plugin_queries_scan_profiles.json`.
+
+
+`exp77_bounded_plugin_groups.py` builds four caps (100000, 262144, 524288,
+1000000) from each immutable archive/time batch layout, preserving file
+membership and verifying every raw file fingerprint.
+`exp78_bounded_layout_benchmark.py` consumes a complete build report and runs
+nine shapes against time-first, rotating unprofiled repetitions and collecting
+separate profiles. It reports per-query ratios and worst-case regressions.
+Small plugins and final tails can be smaller than the cap; groups never mix
+plugins. New seed trials use `--row-group-rows` and fresh bounded-table metadata.
+
+The retained candidate uses chronological batches and a 262144-row cap.
+`exp79_full_warehouse_validation.py` compares its complete March/April local
+committed snapshot with the time-first baseline: 61 daily inventories plus
+full stored-row fingerprints, preserving VARIANT, metadata and nanoseconds.
+It writes fresh local reports and never publishes or changes APIs.
+`exp73_plugin_live_compare.py --full-warehouse` then requires matching full
+coverage and runs 39 HTTP query shapes across both months, including monthly
+series and a month-boundary fleet hour. Use `--format arrow` for the initial
+sweep and explicit `--case` selections for staged follow-ups. Setup and fresh
+publication commands are in `plans/10_iceberg_v3.md`; live results are pending.
+
+`exp82_whole_range_profiles.py` measures March/April whole-range Arrow requests
+on the adopted warehouse, first unprofiled and then with a fresh native/timing
+pair per request. It checks the actual container's image/settings, preserved
+response signatures, cgroup peak memory/OOM events and restart counts. It only
+reads Docker state and profiles; sidecar setup is separate. See the exp82 VM
+procedure in `plans/8_arrow_query_response.md`. No windowing is used.
+
+`exp83_projection_ablation.py` compares full output, omitted metadata, omitted
+value and both omitted on the adopted local Parquet inventory. A second family
+hashes every raw field in all four modes and emits one aggregate row, avoiding
+sort/IPC payload differences. It isolates JSON formation plus checksum hashing,
+not pure serializer CPU. Current Go SQL is exported by TestColdProjectionProbe;
+the HTTP API is unchanged. Unprofiled repetitions and separate native profiles
+include retained-field/source checks, IPC bytes, RSS, buffer memory and spill.
+
+`exp84_metadata_reuse.py` evaluates metadata reuse with exact collision/null/
+MAP-order/value fixtures and full output signatures. The selected candidate
+is `--mode uniform`: its measured total includes discovering at most two raw
+metadata/tag combinations and running a constant-metadata main query only for
+exactly one. Zero/two tuples fall back. The prototype uses separate native
+probe processes; the API uses one request engine/connection. The operator
+candidate `COLD_UNIFORM_METADATA=true` is off by default and gated to exact
+name/vsn queries >=28 days. Plan 8 contains local results and same-image live
+validation commands; other modes are retained as rejected diagnostics.
+
+`exp85_iteration_summary.py report` rebuilds the separate Arrow/NDJSON iteration
+comparison in `plans/11_query_performance_summary.md`, the local-candidate matrix,
+response/server profile tables, and the CSV/JSON with source SHA-256 hashes.
+`live --output <fresh.json>` collects production NDJSON using the existing
+HTTP receive/spool timer and validates complete bodies outside the timer.
+Arrow is never requested from production by default. Short queries use one
+excluded warmup and three repetitions; `--include-months` enables single
+series-month requests. Use `--endpoint <demo-url> --formats ndjson arrow` for
+matching current-API short comparisons. The production attempt here failed
+DNS resolution; no production latency or server profile is inferred. The
+report documents how to import a completed VM production result.
+
+### Beehive API Go packages and current probes
+
+The API now keeps its root `main.go` for startup wiring and implementation in
+`internal/query`, `internal/arrowio`, `internal/backend/{hot,cold,tiered}`,
+`internal/httpapi`, and `internal/testutil`. Native Arrow is part of ordinary
+builds; no custom build tag is required.
+
+Build the cold SQL/native/fixture probe binary from the API root with:
+
+```sh
+go test -tags=duckdb_arrow -c -o /tmp/sage-cold-probe.test ./internal/backend/cold
+```
+
+This binary retains `TestColdExecutionProbe`, `TestColdProjectionProbe`,
+`TestColdDuckDBEvaluationProbe`, and the native/v3 tests. Use it wherever a
+maintained experiment accepts a cold SQL/native probe. Build the IPC encoder
+probe separately:
+
+```sh
+go test -tags=duckdb_arrow -c -o /tmp/sage-arrow-probe.test ./internal/arrowio
+```
+
+That binary retains `TestArrowCompressionProbe`. Existing probe environment
+variables, SQL markers and output formats are unchanged. Exp70's automatic
+SQL export targets the cold package. Historical command examples that compile
+root tests must now select the owning package; frozen result reports and their
+source hashes are unchanged. Removed typed-wire/uniform-metadata prototypes
+remain historical and are not restored by this reorganization.

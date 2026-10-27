@@ -1,0 +1,14 @@
+{
+  "memory_limit": "256MB",
+  "threads": 2,
+  "results": [
+    {
+      "mode": "stream",
+      "rows": 25940207,
+      "peak_rss_mb": 367.1,
+      "exit_code": 1,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=17.866280\n    cold_arrow_stream_test.go:142: Invalid Input Error: Attempting to execute an unsuccessful or closed pending query result\n        Error: Out of Memory Error: failed to pin block of size 256.0 KiB (244.0 MiB/244.1 MiB used)\n        \n        Possible solutions:\n        * Reducing the number of threads (SET threads=X)\n        * Disabling insertion-order preservation (SET preserve_insertion_order=false)\n        * Increasing the memory limit (SET memory_limit='...GB')\n        \n        See also https://duckdb.org/docs/stable/guides/performance/how_to_tune_workloads\n--- FAIL: TestColdArrowMemoryProbe (18.15s)\nFAIL\n",
+      "ready_seconds": 17.86628
+    }
+  ]
+}

@@ -1,0 +1,739 @@
+{
+  "status": "complete",
+  "endpoint": "https://data.sagecontinuum.org/api/v1/query",
+  "started_utc": "2026-10-27T01:48:04.747925+00:00",
+  "scope": "HTTP receive/spool; Arrow IPC iteration for Arrow; validation outside timer; no dataframe",
+  "arrow": null,
+  "results": [
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.319822582998313,
+      "first_result_seconds": 0.09409899997990578,
+      "client_cpu_seconds": 0.014613999999999988,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.321438874991145,
+      "first_result_seconds": 0.08968000003369525,
+      "client_cpu_seconds": 0.006831999999999977,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.3347319579916075,
+      "first_result_seconds": 0.08907045796513557,
+      "client_cpu_seconds": 0.009743000000000002,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.3295833339798264,
+      "first_result_seconds": 0.0864542499766685,
+      "client_cpu_seconds": 0.007828000000000002,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 1.651785916998051,
+      "first_result_seconds": 0.08375074999639764,
+      "client_cpu_seconds": 0.06996199999999997,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 1.631542667048052,
+      "first_result_seconds": 0.08691279200138524,
+      "client_cpu_seconds": 0.06465100000000001,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 1.534185583004728,
+      "first_result_seconds": 0.07864583301125094,
+      "client_cpu_seconds": 0.07149300000000003,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 1.764877833018545,
+      "first_result_seconds": 0.08734516601543874,
+      "client_cpu_seconds": 0.09115899999999999,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 6352,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 6513,
+        "row_hash_sum": "329067707443550905265983286169615866990",
+        "row_hash_xor": "122471772851991236493853874326647848168",
+        "timestamps_ordered": false
+      },
+      "rows": 6513,
+      "bytes": 2306233,
+      "total_seconds": 1.0156201249919832,
+      "first_result_seconds": 0.15968312497716397,
+      "client_cpu_seconds": 0.028032000000000057,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 6352,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 6513,
+        "row_hash_sum": "329067707443550905265983286169615866990",
+        "row_hash_xor": "122471772851991236493853874326647848168",
+        "timestamps_ordered": false
+      },
+      "rows": 6513,
+      "bytes": 2306233,
+      "total_seconds": 1.0554016249952838,
+      "first_result_seconds": 0.15472758299438283,
+      "client_cpu_seconds": 0.026651999999999898,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 6352,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 6513,
+        "row_hash_sum": "329067707443550905265983286169615866990",
+        "row_hash_xor": "122471772851991236493853874326647848168",
+        "timestamps_ordered": false
+      },
+      "rows": 6513,
+      "bytes": 2306233,
+      "total_seconds": 0.9713217500247993,
+      "first_result_seconds": 0.15405591699527577,
+      "client_cpu_seconds": 0.028040999999999983,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 6352,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 6513,
+        "row_hash_sum": "329067707443550905265983286169615866990",
+        "row_hash_xor": "122471772851991236493853874326647848168",
+        "timestamps_ordered": false
+      },
+      "rows": 6513,
+      "bytes": 2306233,
+      "total_seconds": 1.0573919580201618,
+      "first_result_seconds": 0.150322999979835,
+      "client_cpu_seconds": 0.026003999999999916,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 395989,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 416758,
+        "row_hash_sum": "137330724979549931035696585871674211318",
+        "row_hash_xor": "219822171603914596527454773072276591278",
+        "timestamps_ordered": false
+      },
+      "rows": 416758,
+      "bytes": 144743404,
+      "total_seconds": 6.3203240419970825,
+      "first_result_seconds": 0.11668066697893664,
+      "client_cpu_seconds": 0.5201039999999999,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 395989,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 416758,
+        "row_hash_sum": "137330724979549931035696585871674211318",
+        "row_hash_xor": "219822171603914596527454773072276591278",
+        "timestamps_ordered": false
+      },
+      "rows": 416758,
+      "bytes": 144743404,
+      "total_seconds": 6.2305541670066305,
+      "first_result_seconds": 0.10675016703316942,
+      "client_cpu_seconds": 0.659993,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 395989,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 416758,
+        "row_hash_sum": "137330724979549931035696585871674211318",
+        "row_hash_xor": "219822171603914596527454773072276591278",
+        "timestamps_ordered": false
+      },
+      "rows": 416758,
+      "bytes": 144743404,
+      "total_seconds": 6.225740791007411,
+      "first_result_seconds": 0.1150214999797754,
+      "client_cpu_seconds": 0.6568249999999995,
+      "codec": null
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 395989,
+      "expected_rows_match": false,
+      "validation": {
+        "rows": 416758,
+        "row_hash_sum": "137330724979549931035696585871674211318",
+        "row_hash_xor": "219822171603914596527454773072276591278",
+        "timestamps_ordered": false
+      },
+      "rows": 416758,
+      "bytes": 144743404,
+      "total_seconds": 6.1299320419784635,
+      "first_result_seconds": 0.11224479199154302,
+      "client_cpu_seconds": 0.6533920000000002,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-02T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 1048491,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "234804206400960269656676639838856686645",
+        "row_hash_xor": "27034737727823608105056270984418339161",
+        "timestamps_ordered": true
+      },
+      "rows": 1048491,
+      "bytes": 362084959,
+      "total_seconds": 20.149653832952026,
+      "first_result_seconds": 0.09367316699353978,
+      "client_cpu_seconds": 1.6947469999999996,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-02T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 1048491,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "234804206400960269656676639838856686645",
+        "row_hash_xor": "27034737727823608105056270984418339161",
+        "timestamps_ordered": true
+      },
+      "rows": 1048491,
+      "bytes": 362084959,
+      "total_seconds": 14.564613458991516,
+      "first_result_seconds": 0.09657408396014944,
+      "client_cpu_seconds": 1.128107,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-02T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 1048491,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "234804206400960269656676639838856686645",
+        "row_hash_xor": "27034737727823608105056270984418339161",
+        "timestamps_ordered": true
+      },
+      "rows": 1048491,
+      "bytes": 362084959,
+      "total_seconds": 14.433499458013102,
+      "first_result_seconds": 0.09012400003848597,
+      "client_cpu_seconds": 1.726731000000001,
+      "codec": null
+    },
+    {
+      "case": "series_day",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-02T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 1048491,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 1048491,
+        "row_hash_sum": "234804206400960269656676639838856686645",
+        "row_hash_xor": "27034737727823608105056270984418339161",
+        "timestamps_ordered": true
+      },
+      "rows": 1048491,
+      "bytes": 362084959,
+      "total_seconds": 13.768838999967556,
+      "first_result_seconds": 0.09804483299376443,
+      "client_cpu_seconds": 1.7664700000000053,
+      "codec": null
+    },
+    {
+      "case": "march",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-04-01T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 25940207,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 25940207,
+        "row_hash_sum": "233840975302069711190334638466132939015",
+        "row_hash_xor": "54577222055892152669204981242458142323",
+        "timestamps_ordered": true
+      },
+      "rows": 25940207,
+      "bytes": 8949752882,
+      "total_seconds": 344.93387387500843,
+      "first_result_seconds": 0.09417258301982656,
+      "client_cpu_seconds": 43.4279,
+      "codec": null
+    },
+    {
+      "case": "april",
+      "query": {
+        "start": "2025-04-01T00:00:00Z",
+        "end": "2025-05-01T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 31189045,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 31189045,
+        "row_hash_sum": "315575133766315693628403387076433138600",
+        "row_hash_xor": "174969277645042542053419711140439694370",
+        "timestamps_ordered": true
+      },
+      "rows": 31189045,
+      "bytes": 10764601512,
+      "total_seconds": 474.2708812080091,
+      "first_result_seconds": 0.28404525003861636,
+      "client_cpu_seconds": 52.23307199999999,
+      "codec": null
+    },
+    {
+      "case": "may",
+      "query": {
+        "start": "2025-05-01T00:00:00Z",
+        "end": "2025-06-01T00:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 30388936,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 30388936,
+        "row_hash_sum": "237245886476884822243047230759165686940",
+        "row_hash_xor": "269615857952834885573563708146219903458",
+        "timestamps_ordered": true
+      },
+      "rows": 30388936,
+      "bytes": 10496865583,
+      "total_seconds": 444.52989099995466,
+      "first_result_seconds": 0.3035605839686468,
+      "client_cpu_seconds": 51.27362199999993,
+      "codec": null
+    }
+  ],
+  "summaries": [
+    {
+      "case": "series_minute",
+      "format": "ndjson",
+      "rows": 698,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 0.3295833339798264,
+      "first_result_seconds": 0.08907045796513557,
+      "bytes": 241437,
+      "client_cpu_seconds": 0.007828000000000002
+    },
+    {
+      "case": "series_hour",
+      "format": "ndjson",
+      "rows": 43509,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 1.631542667048052,
+      "first_result_seconds": 0.08691279200138524,
+      "bytes": 15021808,
+      "client_cpu_seconds": 0.07149300000000003
+    },
+    {
+      "case": "all_plugins_vsn_minute",
+      "format": "ndjson",
+      "rows": 6513,
+      "expected_rows_match": false,
+      "timestamps_ordered": false,
+      "total_seconds": 1.0554016249952838,
+      "first_result_seconds": 0.15405591699527577,
+      "bytes": 2306233,
+      "client_cpu_seconds": 0.026651999999999898
+    },
+    {
+      "case": "all_plugins_vsn_hour",
+      "format": "ndjson",
+      "rows": 416758,
+      "expected_rows_match": false,
+      "timestamps_ordered": false,
+      "total_seconds": 6.225740791007411,
+      "first_result_seconds": 0.11224479199154302,
+      "bytes": 144743404,
+      "client_cpu_seconds": 0.6568249999999995
+    },
+    {
+      "case": "series_day",
+      "format": "ndjson",
+      "rows": 1048491,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 14.433499458013102,
+      "first_result_seconds": 0.09657408396014944,
+      "bytes": 362084959,
+      "client_cpu_seconds": 1.726731000000001
+    },
+    {
+      "case": "march",
+      "format": "ndjson",
+      "rows": 25940207,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 344.93387387500843,
+      "first_result_seconds": 0.09417258301982656,
+      "bytes": 8949752882,
+      "client_cpu_seconds": 43.4279
+    },
+    {
+      "case": "april",
+      "format": "ndjson",
+      "rows": 31189045,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 474.2708812080091,
+      "first_result_seconds": 0.28404525003861636,
+      "bytes": 10764601512,
+      "client_cpu_seconds": 52.23307199999999
+    },
+    {
+      "case": "may",
+      "format": "ndjson",
+      "rows": 30388936,
+      "expected_rows_match": true,
+      "timestamps_ordered": true,
+      "total_seconds": 444.52989099995466,
+      "first_result_seconds": 0.3035605839686468,
+      "bytes": 10496865583,
+      "client_cpu_seconds": 51.27362199999993
+    }
+  ],
+  "transport": "Accept-Encoding: identity",
+  "profile": null,
+  "warmups": "one per short case/format; none for months",
+  "all_expected_rows_match": false
+}

@@ -1,0 +1,10 @@
+{
+  "build_method": "Isolated standard-library SQL exporter from exact production SQL/types/filter validator and current tests/probe",
+  "source_sha256": {
+    "cold_sql.go": "f7c358e06598cec3bc96753df3d1704427f903960d7883f595ae8a6770be8c2b",
+    "types.go": "837947eab0a321beda49dfc2357d86009bd5573096a7c7a3cdaf63966e471d19",
+    "cold_sql_test.go": "de15153654c9e525065f0bad051dee30254432a4bd3c25191022155ad47bc079",
+    "cold_projection_probe_test.go": "8d3f6754810358fa537c8caeb0f626e903b7bb88b86f0bd7a630bf12760f3988",
+    "influx_backend.go": "e66e5e8efca83e72d7f2871e830911cd1c45873f2d2c441c1e4828635b66d443"
+  }
+}

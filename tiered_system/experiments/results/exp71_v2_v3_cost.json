@@ -1,0 +1,33 @@
+{
+  "historical": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/tiered_system/experiments/results/exp67_after_live.json",
+  "v3_response_baseline": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/tiered_system/experiments/results/exp70_v3_live_baseline.json",
+  "status": "historical scopes differ; VARIANT end-to-end overhead is not established",
+  "reasons": [
+    "v2 exp67 includes Sage-client dataframe decoding; v3 exp70 stops at response collection",
+    "v2 warehouse covers March/April, v3 warehouse March 1 only",
+    "timestamps, file layout, row-group sizes and cache history changed",
+    "no matching historical live one-day measurement or latest NDJSON baseline"
+  ],
+  "historical_context": [
+    {
+      "query": "minute",
+      "rows": 698,
+      "v2_client_total_seconds": 0.3150691250048112,
+      "v2_first_batch_seconds": 0.3086760000005597,
+      "v3_response_total_seconds": 0.21458712499588728,
+      "v3_first_batch_seconds": 0.21454233300755732,
+      "total_timers_comparable": false
+    },
+    {
+      "query": "hour",
+      "rows": 43509,
+      "v2_client_total_seconds": 0.31186212500324473,
+      "v2_first_batch_seconds": 0.29901937500108033,
+      "v3_response_total_seconds": 0.6187518749939045,
+      "v3_first_batch_seconds": 0.6080843749950873,
+      "total_timers_comparable": false
+    }
+  ],
+  "current_client_results": [],
+  "comparable_timer_summaries": []
+}

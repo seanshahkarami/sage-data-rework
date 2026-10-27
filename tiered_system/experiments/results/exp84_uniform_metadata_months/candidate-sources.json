@@ -1,0 +1,18 @@
+{
+  "sql_builder_sources": {
+    "cold_sql.go": "f7c358e06598cec3bc96753df3d1704427f903960d7883f595ae8a6770be8c2b",
+    "types.go": "837947eab0a321beda49dfc2357d86009bd5573096a7c7a3cdaf63966e471d19",
+    "influx_backend.go": "e66e5e8efca83e72d7f2871e830911cd1c45873f2d2c441c1e4828635b66d443",
+    "cold_metadata_reuse.go": "6adc4c296979e231f0a4bdedf785ac50dd6e12b0c79d476013141b6387699d82",
+    "cold_metadata_reuse_test.go": "727179132f6d9e1042936aebc7390fba205078d3795f1969aa8ad79bbb7329a3",
+    "cold_metadata_reuse_experiment_test.go": "e32e73d1e17a567ca072791715d06401235f8a7a2d6c9397caf93bf595021435"
+  },
+  "api_candidate_sources": {
+    "cold_backend.go": "2397c99156ee0d6c311d960fd0fc76034fbce28a35dd3090ecda28f94cac99f8",
+    "cold_arrow.go": "36a8ca13e5d9fde911657754e79087dc80abab49b566398637e2065815c0aaaa",
+    "cold_query_profile.go": "fd26684ad350422c4c205206c13cc573aa31a5c9952c87b64486960b9776ef16",
+    "main.go": "e4147ca47f5f8d02a3c73fc5ffb802a81ef121e4b9db8c414fcb471e9f0df3a8",
+    "cold_metadata_reuse_arrow_test.go": "bbef5208065bb53e4a5f0844f004100e3f60797c5e051229e835e073f903ffb7"
+  },
+  "note": "SQL-only exporter was compiled/tested from exact builder/core sources; complete native API build and shared-engine lifecycle tests are pending VM execution; the API plan emits byte-identical SQL to the measured uniform prototype."
+}

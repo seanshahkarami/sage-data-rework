@@ -1,0 +1,16 @@
+{
+  "memory_limit": "1GB",
+  "threads": 2,
+  "source": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive/date=2025-03-*/*.parquet",
+  "results": [
+    {
+      "mode": "stream",
+      "rows": 25940207,
+      "peak_rss_mb": 1324.9,
+      "exit_code": 0,
+      "output": "=== RUN   TestColdArrowMemoryProbe\nPROBE ready_seconds=74.538978\nPROBE rows=25940207 total_seconds=79.414104\n--- PASS: TestColdArrowMemoryProbe (79.97s)\nPASS\n",
+      "ready_seconds": 74.538978,
+      "total_seconds": 79.414104
+    }
+  ]
+}

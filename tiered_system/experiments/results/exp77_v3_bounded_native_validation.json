@@ -1,0 +1,43 @@
+{
+  "scope": "local native DuckDB 2.0 -> bounded Go writer -> real SQLite Iceberg v3 AddFiles -> DuckDB iceberg_scan; no live catalog or remote writes",
+  "fingerprint": [
+    200010,
+    "1844244741984749280911746",
+    "12865656497490167988"
+  ],
+  "audit": {
+    "layout": "plugin-vsn-time",
+    "table_uuid": "ec3bbc77-47b5-47e9-8965-60dbe90d9c49",
+    "snapshot_id": 5964471235486259235,
+    "snapshots": 1,
+    "value_field_id": 11,
+    "value_type": "variant",
+    "files": 1,
+    "rows": 200010,
+    "bytes": 1133838,
+    "row_groups": 5,
+    "mixed_plugin_groups": 0,
+    "ordering_checked": true,
+    "physical_typed_value_types": {
+      "bool": 1
+    },
+    "min_timestamp_ns": 1740808800000000194,
+    "max_timestamp_ns": 1740808800000200203,
+    "file_row_limit": 10000000,
+    "one_group_per_plugin": false,
+    "plugin_pure_groups": true,
+    "row_group_row_limit": 100000,
+    "bounded_plugin_groups": true,
+    "max_row_group_rows": 100000,
+    "batch_order": "archive",
+    "file_time_ranges": [
+      {
+        "path": "/private/var/folders/yb/h919ssn55fl4fzpq2rsm_w0c0000gn/T/sage-bounded-registered-ktqr6hvg/sage.db/obs/data/batch.parquet",
+        "rows": 200010,
+        "min_timestamp_ns": 1740808800000000194,
+        "max_timestamp_ns": 1740808800000200203
+      }
+    ],
+    "metadata_location": "file:///var/folders/yb/h919ssn55fl4fzpq2rsm_w0c0000gn/T/sage-bounded-registered-ktqr6hvg/sage.db/obs/metadata/00001-8157bb34-f39e-4489-a61c-66f5c1d497db.metadata.json"
+  }
+}

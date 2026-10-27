@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "endpoint": "https://data.sagecontinuum.org/api/v1/query",
+  "started_utc": "2026-10-27T01:35:35.722329+00:00",
+  "scope": "HTTP receive/spool; Arrow IPC iteration for Arrow; validation outside timer; no dataframe",
+  "arrow": null,
+  "results": [],
+  "summaries": [],
+  "transport": "Accept-Encoding: identity",
+  "profile": null,
+  "warmups": "one per short case/format; none for months",
+  "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+}

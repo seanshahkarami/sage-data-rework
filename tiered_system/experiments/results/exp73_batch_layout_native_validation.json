@@ -1,0 +1,51 @@
+{
+  "scope": "native DuckDB 2.0 -> Arrow Go plugin row groups -> iceberg-go local SQLite AddFiles v3 -> native DuckDB 2.0 iceberg_scan; REST and live publication pending",
+  "audit": {
+    "layout": "plugin-vsn-time",
+    "table_uuid": "7f79665e-e76b-4cf6-9d87-76c3a6a1adab",
+    "snapshot_id": 1305563858396924227,
+    "snapshots": 1,
+    "value_field_id": 11,
+    "value_type": "variant",
+    "files": 1,
+    "rows": 4,
+    "bytes": 6551,
+    "row_groups": 3,
+    "mixed_plugin_groups": 0,
+    "ordering_checked": true,
+    "physical_typed_value_types": {
+      "bool": 1
+    },
+    "min_timestamp_ns": 1740787200000000194,
+    "max_timestamp_ns": 1740787200000000194,
+    "file_row_limit": 10000000,
+    "one_group_per_plugin": true,
+    "metadata_location": "file:///private/tmp/sage-layout-addfiles-check-final-20261023/sage.db/obs/metadata/00001-5d70786d-890a-4ace-861a-d7dd3a7e1658.metadata.json"
+  },
+  "rows": [
+    {
+      "timestamp_ns": 1740787200000000194,
+      "name": "test",
+      "value": "\"text\"",
+      "meta": "{\"key\":\"val\"}"
+    },
+    {
+      "timestamp_ns": 1740787200000000194,
+      "name": "test",
+      "value": "21.5",
+      "meta": "{\"key\":\"val\"}"
+    },
+    {
+      "timestamp_ns": 1740787200000000194,
+      "name": "test",
+      "value": "9007199254740993",
+      "meta": "{\"key\":\"val\"}"
+    },
+    {
+      "timestamp_ns": 1740787200000000194,
+      "name": "test",
+      "value": "true",
+      "meta": "{\"key\":\"val\"}"
+    }
+  ]
+}

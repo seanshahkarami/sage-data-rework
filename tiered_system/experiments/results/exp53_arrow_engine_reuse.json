@@ -1,0 +1,20 @@
+{
+  "when": "2026-10-21",
+  "scope": "Local cached-extension startup benchmark; synthetic 698-row sorted query and Arrow IPC to discard sink; no Pelican/HTTP/client decoding",
+  "duckdb": "1.5.6",
+  "platform": "darwin/arm64",
+  "cpu": "Apple M5 Pro",
+  "iterations_per_case": 20,
+  "statistic": "Go benchmark mean ns/op; one benchmark run",
+  "cases": [
+    {
+      "lifecycle": "per-query-database",
+      "ns_per_op": 20147771
+    },
+    {
+      "lifecycle": "reused-database",
+      "ns_per_op": 791775
+    }
+  ],
+  "command": "BEEHIVE_ARROW_CACHED_EXTENSIONS=1 go test -tags duckdb_arrow -run '^TestColdArrowBackendCachedExtensions$' -bench '^BenchmarkColdArrowStartup$' -benchtime=20x -count=1 ."
+}

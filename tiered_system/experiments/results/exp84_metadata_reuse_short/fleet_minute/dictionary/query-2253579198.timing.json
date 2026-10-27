@@ -1,0 +1,23 @@
+{
+  "engine_version": "v2.0.0",
+  "version": 1,
+  "status": "complete",
+  "rows": 94654,
+  "batches": 47,
+  "duckdb_file": "query-2253579198.duckdb.json",
+  "duckdb_profile_present": true,
+  "phases": {
+    "arrow_conversion_seconds": 0.0030971220000000008,
+    "arrow_schema_seconds": 0.000014542,
+    "connection_setup_seconds": 1.25e-7,
+    "execute_pending_seconds": 0.000001792,
+    "fetch_chunks_seconds": 1.2441838340000007,
+    "first_batch_since_backend_start_seconds": 1.256619666,
+    "native_eof_since_backend_start_seconds": 1.279816166,
+    "native_ready_since_backend_start_seconds": 0.015198083,
+    "pending_seconds": 0.008325792,
+    "prepare_seconds": 0.00667825,
+    "profiling_setup_seconds": 0.000099959,
+    "total_backend_lifetime_seconds": 1.27985075
+  }
+}

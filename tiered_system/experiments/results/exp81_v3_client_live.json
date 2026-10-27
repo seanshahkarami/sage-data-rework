@@ -1,0 +1,1017 @@
+{
+  "status": "complete",
+  "endpoint": "http://127.0.0.1:10006/api/v1/query",
+  "scope": "live HTTP Arrow/NDJSON wire validation plus public workspace-client replay of the same bodies",
+  "client_source": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-client/src/sage_data_client/query.py",
+  "client_sha256": "6f04d5649ba3421bd92a1704923ad4e6a2ca4a0fae74defcaab59040905f1101",
+  "results": [
+    {
+      "case": "2025-03-01_series_minute",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 698,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "4140535816327705632",
+        "hash_xor": "11343281608699613300"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "2025-03-01_series_minute",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 698,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "4140535816327705632",
+        "hash_xor": "11343281608699613300"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "2025-03-01_series_hour",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 43509,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "737062962054025630",
+        "hash_xor": "11186086466338722722"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "2025-03-01_series_hour",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T01:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 43509,
+        "row_hash_sum": "20107953698863475545062556299014708130",
+        "row_hash_xor": "228575313962271260938722676962461416034",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 43509,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "737062962054025630",
+        "hash_xor": "11186086466338722722"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "2025-03-31_series_minute",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-31T00:00:00Z",
+        "end": "2025-03-31T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 725,
+        "row_hash_sum": "147067491130729603894784617215217761451",
+        "row_hash_xor": "183731181338610037998581506595976831757",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 725,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "11598569715464587507",
+        "hash_xor": "5166298223958973391"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "2025-03-31_series_minute",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-31T00:00:00Z",
+        "end": "2025-03-31T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 725,
+        "row_hash_sum": "147067491130729603894784617215217761451",
+        "row_hash_xor": "183731181338610037998581506595976831757",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 725,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "11598569715464587507",
+        "hash_xor": "5166298223958973391"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "2025-04-01_series_minute",
+      "format": "arrow",
+      "query": {
+        "start": "2025-04-01T00:00:00Z",
+        "end": "2025-04-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 721,
+        "row_hash_sum": "69356639285983952815929866929321534947",
+        "row_hash_xor": "236728344360691314892803589905539580647",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 721,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "8528001072207621166",
+        "hash_xor": "10303032710444217488"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "2025-04-01_series_minute",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-04-01T00:00:00Z",
+        "end": "2025-04-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 721,
+        "row_hash_sum": "69356639285983952815929866929321534947",
+        "row_hash_xor": "236728344360691314892803589905539580647",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 721,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "8528001072207621166",
+        "hash_xor": "10303032710444217488"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "2025-04-30_series_minute",
+      "format": "arrow",
+      "query": {
+        "start": "2025-04-30T00:00:00Z",
+        "end": "2025-04-30T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 729,
+        "row_hash_sum": "259527092512867537171668505662827612711",
+        "row_hash_xor": "287737650025648781764308049194355551483",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 729,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "16911978327975416155",
+        "hash_xor": "17796786394954647845"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "2025-04-30_series_minute",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-04-30T00:00:00Z",
+        "end": "2025-04-30T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 729,
+        "row_hash_sum": "259527092512867537171668505662827612711",
+        "row_hash_xor": "287737650025648781764308049194355551483",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 729,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "16911978327975416155",
+        "hash_xor": "17796786394954647845"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "head",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        "head": 2
+      },
+      "wire": {
+        "rows": 2,
+        "row_hash_sum": "179549050788148788264683602440652732068",
+        "row_hash_xor": "134105878886236824942900610439293511962",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 2,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "6589341328733778069",
+        "hash_xor": "11704269276058079061"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "head",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        "head": 2
+      },
+      "wire": {
+        "rows": 2,
+        "row_hash_sum": "179549050788148788264683602440652732068",
+        "row_hash_xor": "134105878886236824942900610439293511962",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 2,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "6589341328733778069",
+        "hash_xor": "11704269276058079061"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "tail",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        "tail": 2
+      },
+      "wire": {
+        "rows": 2,
+        "row_hash_sum": "162156333990879857934097578946570888039",
+        "row_hash_xor": "162000523216283774516178378255526386263",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 2,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "4146172515916427728",
+        "hash_xor": "4146066961434913198"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "tail",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        },
+        "tail": 2
+      },
+      "wire": {
+        "rows": 2,
+        "row_hash_sum": "162156333990879857934097578946570888039",
+        "row_hash_xor": "162000523216283774516178378255526386263",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 2,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "4146172515916427728",
+        "hash_xor": "4146066961434913198"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "exclusive_nanosecond_bound",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:00:00.026403195Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 1,
+        "row_hash_sum": "236081019648981689865564008868491669191",
+        "row_hash_xor": "236081019648981689865564008868491669191",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 1,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "18205267753430383344",
+        "hash_xor": "18205267753430383344"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "exclusive_nanosecond_bound",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:00:00.026403195Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 1,
+        "row_hash_sum": "236081019648981689865564008868491669191",
+        "row_hash_xor": "236081019648981689865564008868491669191",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 1,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "18205267753430383344",
+        "hash_xor": "18205267753430383344"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    },
+    {
+      "case": "empty",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "__sage_v3_compatibility_absent__",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 0,
+        "row_hash_sum": "0",
+        "row_hash_xor": "0",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 0,
+        "columns": [
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "0",
+        "hash_xor": "0"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[s, UTC]",
+        "name": "str",
+        "value": "float64"
+      }
+    },
+    {
+      "case": "empty",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-01T00:01:00+00:00",
+        "filter": {
+          "name": "__sage_v3_compatibility_absent__",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 0,
+        "row_hash_sum": "0",
+        "row_hash_xor": "0",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 0,
+        "columns": [
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "0",
+        "hash_xor": "0"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[s, UTC]",
+        "name": "str",
+        "value": "float64"
+      }
+    },
+    {
+      "case": "series_day",
+      "format": "arrow",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 1048491,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "18004412869802177931",
+        "hash_xor": "7284048863435405221"
+      },
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      }
+    },
+    {
+      "case": "series_day",
+      "format": "ndjson",
+      "query": {
+        "start": "2025-03-01T00:00:00+00:00",
+        "end": "2025-03-02T00:00:00+00:00",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "wire": {
+        "rows": 1048491,
+        "row_hash_sum": "1428297843511804294438745491475463057",
+        "row_hash_xor": "101188829700724954092743511584670969675",
+        "timestamps_ordered": true
+      },
+      "client": {
+        "rows": 1048491,
+        "columns": [
+          "meta.host",
+          "meta.missing",
+          "meta.node",
+          "meta.plugin",
+          "meta.sensor",
+          "meta.task",
+          "meta.units",
+          "meta.vsn",
+          "meta.zone",
+          "name",
+          "timestamp",
+          "value"
+        ],
+        "value_dtype": "float64",
+        "hash_sum": "18004412869802177931",
+        "hash_xor": "7284048863435405221"
+      },
+      "dtypes": {
+        "timestamp": "datetime64[ns, UTC]",
+        "name": "str",
+        "value": "float64",
+        "meta.host": "str",
+        "meta.missing": "str",
+        "meta.node": "str",
+        "meta.plugin": "str",
+        "meta.sensor": "str",
+        "meta.task": "str",
+        "meta.units": "str",
+        "meta.vsn": "str",
+        "meta.zone": "str"
+      }
+    }
+  ]
+}

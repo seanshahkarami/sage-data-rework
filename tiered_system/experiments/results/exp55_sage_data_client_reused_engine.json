@@ -1,0 +1,351 @@
+{
+  "when": "2026-10-21",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "sage-data-client load / _load_arrow",
+  "client": "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-client/src/sage_data_client/query.py",
+  "image": "demo-data-api with one native Arrow DuckDB per cold backend",
+  "short_reps": 2,
+  "month_reps": 1,
+  "warmup_excluded_from_short_median": true,
+  "latency": "request start until the pandas dataframe exists",
+  "peak_memory": "max sampled API container usage during the call",
+  "results": [
+    {
+      "query": "hot 1 min, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 686,
+      "ndjson": {
+        "rows": 686,
+        "bytes": 237287.0,
+        "ttfb": 0.011044437502278015,
+        "total": 0.02841239600093104,
+        "server": 0.011069854,
+        "peak": 42708500.48,
+        "warmup_total": 0.04065458300465252,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 686,
+        "bytes": 200952.0,
+        "ttfb": 0.017253979000088293,
+        "total": 0.020350624996353872,
+        "server": 0.012914687499999999,
+        "peak": 43473960.96,
+        "warmup_total": 0.028276083001401275,
+        "reps": 2
+      },
+      "speedup": 1.396143656817496
+    },
+    {
+      "query": "hot 1 hour, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43525,
+      "ndjson": {
+        "rows": 43525,
+        "bytes": 15048949.0,
+        "ttfb": 0.010840749499038793,
+        "total": 0.8890739790003863,
+        "server": 0.2888936255,
+        "peak": 44690309.12,
+        "warmup_total": 0.8805467500060331,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43525,
+        "bytes": 12704128.0,
+        "ttfb": 0.18123581250256393,
+        "total": 0.31680012500146404,
+        "server": 0.18093891700000003,
+        "peak": 89391104.0,
+        "warmup_total": 0.29717333399457857,
+        "reps": 2
+      },
+      "speedup": 2.806419280914986
+    },
+    {
+      "query": "hot 6 hours, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T06:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 261034,
+      "ndjson": {
+        "rows": 261034,
+        "bytes": 90239188.0,
+        "ttfb": 0.012769353998010047,
+        "total": 5.69937195849343,
+        "server": 4.153808252,
+        "peak": 53854863.36,
+        "warmup_total": 5.6434410420042695,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 261034,
+        "bytes": 76174280.0,
+        "ttfb": 0.24039416650339263,
+        "total": 1.6448298124960274,
+        "server": 0.8944163335,
+        "peak": 87797268.48,
+        "warmup_total": 1.7443973329936853,
+        "reps": 2
+      },
+      "speedup": 3.4650222869225837
+    },
+    {
+      "query": "hot 1 min, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6243,
+      "ndjson": {
+        "rows": 6243,
+        "bytes": 2219426.0,
+        "ttfb": 0.04909464600495994,
+        "total": 0.17881652150390437,
+        "server": 0.072670812,
+        "peak": 49660559.36,
+        "warmup_total": 0.19780433300184086,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6243,
+        "bytes": 1883560.0,
+        "ttfb": 0.0805381254904205,
+        "total": 0.10277258349378826,
+        "server": 0.0741360205,
+        "peak": 52344913.92,
+        "warmup_total": 0.09941104201425333,
+        "reps": 2
+      },
+      "speedup": 1.7399243594446794
+    },
+    {
+      "query": "hot 1 hour, all names",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-05-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 396225,
+      "ndjson": {
+        "rows": 396225,
+        "bytes": 140866993.0,
+        "ttfb": 0.046020917005080264,
+        "total": 9.336516541501624,
+        "server": 7.2433806910000005,
+        "peak": 54955868.16,
+        "warmup_total": 9.252432499997667,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 396225,
+        "bytes": 119518336.0,
+        "ttfb": 0.2694107079951209,
+        "total": 2.9199227080025594,
+        "server": 1.421707626,
+        "peak": 49188700.16,
+        "warmup_total": 2.906473666007514,
+        "reps": 2
+      },
+      "speedup": 3.197521809708615
+    },
+    {
+      "query": "cold 1 min, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 698,
+      "ndjson": {
+        "rows": 698,
+        "bytes": 239337.0,
+        "ttfb": 0.3925313334984821,
+        "total": 0.41881577099411516,
+        "server": 0.388131125,
+        "peak": 135266304.0,
+        "warmup_total": 1.6961138749902602,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 698,
+        "bytes": 204456.0,
+        "ttfb": 0.37890060400241055,
+        "total": 0.38586122899869224,
+        "server": 0.3702203545,
+        "peak": 201326592.0,
+        "warmup_total": 1.637210833010613,
+        "reps": 2
+      },
+      "speedup": 1.0854051651702343
+    },
+    {
+      "query": "cold 1 hour, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43509,
+      "ndjson": {
+        "rows": 43509,
+        "bytes": 14891210.0,
+        "ttfb": 0.5820169580038055,
+        "total": 1.456800583502627,
+        "server": 0.8666301875,
+        "peak": 321807974.4,
+        "warmup_total": 1.4830589170014719,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43509,
+        "bytes": 12699872.0,
+        "ttfb": 0.5951771249965532,
+        "total": 0.7378788755013375,
+        "server": 0.5985981045000001,
+        "peak": 337536614.4,
+        "warmup_total": 0.720060250008828,
+        "reps": 2
+      },
+      "speedup": 1.974308564549747
+    },
+    {
+      "query": "cold 1 min, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6352,
+      "ndjson": {
+        "rows": 6352,
+        "bytes": 2244631.0,
+        "ttfb": 0.48954918749950593,
+        "total": 0.6308517915022094,
+        "server": 0.5158995205000001,
+        "peak": 541694361.6,
+        "warmup_total": 4.4990843330015196,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6352,
+        "bytes": 1926256.0,
+        "ttfb": 0.5077234999989741,
+        "total": 0.5337501664980664,
+        "server": 0.503160542,
+        "peak": 718274560.0,
+        "warmup_total": 3.3680073330033338,
+        "reps": 2
+      },
+      "speedup": 1.1819233624623042
+    },
+    {
+      "query": "cold 1 hour, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 395989,
+      "ndjson": {
+        "rows": 395989,
+        "bytes": 139636489.0,
+        "ttfb": 1.594947208497615,
+        "total": 10.99154162499326,
+        "server": 8.903145566500001,
+        "peak": 1267015352.32,
+        "warmup_total": 11.214083583006868,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 395989,
+        "bytes": 119791460.0,
+        "ttfb": 1.5380652289968566,
+        "total": 3.3383356874910532,
+        "server": 1.7478396675,
+        "peak": 1191853424.64,
+        "warmup_total": 3.6244892919930862,
+        "reps": 2
+      },
+      "speedup": 3.2925213800934503
+    },
+    {
+      "query": "hot May, one name",
+      "start": "2025-05-01T00:00:00Z",
+      "end": "2025-06-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "error": {
+        "ndjson": {
+          "rows": 19263320,
+          "bytes": 6652283814,
+          "ttfb": 0.026724582989118062,
+          "total": 1592.7461967919953,
+          "server": 1037.916652537,
+          "peak": 1184337231.872,
+          "warmup_total": null,
+          "reps": 1
+        },
+        "arrow": {
+          "rows": 30388936,
+          "bytes": 8859410040,
+          "ttfb": 0.6054840830038302,
+          "total": 1559.1144182080025,
+          "server": 104.3657233,
+          "peak": 1469952557.056,
+          "warmup_total": null,
+          "reps": 1
+        }
+      }
+    },
+    {
+      "query": "cold March, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-04-01T00:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 25940207,
+      "ndjson": {
+        "rows": 25940207,
+        "bytes": 8871926444,
+        "ttfb": 117.0414553330047,
+        "total": 3526.3967501669977,
+        "server": 1765.288629592,
+        "peak": 12519829667.84,
+        "warmup_total": null,
+        "reps": 1
+      },
+      "arrow": {
+        "rows": 25940207,
+        "bytes": 7561888648,
+        "ttfb": 109.9993454580108,
+        "total": 1442.3357592500106,
+        "server": 133.130365146,
+        "peak": 6249177415.68,
+        "warmup_total": null,
+        "reps": 1
+      },
+      "speedup": 2.4449208359090138
+    }
+  ]
+}

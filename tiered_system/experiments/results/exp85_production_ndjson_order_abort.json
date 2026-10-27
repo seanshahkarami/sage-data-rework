@@ -1,0 +1,259 @@
+{
+  "status": "failed",
+  "endpoint": "https://data.sagecontinuum.org/api/v1/query",
+  "started_utc": "2026-10-27T01:45:32.607497+00:00",
+  "scope": "HTTP receive/spool; Arrow IPC iteration for Arrow; validation outside timer; no dataframe",
+  "arrow": null,
+  "results": [
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.21368970803450793,
+      "first_result_seconds": 0.14538920804625377,
+      "client_cpu_seconds": 0.013072,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.15532887500012293,
+      "first_result_seconds": 0.08241341600660235,
+      "client_cpu_seconds": 0.007062999999999986,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.15460012498078868,
+      "first_result_seconds": 0.08289870899170637,
+      "client_cpu_seconds": 0.006333000000000005,
+      "codec": null
+    },
+    {
+      "case": "series_minute",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T00:01:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 698,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 698,
+        "row_hash_sum": "300851450737133970681876320487960144535",
+        "row_hash_xor": "225239046548862039043419610466185810499",
+        "timestamps_ordered": true
+      },
+      "rows": 698,
+      "bytes": 241437,
+      "total_seconds": 0.14446337497793138,
+      "first_result_seconds": 0.07570191699778661,
+      "client_cpu_seconds": 0.006170999999999982,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 0,
+      "warmup": true,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 1.1556234169984236,
+      "first_result_seconds": 0.0769977499730885,
+      "client_cpu_seconds": 0.06559899999999996,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 1,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 0.9254870419972576,
+      "first_result_seconds": 0.08298316702712327,
+      "client_cpu_seconds": 0.08273399999999997,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 2,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 0.8997961249551736,
+      "first_result_seconds": 0.08184908295515925,
+      "client_cpu_seconds": 0.06664399999999993,
+      "codec": null
+    },
+    {
+      "case": "series_hour",
+      "query": {
+        "start": "2025-03-01T00:00:00Z",
+        "end": "2025-03-01T01:00:00Z",
+        "filter": {
+          "name": "wxt.env.temp",
+          "vsn": "W0A0"
+        }
+      },
+      "format": "ndjson",
+      "repetition": 3,
+      "warmup": false,
+      "expected_rows": 43509,
+      "expected_rows_match": true,
+      "validation": {
+        "rows": 43509,
+        "row_hash_sum": "30009535594191603273131290719344443071",
+        "row_hash_xor": "99665929219075414744646454045147770903",
+        "timestamps_ordered": true
+      },
+      "rows": 43509,
+      "bytes": 15021808,
+      "total_seconds": 0.8952978340093978,
+      "first_result_seconds": 0.08094629202969372,
+      "client_cpu_seconds": 0.05971100000000007,
+      "codec": null
+    }
+  ],
+  "summaries": [
+    {
+      "case": "series_minute",
+      "format": "ndjson",
+      "rows": 698,
+      "expected_rows_match": true,
+      "total_seconds": 0.15460012498078868,
+      "first_result_seconds": 0.08241341600660235,
+      "bytes": 241437,
+      "client_cpu_seconds": 0.006333000000000005
+    },
+    {
+      "case": "series_hour",
+      "format": "ndjson",
+      "rows": 43509,
+      "expected_rows_match": true,
+      "total_seconds": 0.8997961249551736,
+      "first_result_seconds": 0.08184908295515925,
+      "bytes": 15021808,
+      "client_cpu_seconds": 0.06664399999999993
+    }
+  ],
+  "transport": "Accept-Encoding: identity",
+  "profile": null,
+  "warmups": "one per short case/format; none for months",
+  "error": "timestamp ordering changed"
+}

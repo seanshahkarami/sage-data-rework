@@ -1,0 +1,26 @@
+{
+  "scope": "read-only original v3 REST proof snapshot exported into isolated local replica; no remote writes",
+  "rows": 4,
+  "engine": "v2.0.0",
+  "values": [
+    "21.5",
+    "9007199254740993",
+    "\"123\"",
+    "true"
+  ],
+  "timestamps_ns": [
+    1740787207420753193,
+    1740787207420753571,
+    1740787208000000001,
+    1740787208000000002
+  ],
+  "publication": {
+    "format_version": 3,
+    "source_metadata": "/Users/franciscolozano/tmp/sage-iceberg-v3/sage/obs/metadata/00001-a98a0dd7-9278-475a-9725-7d802f7d2ffd.metadata.json",
+    "metadata_location": "/private/tmp/sage-v3-export-sss2wbv8/warehouse/sage/obs/metadata/00001-a98a0dd7-9278-475a-9725-7d802f7d2ffd.metadata.json",
+    "table_uuid": "518bb6bf-9e89-4c84-bffe-098516568709",
+    "snapshot_id": 2050329216355877346,
+    "files": 5,
+    "hint": "00001-a98a0dd7-9278-475a-9725-7d802f7d2ffd"
+  }
+}

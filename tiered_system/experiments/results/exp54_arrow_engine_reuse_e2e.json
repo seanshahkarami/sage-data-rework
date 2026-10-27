@@ -1,0 +1,174 @@
+{
+  "when": "2026-10-21",
+  "image": "demo-data-api rebuilt with one native Arrow DuckDB per cold backend",
+  "endpoint": "http://127.0.0.1:10000/api/v1/query",
+  "reader": "exp52 curl + duckdb read_arrow / read_ndjson_auto",
+  "duckdb": "1.5.6",
+  "short_reps": 2,
+  "warmup_excluded_from_median": true,
+  "note": "The first Arrow request of the process installs httpfs and iceberg. Medians exclude that warmup.",
+  "results": [
+    {
+      "query": "cold 1 min, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 698,
+      "ndjson": {
+        "rows": 698,
+        "values": 698,
+        "metas": 698,
+        "bytes": 239337.0,
+        "ttfb": 0.3757855,
+        "download": 0.38045799999999996,
+        "decode": 0.012446436994650867,
+        "total": 0.39290443699465083,
+        "server": 0.3780586455,
+        "peak": 147954073.6,
+        "warmup_total": 2.2343013749909355,
+        "warmup_server": 2.199600668,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 698,
+        "values": 698,
+        "metas": 698,
+        "bytes": 204456.0,
+        "ttfb": 0.384488,
+        "download": 0.38624899999999995,
+        "decode": 0.0011087920065619983,
+        "total": 0.38735779200656195,
+        "server": 0.3823549165,
+        "peak": 207093760.0,
+        "warmup_total": 1.73142383299278,
+        "warmup_server": 1.725449125,
+        "reps": 2
+      },
+      "speedup": 1.0143191775215274
+    },
+    {
+      "query": "cold 1 hour, one name",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "name": "wxt.env.temp",
+        "vsn": "W0A0"
+      },
+      "rows": 43509,
+      "ndjson": {
+        "rows": 43509,
+        "values": 43509,
+        "metas": 43509,
+        "bytes": 14891210.0,
+        "ttfb": 0.6014714999999999,
+        "download": 0.854089,
+        "decode": 0.10932168700674083,
+        "total": 0.9634106870067408,
+        "server": 0.852187667,
+        "peak": 277243494.4,
+        "warmup_total": 0.9786130420111521,
+        "warmup_server": 0.874416834,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 43509,
+        "values": 43509,
+        "metas": 43509,
+        "bytes": 12699872.0,
+        "ttfb": 0.5757395,
+        "download": 0.600258,
+        "decode": 0.004430750501342118,
+        "total": 0.6046887505013421,
+        "server": 0.5825329585,
+        "peak": 337117184.0,
+        "warmup_total": 0.5968925000111209,
+        "warmup_server": 0.5770584169999999,
+        "reps": 2
+      },
+      "speedup": 1.593234017017822
+    },
+    {
+      "query": "cold 1 min, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T00:01:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 6352,
+      "ndjson": {
+        "rows": 6352,
+        "values": 6352,
+        "metas": 6352,
+        "bytes": 2244631.0,
+        "ttfb": 0.511989,
+        "download": 0.5455589999999999,
+        "decode": 0.05510162499558646,
+        "total": 0.6006606249955864,
+        "server": 0.5444101465,
+        "peak": 515899392.0,
+        "warmup_total": 3.23102241699308,
+        "warmup_server": 3.173113918,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 6352,
+        "values": 6352,
+        "metas": 6352,
+        "bytes": 1926256.0,
+        "ttfb": 0.4959975,
+        "download": 0.49953349999999996,
+        "decode": 0.0016767505003372207,
+        "total": 0.5012102505003372,
+        "server": 0.49498872950000006,
+        "peak": 695205888.0,
+        "warmup_total": 4.641812959000855,
+        "warmup_server": 4.635708169,
+        "reps": 2
+      },
+      "speedup": 1.1984204720393727
+    },
+    {
+      "query": "cold 1 hour, all names",
+      "start": "2025-03-01T00:00:00Z",
+      "end": "2025-03-01T01:00:00Z",
+      "filter": {
+        "vsn": "W0A0"
+      },
+      "rows": 395989,
+      "ndjson": {
+        "rows": 395989,
+        "values": 395989,
+        "metas": 395989,
+        "bytes": 139636489.0,
+        "ttfb": 1.5560775,
+        "download": 3.8697049999999997,
+        "decode": 0.12776843750179978,
+        "total": 3.9974734375017995,
+        "server": 3.8671970645,
+        "peak": 1099511627.776,
+        "warmup_total": 4.280641958996224,
+        "warmup_server": 4.154581877,
+        "reps": 2
+      },
+      "arrow": {
+        "rows": 395989,
+        "values": 395989,
+        "metas": 395989,
+        "bytes": 119791444.0,
+        "ttfb": 1.5617425,
+        "download": 1.8224555,
+        "decode": 0.02699341699917568,
+        "total": 1.8494489169991757,
+        "server": 1.793292209,
+        "peak": 1229434388.48,
+        "warmup_total": 2.1847557920014413,
+        "warmup_server": 2.129884043,
+        "reps": 2
+      },
+      "speedup": 2.1614403083854308
+    }
+  ]
+}

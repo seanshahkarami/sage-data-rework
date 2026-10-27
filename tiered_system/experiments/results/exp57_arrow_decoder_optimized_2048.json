@@ -1,0 +1,106 @@
+{
+  "sample": "/private/tmp/exp-check-cold.arrows",
+  "sample_rows": 698,
+  "sample_unique_metadata": 1,
+  "pandas": "3.0.6",
+  "pyarrow": "25.0.1",
+  "batch_size": 2048,
+  "sample_values_match": true,
+  "scope": "Local repeated-sample and unique-metadata fixtures; no network or month replay",
+  "measurements": [
+    {
+      "mode": "legacy",
+      "rows": 1000000,
+      "seconds": 2.89782120900054,
+      "dataframe_bytes": 262125132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "str",
+        "meta.sensor": "str",
+        "meta.units": "str",
+        "meta.plugin": "str",
+        "meta.vsn": "str",
+        "meta.node": "str",
+        "meta.host": "str",
+        "meta.task": "str",
+        "meta.zone": "str"
+      },
+      "peak_rss_bytes": 2146271232,
+      "metadata": "repeated",
+      "fixture_values_match": true
+    },
+    {
+      "mode": "optimized",
+      "rows": 1000000,
+      "seconds": 0.11794658299186267,
+      "dataframe_bytes": 227125132,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]"
+      },
+      "peak_rss_bytes": 423870464,
+      "metadata": "repeated",
+      "fixture_values_match": true
+    },
+    {
+      "mode": "legacy",
+      "rows": 1000000,
+      "seconds": 3.4150137079996057,
+      "dataframe_bytes": 276014022,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "str",
+        "meta.sensor": "str",
+        "meta.units": "str",
+        "meta.plugin": "str",
+        "meta.vsn": "str",
+        "meta.node": "str",
+        "meta.host": "str",
+        "meta.task": "str",
+        "meta.zone": "str",
+        "meta.experiment_row_id": "str"
+      },
+      "peak_rss_bytes": 2009120768,
+      "metadata": "unique",
+      "fixture_values_match": true
+    },
+    {
+      "mode": "optimized",
+      "rows": 1000000,
+      "seconds": 1.5166818750003586,
+      "dataframe_bytes": 237139022,
+      "dtypes": {
+        "timestamp": "timestamp[ns, tz=UTC][pyarrow]",
+        "name": "string[pyarrow]",
+        "value": "float64",
+        "meta.missing": "string[pyarrow]",
+        "meta.sensor": "string[pyarrow]",
+        "meta.units": "string[pyarrow]",
+        "meta.plugin": "string[pyarrow]",
+        "meta.vsn": "string[pyarrow]",
+        "meta.node": "string[pyarrow]",
+        "meta.host": "string[pyarrow]",
+        "meta.task": "string[pyarrow]",
+        "meta.zone": "string[pyarrow]",
+        "meta.experiment_row_id": "string[pyarrow]"
+      },
+      "peak_rss_bytes": 464322560,
+      "metadata": "unique",
+      "fixture_values_match": true
+    }
+  ]
+}

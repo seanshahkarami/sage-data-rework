@@ -1,0 +1,34 @@
+# Run a candidate alongside the unchanged demo-data-api baseline. Use its exact
+# existing image ID; no build or replacement of the baseline is performed.
+name: sage-layout-trial
+services:
+  candidate-api:
+    image: "${LAYOUT_API_IMAGE:?set the running baseline API image ID}"
+    pull_policy: never
+    ports:
+      - "${LAYOUT_API_PORT:-10001}:10000"
+    environment:
+      INFLUXDB_URL: http://influxdb:8086
+      INFLUXDB_TOKEN: demo-token-not-a-secret
+      INFLUXDB_BUCKET: waggle
+      ARROW_COMPRESSION: zstd
+      COLD_WAREHOUSE: "${LAYOUT_COLD_WAREHOUSE:?set the isolated candidate warehouse URL}"
+      COLD_WATERMARK: "2025-05-01T00:00:00Z"
+      COLD_ASYNC_THREADS: "8"
+      COLD_READ_AHEAD_DEPTH: "-1"
+      COLD_PROFILE_DIR: "${LAYOUT_PROFILE_DIR:-}"
+      PELICAN_KEY_PATH: /secrets/issuer-key.pem
+    volumes:
+      - ../../../honeyhouse-config/applications/waggle-access/pelican/issuer-key.pem:/secrets/issuer-key.pem:ro
+      - "${LAYOUT_PROFILE_HOST:-./logs/layout-trial-profiles}:/profiles"
+    networks:
+      - baseline-demo
+    deploy:
+      resources:
+        limits:
+          memory: 14g
+          cpus: "2.0"
+networks:
+  baseline-demo:
+    external: true
+    name: demo_default

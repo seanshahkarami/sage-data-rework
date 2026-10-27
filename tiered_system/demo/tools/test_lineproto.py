@@ -4,12 +4,13 @@ Run: conda run -n sage_pipeline python -I tiered_system/demo/tools/test_lineprot
 """
 import glob
 import os
+from pathlib import Path
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lineproto import encode_row, esc_str_field, esc_tag, PROMOTED_TAGS
 
-ARCHIVE = "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive"
+ARCHIVE = os.environ.get("DEMO_ARCHIVE", str(Path(__file__).resolve().parents[3] / "data" / "archive"))
 FAILED = []
 
 

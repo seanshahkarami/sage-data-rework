@@ -27,7 +27,7 @@ KEY_ID = "3cfa"
 ALGORITHM = "ES256"
 ROOT_URL = "https://nrdstor.nationalresearchplatform.org:8443/sage"
 
-# parents[4] is the checkout root: reconciler_service -> demo ->
+# parents[4] is the checkout root: tools -> demo ->
 # tiered_system -> sage-data-rework -> workspace. A container has no
 # checkout above it; PELICAN_KEY_PATH overrides the path there.
 DEFAULT_KEY_PATH = Path(os.environ.get("PELICAN_KEY_PATH") or (

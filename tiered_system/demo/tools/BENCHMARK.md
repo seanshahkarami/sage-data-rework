@@ -1,5 +1,8 @@
 # Phase 0 — InfluxDB ingest benchmark
 
+Historical measurement. The benchmark stack shares port 18086 with the demo;
+run it separately. Current Iceberg v3 storage preserves nanoseconds.
+
 The plan said nothing downstream should be built until this number exists.
 It now exists, and it changes the hot-tier scope decision: **a full month is
 reachable.**
@@ -38,8 +41,8 @@ Three checks against the archive, all exact:
   to a tag is therefore a faithful round-trip of what production does.
 * **Nanosecond precision survives ingest**: sampled timestamps come back as
   `2025-05-01T00:00:00.393861083Z` — nine fractional digits. The hot tier
-  keeps the real-time resolution; the ns→µs drop happens only at migration
-  into Iceberg.
+  keeps the real-time resolution. The later Iceberg v3 cold tier also preserves
+  nanoseconds.
 
 ## Decay
 

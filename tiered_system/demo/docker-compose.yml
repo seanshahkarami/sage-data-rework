@@ -12,12 +12,11 @@
 # restore. Parquet ingest is the fallback, and it takes hours.
 #
 # COLD_WAREHOUSE must be set for the cold profile -- seed_cold.py prints it
-# (a /cold-storage-demo-<nanos> prefix). COLD_HINT_PATH is the Pelican path
-# of version-hint.text, which seed_cold.py also prints. COLD_WATERMARK is
-# the hot/cold cut; migrate.py advances it. The watermark is compared in
-# NANOSECONDS by the tiered backend, because hot keeps ns and cold is us.
+# (a fresh /cold-storage-demo-v3-<unique> prefix). COLD_WATERMARK is
+# the hot/cold cut. Both tiers keep nanoseconds; the watermark is compared
+# at that precision. The v3 seeder does not advance it or evict hot data.
 #
-# None of the three use a `:?` required-variable guard. Compose interpolates
+# These variables do not use a `:?` required-variable guard. Compose interpolates
 # EVERY service regardless of the active profile, so a guard here would make
 # the plain `docker compose up -d` used for seeding fail on variables that
 # seeding does not need. Each consumer fails fast with its own message
@@ -40,9 +39,8 @@ services:
       DOCKER_INFLUXDB_INIT_PASSWORD: demopassword
       DOCKER_INFLUXDB_INIT_ORG: waggle
       DOCKER_INFLUXDB_INIT_BUCKET: waggle
-      # Retention off: migrate.py evicts explicitly, after verifying the
-      # interval is durable in cold storage. A retention policy would delete
-      # on its own schedule and break that ordering.
+      # Retention stays off so the fixed demo dataset remains available.
+      # The v3 seeder publishes cold data without evicting hot data.
       DOCKER_INFLUXDB_INIT_RETENTION: 0
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: demo-token-not-a-secret
     volumes:
@@ -68,48 +66,8 @@ services:
       retries: 30
       start_period: 10s
 
-  # The single writer of version-hint.text. Many committers, one publisher:
-  # that is what lets database-less consumers resolve the head without a
-  # catalog. The data-api reads that hint with DuckDB. Correctness never
-  # depends on the reconciler having run -- the sqlite catalog remains the
-  # real head; the hint only republishes it. So a crashed reconciler delays
-  # visibility of the newest snapshot, it does not corrupt anything.
-  #
-  # `replicas: 1` is load bearing. `docker compose up --scale` on this
-  # service would create a second publisher and the single-writer property
-  # is the whole design.
-  reconciler:
-    profiles: ["cold"]
-    build:
-      context: ../..
-      dockerfile: tiered_system/demo/reconciler_service/Dockerfile
-    container_name: demo-reconciler
-    command:
-      - "--db"
-      - "/catalog/${COLD_CATALOG:-cold_catalog.db}"
-      - "--hint"
-      - "${COLD_HINT_PATH:-}"
-      - "--interval"
-      - "${RECONCILE_INTERVAL:-30}"
-    environment:
-      PELICAN_KEY_PATH: /secrets/issuer-key.pem
-    volumes:
-      # The catalog sqlite file seed_cold.py wrote, read-only: the
-      # reconciler never writes the catalog, and db_head() opens it
-      # `mode=ro` so that is enforced at the handle too. Bind the
-      # DIRECTORY, not the file -- docker creates a missing bind source as
-      # an empty directory, and a directory where sqlite expects a file
-      # produces a far worse error than a missing one.
-      - ./:/catalog:ro
-      - ../../../honeyhouse-config/applications/waggle-access/pelican/issuer-key.pem:/secrets/issuer-key.pem:ro
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          memory: 512m
-          cpus: "0.5"
-    restart: unless-stopped
-
+  # seed_cold.py publishes an immutable v3 replica and its hint last.
+  # No v2 SQLite reconciler runs against this warehouse.
   data-api:
     profiles: ["cold"]
     build:
@@ -121,6 +79,10 @@ services:
       INFLUXDB_URL: http://influxdb:8086
       INFLUXDB_TOKEN: demo-token-not-a-secret
       INFLUXDB_BUCKET: waggle
+      ARROW_COMPRESSION: "${ARROW_COMPRESSION:-zstd}"
+      COLD_PROFILE_DIR: "${COLD_PROFILE_DIR:-}"
+      COLD_ASYNC_THREADS: "${COLD_ASYNC_THREADS:-8}"
+      COLD_READ_AHEAD_DEPTH: "${COLD_READ_AHEAD_DEPTH:--1}"
       # Setting COLD_WAREHOUSE switches on the tiered backend. DuckDB inside
       # this process scans the Iceberg metadata URL; there is no cold
       # service. Unset, the service behaves as it does in production today.
@@ -134,12 +96,12 @@ services:
       # entire /sage namespace. The process scopes each token to the demo
       # prefix.
       - ../../../honeyhouse-config/applications/waggle-access/pelican/issuer-key.pem:/secrets/issuer-key.pem:ro
-    # DuckDB streams the scan. 4 GB is the backstop for a query wide enough
-    # that the result itself, not the day file, is the large object.
     deploy:
       resources:
         limits:
-          memory: 4g
+          # Retain the established demo container budget. DuckDB uses its
+          # own lower memory limit and may spill during whole-range sorts.
+          memory: 14g
           cpus: "2.0"
     depends_on:
       influxdb:

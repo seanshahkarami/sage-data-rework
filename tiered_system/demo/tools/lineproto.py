@@ -5,8 +5,7 @@ InfluxDB tag that was not promoted to its own column, so faithful
 reconstruction means emitting the seven promoted columns AND every meta
 key as tags.
 
-Timestamps stay in NANOSECONDS. The hot tier is the real-time tier; the
-ns->us reduction happens at migration into Iceberg, not here.
+Timestamps stay in NANOSECONDS, matching the Iceberg v3 cold tier.
 
 Measured on 2025-05-01 (full day, 146,129,405 rows), which is why the
 escaping below is shaped the way it is:

@@ -25,6 +25,7 @@ import glob
 import gzip
 import multiprocessing as mp
 import os
+from pathlib import Path
 import subprocess
 import sys
 import threading
@@ -36,7 +37,7 @@ import requests
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from lineproto import encode_row, PROMOTED_TAGS
 
-ARCHIVE = "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive"
+ARCHIVE = os.environ.get("DEMO_ARCHIVE", str(Path(__file__).resolve().parents[4] / "data" / "archive"))
 URL = "http://localhost:18086"
 TOKEN = "bench-token-not-a-secret"
 ORG, BUCKET = "waggle", "waggle"

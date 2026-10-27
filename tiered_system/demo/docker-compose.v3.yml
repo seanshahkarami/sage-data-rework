@@ -1,0 +1,14 @@
+# Separate catalog fixture; never replaces the demo API or its existing data.
+# Export COLD_V3_ROOT to a fresh absolute workspace path, mkdir it, then:
+# docker compose -f docker-compose.v3.yml up -d
+name: sage-v3
+services:
+  catalog:
+    image: "${COLD_V3_IMAGE:-apache/iceberg-rest-fixture:latest}"
+    user: root
+    ports:
+      - "${COLD_V3_PORT:-18181}:8181"
+    environment:
+      CATALOG_WAREHOUSE: "${COLD_V3_ROOT:?set an isolated absolute warehouse path}"
+    volumes:
+      - "${COLD_V3_ROOT}:${COLD_V3_ROOT}"

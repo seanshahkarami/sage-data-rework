@@ -9,8 +9,8 @@ failures here are silent ones:
     the hot tier's shape, and a mangled tag key shows up here and nowhere
     else
   * nanosecond digits present -- the hot tier exists to hold ns; a silent
-    truncation at ingest would make the migration's ns->us drop invisible,
-    which is exactly the property the demo is built to show
+    truncation at ingest would break the nanosecond contract shared with
+    the Iceberg v3 cold tier
 
 **Counting is chunked by hour, and that is not a style choice.** The
 obvious whole-day `count() |> group() |> sum()` drove the container to
@@ -25,6 +25,7 @@ Usage:  python -I verify_hot.py 2025-05-01 2025-05-02
 """
 import glob
 import os
+from pathlib import Path
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -34,7 +35,7 @@ import requests
 
 ARCHIVE = os.environ.get(
     "DEMO_ARCHIVE",
-    "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive")
+    str(Path(__file__).resolve().parents[3] / "data" / "archive"))
 URL = os.environ.get("INFLUX_URL", "http://localhost:18086")
 TOKEN = os.environ.get("INFLUX_TOKEN", "demo-token-not-a-secret")
 ORG = os.environ.get("INFLUX_ORG", "waggle")

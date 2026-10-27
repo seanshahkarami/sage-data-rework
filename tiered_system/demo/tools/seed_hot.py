@@ -5,9 +5,8 @@ Streams; line protocol is never written to disk. One day of the archive is
 the wire -- there are only 352 GB free, so materializing is not an option.
 gzip takes it down ~27x, so the network is not the constraint either.
 
-Timestamps stay in NANOSECONDS (`precision=ns`). InfluxDB is the real-time
-tier and keeps full resolution; the ns->us reduction happens at migration
-into Iceberg, never at ingest.
+Timestamps stay in NANOSECONDS (`precision=ns`), matching the Iceberg v3
+cold tier without reducing precision at ingest.
 
 Concurrency is bounded on purpose. The Python encoder runs ~171k rows/s on
 one core and is GIL-bound, so the unit of parallelism is the file and the
@@ -32,6 +31,7 @@ import glob
 import gzip
 import multiprocessing as mp
 import os
+from pathlib import Path
 import sys
 import time
 from datetime import date, timedelta
@@ -45,7 +45,7 @@ from lineproto import encode_row, PROMOTED_TAGS
 
 ARCHIVE = os.environ.get(
     "DEMO_ARCHIVE",
-    "/Users/franciscolozano/Workspaces/sage_data_pipeline_v2/sage-data-rework/data/archive")
+    str(Path(__file__).resolve().parents[3] / "data" / "archive"))
 URL = os.environ.get("INFLUX_URL", "http://localhost:18086")
 TOKEN = os.environ.get("INFLUX_TOKEN", "demo-token-not-a-secret")
 ORG = os.environ.get("INFLUX_ORG", "waggle")

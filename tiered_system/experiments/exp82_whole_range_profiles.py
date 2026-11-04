@@ -20,7 +20,7 @@ from exp73_plugin_live_compare import receive,validate_body,full_warehouse_cases
 from exp75_paired_live_profiles import fresh_profile,profile_paths
 
 WAREHOUSE='https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse'
-SETTINGS=dict(COLD_WAREHOUSE=WAREHOUSE,COLD_WATERMARK='2025-05-01T00:00:00Z',
+SETTINGS=dict(COLD_FRONTIER='static',COLD_WAREHOUSE=WAREHOUSE,COLD_BORDER='2025-05-01T00:00:00Z',
               COLD_ASYNC_THREADS='8',COLD_READ_AHEAD_DEPTH='-1',ARROW_COMPRESSION='zstd')
 CASES={name:query for name,query in full_warehouse_cases('unused') if name in
        ('2025-03_series_month','2025-04_series_month','2025-03-01_series_day','2025-03-01_series_hour')}

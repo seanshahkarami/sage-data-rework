@@ -5,7 +5,7 @@ pruning that plans/1_draft.md assumes?
 
 exp03 found that over HTTP every filter shape reads the same 53.9 MB from a
 file that returns 3 rows. The files have page indexes, but the reader still
-pulls whole column chunks. The suspected cause is in archive-exporter/main.go:
+pulls whole column chunks. The suspected cause is in archive-exporter/cmd/legacy-export/main.go:
 
     SortingWriterConfig is set. MaxRowsPerRowGroup is not.
 

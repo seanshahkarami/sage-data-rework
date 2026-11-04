@@ -7,7 +7,7 @@ Two open points in plans/1_draft.md:
   "How long do late SAGE observations actually take to arrive?"
   "Late data after a day directory is published."
 
-archive-exporter/main.go skips any date whose archive/date=... already exists:
+archive-exporter/cmd/legacy-export/main.go skips any date whose archive/date=... already exists:
 
     ok, err := dirExists(fmt.Sprintf("archive/date=%s", date))
     if ok { log.Printf("export for %s already exists. skipping!", date); return nil }

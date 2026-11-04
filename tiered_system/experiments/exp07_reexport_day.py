@@ -10,7 +10,7 @@ Findings so far:
                (25.5 MB) where a dictionary-encoded writer uses 5.6 MB.
 
 This applies both changes to a whole real day and reports what the archive
-would look like if archive-exporter/main.go were changed:
+would look like if archive-exporter/cmd/legacy-export/main.go were changed:
 
   - total size of the day, before and after
   - bytes read for a selective query, before and after

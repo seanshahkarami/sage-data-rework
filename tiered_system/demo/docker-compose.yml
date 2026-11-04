@@ -6,15 +6,17 @@
 #   ./tools/seed_hot.sh parquet --start ...   # rebuild May from the archive
 #   docker compose --profile cold up -d       # + data-api, which reads cold
 #
-# The cold profile is separate on purpose: seeding only needs influxdb, and
-# the data-api's cold path needs a version-hint that seed_cold.py has
-# published. The default hot load is the backup
-# restore. Parquet ingest is the fallback, and it takes hours.
+# The cold profile is separate on purpose: seeding only needs influxdb.
+# The default hot load is the backup restore. Parquet ingest is the
+# fallback, and it takes hours.
 #
-# COLD_WAREHOUSE must be set for the cold profile -- seed_cold.py prints it
-# (a fresh /cold-storage-demo-v3-<unique> prefix). COLD_WATERMARK is
-# the hot/cold cut. Both tiers keep nanoseconds; the watermark is compared
-# at that precision. The v3 seeder does not advance it or evict hot data.
+# The cold profile defaults to the adopted Iceberg v3 warehouse: day
+# partitions, chronological file batches of at most 10 million rows, sorted
+# plugin → vsn → time, with plugin-pure row groups capped at 262,144.
+# March and April 2025 are cold. COLD_BORDER is the hot/cold cut
+# (2025-05-01T00:00:00Z). Both tiers keep nanoseconds. Export COLD_WAREHOUSE
+# to retarget a newly published replica. Export it empty to keep this API
+# on Influx only. The v3 seeder does not advance the watermark or evict hot data.
 #
 # These variables do not use a `:?` required-variable guard. Compose interpolates
 # EVERY service regardless of the active profile, so a guard here would make
@@ -83,13 +85,16 @@ services:
       COLD_PROFILE_DIR: "${COLD_PROFILE_DIR:-}"
       COLD_ASYNC_THREADS: "${COLD_ASYNC_THREADS:-8}"
       COLD_READ_AHEAD_DEPTH: "${COLD_READ_AHEAD_DEPTH:--1}"
-      # Setting COLD_WAREHOUSE switches on the tiered backend. DuckDB inside
+      # A nonempty COLD_WAREHOUSE switches on the tiered backend. DuckDB inside
       # this process scans the Iceberg metadata URL; there is no cold
-      # service. Unset, the service behaves as it does in production today.
-      COLD_WAREHOUSE: "${COLD_WAREHOUSE:-}"
+      # service. The default is the adopted chronological v3 replica.
+      # ${VAR-default} applies only when the variable is unset, so an
+      # set both COLD_WAREHOUSE and COLD_BORDER empty for Influx only.
+      COLD_WAREHOUSE: "${COLD_WAREHOUSE-https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse}"
       # See the note on COLD_WAREHOUSE: profiles do not gate interpolation.
-      # main.go fails fast with "cold.warehouse requires cold.watermark".
-      COLD_WATERMARK: "${COLD_WATERMARK:-}"
+      # Static mode requires a valid border when the warehouse is nonempty.
+      COLD_FRONTIER: static
+      COLD_BORDER: "${COLD_BORDER-2025-05-01T00:00:00Z}"
       PELICAN_KEY_PATH: /secrets/issuer-key.pem
     volumes:
       # Read-only, and never baked into the image: this key signs for the

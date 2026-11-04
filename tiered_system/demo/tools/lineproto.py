@@ -1,6 +1,6 @@
 """Archive Parquet row batches -> InfluxDB line protocol.
 
-Inverts `archive-exporter/main.go`: the archive's `meta` map holds every
+Inverts `archive-exporter/cmd/legacy-export/main.go`: the archive's `meta` map holds every
 InfluxDB tag that was not promoted to its own column, so faithful
 reconstruction means emitting the seven promoted columns AND every meta
 key as tags.
@@ -13,7 +13,7 @@ escaping below is shaped the way it is:
     meta keys needing escape             0
     measurement names needing escape     0
     value_str with quote/backslash      98
-    value_str with newline           1,480   <- would corrupt the batch
+    value_str with newline           1,480   <- preserved inside quoted fields
     empty tag values                     0
     non-finite floats                    0
 """
@@ -26,7 +26,7 @@ PROMOTED_TAGS = ("plugin", "vsn", "node", "host", "task", "job", "zone")
 _MEAS_ESCAPES = ((",", r"\,"), (" ", r"\ "))
 _TAG_ESCAPES = ((",", r"\,"), ("=", r"\="), (" ", r"\ "))
 # String FIELD values are quoted, so only the quote and backslash are
-# escaped -- but a raw newline would terminate the record, so it must go.
+# escaped. InfluxDB 2.7's quote-aware parser preserves literal LF in fields.
 _STR_ESCAPES = (("\\", "\\\\"), ('"', '\\"'))
 
 
@@ -43,13 +43,11 @@ def esc_tag(s: str) -> str:
 
 
 def esc_str_field(s: str) -> str:
+    if "\r" in s or "\x00" in s:
+        raise ValueError("unsupported CR/NUL in string field; refusing to alter the value")
     for a, b in _STR_ESCAPES:
         s = s.replace(a, b)
-    # Newlines are record separators in line protocol. 1,480 value_str
-    # rows per day contain one; emitting raw would truncate the record and
-    # corrupt everything after it in the batch. Escape rather than strip so
-    # the round-trip check can compare against the archive.
-    return s.replace("\r", "\\r").replace("\n", "\\n")
+    return s
 
 
 def format_value(vf, vi, vs) -> str:

@@ -13,7 +13,7 @@ services:
       INFLUXDB_BUCKET: waggle
       ARROW_COMPRESSION: zstd
       COLD_WAREHOUSE: "${LAYOUT_COLD_WAREHOUSE:?set the isolated candidate warehouse URL}"
-      COLD_WATERMARK: "2025-05-01T00:00:00Z"
+      COLD_BORDER: "2025-05-01T00:00:00Z"
       COLD_ASYNC_THREADS: "8"
       COLD_READ_AHEAD_DEPTH: "-1"
       COLD_PROFILE_DIR: "${LAYOUT_PROFILE_DIR:-}"

@@ -22,18 +22,28 @@ If rebuilding from the archive instead, use:
 ./tools/seed_hot.sh parquet --start 2025-05-01 --end 2025-05-31
 ```
 
-Start the API against the adopted, already-published warehouse:
+Start the API. Compose points the cold profile at the adopted warehouse
+unless `COLD_WAREHOUSE` is already set:
 
 ```sh
-export COLD_WAREHOUSE=https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse
-export COLD_WATERMARK=2025-05-01T00:00:00Z
 docker compose --profile cold up -d --build data-api
 ```
+
+That default is Iceberg v3, March and April 2025, watermark
+`2025-05-01T00:00:00Z`:
+
+```text
+https://nrdstor.nationalresearchplatform.org:8443/sage/cold-storage-demo-v3-bounded-full-1793018629285065000/warehouse
+```
+
+Export `COLD_WAREHOUSE` and `COLD_BORDER` to use a different published
+replica. Export both `COLD_WAREHOUSE` and `COLD_BORDER` as empty to run this API
+on Influx only. The demo explicitly uses `COLD_FRONTIER=static`.
 
 The API is available at `http://localhost:10000/api/v1/query`. The signing key
 is mounted read-only from the sibling `honeyhouse-config` checkout. The Compose
 project name `demo` and its `demo_demo-influx-data` volume are retained.
-See the [API documentation](../../../beehive-data-api/docs/README.md) for request
+See the [API documentation](https://github.com/waggle-sensor/beehive-data-api/blob/main/docs/README.md) for request
 formats, configuration, and profiling.
 
 ## Warehouse policy

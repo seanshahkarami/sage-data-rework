@@ -24,8 +24,8 @@ check("tag value with space", esc_tag("CROCUS MST") == r"CROCUS\ MST")
 check("tag value with comma+eq", esc_tag("a,b=c") == r"a\,b\=c")
 check("str field with quote", esc_str_field('say "hi"') == 'say \\"hi\\"')
 check("str field with backslash", esc_str_field("a\\b") == "a\\\\b")
-check("str field newline escaped", "\n" not in esc_str_field("a\nb"))
-check("str field newline -> \\n", esc_str_field("a\nb") == "a\\nb")
+check("str field newline preserved", esc_str_field("a\nb") == "a\nb")
+check("str field literal backslash-n distinct", esc_str_field(r"a\nb") == r"a\\nb")
 
 print("\n--- unit: row encoding ---")
 line = encode_row("env.temp", ("plug", "W09A", "n1", "h1", "t1", "j1", "core"),
@@ -65,13 +65,13 @@ for f in files:
                           r["meta"], r["value_float"], r["value_int"],
                           r["value_str"], r["time"].value if hasattr(r["time"], "value") else 0)
         checked += 1
-        if "\n" in line or "\r" in line:
-            print("  !! raw newline survived:", repr(line[:120]))
+        if line.count("\n") != r["value_str"].count("\n") or "\r" in line:
+            print("  !! string newline changed:", repr(line[:120]))
             found_nl += 1
     if checked >= 50:
         break
 
-check("newline-bearing rows encode to single lines", found_nl == 0,
+check("newline-bearing rows retain literal LF inside quoted fields", checked > 0 and found_nl == 0,
       f"{checked} real rows checked, {found_nl} bad")
 
 # quote cases

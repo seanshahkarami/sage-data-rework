@@ -104,6 +104,46 @@ Run from this directory with `python -I <script> ...`.
 | `probe_pelican_cas.py` | Does *any* conditional primitive on this origin give compare-and-swap? (7 — none) |
 | `probe_pelican_cas2.py` | Controls for the above: are those negatives real, or an origin that acks everything? |
 
+## Aggregation compatibility experiments
+
+[Experiment 86](exp86_aggregation_semantics.md) compares a tiny dedicated Influx
+fixture with DuckDB 2.0 cold-only and border-spanning candidate SQL, including
+Parquet staging, empty windows, nanoseconds, exact integers, and pre-aggregate
+head/tail. It creates its own bucket and local run directory, retains results,
+and does not change the API or any warehouse. The guide distinguishes actual
+Flux/DuckDB 2.0 parity from a local candidate-only preview on another version.
+
+[Experiment 87](exp87_aggregation_type_probes.md) follows the remaining mixed-type
+and integer-arithmetic differences with per-range storage reads, reversed type
+chronology/insertion order, and pure Flux arrays. Its guide includes native and
+fixture-container VM commands and a network-free DuckDB arithmetic check.
+
+[Experiments 88–89](exp88_89_aggregation.md) replay native 64-bit integer semantics
+and build a tiny actual local Iceberg v3 fixture. The guide records the unsigned
+VARIANT persistence blocker, supported-domain CLI results, and the separate
+opt-in production-encoder/read-grant HTTP test to run with the real API pins.
+
+`exp90_aggregation_client.py` replays exp89's saved HTTP bodies through the current
+workspace Sage client, checking DataFrame integer precision separately from the
+Go wire encoders. Instructions and the nullable-integer finding are in the
+[88–89 guide](exp88_89_aggregation.md#follow-up-decode-the-saved-http-bodies-with-the-current-client).
+
+[Experiments 91–92](exp91_92_type_boundaries.md) test a table-marked unsigned
+VARIANT encoding through actual Iceberg scans, and complete mixed-type hot reads
+using actual Influx shard-group boundaries. The guide separates passing local
+unsigned checks from the pending native HTTP/client and live Influx gates, and
+includes host/VM commands. Production aggregation and warehouse policy stay
+unchanged.
+
+`exp94_production_range_parity.py` compares the supplied public production
+plugin's frozen 30-minute extract with adjacent slices. Optional historical
+counts target one discovered name/vsn. `--benchmark-archive` instead checks the
+known March/April 2025 wxt.env.temp/W0A0 data with raw/count calibration and
+daily/monthly comparisons, omitting the incompatible recent plugin version.
+It retains read-only diagnostic evidence;
+agreement does not establish native Influx type or shard coverage. Instructions
+and the sandbox network limitation are recorded in plan 13.
+
 **DuckLake was eliminated on 2026-10-14** (reader independence: it needs a
 live SAGE-hosted `meta.db`, while §32 showed Iceberg reads from a warehouse
 URL with no database). The four `probe_ducklake*` scripts are kept as the
@@ -729,3 +769,47 @@ SQL export targets the cold package. Historical command examples that compile
 root tests must now select the owning package; frozen result reports and their
 source hashes are unchanged. Removed typed-wire/uniform-metadata prototypes
 remain historical and are not restored by this reorganization.
+
+## Historical production aggregation performance
+
+[Exp95](exp95_aggregation_performance.md) benchmarks the assembled API against
+existing historical data: cold-only versus split, five functions, series and
+fleet scopes, Arrow/NDJSON HTTP latency, then a separate Arrow diagnostic sweep
+including hot staging. It uses dedicated static API instances and read-only
+container inspection; it never seeds Influx or changes the warehouse.
+
+## Aggregation metadata dictionary
+
+[Exp96](exp96_aggregation_metadata.md) describes the production aggregation
+metadata dictionary, local correctness/performance evidence and the host gates.
+`exp96_aggregation_metadata_compare.py` compares new exp95 unprofiled results
+against the retained pre-dictionary baseline, checking every body before
+reporting speedups across different API images.
+
+## Raw aggregation materialization and spill
+
+[Exp97](exp97_aggregation_materialization.md) is retired: the materialized
+dictionary SQL and 3 GB budget were retained. Its probe, rewrite hooks and
+drivers were removed; historical reports and profiles remain as evidence.
+
+## Pre-buffer aggregation reduction
+
+[Exp98](exp98_partial_aggregation.md) records the experiments leading to the
+integrated reduction. Its probes, SQL adapters and drivers were removed;
+correctness tests and historical results remain. Exp100 is the maintained
+HTTP validation workflow.
+
+## Bounded aggregation concurrency
+
+[Exp99](exp99_aggregation_concurrency.md) records shared-backend queueing and
+independent-engine resource results that supported integration. Its research
+probe/driver were removed after validation; reports and profiles are retained.
+Production scheduling remains serialized.
+
+## Integrated aggregation HTTP validation
+
+[Exp100](exp100_aggregation_http.md) validates the integrated unrestricted
+reduction and preserved head/tail selection through the actual HTTP API and
+client. Its paired old/new image benchmark covers repeated and overlapping
+monthly ranges, mixed short queries, both wire formats and the verified split
+windows. No operator fallback flag or warehouse change is introduced.

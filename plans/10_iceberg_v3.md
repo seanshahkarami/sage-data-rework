@@ -105,7 +105,7 @@ need the catalog.
 
 ## Implemented v3-only path
 
-User decision: no v2 compatibility is required because these upgrades have not
+No v2 compatibility is required because these upgrades have not
 been released. The cold API now reads `time TIMESTAMPTZ_NS`, one `value VARIANT`,
 MAP metadata and promoted string tags. Both Arrow and NDJSON return the existing
 public fields. NDJSON carries the serialized value as `json.RawMessage`, avoiding

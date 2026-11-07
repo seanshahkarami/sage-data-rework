@@ -1,7 +1,7 @@
 # Cold storage experiments
 
 Measurements supporting `plans/3_findings.md`. Findings and the numbers behind
-each claim are in `results/SUMMARY.md`.
+each claim are in `results/SUMMARY.md` inside the archive described below.
 
 For sharing outside this directory, `results/iceberg_on_pelican_report.html` is
 a standalone summary of §17–§39 — the verdict, the write/read/query numbers, the
@@ -9,6 +9,27 @@ Iceberg-versus-custom comparison, the open risks and the actions. Open it in a
 browser; it needs no build step and fetches nothing but its fonts. It is written
 for a reader who has not followed the experiments, so it labels every projected
 figure as extrapolated rather than measured.
+
+## Recorded results
+
+The `results/` directory is local working output and is not in the git tree.
+The committed copy of the recorded runs is the split archive in this directory:
+
+| Part | Role |
+| --- | --- |
+| `results.z01` | First part |
+| `results.z02` | Second part |
+| `results.z03` | Third part |
+| `results.zip` | Last part |
+
+A path written as `results/<run>/report.json` is a path inside that archive, not a file next to these guides. Keep all four parts in this directory and rejoin them before opening a report:
+
+```sh
+zip -s 0 results.zip --out results-full.zip
+unzip results-full.zip
+```
+
+macOS `unzip` does not read the parts on its own. The six `exp95-bench-1793897282/*.env` files are not in the archive; they hold Influx tokens and a password. A later run may still write under `results/`. Leave that directory untracked.
 
 ## Setup
 
@@ -39,7 +60,7 @@ because Pelican charges ~150 ms per request and localhost charges nothing.
 
 ## Scripts
 
-Run from this directory with `python -I <script> ...`.
+The experiment scripts and `test_exp*` files are in `runbooks/`. Run from this directory with `python -I runbooks/<script> ...`.
 
 | script | question |
 |---|---|
@@ -106,19 +127,19 @@ Run from this directory with `python -I <script> ...`.
 
 ## Aggregation compatibility experiments
 
-[Experiment 86](exp86_aggregation_semantics.md) compares a tiny dedicated Influx
+[Experiment 86](runbooks/exp86_aggregation_semantics.md) compares a tiny dedicated Influx
 fixture with DuckDB 2.0 cold-only and border-spanning candidate SQL, including
 Parquet staging, empty windows, nanoseconds, exact integers, and pre-aggregate
 head/tail. It creates its own bucket and local run directory, retains results,
 and does not change the API or any warehouse. The guide distinguishes actual
 Flux/DuckDB 2.0 parity from a local candidate-only preview on another version.
 
-[Experiment 87](exp87_aggregation_type_probes.md) follows the remaining mixed-type
+[Experiment 87](runbooks/exp87_aggregation_type_probes.md) follows the remaining mixed-type
 and integer-arithmetic differences with per-range storage reads, reversed type
 chronology/insertion order, and pure Flux arrays. Its guide includes native and
 fixture-container VM commands and a network-free DuckDB arithmetic check.
 
-[Experiments 88–89](exp88_89_aggregation.md) replay native 64-bit integer semantics
+[Experiments 88–89](runbooks/exp88_89_aggregation.md) replay native 64-bit integer semantics
 and build a tiny actual local Iceberg v3 fixture. The guide records the unsigned
 VARIANT persistence blocker, supported-domain CLI results, and the separate
 opt-in production-encoder/read-grant HTTP test to run with the real API pins.
@@ -126,9 +147,9 @@ opt-in production-encoder/read-grant HTTP test to run with the real API pins.
 `exp90_aggregation_client.py` replays exp89's saved HTTP bodies through the current
 workspace Sage client, checking DataFrame integer precision separately from the
 Go wire encoders. Instructions and the nullable-integer finding are in the
-[88–89 guide](exp88_89_aggregation.md#follow-up-decode-the-saved-http-bodies-with-the-current-client).
+[88–89 guide](runbooks/exp88_89_aggregation.md#follow-up-decode-the-saved-http-bodies-with-the-current-client).
 
-[Experiments 91–92](exp91_92_type_boundaries.md) test a table-marked unsigned
+[Experiments 91–92](runbooks/exp91_92_type_boundaries.md) test a table-marked unsigned
 VARIANT encoding through actual Iceberg scans, and complete mixed-type hot reads
 using actual Influx shard-group boundaries. The guide separates passing local
 unsigned checks from the pending native HTTP/client and live Influx gates, and
@@ -288,7 +309,7 @@ origin — the combination every earlier experiment had only tested in
 pieces:
 
 ```sh
-conda run -n sage_pipeline python -I exp34_hint_reconciler.py
+conda run -n sage_pipeline python -I runbooks/exp34_hint_reconciler.py
 ```
 
 Writers commit through an Iceberg **SQL catalog** (the database is the CAS
@@ -312,7 +333,7 @@ writeup turned that into "re-run against Postgres, highest-value open
 item" — reasoning from reputation, not from a result:
 
 ```sh
-conda run -n sage_pipeline python -I exp35_sqlite_vs_postgres.py
+conda run -n sage_pipeline python -I runbooks/exp35_sqlite_vs_postgres.py
 ```
 
 No network and no credentials; this is a question about the catalog
@@ -329,7 +350,7 @@ reliability one.
 real archive: 4,564 files, 608 day-partitions, 209 GB.
 
 ```sh
-conda run -n sage_pipeline python -I exp36_scale.py
+conda run -n sage_pipeline python -I runbooks/exp36_scale.py
 ```
 
 Local only — tmpdir warehouse, the archive read-only, **nothing uploaded**.
@@ -357,8 +378,8 @@ path, but over the real NRDStor origin, where the unit is **requests at
 ~190 ms** rather than milliseconds of CPU:
 
 ```sh
-conda run -n sage_pipeline python -I exp37_pelican_scale.py
-conda run -n sage_pipeline python -I exp37_pelican_scale.py --commits=40
+conda run -n sage_pipeline python -I runbooks/exp37_pelican_scale.py
+conda run -n sage_pipeline python -I runbooks/exp37_pelican_scale.py --commits=40
 ```
 
 It writes under a nanosecond-stamped `/sage/cold-storage-test-scale-<ns>/`,
@@ -386,8 +407,8 @@ query *planning* in requests, but every read it timed moved a few hundred
 bytes, so **execution throughput was never measured**:
 
 ```sh
-conda run -n sage_pipeline python -I exp38_query_throughput.py
-conda run -n sage_pipeline python -I exp38_query_throughput.py --files=6
+conda run -n sage_pipeline python -I runbooks/exp38_query_throughput.py
+conda run -n sage_pipeline python -I runbooks/exp38_query_throughput.py --files=6
 ```
 
 Unlike the others this one **does upload real archive parquet** — throughput
@@ -411,7 +432,7 @@ additive rather than a prerequisite.
 `catalog.py`?
 
 ```sh
-conda run -n sage_pipeline python -I exp39_iceberg_vs_custom.py
+conda run -n sage_pipeline python -I runbooks/exp39_iceberg_vs_custom.py
 ```
 
 Same files, same origin, same FileIO, same process, interleaved, with
@@ -431,7 +452,7 @@ Both this and `exp38` take `--files=N` and `--keep`.
 in requests — "what does Iceberg cost us in storage?"
 
 ```sh
-conda run -n sage_pipeline python -I exp40_metadata_storage.py
+conda run -n sage_pipeline python -I runbooks/exp40_metadata_storage.py
 ```
 
 Local only: a tmpdir warehouse and the archive read-only, since metadata
@@ -453,7 +474,7 @@ open: whether bounding old `metadata.json` versions is something Sage has
 to build.
 
 ```sh
-conda run -n sage_pipeline python -I exp41_metadata_retention.py
+conda run -n sage_pipeline python -I runbooks/exp41_metadata_retention.py
 ```
 
 Local only, no archive and no network. **It is built in** — two stock table
@@ -645,15 +666,15 @@ experiment, not an Iceberg schema migration or a live Pelican benchmark.
 
 ```sh
 # the pruning failure, and the fix
-python -I exp03_range_reads.py <some data_0.parquet>
-python -I exp04_rowgroup_sizing.py <same file> ../scratch/rgvariants
-python -I exp05_rowgroup_pruning.py ../scratch/rgvariants <same file>
+python -I runbooks/exp03_range_reads.py <some data_0.parquet>
+python -I runbooks/exp04_rowgroup_sizing.py <same file> ../scratch/rgvariants
+python -I runbooks/exp05_rowgroup_pruning.py ../scratch/rgvariants <same file>
 
 # query semantics
-python -I exp08_query_api.py ../data/archive
+python -I runbooks/exp08_query_api.py ../data/archive
 
 # the milestone
-python -I exp10_compaction.py ../data/archive ../scratch/compaction --days 3
+python -I runbooks/exp10_compaction.py ../data/archive ../scratch/compaction --days 3
 ```
 
 A Go A/B harness for the exporter change (`scratch/pqtest/`, gitignored) was
@@ -772,7 +793,7 @@ remain historical and are not restored by this reorganization.
 
 ## Historical production aggregation performance
 
-[Exp95](exp95_aggregation_performance.md) benchmarks the assembled API against
+[Exp95](runbooks/exp95_aggregation_performance.md) benchmarks the assembled API against
 existing historical data: cold-only versus split, five functions, series and
 fleet scopes, Arrow/NDJSON HTTP latency, then a separate Arrow diagnostic sweep
 including hot staging. It uses dedicated static API instances and read-only
@@ -780,7 +801,7 @@ container inspection; it never seeds Influx or changes the warehouse.
 
 ## Aggregation metadata dictionary
 
-[Exp96](exp96_aggregation_metadata.md) describes the production aggregation
+[Exp96](runbooks/exp96_aggregation_metadata.md) describes the production aggregation
 metadata dictionary, local correctness/performance evidence and the host gates.
 `exp96_aggregation_metadata_compare.py` compares new exp95 unprofiled results
 against the retained pre-dictionary baseline, checking every body before
@@ -788,27 +809,27 @@ reporting speedups across different API images.
 
 ## Raw aggregation materialization and spill
 
-[Exp97](exp97_aggregation_materialization.md) is retired: the materialized
+[Exp97](runbooks/exp97_aggregation_materialization.md) is retired: the materialized
 dictionary SQL and 3 GB budget were retained. Its probe, rewrite hooks and
 drivers were removed; historical reports and profiles remain as evidence.
 
 ## Pre-buffer aggregation reduction
 
-[Exp98](exp98_partial_aggregation.md) records the experiments leading to the
+[Exp98](runbooks/exp98_partial_aggregation.md) records the experiments leading to the
 integrated reduction. Its probes, SQL adapters and drivers were removed;
 correctness tests and historical results remain. Exp100 is the maintained
 HTTP validation workflow.
 
 ## Bounded aggregation concurrency
 
-[Exp99](exp99_aggregation_concurrency.md) records shared-backend queueing and
+[Exp99](runbooks/exp99_aggregation_concurrency.md) records shared-backend queueing and
 independent-engine resource results that supported integration. Its research
 probe/driver were removed after validation; reports and profiles are retained.
 Production scheduling remains serialized.
 
 ## Integrated aggregation HTTP validation
 
-[Exp100](exp100_aggregation_http.md) validates the integrated unrestricted
+[Exp100](runbooks/exp100_aggregation_http.md) validates the integrated unrestricted
 reduction and preserved head/tail selection through the actual HTTP API and
 client. Its paired old/new image benchmark covers repeated and overlapping
 monthly ranges, mixed short queries, both wire formats and the verified split

@@ -1,5 +1,7 @@
 # Arrow stream on the query response
 
+Recorded files cited as `tiered_system/experiments/results/...` are paths inside the split archive `results.z01`, `results.z02`, `results.z03`, and `results.zip`. That directory is not in the repository. See [recorded results](../tiered_system/experiments/README.md#recorded-results).
+
 **Resumed 2026-10-26:** Iceberg v3 / single stored VARIANT and the bounded
 chronological plugin Parquet architecture are now adopted; see
 [plan 10](10_iceberg_v3.md). Earlier pending-migration notes below are historical.
@@ -80,7 +82,7 @@ Flight pays off when one service ships large columnar batches to another and the
 
 Speedup is newline-JSON latency divided by Arrow latency, so a number above 1 means Arrow was faster. Memory is the peak API-container sample during the call. The server does not gzip. Short queries are the median of 2 runs after one warmup. Each month is one run. Body sizes are the raw response.
 
-Curl latency is the download plus a DuckDB 1.5.6 `count` of `value` and `meta`. Script: `tiered_system/experiments/exp52_arrow_vs_ndjson_rerun.py`. Results: `tiered_system/experiments/results/exp55_curl_reused_engine.json`.
+Curl latency is the download plus a DuckDB 1.5.6 `count` of `value` and `meta`. Script: `tiered_system/experiments/runbooks/exp52_arrow_vs_ndjson_rerun.py`. Results: `tiered_system/experiments/results/exp55_curl_reused_engine.json`.
 
 | Query | Rows | NDJSON | Arrow | Speedup | NDJSON memory | Arrow memory | NDJSON body | Arrow body |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -260,7 +262,7 @@ large-result resource problem.
 
 #### Controlled measurement
 
-`experiments/exp51_cold_arrow_materialization.py` drives the opt-in
+`experiments/runbooks/exp51_cold_arrow_materialization.py` drives the opt-in
 `TestColdArrowMemoryProbe` in separate processes and samples native RSS with
 psutil. The query generates unique wide metadata, applies the current Arrow
 projection and `ORDER BY timestamp`, encodes IPC, and discards the body. It uses
@@ -306,7 +308,7 @@ numbers for exp49. Results: `experiments/results/exp51_cold_arrow_real_march.jso
 Reproduce from the workspace root after compiling the API test binary:
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp51_cold_arrow_materialization.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp51_cold_arrow_materialization.py \
   /tmp/beehive-arrow-probe.test --rows 25940207 --modes stream --memory 1GB \
   --source "$PWD/sage-data-rework/data/archive/date=2025-03-*/*.parquet" \
   --output sage-data-rework/tiered_system/experiments/results/exp51_cold_arrow_real_march.json
@@ -430,12 +432,12 @@ would be speculation. Measure client RSS, page faults, and swap as well as API
 memory on the next large run. Do not extrapolate the prototype's 6.8x fixture
 speedup to a month with different metadata cardinality.
 
-Script: `tiered_system/experiments/exp56_arrow_client_costs.py`.
+Script: `tiered_system/experiments/runbooks/exp56_arrow_client_costs.py`.
 Artifact: `tiered_system/experiments/results/exp56_arrow_client_costs.json`.
 Reproduce using a small saved response from the current API schema:
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp56_arrow_client_costs.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp56_arrow_client_costs.py \
   /path/to/cold-minute.arrows --rows 200000 1000000
 ```
 
@@ -537,7 +539,7 @@ the March call. Result:
 Reproduce locally using a saved response:
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp57_arrow_decoder_optimized.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp57_arrow_decoder_optimized.py \
   /path/to/cold-minute.arrows --rows 1000000 --batch-size 2048 \
   --output sage-data-rework/tiered_system/experiments/results/exp57_arrow_decoder_optimized_2048.json
 ```
@@ -639,7 +641,7 @@ Reproduce with the workspace's pinned Go dependencies available:
 
 ```sh
 (cd beehive-data-api && go test -c -o /tmp/sage-arrow-compression.test)
-python -I sage-data-rework/tiered_system/experiments/exp59_arrow_ipc_compression.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp59_arrow_ipc_compression.py \
   /path/to/cold-minute.arrows --probe-binary /tmp/sage-arrow-compression.test
 ```
 
@@ -704,7 +706,7 @@ cold environment configured:
 ```sh
 (cd sage-data-rework/tiered_system/demo && \
   docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp60_arrow_compression_live.py
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp60_arrow_compression_live.py
 # Add --include-months to include the full March/May windows.
 ```
 
@@ -846,7 +848,7 @@ Artifacts and reproduction:
 
 ```sh
 (cd beehive-data-api && go test -c -o /tmp/sage-arrow-typed.test)
-python -I sage-data-rework/tiered_system/experiments/exp61_arrow_typed_values.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp61_arrow_typed_values.py \
   --probe-binary /tmp/sage-arrow-typed.test
 ```
 
@@ -879,7 +881,7 @@ Rebuild the API and use the updated workspace client:
 ```sh
 (cd sage-data-rework/tiered_system/demo && \
   docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp62_arrow_typed_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp62_arrow_typed_live.py \
   --match '1 min, one name' --reps 1
 # Drop --match/--reps for all short windows; add --include-months for March/May.
 ```
@@ -1040,7 +1042,7 @@ folders; original archive files are read-only. Reproduce:
 
 ```sh
 (cd beehive-data-api && go test -c -o /tmp/sage-cold-execution.test)
-python -I sage-data-rework/tiered_system/experiments/exp63_cold_execution.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp63_cold_execution.py \
   --probe-binary /tmp/sage-cold-execution.test --include-delayed --reps 2
 ```
 
@@ -1086,12 +1088,12 @@ Artifacts:
 and `exp64_cold_execution_live.json`.
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --label "baseline metadata projection" \
   --output sage-data-rework/tiered_system/experiments/results/exp64_cold_execution_live_baseline.json
 (cd sage-data-rework/tiered_system/demo && \
   docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --label "optimized metadata projection" \
   --baseline sage-data-rework/tiered_system/experiments/results/exp64_cold_execution_live_baseline.json
 ```
@@ -1154,7 +1156,7 @@ read the existing March data, and write diagnostics in isolated local folders:
 # Control: current optimized image, profiling disabled.
 (cd sage-data-rework/tiered_system/demo && \
   COLD_PROFILE_DIR= docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --match 'cold March' --month-reps 3 \
   --label 'optimized control, profiling disabled' \
   --output sage-data-rework/tiered_system/experiments/results/exp65_control_live.json
@@ -1163,7 +1165,7 @@ python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.p
 (cd sage-data-rework/tiered_system/demo && \
   COLD_PROFILE_DIR=/tmp/sage-cold-profiles \
   docker compose --profile cold up -d --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --match 'cold March' --month-reps 3 \
   --label 'optimized, detailed server profiling' \
   --baseline sage-data-rework/tiered_system/experiments/results/exp65_control_live.json \
@@ -1172,7 +1174,7 @@ python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.p
 # Unique local collection folder. Copy BEFORE disabling/recreating the container.
 profile_copy=$(mktemp -d /tmp/sage-exp65-copy.XXXXXX)
 docker cp demo-data-api:/tmp/sage-cold-profiles "$profile_copy/"
-python -I sage-data-rework/tiered_system/experiments/exp65_cold_query_profile.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp65_cold_query_profile.py \
   "$profile_copy" \
   --output sage-data-rework/tiered_system/experiments/results/exp65_server_profiles.json
 
@@ -1478,7 +1480,7 @@ tar -xzf sage-data-rework/data/duckdb20-evaluation/duckdb156-source.tar.gz -C "$
   go test -tags=duckdb_arrow -count=1 ./... && \
   go test -tags=duckdb_arrow -c -o "$eval_root/duckdb200.test")
 
-python -I sage-data-rework/tiered_system/experiments/exp66_duckdb20_evaluation.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp66_duckdb20_evaluation.py \
   --binary "1.5.6=$eval_root/duckdb156.test" \
   --binary "2.0.0=$eval_root/duckdb200.test" \
   --reps 3 --profiles \
@@ -1507,7 +1509,7 @@ profiling disabled first:
 (cd sage-data-rework/tiered_system/demo && \
   COLD_PROFILE_DIR= COLD_ASYNC_THREADS=8 COLD_READ_AHEAD_DEPTH=-1 \
   docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --label 'DuckDB 2.0 async=8 automatic read-ahead' --include-months --month-reps 3 \
   --baseline sage-data-rework/tiered_system/experiments/results/exp64_cold_execution_live.json \
   --output sage-data-rework/tiered_system/experiments/results/exp66_duckdb20_live.json
@@ -1793,10 +1795,10 @@ Reproduce with a fresh native Go 2.0 test binary (it can serve as both probes):
 (cd beehive-data-api && \
   go test -tags=duckdb_arrow -count=1 ./... && \
   go test -tags=duckdb_arrow -c -o /tmp/sage-projection.test)
-python -I sage-data-rework/tiered_system/experiments/exp67_metadata_projection.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp67_metadata_projection.py \
   --native-probe /tmp/sage-projection.test --sql-probe /tmp/sage-projection.test \
   --reps 3 --include-rejected
-python -I sage-data-rework/tiered_system/experiments/exp67_metadata_projection.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp67_metadata_projection.py \
   --native-probe /tmp/sage-projection.test --sql-probe /tmp/sage-projection.test \
   --memory 512MB --stress-rows 4000000 --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp67_metadata_projection_spill.json
@@ -1806,13 +1808,13 @@ The VM first collects a fresh current-2.0 control before rebuilding, so the
 one-hour and March comparisons include the timestamp cleanup on both sides:
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --month-reps 3 --label 'DuckDB 2.0 before promoted JSON fast paths' \
   --output sage-data-rework/tiered_system/experiments/results/exp67_before_live.json
 (cd sage-data-rework/tiered_system/demo && \
   COLD_PROFILE_DIR= COLD_ASYNC_THREADS=8 COLD_READ_AHEAD_DEPTH=-1 \
   docker compose --profile cold up -d --build --no-deps data-api)
-python -I sage-data-rework/tiered_system/experiments/exp64_cold_execution_live.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp64_cold_execution_live.py \
   --include-months --month-reps 3 --label 'DuckDB 2.0 promoted JSON fast paths' \
   --baseline sage-data-rework/tiered_system/experiments/results/exp67_before_live.json \
   --output sage-data-rework/tiered_system/experiments/results/exp67_after_live.json
@@ -2048,9 +2050,9 @@ and SQL-export probes used locally:
 
 ```sh
 (cd beehive-data-api && go test -tags=duckdb_arrow -c -o /tmp/sage-variant.test)
-python -I sage-data-rework/tiered_system/experiments/exp68_value_variant.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp68_value_variant.py \
   --native-probe /tmp/sage-variant.test --sql-probe /tmp/sage-variant.test --reps 5
-python -I sage-data-rework/tiered_system/experiments/exp68_value_variant.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp68_value_variant.py \
   --native-probe /tmp/sage-variant.test --sql-probe /tmp/sage-variant.test \
   --memory 512MB --stress-rows 4000000 --match stress --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp68_value_variant_spill.json
@@ -2306,7 +2308,7 @@ response alone cannot prove endpoint configuration. Use its actual endpoint
 in the command (10006 was the isolated full-layout sidecar in plan 10):
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp81_v3_client_compatibility.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp81_v3_client_compatibility.py \
   --endpoint http://127.0.0.1:10006/api/v1/query --include-day \
   --output sage-data-rework/tiered_system/experiments/results/exp81_v3_client_live.json
 ```
@@ -2425,7 +2427,7 @@ LAYOUT_API_IMAGE="$EXP82_API_IMAGE" LAYOUT_API_PORT=10007 \
   LAYOUT_PROFILE_HOST="$EXP82_ROOT/unprofiled" LAYOUT_PROFILE_DIR="" \
   docker compose -p sage-exp82 -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps candidate-api
 export EXP82_CONTAINER="$(docker compose -p sage-exp82 -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml ps -q candidate-api)"
-python -I sage-data-rework/tiered_system/experiments/exp82_whole_range_profiles.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp82_whole_range_profiles.py \
   --endpoint http://127.0.0.1:10007/api/v1/query --container "$EXP82_CONTAINER" \
   --reps 3 --output "$EXP82_RESULTS/unprofiled.json"
 ```
@@ -2442,7 +2444,7 @@ LAYOUT_API_IMAGE="$EXP82_API_IMAGE" LAYOUT_API_PORT=10007 \
   LAYOUT_PROFILE_HOST="$EXP82_ROOT/profiled" LAYOUT_PROFILE_DIR=/profiles \
   docker compose -p sage-exp82 -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps --force-recreate candidate-api
 export EXP82_CONTAINER="$(docker compose -p sage-exp82 -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml ps -q candidate-api)"
-python -I sage-data-rework/tiered_system/experiments/exp82_whole_range_profiles.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp82_whole_range_profiles.py \
   --endpoint http://127.0.0.1:10007/api/v1/query --container "$EXP82_CONTAINER" \
   --profiles "$EXP82_ROOT/profiled" --control "$EXP82_RESULTS/unprofiled.json" \
   --reps 3 --output "$EXP82_RESULTS/profiled.json"
@@ -2570,12 +2572,12 @@ API test binary for both export and execution. Use fresh output filenames:
 export PROJECTION_PROBE=/tmp/sage-projection-ablation.test
 (cd beehive-data-api && go test -tags=duckdb_arrow -run '^Test(BuildColdSQL|ColdProjectionDiagnostics)$' -count=1)
 (cd beehive-data-api && go test -tags=duckdb_arrow -c -o "$PROJECTION_PROBE")
-python -I sage-data-rework/tiered_system/experiments/exp83_projection_ablation.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp83_projection_ablation.py \
   --native-probe "$PROJECTION_PROBE" --sql-probe "$PROJECTION_PROBE" \
   --candidate-audit sage-data-rework/tiered_system/experiments/results/full-layout-1792962354/candidate-audit.json \
   --case day --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp83_projection_day_vm.json
-python -I sage-data-rework/tiered_system/experiments/exp83_projection_ablation.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp83_projection_ablation.py \
   --native-probe "$PROJECTION_PROBE" --sql-probe "$PROJECTION_PROBE" \
   --candidate-audit sage-data-rework/tiered_system/experiments/results/full-layout-1792962354/candidate-audit.json \
   --case march --case april --reps 3 \
@@ -2841,16 +2843,16 @@ API on port 10006. Wait for startup readiness after each recreate.
 
 ```sh
 start_meta_api false "" "$META_ROOT/control"
-python -I sage-data-rework/tiered_system/experiments/exp82_whole_range_profiles.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp82_whole_range_profiles.py \
   --endpoint http://127.0.0.1:10008/api/v1/query --container "$META_CONTAINER" \
   --reps 3 --output "$META_RESULTS/control.json"
 start_meta_api true "" "$META_ROOT/candidate"
-python -I sage-data-rework/tiered_system/experiments/exp82_whole_range_profiles.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp82_whole_range_profiles.py \
   --endpoint http://127.0.0.1:10008/api/v1/query --container "$META_CONTAINER" \
   --uniform-metadata --control "$META_RESULTS/control.json" \
   --reps 3 --output "$META_RESULTS/candidate.json"
 start_meta_api true /profiles "$META_ROOT/profiled"
-python -I sage-data-rework/tiered_system/experiments/exp82_whole_range_profiles.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp82_whole_range_profiles.py \
   --endpoint http://127.0.0.1:10008/api/v1/query --container "$META_CONTAINER" \
   --uniform-metadata --control "$META_RESULTS/candidate.json" --profiles "$META_ROOT/profiled" \
   --reps 3 --output "$META_RESULTS/candidate-profiled.json"

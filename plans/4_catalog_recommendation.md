@@ -213,8 +213,9 @@ cheaper single-writer design, not the safer one.** *(And that base has since
 been removed — multi-writer must stay open, so the recommendation is now
 Iceberg. See the box at the top and the decision section at the end.)*
 
-Evidence in `experiments/results/SUMMARY.md` §12–13 and §17–27, and
-`experiments/exp13..27`. This is a recommendation about the next 6–12
+Evidence in `results/SUMMARY.md` §12–13 and §17–27 inside the
+[recorded results archive](../tiered_system/experiments/README.md#recorded-results), and
+`tiered_system/experiments/runbooks/exp13..27`. This is a recommendation about the next 6–12
 months, with an explicit condition for revisiting it — a condition that has
 now been met.
 
@@ -985,7 +986,7 @@ the decision is reversible, and the data files are what make it reversible.
   not. Re-check per client rather than treating "Iceberg" as one thing —
   that conflation is exactly what produced the original wrong finding.
 - Every catalog number was computed on a POSIX filesystem. **Pelican has now
-  been measured** (`experiments/exp17` and `exp18`, `results/SUMMARY.md`
+  been measured** (`experiments/runbooks/exp17` and `exp18`, `results/SUMMARY.md`
   §17–18) and the primitive the custom catalog needs is present; the remaining
   gap is compare-and-swap, which affects concurrent writers only — but there
   it is fatal rather than slow (3/3 silent lost updates). The origin is itself

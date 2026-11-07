@@ -31,7 +31,7 @@ demo default is `2025-05-01T00:00:00Z`.
 
 ## experiments/
 
-The measurements that led here. Findings are in `experiments/results/SUMMARY.md`. How to run a script is in `experiments/README.md`.
+The measurements that led here. Findings are in `results/SUMMARY.md` inside the split archive next to the scripts (`experiments/results.z01`, `experiments/results.z02`, `experiments/results.z03`, and `experiments/results.zip`). The `experiments/results/` directory itself is not in the repository. How to unpack the archive and how to run a script are in `experiments/README.md`.
 
 The adopted warehouse uses day partitions, chronological file batches of up to
 10 million rows, plugin/vsn/time sorting within each file, and plugin-pure row

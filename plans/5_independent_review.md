@@ -64,7 +64,7 @@ publication. DuckDB's discovery behavior is a different client concern.
 **Independently reproduced:** after committing v2, a fresh local catalog
 still loaded v2 with the hint set to `1`, set to `garbage`, or deleted.
 See `experiments/icebergo/audit_hint_test.go` and
-`experiments/results/audit_catalog_local.log`.
+`results/audit_catalog_local.log` inside the [recorded results archive](../tiered_system/experiments/README.md#recorded-results).
 
 This distinction also matters for a SQL-catalog publication pointer. Its
 update is a separate operation from the database commit; it needs ordered
@@ -94,7 +94,7 @@ normally communicates the validator to the client.
 
 `experiments/audit_local.py` creates two tiny synthetic Parquet records and
 runs the existing backend with DuckDB 1.5.6 / PyArrow 25.0.1. Results are in
-`experiments/results/audit_local.json`.
+`results/audit_local.json` inside the [recorded results archive](../tiered_system/experiments/README.md#recorded-results).
 
 | Input | Actual result | Consequence |
 | --- | --- | --- |

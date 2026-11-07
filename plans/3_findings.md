@@ -7,9 +7,9 @@
 > entire selected files. Historical pass counts below have narrower coverage.
 
 Work done 2026-10-08/09 on a local copy of the sage03 archive. Everything here
-is measured, not estimated; the scripts are in `experiments/` and the raw JSON
-in `experiments/results/`. `experiments/results/SUMMARY.md` has the full detail
-and the numbers behind each claim.
+is measured, not estimated; the scripts are in `tiered_system/experiments/` and the raw JSON
+is inside the split archive there (`results.z01`, `results.z02`, `results.z03`, and `results.zip`). `results/SUMMARY.md` in that archive has the full detail
+and the numbers behind each claim. The `results/` directory is not in the repository.
 
 Nothing is committed. `data/`, `scratch/` and `*.parquet` are gitignored.
 

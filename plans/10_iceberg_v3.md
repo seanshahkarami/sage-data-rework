@@ -1,5 +1,7 @@
 # Iceberg v3
 
+Recorded files cited as `tiered_system/experiments/results/...` are paths inside the split archive `results.z01`, `results.z02`, `results.z03`, and `results.zip`. That directory is not in the repository. See [recorded results](../tiered_system/experiments/README.md#recorded-results).
+
 **Architecture adopted 2026-10-26:** day-partitioned Iceberg v3, chronological
 file batches capped at 10,000,000 rows, sorted plugin → vsn → time within
 each file, with plugin-pure row groups capped at 262,144 rows. Use
@@ -368,7 +370,7 @@ Local native SQL validation can also be rerun with the freshly built test binary
 
 ```sh
 (cd beehive-data-api && go test -tags=duckdb_arrow -c -o /tmp/sage-v3.test)
-python -I sage-data-rework/tiered_system/experiments/exp69_v3_validation.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp69_v3_validation.py \
   --native-probe /tmp/sage-v3.test --sql-probe /tmp/sage-v3.test
 python -m unittest discover -s sage-data-rework/tiered_system/demo/tools -p test_v3_publisher.py -v
 ```
@@ -418,7 +420,7 @@ comparison without falsely demanding that restored precision equal truncated
 v2 timestamps. It never floors stored data or the API response.
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp71_v2_v3_cost.py --measure-v3
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp71_v2_v3_cost.py --measure-v3
 ```
 
 The matching-timer rerun is now complete against the full v3 warehouse; its
@@ -461,7 +463,7 @@ Parquet/IPC/spill stays in temporary local storage; no Pelican writes, hint
 changes, server rebuilds, commits or pushes are performed.
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp72_plugin_layout.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp72_plugin_layout.py \
   --native-probe /tmp/sage-v3.test --sql-probe /tmp/sage-v3.test --reps 3
 ```
 
@@ -521,7 +523,7 @@ keep COLD_WATERMARK=2025-05-01T00:00:00Z, async=8, automatic read-ahead, Zstd
 and profiling off, and recreate data-api with that environment. Then run:
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp71_v2_v3_cost.py \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp71_v2_v3_cost.py \
   --measure-v3 --include-month --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp71_v2_v3_full_live.json
 ```
@@ -883,7 +885,7 @@ export LAYOUT_PROFILE_HOST="${COLD_V3_ROOT}/profiles"
 export LAYOUT_PROFILE_DIR=""
 mkdir -p "$LAYOUT_PROFILE_HOST"
 docker compose -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps candidate-api
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp73_plugin_live_compare.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp73_plugin_live_compare.py \
   --candidate-audit "$COLD_V3_ROOT/layout-audit.json" --api-image "$LAYOUT_API_IMAGE" \
   --reps 3 --output sage-data-rework/tiered_system/experiments/results/exp73_plugin_live_compare.json
 ```
@@ -909,11 +911,11 @@ After primary timings, optionally profile only the sidecar:
 ```sh
 export LAYOUT_PROFILE_DIR=/profiles
 docker compose -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps candidate-api
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp73_plugin_live_compare.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp73_plugin_live_compare.py \
   --candidate-audit "$COLD_V3_ROOT/layout-audit.json" --api-image "$LAYOUT_API_IMAGE" \
   --match series_day --reps 1 \
   --output sage-data-rework/tiered_system/experiments/results/exp73_plugin_profiled_day.json
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp65_cold_query_profile.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp65_cold_query_profile.py \
   "$LAYOUT_PROFILE_HOST" --output sage-data-rework/tiered_system/experiments/results/exp73_plugin_profiles.json
 export LAYOUT_PROFILE_DIR=""
 docker compose -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps candidate-api
@@ -1121,12 +1123,12 @@ start_layout_api() {
 }
 start_layout_api sage-layout-control 10002 "$CONTROL_URL" "$CONTROL_ROOT/unprofiled-logs" ""
 start_layout_api sage-layout-time-batches 10003 "$TIME_PLUGIN_URL" "$TIME_BATCH_ROOT/unprofiled-logs" ""
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp73_plugin_live_compare.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp73_plugin_live_compare.py \
   --baseline http://127.0.0.1:10002/api/v1/query --candidate http://127.0.0.1:10001/api/v1/query \
   --baseline-audit "$CONTROL_ROOT/layout-audit.json" --candidate-audit "$ARCHIVE_AUDIT" \
   --require-matched-coverage --api-image "$COMPARE_API_IMAGE" --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp73_matched_archive_batches.json
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp73_plugin_live_compare.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp73_plugin_live_compare.py \
   --baseline http://127.0.0.1:10002/api/v1/query --candidate http://127.0.0.1:10003/api/v1/query \
   --baseline-audit "$CONTROL_ROOT/layout-audit.json" --candidate-audit "$TIME_BATCH_ROOT/layout-audit.json" \
   --require-matched-coverage --api-image "$COMPARE_API_IMAGE" --reps 3 \
@@ -1150,14 +1152,14 @@ checked on every response. These timings are **profiling-on diagnostics**.
 ```sh
 start_layout_api sage-profile-control 10004 "$CONTROL_URL" "$CONTROL_ROOT/paired-profiles" /profiles
 start_layout_api sage-profile-candidate 10005 "$ARCHIVE_PLUGIN_URL" "$TIME_BATCH_ROOT/archive-paired-profiles" /profiles
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp75_paired_live_profiles.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp75_paired_live_profiles.py \
   --baseline http://127.0.0.1:10004/api/v1/query --candidate http://127.0.0.1:10005/api/v1/query \
   --baseline-profiles "$CONTROL_ROOT/paired-profiles" --candidate-profiles "$TIME_BATCH_ROOT/archive-paired-profiles" \
   --baseline-audit "$CONTROL_ROOT/layout-audit.json" --candidate-audit "$ARCHIVE_AUDIT" \
   --api-image "$COMPARE_API_IMAGE" --reps 3 \
   --output sage-data-rework/tiered_system/experiments/results/exp75_archive_batches_profiles.json
 start_layout_api sage-profile-candidate 10005 "$TIME_PLUGIN_URL" "$TIME_BATCH_ROOT/time-paired-profiles" /profiles
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp75_paired_live_profiles.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp75_paired_live_profiles.py \
   --baseline http://127.0.0.1:10004/api/v1/query --candidate http://127.0.0.1:10005/api/v1/query \
   --baseline-profiles "$CONTROL_ROOT/paired-profiles" --candidate-profiles "$TIME_BATCH_ROOT/time-paired-profiles" \
   --baseline-audit "$CONTROL_ROOT/layout-audit.json" --candidate-audit "$TIME_BATCH_ROOT/layout-audit.json" \
@@ -1375,13 +1377,13 @@ export BOUNDED_ID="$(date +%s)"
 export COLD_V3_LAYOUT_HELPER="$PWD/sage-data-rework/scratch/bin/layoutpack-bounded"
 mkdir -p "$(dirname "$COLD_V3_LAYOUT_HELPER")"
 (cd sage-data-rework/tiered_system/experiments/icebergo && go build -o "$COLD_V3_LAYOUT_HELPER" ./cmd/layoutpack)
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp77_bounded_plugin_groups.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp77_bounded_plugin_groups.py \
   --dataset archive=sage-data-rework/scratch/v3-plugin-trial-1792792556/sage/obs/data \
   --dataset time=sage-data-rework/scratch/exp76-time-batches-20261023/data \
   --native-probe /absolute/path/to/duckdb200.test --layout-helper "$COLD_V3_LAYOUT_HELPER" \
   --work-dir "sage-data-rework/scratch/exp77-bounded-${BOUNDED_ID}" \
   --output sage-data-rework/tiered_system/experiments/results/exp77_bounded_plugin_groups.json
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp78_bounded_layout_benchmark.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp78_bounded_layout_benchmark.py \
   --build-report sage-data-rework/tiered_system/experiments/results/exp77_bounded_plugin_groups.json \
   --baseline sage-data-rework/scratch/v3-1792707566/sage/obs/data \
   --native-probe /absolute/path/to/duckdb200.test --sql-probe /absolute/path/to/v3-sql.test \
@@ -1603,7 +1605,7 @@ including raw VARIANT values, metadata, promoted tags and nanosecond times:
 ```sh
 export FULL_BASELINE_HEAD="$("$V3_PYTHON" -c 'import json,sys; print(json.load(open(sys.argv[1]))["source_metadata"])' sage-data-rework/scratch/v3-1792707566/seed-v3-progress.json)"
 export FULL_CANDIDATE_HEAD="$("$V3_PYTHON" -c 'import json,sys; print(json.load(open(sys.argv[1]))["source_metadata"])' "$FULL_LAYOUT_ROOT/seed-v3-progress.json")"
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp79_full_warehouse_validation.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp79_full_warehouse_validation.py \
   --baseline-head "$FULL_BASELINE_HEAD" --candidate-head "$FULL_CANDIDATE_HEAD" \
   --output-dir "$FULL_LAYOUT_REPORTS"
 ```
@@ -1629,7 +1631,7 @@ LAYOUT_API_IMAGE="$COMPARE_API_IMAGE" LAYOUT_API_PORT=10006 \
   LAYOUT_COLD_WAREHOUSE="https://nrdstor.nationalresearchplatform.org:8443/sage${FULL_LAYOUT_PREFIX}/warehouse" \
   LAYOUT_PROFILE_HOST="$FULL_LAYOUT_ROOT/unprofiled-logs" LAYOUT_PROFILE_DIR="" \
   docker compose -p sage-layout-bounded-full -f sage-data-rework/tiered_system/demo/docker-compose.layout-trial.yml up -d --no-deps candidate-api
-"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/exp73_plugin_live_compare.py \
+"$V3_PYTHON" -I sage-data-rework/tiered_system/experiments/runbooks/exp73_plugin_live_compare.py \
   --full-warehouse --baseline http://127.0.0.1:10000/api/v1/query \
   --candidate http://127.0.0.1:10006/api/v1/query \
   --baseline-audit "$FULL_LAYOUT_REPORTS/baseline-audit.json" \

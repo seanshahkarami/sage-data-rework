@@ -55,8 +55,11 @@ sort each batch by plugin, then vsn, then time. Plugin-pure row groups are cappe
 at 262,144 rows: large plugins span groups and small plugins share files.
 
 The layout experiments and adoption evidence are in
-[plan 10](../../plans/10_iceberg_v3.md). Historical measurements remain in
-[experiments/results](../experiments/results/).
+[plan 10](../../plans/10_iceberg_v3.md). Historical measurements are in the
+split archive [results.zip](../experiments/results.zip)
+(`results.z01`, `results.z02`, and `results.z03` in that same directory).
+The `experiments/results/` directory is not in the repository. See
+[recorded results](../experiments/README.md#recorded-results).
 
 ## Tools
 

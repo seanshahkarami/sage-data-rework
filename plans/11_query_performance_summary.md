@@ -1,5 +1,7 @@
 # Query performance across iterations — 2026-10-26
 
+Recorded files cited as `tiered_system/experiments/results/...` are paths inside the split archive `results.z01`, `results.z02`, `results.z03`, and `results.zip`. That directory is not in the repository. See [recorded results](../tiered_system/experiments/README.md#recorded-results).
+
 The accepted implementation is DuckDB 2.0, Iceberg v3, stored `value VARIANT`, stored `meta MAP`, Zstd Arrow, whole-range execution, and the adopted bounded plugin layout. Uniform-metadata discovery remains **off**. This report summarizes the recorded experiments; it does not change the API or warehouse.
 
 **Production NDJSON baseline collected.** See its linked report for endpoint, date, actual returned rows and expected-row checks. Production Arrow remains `null` (unsupported). Results with differing row counts are not comparable. Public HTTP timing does not provide a production internal operator or memory profile.
@@ -332,11 +334,11 @@ This inventory covers every retained exp46–84 JSON report, including setup-onl
 Run from the workspace root on a machine that can resolve the production host. PyArrow must be available (the existing VM benchmark environment already uses it). This sends read-only queries, keeps one temporary body at a time and writes a fresh result file; it does not restart services or write warehouse objects. Short queries get one excluded warmup and three measured repetitions. Month queries are optional, single runs by default, and may transfer many GB; their row counts must match before comparing speeds.
 
 ```sh
-python -I sage-data-rework/tiered_system/experiments/exp85_iteration_summary.py live \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp85_iteration_summary.py live \
   --output sage-data-rework/tiered_system/experiments/results/exp85_production_ndjson_vm.json
 # Add --include-months for March/April/May (series only, never fleet months).
 # Then rebuild using the returned production report:
-python -I sage-data-rework/tiered_system/experiments/exp85_iteration_summary.py report \
+python -I sage-data-rework/tiered_system/experiments/runbooks/exp85_iteration_summary.py report \
   --production-result sage-data-rework/tiered_system/experiments/results/exp85_production_ndjson_vm.json
 ```
 

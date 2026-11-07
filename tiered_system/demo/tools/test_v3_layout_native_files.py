@@ -17,7 +17,7 @@ class TestNativeParquetContract(unittest.TestCase):
         import json
         import pyarrow.parquet as pq
         from v3_layout import FIELD_IDS,row_fingerprint_sql
-        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'experiments'))
+        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'experiments/runbooks'))
         from exp67_metadata_projection import native_table
         metadata={'format-version':3,'current-schema-id':0,'current-snapshot-id':1,'table-uuid':'fixture',
                   'snapshots':[{'snapshot-id':1}],'schemas':[{'schema-id':0,'fields':[{'name':'value','id':11,'type':'variant'}]}]}
@@ -73,7 +73,7 @@ class TestNativeParquetContract(unittest.TestCase):
     def test_large_plugin_splits_at_cap_and_preserves_variants_across_seams(self):
         import pyarrow.parquet as pq
         from v3_layout import FIELD_IDS,audit_data_files
-        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'experiments'))
+        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'experiments/runbooks'))
         from exp67_metadata_projection import native_table
         source="""SELECT make_timestamp_ns(1740787200000000194+n::BIGINT)::TIMESTAMPTZ_NS AS time,
  'test'::VARCHAR AS name,CASE WHEN n<200005 THEN 'large' WHEN n<200007 THEN 'small' ELSE NULL END AS plugin,
@@ -105,7 +105,7 @@ class TestNativeParquetContract(unittest.TestCase):
             self.assertEqual(hashes[0],hashes[1])
 
     def test_variant_annotation_id_plugin_purity_and_order(self):
-        here=Path(__file__).resolve().parents[2]/'experiments'
+        here=Path(__file__).resolve().parents[2]/'experiments/runbooks'
         sys.path.insert(0,str(here))
         from exp67_metadata_projection import native_table
         metadata={'format-version':3,'current-schema-id':0,'current-snapshot-id':1,'table-uuid':'fixture',

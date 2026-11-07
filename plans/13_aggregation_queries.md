@@ -1,5 +1,7 @@
 # Aggregation queries on the tiered backend
 
+Recorded files cited as `tiered_system/experiments/results/...` are paths inside the split archive `results.z01`, `results.z02`, `results.z03`, and `results.zip`. That directory is not in the repository. See [recorded results](../tiered_system/experiments/README.md#recorded-results). A command that writes a fresh run directory under `results/` is writing local untracked output.
+
 Recorded 2026-11-04; implementation started 2026-11-05. Historical findings and
 intermediate proposals below are retained as evidence. The current implementation
 policy is recorded here and in the final implementation section; production
@@ -433,7 +435,7 @@ operational limits rather than user-visible experimental query switches.
 
 ## Experiment 86: first compatibility screen (2026-11-04)
 
-The [experiment guide](../tiered_system/experiments/exp86_aggregation_semantics.md)
+The [experiment guide](../tiered_system/experiments/runbooks/exp86_aggregation_semantics.md)
 and `exp86_aggregation_semantics.py` now provide a dedicated small-fixture runner.
 The full run requires DuckDB 2.0.x before creating an isolated
 `agg-exp86-<UUID>` bucket. It reads the fixture back, captures the Influx engine
@@ -633,7 +635,7 @@ HTTP formats before performance work on historical warehouse data.
 
 ## Experiment 87: targeted type/arithmetic diagnostic (2026-11-04)
 
-[Runner and VM instructions](../tiered_system/experiments/exp87_aggregation_type_probes.md)
+[Runner and VM instructions](../tiered_system/experiments/runbooks/exp87_aggregation_type_probes.md)
 are ready in `exp87_aggregation_type_probes.py`. The original exp86 bucket is
 accessed through a read-only client. The default live run creates a separate
 `agg-exp87-<UUID>` bucket containing 16 points; it never deletes or modifies the
@@ -833,7 +835,7 @@ policy, hot read strategy, API implementation, or warehouse mutation was applied
 
 ## Experiments 88–89: native integer candidate and actual Iceberg fixture (2026-11-04)
 
-[Commands, scope, and VM HTTP gate](../tiered_system/experiments/exp88_89_aggregation.md).
+[Commands, scope, and VM HTTP gate](../tiered_system/experiments/runbooks/exp88_89_aggregation.md).
 No production aggregation path is enabled. The API repository adds only an
 opt-in `_test.go` adapter; all compiler/preparation changes remain in research.
 
@@ -1120,7 +1122,7 @@ refresh/concurrency rules, overlap handling and the API's raw hot staging path.
 No full-domain aggregation readiness claim follows from the local checks alone.
 
 Commands, expected counts and host/VM instructions are in the
-[experiments 91–92 guide](../tiered_system/experiments/exp91_92_type_boundaries.md).
+[experiments 91–92 guide](../tiered_system/experiments/runbooks/exp91_92_type_boundaries.md).
 
 ### Live shard-scoped reads (2026-11-04)
 
@@ -1196,7 +1198,7 @@ stopped before HTTP execution: the writable offline cache still lacks
 `go.duckdb.org/libduckdb/darwin-arm64 v0.20000.0`. No new HTTP/client pass is
 claimed. Run the one-command gate from the normal laptop terminal against the
 existing local fixture, or prepare a new fixture on the VM first. Commands are
-in the [91–92 guide](../tiered_system/experiments/exp91_92_type_boundaries.md#one-command-httpclient-gate-on-an-already-prepared-host).
+in the [91–92 guide](../tiered_system/experiments/runbooks/exp91_92_type_boundaries.md#one-command-httpclient-gate-on-an-already-prepared-host).
 
 ### Unsigned HTTP/client gate passed (2026-11-05)
 
@@ -1273,7 +1275,7 @@ excludes the most recent full UTC day to reduce ingestion races, although late
 backfill remains possible. No series is selected if the recent extract is empty.
 
 ```sh
-python sage-data-rework/tiered_system/experiments/exp94_production_range_parity.py \
+python sage-data-rework/tiered_system/experiments/runbooks/exp94_production_range_parity.py \
   --history-days 14 \
   --run-dir "sage-data-rework/tiered_system/experiments/results/exp94-prod-$(date +%s)"
 ```
@@ -1373,7 +1375,7 @@ only small raw samples and aggregate counts. Empty samples or a count function
 that fails calibration remain inconclusive and skip the expensive month scans.
 
 ```sh
-python sage-data-rework/tiered_system/experiments/exp94_production_range_parity.py \
+python sage-data-rework/tiered_system/experiments/runbooks/exp94_production_range_parity.py \
   --benchmark-archive \
   --run-dir "sage-data-rework/tiered_system/experiments/results/exp94-archive-prod-$(date +%s)"
 ```
@@ -1627,7 +1629,7 @@ or published warehouse changes were made during this review.
 
 ### Historical performance benchmark prepared (2026-11-05)
 
-Added [exp95 and its host/VM runbook](../tiered_system/experiments/exp95_aggregation_performance.md)
+Added [exp95 and its host/VM runbook](../tiered_system/experiments/runbooks/exp95_aggregation_performance.md)
 to measure the production implementation on the adopted immutable March/April
 warehouse. It compares cold-only routing with a static noon-March-1 split over
 the same data. The historical Influx fixture must already contain the hot half
@@ -1805,7 +1807,7 @@ integer/VARIANT semantics, public response schema and ordinary extract/hot-only
 paths are retained. There is one production aggregation SQL path, with no new
 runtime tuning flag. The pre-change source is kept only as experiment evidence.
 
-Validation and evidence are in [exp96](../tiered_system/experiments/exp96_aggregation_metadata.md)
+Validation and evidence are in [exp96](../tiered_system/experiments/runbooks/exp96_aggregation_metadata.md)
 and its [source-hashed summary](../tiered_system/experiments/results/exp96-metadata-20261105/summary.json):
 
 | Gate | Result |
@@ -1963,7 +1965,7 @@ adoption, and nothing was committed or pushed.
 
 Targeted the retained wide raw CTE identified by exp96, without changing the
 adopted production aggregation path or introducing a fallback/configuration
-option. Added [exp97 and its host runbook](../tiered_system/experiments/exp97_aggregation_materialization.md).
+option. Added [exp97 and its host runbook](../tiered_system/experiments/runbooks/exp97_aggregation_materialization.md).
 The test-only candidate changes `raw AS MATERIALIZED` to `raw AS NOT
 MATERIALIZED`. It can build the tag dictionary from a metadata-focused source
 scan and stream a second source scan through the dictionary, trading remote
@@ -2131,7 +2133,7 @@ storage was unchanged, and nothing was committed or pushed.
 
 ### Pre-buffer aggregation experiment prepared (2026-11-05)
 
-Added [exp98](../tiered_system/experiments/exp98_partial_aggregation.md) as an
+Added [exp98](../tiered_system/experiments/runbooks/exp98_partial_aggregation.md) as an
 isolated experiment, leaving the adopted production dictionary SQL and 3 GB
 engine budget unchanged. No API fallback or tuning option was introduced.
 
@@ -2301,7 +2303,7 @@ published storage, commits or pushes were changed.
 
 ### Bounded concurrency comparison prepared (2026-11-05)
 
-Added [exp99 and its host runbook](../tiered_system/experiments/exp99_aggregation_concurrency.md)
+Added [exp99 and its host runbook](../tiered_system/experiments/runbooks/exp99_aggregation_concurrency.md)
 to evaluate exp98's memory/spill benefit under queued callers and concurrent
 engine pressure, rather than discarding a resource improvement solely because
 single-query medians did not improve. Production SQL, its 3 GB budget and
@@ -2512,7 +2514,7 @@ queries, including head/tail.
 | Paired HTTP benchmark tooling | Four offline tests pass: repeat/overlap/limit sequence, retained-image/settings checks, reused-engine order, and retained parity-failure evidence |
 | Native Go API/HTTP/live gate | Pending host; secondary type-check reaches linker then fails for unavailable local `libduckdb`; no module pins substituted |
 
-Added [exp100 and its exact host/VM runbook](../tiered_system/experiments/exp100_aggregation_http.md).
+Added [exp100 and its exact host/VM runbook](../tiered_system/experiments/runbooks/exp100_aggregation_http.md).
 First run actual production HTTP with profiling enabled, the full tagged
 suite/vet, tiered race checks, and the **546-response live three-placement
 client replay** using the existing verified seed. No reseeding is needed.
@@ -2801,7 +2803,7 @@ reported for the candidate. Compare the shared staging-complete marker and
 full HTTP latency against the retained exp100 image, not isolated timings or
 the pre-reduction exp96 image.
 
-The [exp101 runbook](../tiered_system/experiments/exp101_direct_hot_staging.md)
+The [exp101 runbook](../tiered_system/experiments/runbooks/exp101_direct_hot_staging.md)
 contains writer/codec, full API, hot/cold/split parity, client replay and paired
 historical split HTTP gates. The maintained HTTP driver now optionally pins
 the next baseline to a previous completed candidate report; its original

@@ -1,5 +1,7 @@
 # Head/Tail queries on the tiered backend
 
+Recorded files cited as `tiered_system/experiments/results/...` are paths inside the split archive `results.z01`, `results.z02`, `results.z03`, and `results.zip`. That directory is not in the repository. See [recorded results](../tiered_system/experiments/README.md#recorded-results). A command that writes a fresh run directory under `results/` is writing local untracked output.
+
 Current status: the raw-candidate standalone head/tail selector validated by
 exp108 is now the workspace default for cross-border Arrow and NDJSON queries.
 The superseded direct selector and standalone dictionary/comparison probes
@@ -60,7 +62,7 @@ Added `TestHeadTailProductionHTTP` and `TestHeadTailLiveTierParity` to the real
 API fixture gate. They derive limits 0/1/2/1000 from original fixture rows and
 verify both encoders, dynamic grant release after native/staging closure and
 cleanup. Live tests reuse the verified retained seed; no reseeding is needed.
-The [exp102 runbook](../tiered_system/experiments/exp102_spanning_head_tail.md)
+The [exp102 runbook](../tiered_system/experiments/runbooks/exp102_spanning_head_tail.md)
 provides the host commands. HTTP/live execution remains pending on the VM. Local
 [validation logs](../tiered_system/experiments/results/spanning-head-tail-20261106/summary.json)
 record the passing compiler/vet/race gates and blocked native suite.
@@ -126,7 +128,7 @@ storage, commits or pushes changed during this review.
 
 ## Historical standalone head/tail benchmark and profiles prepared (2026-11-06)
 
-Added [exp103](../tiered_system/experiments/exp103_head_tail_performance.md). No historical API benchmark has been executed from this workspace;
+Added [exp103](../tiered_system/experiments/runbooks/exp103_head_tail_performance.md). No historical API benchmark has been executed from this workspace;
 there are no new latency numbers or bottleneck conclusions yet.
 
 The driver compares cold-only and noon-split placement on the same newly built
@@ -237,7 +239,7 @@ on the same private inputs, with bounded cancellation. Its pinned-library VM
 execution is pending. No runtime query rewrite or resource-setting change was
 made without reproducing the blocker.
 
-The next gate is [exp104 stall isolation](../tiered_system/experiments/exp104_head_tail_stall.md):
+The next gate is [exp104 stall isolation](../tiered_system/experiments/runbooks/exp104_head_tail_stall.md):
 run native local scale tests, then reproduce the short hour query against new
 dedicated instances of the exact failing image with profiles enabled and a
 45-second client deadline. Preserve failed/cancelled timing sidecars rather
@@ -317,7 +319,7 @@ selection graph. Local native interface completion rules out the supplied
 local scale fixtures as reproducers; it does not prove every native path or
 remote interaction is safe. There are still no historical placement medians.
 
-Added an opt-in, test-only [exp105 scan/plan probe](../tiered_system/experiments/exp105_head_tail_plan_isolation.md).
+Added an opt-in, test-only [exp105 scan/plan probe](../tiered_system/experiments/runbooks/exp105_head_tail_plan_isolation.md).
 It runs inside the retained failing runtime image's container environment,
 using a test binary compiled for the same platform with the existing builder
 and pinned modules. It reads one pinned snapshot of the adopted warehouse and
@@ -440,7 +442,7 @@ not establish full-workload performance or justify changing aggregation's
 working dictionary plan. The 2.629s single profiled direct result is not a
 placement median or an old/new speedup measurement.
 
-The [exp106 integration gate](../tiered_system/experiments/exp106_head_tail_direct_integration.md)
+The [exp106 integration gate](../tiered_system/experiments/runbooks/exp106_head_tail_direct_integration.md)
 provides the full synthetic/live HTTP, suite/vet/race and native-scale checks,
 then a fresh-image exp103 control (256 responses) and separate Arrow diagnostic
 (64 responses). The client timeout is shortened to 120s for promptly recording
@@ -599,7 +601,7 @@ measurements or adoption medians. Native local scale coverage now includes
 both plans through Arrow and database/sql; pinned-library VM execution is
 still required locally.
 
-The [exp107 runbook](../tiered_system/experiments/exp107_head_tail_raw_candidates.md)
+The [exp107 runbook](../tiered_system/experiments/runbooks/exp107_head_tail_raw_candidates.md)
 prepares a read-only retained-input experiment in the current exp106 runtime
 image. It copies the stopped exp103 day and exp104 hour hot files into a fresh
 isolated mount, checks hashes/row counts, pins one adopted warehouse snapshot,
@@ -704,7 +706,7 @@ complete. The candidate's early pruning clearly reduces day projection work,
 but large N and many distinct raw tuples could pay for an extra window with
 little pruning. Hot extraction/staging is unchanged.
 
-Prepared [exp108: paired HTTP/fleet gate](../tiered_system/experiments/exp108_head_tail_paired.md).
+Prepared [exp108: paired HTTP/fleet gate](../tiered_system/experiments/runbooks/exp108_head_tail_paired.md).
 Its source preparation tool makes **two isolated build/test copies** with a
 per-file hash manifest and reviewable patch. Only the candidate copy installs
 the exact exp107 selector as the live standalone path. The API checkout,
